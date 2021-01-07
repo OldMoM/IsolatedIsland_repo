@@ -1,0 +1,202 @@
+[
+  {
+    "ClipName": "GameEvent_rainDay",
+    "AudioMixerGroup": "GameEvent",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": "修改完Excel后务必使用ExcelTool"
+  },
+  {
+    "ClipName": "GameEvent_stormComing",
+    "AudioMixerGroup": "GameEvent",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "GameEvent_sunnyDay",
+    "AudioMixerGroup": "GameEvent",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "Interact_build_restoreIsland_processFoodComplete",
+    "AudioMixerGroup": "GameEvent",
+    "Volume": 0.5,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "Interact_islandBuilding",
+    "AudioMixerGroup": "Interact",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "Interact_islandRestoring",
+    "AudioMixerGroup": "Interact",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "Interact_positiveCollectResourceComplete",
+    "AudioMixerGroup": "Interact",
+    "Volume": 0.5,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "Interact_processingFood",
+    "AudioMixerGroup": "Interact",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "Interact_resourceCollectComplete",
+    "AudioMixerGroup": "Interact",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "Interact_startContactTipSound",
+    "AudioMixerGroup": "Interact",
+    "Volume": 0.25,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "Player_fatigueValueIncreased",
+    "AudioMixerGroup": "Player",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "Player_hungerValueIncreased",
+    "AudioMixerGroup": "Player",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "PlayerBehavior_footstep",
+    "AudioMixerGroup": "Player",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "UI_diaryBtnPauseGame",
+    "AudioMixerGroup": "UI",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "UI_diaryBtnRusumeGame",
+    "AudioMixerGroup": "UI",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "UI_openDiary",
+    "AudioMixerGroup": "UI",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "UI_turnDiaryPage",
+    "AudioMixerGroup": "UI",
+    "Volume": 1.0,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "BGM_01",
+    "AudioMixerGroup": "BGM",
+    "Volume": 0.25,
+    "PlayerOnAwake": false,
+    "Loop": true,
+    "PS": null
+  },
+  {
+    "ClipName": "BGM_02",
+    "AudioMixerGroup": "BGM",
+    "Volume": 0.25,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "BGM_03",
+    "AudioMixerGroup": "BGM",
+    "Volume": 0.25,
+    "PlayerOnAwake": false,
+    "Loop": true,
+    "PS": null
+  },
+  {
+    "ClipName": "BGM_04",
+    "AudioMixerGroup": "BGM",
+    "Volume": 0.25,
+    "PlayerOnAwake": false,
+    "Loop": true,
+    "PS": null
+  },
+  {
+    "ClipName": "BGM_05",
+    "AudioMixerGroup": "BGM",
+    "Volume": 0.25,
+    "PlayerOnAwake": false,
+    "Loop": true,
+    "PS": null
+  },
+  {
+    "ClipName": "BGM_06",
+    "AudioMixerGroup": "BGM",
+    "Volume": 0.25,
+    "PlayerOnAwake": false,
+    "Loop": true,
+    "PS": null
+  },
+  {
+    "ClipName": "BGM_07",
+    "AudioMixerGroup": "BGM",
+    "Volume": 0.25,
+    "PlayerOnAwake": false,
+    "Loop": false,
+    "PS": null
+  },
+  {
+    "ClipName": "BGM_08",
+    "AudioMixerGroup": "BGM",
+    "Volume": 0.25,
+    "PlayerOnAwake": false,
+    "Loop": true,
+    "PS": null
+  }
+]
