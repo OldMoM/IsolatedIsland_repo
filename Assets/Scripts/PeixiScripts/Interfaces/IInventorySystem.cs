@@ -46,6 +46,29 @@ namespace Peixi
         /// 背包当前装载量
         /// </summary>
         int Load { get; set; }
-        ValueTuple<string, int> GetGridDate(int gridSerial);
+        /// <summary>
+        /// 获取背包格子中的数据
+        /// </summary>
+        /// <param name="gridSerial">背包格子编号</param>
+        /// <returns></returns>
+        ValueTuple<string, int> GetGridData(int gridSerial);
+        /// <summary>
+        /// 指针当前选中的Item
+        /// </summary>
+        string SelectedItem { get; set; }
+        /// <summary>
+        /// 指针当前选中的Item改变时触发此事件，并传递改变了的Item的name
+        /// </summary>
+        IObservable<string> OnSelectedItemChanged { get; }
+        /// <summary>
+        /// 当指针进入格子时，GridView脚本调用此方法
+        /// </summary>
+        /// <param name="gridSerial">格子编号</param>
+        void OnPointerEnterGrid(int gridSerial);
+        /// <summary>
+        /// 当指针离开格子时，GridView脚本调用此方法
+        /// </summary>
+        /// <param name="gridSerial">格子编号</param>
+        void OnPointerExitGrid(int gridSerial);
     }
 }

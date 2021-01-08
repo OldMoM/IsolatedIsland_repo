@@ -4,36 +4,39 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using System;
+using UnityEngine.Assertions;
 
 
 namespace Peixi
 {
-    public class InventoryGui : MonoBehaviour,IInventoryGui
+    public class InventoryGui : MonoBehaviour, IInventoryGui
     {
         public GameObject gridPrefab;
-        public List<GameObject> grids = new List<GameObject>();
+        List<GameObject> grids = new List<GameObject>();
 
         Transform back;
         Transform gridManagers;
         IInventorySystem iinventroy;
 
         bool isOpened = false;
+
+        [SerializeField]
+        [Tooltip("当前选中的Item")]
         private StringReactiveProperty selectedItem = new StringReactiveProperty("None");
-        string IInventoryGui.SelectedItem
+        public string SelectedItem
         {
             get => selectedItem.Value;
-            set 
+            set
             {
                 selectedItem.Value = value;
             }
         }
         public IObservable<string> OnSelectedItemChanged => selectedItem;
-        // Start is called before the first frame update
-        void Start()
+        public void InitModule(IInventorySystem inventorySystem)
         {
+            iinventroy = inventorySystem;
             gridManagers = transform.Find("GridsManager");
             back = transform.Find("Background");
-            iinventroy = FindObjectOfType<InventorySystem>();
 
             InitGrids();
 
@@ -57,7 +60,9 @@ namespace Peixi
         private void SetGridContent(int gridNum, string name, int amount)
         {
             var grid = grids[gridNum];
+            Assert.IsNotNull(grid);
             Text text = grid.transform.GetComponentInChildren<Text>();
+            Assert.IsNotNull(text);
             text.text = name + ": " + amount;
         }
         private void ClearGridContent(int gridNum)
@@ -88,12 +93,11 @@ namespace Peixi
         }
         public void OnPointerEnterGrid(int gridSerial)
         {
-            selectedItem.Value = iinventroy.GetGridDate(gridSerial).Item1;
-
+            selectedItem.Value = iinventroy.GetGridData(gridSerial).Item1;
         }
         public void OnPointerExitGrid(int gridSerial)
         {
-            selectedItem.Value = string.Empty;
+            selectedItem.Value = "None";
         }
     }
 }

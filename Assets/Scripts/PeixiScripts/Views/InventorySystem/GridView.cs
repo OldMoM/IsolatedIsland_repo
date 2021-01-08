@@ -15,14 +15,11 @@ namespace Peixi
     {
         private Button button;
         IInventoryGui iinventoryGui;
-
         public int gridSerial;
         // Start is called before the first frame update
         void Start()
         {
             button = GetComponentInChildren<Button>();
-            Assert.IsNotNull(button);
-
             button.OnPointerEnterAsObservable()
                 .Subscribe(x =>
                 {
@@ -34,8 +31,7 @@ namespace Peixi
                     iinventoryGui.OnPointerExitGrid(gridSerial);
                 });
         }
-
-        public void Active(IInventoryGui _inventoryGui,int _gridSerial)
+        public void Active(IInventoryGui _inventoryGui, int _gridSerial)
         {
             iinventoryGui = _inventoryGui;
             gridSerial = _gridSerial;

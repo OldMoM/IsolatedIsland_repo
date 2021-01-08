@@ -3,54 +3,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Peixi
 {
-    public class InventorySystem : MonoBehaviour,IInventorySystem
+    public class InventorySystem : MonoBehaviour, IInventorySystem
     {
-        InventoryPresenter inventory;
+        InventoryPresenter presenter;
+        InventoryGui gui;
+
         public InventorySetting setting;
 
         #region//implement interface
-        public IObservable<CollectionReplaceEvent<InventoryGridData>> OnInventoryChanged => inventory.OnInventoryChanged;
-
+        public IObservable<CollectionReplaceEvent<InventoryGridData>> OnInventoryChanged => presenter.OnInventoryChanged;
         public int Capacity => setting.capacity;
-        public int Load 
-        { 
+        public int Load
+        {
             get => setting.load;
             set
             {
                 setting.load = value;
             }
         }
-
+        public string SelectedItem { get => gui.SelectedItem; set => throw new NotImplementedException(); }
+        public IObservable<string> OnSelectedItemChanged => gui.OnSelectedItemChanged;
         public InventoryPresenter AddItem(string name, int amount = 1)
         {
-            return inventory.AddItem(name, amount);
+            return presenter.AddItem(name, amount);
         }
         public int GetAmount(string name)
         {
-            return inventory.GetAmount(name);
+            return presenter.GetAmount(name);
         }
-
         public bool HasItem(string name)
         {
-            return inventory.HasItem(name);
+            return presenter.HasItem(name);
         }
         public bool RemoveItem(string name, int amount = 1)
         {
-            return inventory.RemoveItem(name, amount);
+            return presenter.RemoveItem(name, amount);
         }
-        public ValueTuple<string, int> GetGridDate(int gridSerial)
+        public ValueTuple<string, int> GetGridData(int gridSerial)
         {
-            return inventory.GetItemData(gridSerial);
+            return presenter.GetItemData(gridSerial);
+        }
+        public void OnPointerEnterGrid(int gridSerial)
+        {
+            gui.OnPointerEnterGrid(gridSerial);
+        }
+        public void OnPointerExitGrid(int gridSerial)
+        {
+            gui.OnPointerExitGrid(gridSerial);
         }
         #endregion
-        private void Awake()
+        public void Init()
         {
-            inventory = new InventoryPresenter(this);
+            presenter = new InventoryPresenter(this);
+            gui = FindObjectOfType<InventoryGui>();
+            Assert.IsNotNull(gui, "Failed to find InventoryGui script in Hierarchy");
+            gui.InitModule(this);
         }
-
+        private void OnEnable()
+        {
+            Init();
+        }
     }
     [Serializable]
     public struct InventorySetting
