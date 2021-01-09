@@ -8,10 +8,11 @@ using UnityEngine.Assertions;
 
 namespace Peixi
 {
+    [HelpURL("https://spicegamestudio.pingcode.com/wiki/spaces/5fd0cd48fee2547e79b1b100/pages/5ff9677589088414ae232466")]
     /// <summary>
-    /// 向InventoryGui告知玩家对Grid的图形操作
+    /// 处理玩家对Grid的GUI操作
     /// </summary>
-    public class GridView : MonoBehaviour
+    public class GridHandleView : MonoBehaviour
     {
         private Button button;
         IInventoryGui iinventoryGui;
@@ -30,6 +31,11 @@ namespace Peixi
                 {
                     iinventoryGui.OnPointerExitGrid(gridSerial);
                 });
+            button.OnPointerClickAsObservable()
+                .Subscribe(x =>
+                {
+                    iinventoryGui.OnPointerClickGrid(gridSerial);
+                });   
         }
         public void Active(IInventoryGui _inventoryGui, int _gridSerial)
         {
