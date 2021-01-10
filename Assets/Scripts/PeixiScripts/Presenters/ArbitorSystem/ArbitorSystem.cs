@@ -7,6 +7,9 @@ using System;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 使用适配器模式，将各种交互功能模块封装在这个脚本
+    /// </summary>
     public class ArbitorSystem : MonoBehaviour,IArbitorSystem
     {
         private CollectHandle collectModule;
@@ -88,6 +91,7 @@ namespace Peixi
             eye.RemoveItemFromPendingQuene(item);
         }
     }
+
     [Serializable]
     public struct CollectWatchParam
     {

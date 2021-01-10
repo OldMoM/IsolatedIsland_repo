@@ -8,6 +8,9 @@ using Extensions;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 处理Island网格数据业务逻辑
+    /// </summary>
     public class IslandGridModulePresenter : MonoBehaviour
     {
         private IBuildSystem system;

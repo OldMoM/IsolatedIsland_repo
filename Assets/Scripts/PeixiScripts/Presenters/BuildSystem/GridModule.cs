@@ -6,6 +6,11 @@ using UniRx;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 一个字典数据容器，提供基础的读写和事件
+    /// </summary>
+    /// <typeparam name="T1">Key类型</typeparam>
+    /// <typeparam name="T2">Value类型</typeparam>
     public class GridModule<T1, T2>
     {
         protected GridModuleModel<T1, T2> model = new GridModuleModel<T1, T2>();

@@ -7,6 +7,9 @@ using UnityEngine.Assertions;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 处理Island的数据逻辑
+    /// </summary>
     public class IslandPresenter : MonoBehaviour,IIsland
     {
         [SerializeField]

@@ -7,6 +7,9 @@ using UnityEngine.Assertions;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 处理Facility的数据逻辑
+    /// </summary>
     public class FacilityModulePresenter : MonoBehaviour
     {
         private GridModule<Vector2Int, FacilityGridData> model = new GridModule<Vector2Int, FacilityGridData>();
@@ -31,12 +34,14 @@ namespace Peixi
             model.RemoveData(gridPos);
         }
     }
+    /// <summary>
+    /// Facility在Ground数据库中的储存模式
+    /// </summary>
     public struct FacilityGridData
     {
         private Vector2Int facilityPosition;
         private string facilityName;
         public string FacilityName => facilityName;
         public Vector2Int FacilityPosition => facilityPosition;
-        
     }
 }

@@ -7,6 +7,9 @@ using UnityEngine.Assertions;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 将InventorySystem的各个组件用适配器模式进行组装
+    /// </summary>
     public class InventorySystem : MonoBehaviour, IInventorySystem
     {
         InventoryPresenter presenter;

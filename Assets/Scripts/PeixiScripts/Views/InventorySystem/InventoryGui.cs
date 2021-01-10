@@ -9,6 +9,7 @@ using UnityEngine.Assertions;
 
 namespace Peixi
 {
+    [HelpURL("https://spicegamestudio.pingcode.com/wiki/spaces/5fd0cd48fee2547e79b1b100/pages/5ff96925890884b318232467")]
     public class InventoryGui : MonoBehaviour, IInventoryGui
     {
         #region//Variables 

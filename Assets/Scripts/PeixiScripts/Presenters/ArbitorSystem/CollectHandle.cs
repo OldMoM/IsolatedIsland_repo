@@ -6,6 +6,9 @@ using UniRx;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 处理收集互动过程
+    /// </summary>
     public class CollectHandle
     {
         private IArbitorSystem m_arbitor;

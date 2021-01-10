@@ -9,6 +9,9 @@ using System.Runtime.CompilerServices;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 观察处理玩家的各种互动行为事件，并将这些数据交予专门的模块进行具体处理
+    /// </summary>
     public class ArbitorEyeModule
     {
         CollectHandle collectHandle;

@@ -7,6 +7,9 @@ using UnityEngine.Assertions;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 将土地网格、岛块网格和空气墙网格集成
+    /// </summary>
     public class BuildSystem : MonoBehaviour, IBuildSystem
     {
         public IObservable<int> test;

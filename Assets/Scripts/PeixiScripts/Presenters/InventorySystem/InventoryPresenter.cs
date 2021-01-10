@@ -8,6 +8,9 @@ using UnityEngine.Assertions;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 处理背包系统的数据逻辑业务
+    /// </summary>
     public class InventoryPresenter 
     {
         private InventoryModel<InventoryGridData> inventory = new InventoryModel<InventoryGridData>();

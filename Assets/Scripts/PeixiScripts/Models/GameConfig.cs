@@ -33,7 +33,6 @@ public class GameConfig
     {
         JsonToFloat(ref interactionConfig, "InteractConfig.json");
         JsonToFloat(ref playerConfig, "PlayerConfig.json");
-
         JsonToSoundInfo();
     }
 

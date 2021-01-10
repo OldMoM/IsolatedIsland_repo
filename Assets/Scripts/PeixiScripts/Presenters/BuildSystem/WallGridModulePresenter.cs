@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace Peixi
 {
+    /// <summary>
+    /// 处理空气墙网格的数据逻辑
+    /// </summary>
     public class WallGridModulePresenter : MonoBehaviour
     {
         protected IBuildSystem iBuildSystem;
