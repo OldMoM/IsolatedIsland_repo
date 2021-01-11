@@ -18,10 +18,12 @@ namespace Peixi
 
         Transform back;
         Transform gridManagers;
+        Transform descriptions;
         Text descriptionLabel;
         Button useBtn;
         Button holdBtn;
         Button throwBtn;
+
 
         IInventorySystem iinventroy;
 
@@ -47,6 +49,7 @@ namespace Peixi
             useBtn = transform.Find("UseBtn").GetComponent<Button>();
             holdBtn = transform.Find("HoldBtn").GetComponent<Button>();
             throwBtn = transform.Find("ThrowBtn").GetComponent<Button>();
+            descriptions = transform.Find("DescriptionWidge");
 
             Assert.IsNotNull(descriptionLabel);
             Assert.IsNotNull(useBtn);
@@ -124,6 +127,10 @@ namespace Peixi
 
             gridManagers.gameObject.SetActive(isOpened);
             back.gameObject.SetActive(isOpened);
+            useBtn.gameObject.SetActive(isOpened);
+            holdBtn.gameObject.SetActive(isOpened);
+            throwBtn.gameObject.SetActive(isOpened);
+            descriptions.gameObject.SetActive(isOpened);
         }
         public void OnPointerEnterGrid(int gridSerial)
         {
