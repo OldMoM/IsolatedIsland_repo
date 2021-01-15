@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ocean_MAT_001
-  m_Shader: {fileID: -6465566751694194690, guid: 86902dba38a6a3046935713cab4fa333,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 86902dba38a6a3046935713cab4fa333, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -123,9 +122,9 @@ Material:
     - Vector1_53B9698E: 2.8
     - Vector1_6D9DC178: 200
     - Vector1_93DCFAA9: 1.5
-    - Vector1_95BBCBE0: 800
-    - Vector1_C5543ECF: 5
-    - Vector1_E23798DE: 1
+    - Vector1_95BBCBE0: 1000
+    - Vector1_C5543ECF: 0.99
+    - Vector1_E23798DE: 2
     - _AlphaClip: 0
     - _BASE_COLOR_WEIGHT: 1
     - _BUMP_MAP_STRENGTH: 0.3
@@ -137,7 +136,7 @@ Material:
     - _Depth: 1.45
     - _Displacement: 0.6
     - _DisplacementSpeed: 100
-    - _DisplacementStrength: 0.5
+    - _DisplacementStrength: 0.02
     - _Distance: 2
     - _DstBlend: 0
     - _EMISSION_WEIGHT: 1
@@ -154,7 +153,7 @@ Material:
     - _NormalStrength: 0.6
     - _NormalTiling: 5
     - _OcclusionStrength: 1
-    - _OceanSize: 5
+    - _OceanSize: 3.69
     - _Ocean_Foam_Strength: 0.71
     - _QueueOffset: 0
     - _REFLECTIONS_IOR: 1.52
@@ -175,8 +174,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_A271762B: {r: 0, g: 0.067573525, b: 0.26415092, a: 0.90588236}
-    - Color_AFFD055F: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
-    - Color_E0824245: {r: 0.18039216, g: 0.55275387, b: 0.57254905, a: 0.78431374}
+    - Color_AFFD055F: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0.9372549}
+    - Color_E0824245: {r: 0.18039216, g: 0.55275387, b: 0.57254905, a: 1}
     - _BASE_COLOR: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,3 +193,4 @@ Material:
     - _ShallowWater: {r: 0, g: 1, b: 0.850698, a: 0.98039216}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _WaterColor: {r: 0, g: 0.6519661, b: 1, a: 0.6392157}
+  m_BuildTextureStacks: []
