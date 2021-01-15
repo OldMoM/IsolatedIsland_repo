@@ -42,8 +42,11 @@ namespace Peixi
                 {
                     Vector3 _direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
                     _direction = -_direction.normalized; ;
-                    velocity.Value = _direction * moveSpeed;
 
+                    var _velocity = _direction * moveSpeed;
+                    _velocity.y = m_playerSystem.Rigid.velocity.y;
+
+                    velocity.Value = _velocity;
                 });
         }
 
