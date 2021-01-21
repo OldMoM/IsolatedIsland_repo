@@ -12,7 +12,14 @@ public class InputSystem : MonoBehaviour, IKeyboardInput
     Subject<string> onInteractBtnPressing = new Subject<string>();
     public static IKeyboardInput Singleton
     {
-        get => _instance;
+        get  
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<InputSystem>();
+            }
+            return _instance;
+        }
         set
         {
             if (_instance == null)
@@ -51,9 +58,5 @@ public class InputSystem : MonoBehaviour, IKeyboardInput
             {
                 onInteractBtnPressing.OnNext("e");
             });
-    }
-    private void Start()
-    {
-        
     }
 }

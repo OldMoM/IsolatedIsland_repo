@@ -44,6 +44,10 @@ namespace Peixi
         {
             Singlton = this;
             inventorySystem = FindObjectOfType<InventorySystem>();
+      
+        }
+        private void OnEnable()
+        {
             collectModule = new CollectHandle(this);
             eye = new ArbitorEyeModule(collectModule);
         }
