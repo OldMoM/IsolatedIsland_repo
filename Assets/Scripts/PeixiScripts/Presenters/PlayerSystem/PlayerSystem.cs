@@ -7,10 +7,9 @@ namespace Peixi
 {
     public class PlayerSystem : MonoBehaviour,IPlayerSystem
     {
-        private PlayerMovementPresenter movement;
-        private PlayerBehaviorView behaivor;
-        public PlayerMovementPresenter Movement => movement;
-
+        private PlayerMovementPresenter _movement;
+        private PlayerBehaviorView _behaivor;
+        public PlayerMovementPresenter Movement => _movement;
 
         Rigidbody rigid;
         public Rigidbody Rigid => rigid;
@@ -18,8 +17,8 @@ namespace Peixi
         void Awake()
         {
             rigid = GetComponent<Rigidbody>();
-            movement = new PlayerMovementPresenter(this);
-            behaivor = gameObject.AddComponent<PlayerBehaviorView>();
+            _movement = new PlayerMovementPresenter(this);
+            _behaivor = gameObject.AddComponent<PlayerBehaviorView>();
         }
     }
 }
