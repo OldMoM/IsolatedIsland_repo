@@ -39,7 +39,7 @@ namespace Tests
             grid.OnIslandBuilt
                 .Subscribe(x =>
                 {
-                    hasIslandAtx2y3 = x.Value.m_hasIsland;
+                    hasIslandAtx2y3 = x.Value.has;
                 });
             grid.BuildIslandAt(new Vector2Int(2, 3));
             Assert.IsTrue(hasIslandAtx2y3);

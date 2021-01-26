@@ -24,7 +24,6 @@ namespace Peixi
         protected Dictionary<Vector2Int, GameObject> wallCubes = new Dictionary<Vector2Int, GameObject>();
         private void OnEnable()
         {
-            print("init GameObjectBuiltModuleView");
             system = GetComponent<IBuildSystem>();
             Assert.IsNotNull(system, "system was null at GameObjectBuiltModuleView.cs");
             grid = GetComponentInChildren<IslandGridModulePresenter>();
