@@ -44,12 +44,27 @@ namespace Peixi
                     _direction = -_direction.normalized; ;
 
                     var _velocity = _direction * moveSpeed;
-                    _velocity.y = m_playerSystem.Rigid.velocity.y;
 
-                    velocity.Value = _velocity;
+                    velocity.Value = RotateVelocityBy(_velocity, -60);
                 });
         }
-
+        /// <summary>
+        /// 旋转XOZ平面的移动速度
+        /// </summary>
+        /// <param name="velocity">原始输入数据</param>
+        /// <param name="degree">顺时针旋转为负</param>
+        /// <returns></returns>
+        private Vector3 RotateVelocityBy(Vector3 velocity, float degree)
+        {
+            var _velocity = velocity;
+            var x_rotated = _velocity.x * Mathf.Cos(degree * Mathf.Rad2Deg) - _velocity.z * Mathf.Sin(degree * Mathf.Rad2Deg);
+            x_rotated = -x_rotated;
+            var y = m_playerSystem.Rigid.velocity.y;
+            var z_rotated = _velocity.x * Mathf.Sin(degree * Mathf.Rad2Deg) + _velocity.z * Mathf.Cos(degree * Mathf.Rad2Deg);
+            z_rotated = -z_rotated;
+            var velocity_rotated = new Vector3(x_rotated, y, z_rotated);
+            return velocity_rotated;
+        }
         private void Start()
         {
             stateModel.playerState
