@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scripts/PeixiScripts/Workshop/CollectAssemblyLine.unity
+    path: Assets/Scripts/PeixiScripts/Workshop/Demo.unity
     guid: b640f1fd264022b4bac9301f1ecb1dcc
   - enabled: 0
     path: Assets/Scripts/PeixiScripts/Workshop/InventorySystemWorkShop.unity

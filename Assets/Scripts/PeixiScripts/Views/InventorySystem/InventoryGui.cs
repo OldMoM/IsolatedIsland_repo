@@ -15,6 +15,7 @@ namespace Peixi
         #region//Variables 
         public GameObject gridPrefab;
         List<GameObject> grids = new List<GameObject>();
+        List<GridHandleView> gridScripts = new List<GridHandleView>();
 
         Transform back;
         Transform gridManagers;
@@ -23,7 +24,7 @@ namespace Peixi
         Button useBtn;
         Button holdBtn;
         Button throwBtn;
-
+        InventoryDescriptionWidge descriptionWidge;
 
         IInventorySystem iinventroy;
 
@@ -37,26 +38,28 @@ namespace Peixi
         private StringReactiveProperty clickedItem = new StringReactiveProperty("None");
         #endregion
 
-        public void InitModule(IInventorySystem inventorySystem)
+
+        #region//Publics
+        public IObservable<string> OnSelectedItemChanged => selectedItem;
+        public IObservable<string> OnClickedItemChanged => clickedItem;
+        public string SelectedItem
         {
-            iinventroy = inventorySystem;
-            gridManagers = transform.Find("GridsManager");
-            back = transform.Find("Background");
-            descriptionLabel = transform
-                .Find("DescriptionWidge")
-                .Find("DescriptionLabel")
-                .GetComponent<Text>();
-            useBtn = transform.Find("UseBtn").GetComponent<Button>();
-            holdBtn = transform.Find("HoldBtn").GetComponent<Button>();
-            throwBtn = transform.Find("ThrowBtn").GetComponent<Button>();
-            descriptions = transform.Find("DescriptionWidge");
+            get => selectedItem.Value;
+            set
+            {
+                selectedItem.Value = value;
+            }
+        }
+        public string ClickedItem => clickedItem.Value;
+        public void init(IInventorySystem inventorySystem)
+        {
+            getReference(inventorySystem);
 
-            Assert.IsNotNull(descriptionLabel);
-            Assert.IsNotNull(useBtn);
-            Assert.IsNotNull(holdBtn);
-            Assert.IsNotNull(throwBtn);
+            asserts();
 
-            InitGrids();
+            initGrids();
+
+            initDescrptionWidge();
 
             iinventroy.OnInventoryChanged
                 .Subscribe(x =>
@@ -81,46 +84,6 @@ namespace Peixi
                     descriptionLabel.text = x;
                 });
         }
-
-        #region//Implementation of interface
-        public string SelectedItem
-        {
-            get => selectedItem.Value;
-            set
-            {
-                selectedItem.Value = value;
-            }
-        }
-        public IObservable<string> OnSelectedItemChanged => selectedItem;
-        public string ClickedItem => clickedItem.Value;
-        public IObservable<string> OnClickedItemChanged => clickedItem;
-        private void SetGridContent(int gridNum, string name, int amount)
-        {
-            var grid = grids[gridNum];
-            Assert.IsNotNull(grid);
-            Text text = grid.transform.GetComponentInChildren<Text>();
-            Assert.IsNotNull(text);
-            text.text = name + ": " + amount;
-        }
-        private void ClearGridContent(int gridNum)
-        {
-            var grid = grids[gridNum];
-            Text text = grid.transform.GetComponentInChildren<Text>();
-            text.text = "";
-        }
-        private void InitGrids()
-        {
-            for (int i = 0; i < iinventroy.Capacity; i++)
-            {
-                var grid_gameobject = GameObject.Instantiate(gridPrefab, gridManagers);
-                grid_gameobject.transform.name = "Grid" + i;
-                grids.Add(grid_gameobject);
-
-                var gridScript = grid_gameobject.GetComponent<GridHandleView>();
-                gridScript.Active(this, i);
-                ClearGridContent(i);
-            }
-        }
         public void OnInventoryBtnPressed()
         {
             isOpened = !isOpened;
@@ -132,18 +95,77 @@ namespace Peixi
             throwBtn.gameObject.SetActive(isOpened);
             descriptions.gameObject.SetActive(isOpened);
         }
-        public void OnPointerEnterGrid(int gridSerial)
+        public void OnPointerEnterGrid(int gridSerial,string name)
         {
-            selectedItem.Value = iinventroy.GetGridData(gridSerial).Item1;
+            selectedItem.Value = name;
         }
         public void OnPointerExitGrid(int gridSerial)
         {
             selectedItem.Value = "None";
         }
-        public void OnPointerClickGrid(int gridSerial)
+        public void OnPointerClickGrid(int gridSerial,string name)
         {
-            clickedItem.Value = iinventroy.GetGridData(gridSerial).Item1;
+            clickedItem.Value = name;
         }
         #endregion
+
+        #region//Privates
+        private void SetGridContent(int gridNum, string name, int amount)
+        {
+            var gridHandle = gridScripts[gridNum];
+            gridHandle.itemName = name;
+            gridHandle.itemAmount = amount;
+        }
+        private void ClearGridContent(int gridNum)
+        {
+            var gridHandle = gridScripts[gridNum];
+            gridHandle.clearGrid();
+        }
+        private void initGrids()
+        {
+            for (int i = 0; i < iinventroy.Capacity; i++)
+            {
+                var grid_gameobject = GameObject.Instantiate(gridPrefab, gridManagers);
+                grid_gameobject.transform.name = "Grid" + i;
+                grids.Add(grid_gameobject);
+
+                var gridScript = grid_gameobject.GetComponent<GridHandleView>();
+                gridScripts.Add(gridScript);
+                gridScript.Active(this, i);
+                ClearGridContent(i);
+            }
+
+            
+        }
+        private void initDescrptionWidge()
+        {
+            descriptionWidge = GetComponentInChildren<InventoryDescriptionWidge>();
+            Assert.IsNotNull(descriptionWidge, "descriptionWidge is null at " + name);
+            descriptionWidge.init(this);
+        }
+        private void asserts()
+        {
+            Assert.IsNotNull(descriptionLabel);
+            Assert.IsNotNull(useBtn);
+            Assert.IsNotNull(holdBtn);
+            Assert.IsNotNull(throwBtn);
+        }
+        private void getReference(IInventorySystem inventorySystem)
+        {
+            iinventroy = inventorySystem;
+            gridManagers = transform.Find("GridsManager");
+            back = transform.Find("Background");
+            descriptionLabel = transform
+                .Find("DescriptionWidge")
+                .Find("DescriptionLabel")
+                .GetComponent<Text>();
+            useBtn = transform.Find("UseBtn").GetComponent<Button>();
+            holdBtn = transform.Find("HoldBtn").GetComponent<Button>();
+            throwBtn = transform.Find("ThrowBtn").GetComponent<Button>();
+            descriptions = transform.Find("DescriptionWidge");
+        }
+        #endregion
+
+
     }
 }

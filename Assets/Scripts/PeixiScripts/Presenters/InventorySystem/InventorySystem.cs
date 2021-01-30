@@ -52,7 +52,7 @@ namespace Peixi
         }
         public void OnPointerEnterGrid(int gridSerial)
         {
-            gui.OnPointerEnterGrid(gridSerial);
+            //gui.OnPointerEnterGrid(gridSerial);
         }
         public void OnPointerExitGrid(int gridSerial)
         {
@@ -64,7 +64,7 @@ namespace Peixi
             presenter = new InventoryPresenter(this);
             gui = FindObjectOfType<InventoryGui>();
             Assert.IsNotNull(gui, "Failed to find InventoryGui script in Hierarchy");
-            gui.InitModule(this);
+            gui.init(this);
         }
         private void OnEnable()
         {

@@ -34,6 +34,14 @@ namespace Peixi
         /// <param name="gridPos">移除点的坐标</param>
         void RemoveFacility(Vector2Int gridPos);
         /// <summary>
+        /// 世界转换为网格坐标
+        /// </summary>
+        Func<Vector3,GridSetting, Vector2Int> worldToGridPosition { get; }
+        /// <summary>
+        /// 网格坐标转换为世界坐标
+        /// </summary>
+        Func<Vector2Int,GridSetting, Vector3> gridToWorldPosition { get; }
+        /// <summary>
         /// 获得某处岛块的操作接口
         /// </summary>
         /// <param name="gridpos">岛块坐标</param>
@@ -56,12 +64,16 @@ namespace Peixi
         /// Item1：设施坐标
         /// Item2：设施类型
         /// </summary>
-        IObservable<Tuple<Vector2Int,string>> OnFacilityBuilt { get; }
+        IObservable<DictionaryAddEvent<Vector2Int, FacilityGridData>> OnFacilityBuilt { get; }
         /// <summary>
         /// 当设施被移除时触发此事件
         /// arg：被移除设施的坐标
         /// </summary>
-        IObservable<Vector2Int> OnFacilityRemoved { get; }
+        IObservable<DictionaryRemoveEvent<Vector2Int, FacilityGridData>> OnFacilityRemoved { get; }
+        /// <summary>
+        /// 网格设置参数
+        /// </summary>
+        GridSetting Settings { get; }
     }
 }
 

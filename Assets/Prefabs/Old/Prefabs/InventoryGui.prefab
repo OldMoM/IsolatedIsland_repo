@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2341019878597985592}
+  - component: {fileID: 8464904088552608248}
   m_Layer: 5
   m_Name: DescriptionWidge
   m_TagString: Untagged
@@ -116,6 +117,18 @@ RectTransform:
   m_AnchoredPosition: {x: -109, y: 132}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &8464904088552608248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356346697508510101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5793ffc1adf08c747a51668184cef2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1529574128770632867
 GameObject:
   m_ObjectHideFlags: 0

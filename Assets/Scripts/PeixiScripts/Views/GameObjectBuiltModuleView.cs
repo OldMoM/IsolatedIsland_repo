@@ -29,8 +29,6 @@ namespace Peixi
             grid = GetComponentInChildren<IslandGridModulePresenter>();
             wall = GetComponentInChildren<WallGridModulePresenter>();
             facility = GetComponentInChildren<FacilityModulePresenter>();
-
-            
         }
         private void Start()
         {
@@ -66,9 +64,11 @@ namespace Peixi
         {
             var islandSet = GameObject.Find("IslandSet");
             Assert.IsNotNull(islandSet);
+            var cellsize = system.Settings._cellSize;
             var position = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
             var _island = GameObject.Instantiate(propSampleRepo[0], position, Quaternion.identity, islandSet.transform);
             _island.transform.name = "IslandAt" + gridPos.x + "dot" + gridPos.y;
+            _island.transform.localScale = new Vector3(cellsize, 1, cellsize);
 
             var islandPresenter = _island.GetComponent<IslandPresenter>();
             Assert.IsNotNull(islandPresenter);
@@ -83,9 +83,10 @@ namespace Peixi
         }
         protected void CreateWallCube(Vector2Int gridPos)
         {
+            var cellsize = system.Settings._cellSize;
             var redCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            redCube.transform.localScale = new Vector3(5, 2, 5);
-            redCube.transform.position = new Vector3(gridPos.x * 5, 1, gridPos.y * 5);
+            redCube.transform.localScale = new Vector3(cellsize, 2, cellsize);
+            redCube.transform.position = new Vector3(gridPos.x * cellsize, 1, gridPos.y * cellsize);
             var renderer = redCube.GetComponent<MeshRenderer>();
             renderer.material.color = Color.red;
 
@@ -114,12 +115,8 @@ namespace Peixi
         }
         public IIsland GetIslandInterface(Vector2Int islandGridPos)
         {
-            //print("msg has ben delivered to GameObjectBuiltModuleView");
-            //print("get the island interface at " + islandGridPos);
             var hasIsland = islandSquares.ContainsKey(islandGridPos);
             Assert.IsTrue(hasIsland, "在Scene中，" + islandGridPos + "没有Island");
-
-            //print(islandSquares[islandGridPos].transform.name);
             return islandSquares[islandGridPos].GetComponent<IIsland>();
         }  
     }

@@ -12,11 +12,11 @@ namespace Peixi
     /// </summary>
     public class ArbitorSystem : MonoBehaviour,IArbitorSystem
     {
-        private CollectHandle collectModule;
+        private CollectInteractionHandle collectModule;
         private InventorySystem inventorySystem;
         private ArbitorEyeModule eye;
         public IInventorySystem InventorySystem => inventorySystem;
-        public CollectHandle CollectModule => collectModule;
+        public CollectInteractionHandle CollectModule => collectModule;
         public ArbitorEyeModule ArbitorEye => eye;
         public IObservable<Unit> OnCollectCompleted => collectModule.OnCollectCompleted;
         public IObservable<Unit> OnAllCollectCompleted => ArbitorEye.AllCollectCompleted;
@@ -48,7 +48,7 @@ namespace Peixi
         }
         private void OnEnable()
         {
-            collectModule = new CollectHandle(this);
+            collectModule = new CollectInteractionHandle(this);
             eye = new ArbitorEyeModule(collectModule);
         }
         void Start()
@@ -95,7 +95,6 @@ namespace Peixi
             eye.RemoveItemFromPendingQuene(item);
         }
     }
-
     [Serializable]
     public struct CollectWatchParam
     {
