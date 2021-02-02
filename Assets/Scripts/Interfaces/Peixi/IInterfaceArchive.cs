@@ -10,5 +10,6 @@ public interface IInterfaceArchive
     IPlayerPropertySystem IplayerPropertySystem { get; set; }
     ITimeSystem ItimeSystem { get; }
     IInventorySystem IinventorySystem { get; }
+    IArbitorSystem IarbitorSystem { get; }
 
 }

@@ -12,10 +12,8 @@ namespace Tests
         [Test]
         public void creatIsland_notNull()
         {
-            var islandEntity = PrefabFactory.singleton.creatGameobject("Prop_island");
-            var pos = islandEntity.transform.position;
+            var islandEntity = PrefabFactory.singleton.creatGameobject("prop_island");
             Assert.IsNotNull(islandEntity);
-            Assert.AreEqual(Vector3.zero, pos);
         }
     }
 }

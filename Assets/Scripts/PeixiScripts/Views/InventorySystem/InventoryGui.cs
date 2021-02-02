@@ -139,7 +139,10 @@ namespace Peixi
         }
         private void initDescrptionWidge()
         {
-            descriptionWidge = GetComponentInChildren<InventoryDescriptionWidge>();
+            descriptionWidge = transform
+                .Find("DescriptionWidge")
+                .GetComponent<InventoryDescriptionWidge>();
+                //GetComponentInChildren<InventoryDescriptionWidge>();
             Assert.IsNotNull(descriptionWidge, "descriptionWidge is null at " + name);
             descriptionWidge.init(this);
         }

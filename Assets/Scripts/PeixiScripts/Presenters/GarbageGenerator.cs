@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-//using UnityEditor;
-namespace Peixi {
+
+namespace Peixi 
+{
     public class GarbageGenerator : MonoBehaviour
     {
         ReactiveProperty<bool> isActive = new ReactiveProperty<bool>(false);

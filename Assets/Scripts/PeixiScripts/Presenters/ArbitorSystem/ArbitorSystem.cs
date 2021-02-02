@@ -15,6 +15,10 @@ namespace Peixi
         private CollectInteractionHandle collectModule;
         private InventorySystem inventorySystem;
         private ArbitorEyeModule eye;
+        [SerializeField]
+        private FacilityData facility;
+
+        private FacilityInteractionAgent _facilityInteractHandle;
         public IInventorySystem InventorySystem => inventorySystem;
         public CollectInteractionHandle CollectModule => collectModule;
         public ArbitorEyeModule ArbitorEye => eye;
@@ -32,6 +36,18 @@ namespace Peixi
                 {
                     arbitor = value;
                 }
+            }
+        }
+
+        public FacilityInteractionAgent facilityInteractionHandle 
+        {
+            get
+            {
+                if (_facilityInteractHandle is null)
+                {
+                    _facilityInteractHandle = new FacilityInteractionAgent();
+                }
+                return _facilityInteractHandle;
             }
         }
 
@@ -82,6 +98,11 @@ namespace Peixi
                     collectParams.handleItemHasCode = 0;
                 });
         }
+
+        public void init()
+        {
+            
+        }
         public void OnPlayerTouch(BaseItem item)
         {
             eye.OnPlayerTouch(item);
@@ -93,6 +114,11 @@ namespace Peixi
         public void OnItemRecycle(BaseItem item) 
         {
             eye.RemoveItemFromPendingQuene(item);
+        }
+
+        private void Update()
+        {
+            facility = facilityInteractionHandle.targetData;
         }
     }
     [Serializable]

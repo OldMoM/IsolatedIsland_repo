@@ -11,6 +11,7 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
     private IBuildSystem _buildSystem;
     private ITimeSystem _timeSystem;
     private IInventorySystem _inventorySystem;
+    private IArbitorSystem _arbitorSystem;
 
     public static IInterfaceArchive Archive
     {
@@ -71,7 +72,6 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             throw new System.Exception("IPlayerPropertySystem接口已经被注册过一次，请勿重复注册");
         }
     }
-
     public ITimeSystem ItimeSystem 
     {
         get
@@ -94,6 +94,18 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
                 Debug.LogWarning("未能在Hierarchy中找到IInventorySystem接口，将返回null");
             }
             return _inventorySystem;
+        }
+    }
+    public IArbitorSystem IarbitorSystem
+    {
+        get
+        {
+            _arbitorSystem = FindObjectOfType<ArbitorSystem>();
+            if (_arbitorSystem is null)
+            {
+                Debug.LogWarning("未能在Hierarchy中找到IArbitorSystem接口，将返回null");
+            }
+            return _arbitorSystem;
         }
     }
 }

@@ -9,6 +9,7 @@ using Extensions;
 
 namespace Peixi
 {
+    [RequireComponent(typeof(SphereCollider))]
     public class BaseItem : MonoBehaviour
     {
         public BaseItemModel data = new BaseItemModel();
@@ -26,20 +27,11 @@ namespace Peixi
               .AddItem("A")
               .AddItem("b");
         }
+        protected SphereCollider trigger;
+
         void OnEnable()
         {
-            var trigger = GetComponent<SphereCollider>();
-            trigger.radius = data.detectRadius;
-
-            onPlayerTouch = ObservableTriggerExtensions.OnTriggerEnterAsObservable(trigger)
-                .Where(x => x.tag == "Player");
-
-            onPlayerUntouch = ObservableTriggerExtensions.OnTriggerExitAsObservable(trigger)
-                .Where(x => x.tag == "Player");
-
-            onPlayerTouch.Subscribe(OnPlayerTouch);
-
-            onPlayerUntouch.Subscribe(OnPlayerUntouch);
+            init();
         }
         public virtual void Recycle()
         {
@@ -61,6 +53,26 @@ namespace Peixi
                 ArbitorSystem.Singlton.OnPlayerUntouch(this);
             }
         }
+        protected IArbitorSystem getArbitorSysten()
+        {
+            return InterfaceArichives.Archive.IarbitorSystem;    
+        }
+        protected virtual void init()
+        {
+            trigger = GetComponent<SphereCollider>();
+            trigger.radius = data.detectRadius;
+
+            onPlayerTouch = ObservableTriggerExtensions.OnTriggerEnterAsObservable(trigger)
+                .Where(x => x.tag == "Player");
+
+            onPlayerUntouch = ObservableTriggerExtensions.OnTriggerExitAsObservable(trigger)
+                .Where(x => x.tag == "Player");
+
+            onPlayerTouch.Subscribe(OnPlayerTouch);
+
+            onPlayerUntouch.Subscribe(OnPlayerUntouch);
+        }
+            
     }
     [System.Serializable]
     public class BaseItemModel
