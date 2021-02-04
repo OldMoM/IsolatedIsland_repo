@@ -21,12 +21,13 @@ namespace Tests
             Assert.IsNotNull(config().ItimeSystem);
             yield return null;
         }
-        //[UnityTest]
-        //public IEnumerator GetInventorySystem_notNull()
-        //{
-        //    var inventorySystem_go = new GameObject().AddComponent<InventorySystem>();
-        //    Assert.IsNotNull(config().IinventorySystem);
-        //    yield return null;
-        //}
+        [UnityTest]
+        public IEnumerator GetInterface_inventorySystem_notnull()
+        {
+            var archive = config();
+            var inventory = new GameObject().AddComponent<InventorySystem>();
+            Assert.IsNotNull(archive.GetInterface<IInventorySystem>());
+            yield return null;
+        }
     }
 }

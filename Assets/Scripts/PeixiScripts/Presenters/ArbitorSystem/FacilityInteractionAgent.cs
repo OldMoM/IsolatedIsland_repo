@@ -25,8 +25,9 @@ namespace Peixi
         private Subject<FacilityType> _onInteractStart = new Subject<FacilityType>();
         private Subject<FacilityType> _onInteractEnd = new Subject<FacilityType>();
         private List<FacilityData> _pendingItems = new List<FacilityData>();
-        private FishPointInteractHandleUnit _fishPointUnit = new FishPointInteractHandleUnit();
         private Dictionary<FacilityType, Action> _startInteractCode = new Dictionary<FacilityType, Action>();
+
+        private FishPointInteractHandleUnit _fishPointUnit = new FishPointInteractHandleUnit();
 
         public void PlayerTouchFacility(FacilityData facility)
         {
@@ -54,6 +55,7 @@ namespace Peixi
                 else
                 {
                     _state.Value = InteractState.Idle;
+
                     _targetData.Value = new FacilityData();
 
                 }
@@ -67,10 +69,8 @@ namespace Peixi
                 var removedOne = _pendingItems[count - 1];
                 _pendingItems.RemoveAt(count - 1);
                 _pendingItems.Insert(0, removedOne);
-
                 _targetData.Value = _pendingItems[count - 1];
             }
-
         }
         public void InteractStart(FacilityType type)
         {
@@ -87,8 +87,7 @@ namespace Peixi
                 _state.Value = InteractState.Idle;
             }
         }
-        
-        private void Reactive()
+        private void onSwitchBtnPressed()
         {
             InputSystem.Singleton.onSwitchBtnPressed
                .Where(x => _state.Value == InteractState.Contact)
@@ -96,7 +95,9 @@ namespace Peixi
                {
                    SwitchTarget();
                });
-
+        }
+        private void onInteractBtnPressed()
+        {
             InputSystem.Singleton.OnInteractBtnPressed
                 .Where(x => _state.Value == InteractState.Contact)
                 .Subscribe(x =>
@@ -104,7 +105,9 @@ namespace Peixi
                     _state.Value = InteractState.Interact;
                     _startInteractCode[targetData.type]();
                 });
-
+        }
+        private void onFishingEnd()
+        {
             fishUnit.onInteractEnd
                 .Subscribe(x =>
                 {
@@ -118,16 +121,22 @@ namespace Peixi
                     }
                 });
         }
-        private FacilityInteractionAgent Init()
+        private FacilityInteractionAgent React(Action action)
         {
-            _startInteractCode.Add(FacilityType.FishPoint, _fishPointUnit.startInteract);
+            action();
             return this;
         }
-
+        private FacilityInteractionAgent Init()
+        {
+            _startInteractCode.Add(FacilityType.FishPoint, fishUnit.startInteract);
+            return this;
+        }
         public FacilityInteractionAgent()
-        { 
-            Init().
-            Reactive();
+        {
+            Init()
+                .React(onSwitchBtnPressed)
+                .React(onInteractBtnPressed)
+                .React(onFishingEnd);
         }
     }
     [Serializable]
@@ -140,9 +149,9 @@ namespace Peixi
     }
     public enum FacilityType
     {
+        None,
         Island,
-        FishPoint,
-        None
+        FishPoint
     }
     public enum InteractState
     {

@@ -13,12 +13,11 @@ namespace Peixi
     public class ArbitorSystem : MonoBehaviour,IArbitorSystem
     {
         private CollectInteractionHandle collectModule;
+        private FacilityInteractionAgent _facilityInteractHandle;
         private InventorySystem inventorySystem;
         private ArbitorEyeModule eye;
         [SerializeField]
         private FacilityData facility;
-
-        private FacilityInteractionAgent _facilityInteractHandle;
         public IInventorySystem InventorySystem => inventorySystem;
         public CollectInteractionHandle CollectModule => collectModule;
         public ArbitorEyeModule ArbitorEye => eye;
@@ -97,11 +96,6 @@ namespace Peixi
                     collectParams.handleItemName = "None";
                     collectParams.handleItemHasCode = 0;
                 });
-        }
-
-        public void init()
-        {
-            
         }
         public void OnPlayerTouch(BaseItem item)
         {

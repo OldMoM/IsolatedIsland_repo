@@ -38,6 +38,7 @@ namespace Peixi
         private void Active()
         {
             Observable.EveryFixedUpdate()
+                .SkipWhile(x=> m_playerSystem.PlayerState == PlayerState.InteractState)
                 .Subscribe(x =>
                 {
                     Vector3 _direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -67,22 +68,22 @@ namespace Peixi
         }
         private void Start()
         {
-            stateModel.playerState
-                .Where(x => stateModel.playerState.Value == PlayerState.MotionState)
-                .Subscribe(x =>
-                {
+            //stateModel.playerState
+            //    //.Where(x => stateModel.playerState.Value == PlayerState.MotionState)
+            //    .Subscribe(x =>
+            //    {
 
-                });
+            //    });
 
             
 
             #region//InteractState
-            stateModel.playerState
-            .Where(x => stateModel.playerState.Value == PlayerState.InteractState)
-            .Subscribe(x =>
-            {
-                movementModel.velocity.Value = Vector3.zero;
-            });
+            //stateModel.playerState
+            ////.Where(x => stateModel.playerState.Value == PlayerState.InteractState)
+            //.Subscribe(x =>
+            //{
+            //    movementModel.velocity.Value = Vector3.zero;
+            //});
             #endregion
         }
     }

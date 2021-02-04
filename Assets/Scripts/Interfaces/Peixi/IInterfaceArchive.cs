@@ -12,4 +12,5 @@ public interface IInterfaceArchive
     IInventorySystem IinventorySystem { get; }
     IArbitorSystem IarbitorSystem { get; }
 
+    T GetInterface<T>();
 }

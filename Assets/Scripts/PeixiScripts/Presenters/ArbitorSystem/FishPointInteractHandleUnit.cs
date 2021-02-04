@@ -16,7 +16,6 @@ namespace Peixi
         public void endInteract(FishingResult result)
         {
             _onInteractEnd.OnNext(result);
-            Debug.Log("end interact with fish point");
             Debug.Log(result.plastic);
         }
         public void startInteract()
