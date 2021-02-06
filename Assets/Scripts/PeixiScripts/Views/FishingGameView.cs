@@ -21,7 +21,7 @@ namespace Peixi
 
         private Dictionary<string, float> _config;
 
-        private FishPointInteractHandleUnit unit;
+        private FishPointInteractHandle unit;
 
         private void ShowChildren(bool active)
         {
@@ -167,7 +167,7 @@ namespace Peixi
             back_tran = transform.Find("background");
             pointArea_tran = transform.Find("pointAera");
             pointers_tran = transform.Find("pointers");
-            unit = InterfaceArichives.Archive.IarbitorSystem.facilityInteractionHandle.fishUnit;
+            unit = InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent.fishUnit;
             return this;
         }
         private FishingGameView Config()

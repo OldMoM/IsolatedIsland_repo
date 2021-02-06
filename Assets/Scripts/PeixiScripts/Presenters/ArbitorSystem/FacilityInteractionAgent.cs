@@ -16,7 +16,8 @@ namespace Peixi
         public IObservable<FacilityType> onInteractEnd => _onInteractEnd;
         public IObservable<FacilityData> onTargetChanged => _targetData;
         public IObservable<InteractState> onStateChanged => _state;
-        public FishPointInteractHandleUnit fishUnit => _fishPointUnit;
+        public FishPointInteractHandle fishUnit => fishPointHandle;
+
         public InteractState state => _state.Value;
 
         private ReactiveProperty<FacilityData> _targetData = new ReactiveProperty<FacilityData>();
@@ -27,8 +28,11 @@ namespace Peixi
         private List<FacilityData> _pendingItems = new List<FacilityData>();
         private Dictionary<FacilityType, Action> _startInteractCode = new Dictionary<FacilityType, Action>();
 
-        private FishPointInteractHandleUnit _fishPointUnit = new FishPointInteractHandleUnit();
+        private FishPointInteractHandle fishPointHandle = new FishPointInteractHandle();
+        private FoodPlantInteractHandle foodPlantHandle = new FoodPlantInteractHandle();
 
+        private FacilityInteractConditonDiscriminator discriminator;
+      
         public void PlayerTouchFacility(FacilityData facility)
         {
             var result = _pendingItems.Contains(facility);
@@ -74,10 +78,14 @@ namespace Peixi
         }
         public void InteractStart(FacilityType type)
         {
-            if (type == FacilityType.FishPoint)
+            if (type == FacilityType.FishPoint && discriminator.FishPointInteractCondition)
             {
-                _state.Value = InteractState.Interact;
                 fishUnit.startInteract();
+            }
+
+            if (type == FacilityType.FoodPlant && discriminator.FoodPointInteractCondition)
+            {
+                foodPlantHandle.StartInteract();
             }
         }
         public void InteractEnd(FacilityType type)
@@ -103,7 +111,7 @@ namespace Peixi
                 .Subscribe(x =>
                 {
                     _state.Value = InteractState.Interact;
-                    _startInteractCode[targetData.type]();
+                    InteractStart(targetData.type);
                 });
         }
         private void onFishingEnd()
@@ -128,6 +136,7 @@ namespace Peixi
         }
         private FacilityInteractionAgent Init()
         {
+            discriminator = new FacilityInteractConditonDiscriminator(this);
             _startInteractCode.Add(FacilityType.FishPoint, fishUnit.startInteract);
             return this;
         }
@@ -151,7 +160,9 @@ namespace Peixi
     {
         None,
         Island,
-        FishPoint
+        FishPoint,
+        FoodPlant,
+        Distiller
     }
     public enum InteractState
     {

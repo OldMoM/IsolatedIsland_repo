@@ -10,8 +10,9 @@ namespace Peixi
         private PlayerMovementPresenter _movement;
         private PlayerBehaviorView _behaivor;
         private PlayerStateController stateController = new PlayerStateController();
-
         private PlayerState playerState;
+        private PlayerPropertySystem property = new PlayerPropertySystem();
+
         public PlayerMovementPresenter Movement => _movement;
 
         Rigidbody rigid;
@@ -19,6 +20,9 @@ namespace Peixi
         public PlayerState PlayerState => playerState;
 
         public PlayerStateController StateController => stateController;
+
+        public IPlayerPropertySystem PlayerPropertySystem => property;
+   
 
         void Awake()
         {
@@ -28,5 +32,6 @@ namespace Peixi
 
             stateController.Init();
         }
+
     }
 }

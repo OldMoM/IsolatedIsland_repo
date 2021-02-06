@@ -42,7 +42,6 @@ namespace Peixi
         private StringReactiveProperty clickedItem = new StringReactiveProperty("None");
         #endregion
 
-
         #region//Publics
         public IObservable<string> OnSelectedItemChanged => selectedItem;
         public IObservable<string> OnClickedItemChanged => clickedItem;
@@ -146,7 +145,7 @@ namespace Peixi
         }
         private InventoryGui Config()
         {
-            iinventroy = InterfaceArichives.Archive.IinventorySystem;
+            iinventroy = InterfaceArichives.Archive.IInventorySystem;
             gridManagers_tran = transform.Find("GridsManager");
             back_tran = transform.Find("Background");
             descriptionLabel = transform

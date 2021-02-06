@@ -1,26 +1,26 @@
 ﻿using System;
 using UniRx;
 
-namespace Siwei
+namespace Peixi
 {
     public interface IPlayerPropertySystem
     {
         /// <summary>
         /// 健康值
         /// </summary>
-        int Health { get; set; }
+        int Health { get;}
         /// <summary>
         /// 饥饿值
         /// </summary>
-        int Hunger { get; set; }
+        int Hunger { get;}
         /// <summary>
         /// 口渴值
         /// </summary>
-        int Thirst { get; set; }
+        int Thirst { get;}
         /// <summary>
         /// 心情值（愉悦感）
         /// </summary>
-        int Pleasure { get; set; }
+        int Pleasure { get;}
         /// <summary>
         /// 当修改健康值时，触发此事件
         /// </summary>
@@ -41,5 +41,9 @@ namespace Siwei
         /// 当健康值归零时，触发此事件
         /// </summary>
         IObservable<Unit> OnPlayerDied { get; }
+        int ChangeHealth(int changeValue);
+        int ChangeHunger(int changeValue);
+        int ChangeThirst(int changeValue);
+        int ChangePleasure(int changeValue);
     }
 }

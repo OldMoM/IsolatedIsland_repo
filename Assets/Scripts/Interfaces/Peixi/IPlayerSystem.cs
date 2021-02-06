@@ -10,5 +10,6 @@ namespace Peixi
         Rigidbody Rigid { get; }
         PlayerState PlayerState { get; }
         PlayerStateController StateController { get; }
+        IPlayerPropertySystem PlayerPropertySystem { get; }
     }
 }

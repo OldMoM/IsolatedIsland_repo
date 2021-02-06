@@ -27,8 +27,8 @@ namespace Peixi
             icon = icon_rect.GetComponent<RawImage>();
             handle = InterfaceArichives
                 .Archive
-                .IarbitorSystem
-                .facilityInteractionHandle;
+                .IArbitorSystem
+                .facilityInteractAgent;
 
             Assert.IsNotNull(icon_rect);
             Assert.IsNotNull(icon);

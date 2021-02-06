@@ -12,7 +12,7 @@ namespace Peixi
         private IObservable<InteractState> onInteractStateChanged;
         public void Init()
         {
-            InterfaceArichives.Archive.IarbitorSystem.facilityInteractionHandle.onStateChanged
+            InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent.onStateChanged
                 .Where(x => x == InteractState.Interact)
                 .Subscribe(x =>
                 {

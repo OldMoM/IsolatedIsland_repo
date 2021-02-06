@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Peixi;
-using Siwei;
+//using Siwei;
 using UnityEngine.Assertions;
+using System;
 
 public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
 {
@@ -13,11 +14,7 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
     private ITimeSystem _timeSystem;
     private IInventorySystem _inventorySystem;
     private IArbitorSystem _arbitorSystem;
-
-    private Hashtable interfaceTable = new Hashtable()
-    {
-        //{ typeof(IInventorySystem).ToString(),_archive.IinventorySystem}
-    };
+    private IInGameUIComponentsInterface inGameUiComponentsManager;
 
     public static IInterfaceArchive Archive
     {
@@ -30,36 +27,18 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             return _archive;
         }
     }
-    public IBuildSystem IbuildSystem
+    public IBuildSystem IBuildSystem
     {
-        set
-        {
-            if (_buildSystem == null)
-            {
-                _buildSystem = value;
-                return;
-            }
-            throw new System.Exception("IbuildSystem接口已经被注册过一次，请勿重复注册");
-        }
         get
         {
-            if (_buildSystem != null)
+            if (_buildSystem is null)
             {
-                return _buildSystem;
+                _buildSystem = FindObjectOfType<BuildSystem>();
             }
-            //find IbuildSystem in hierarchy
-            _buildSystem = FindObjectOfType<BuildSystem>();
-            if (_buildSystem != null)
-            {
-                interfaceTable.Add("IBuildSystem", _buildSystem);
-                return _buildSystem;
-            }
-            Debug.Log("未能在Hierarchy中找到IbuildSystem接口，确保其中存在BuildSystem，将返回null");
             return _buildSystem;
         }
-
     }
-    public IPlayerPropertySystem IplayerPropertySystem
+    public IPlayerPropertySystem IPlayerPropertySystem
     {
         get
         {
@@ -70,21 +49,12 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             Debug.LogWarning("未能在Hierarchy中找到IbuildSystem接口，确保其中存在BuildSystem，将返回null");
             return _playerPropertySystem;
         }
-        set
-        {
-            if (_playerPropertySystem == null)
-            {
-                IplayerPropertySystem = value;
-            }
-            throw new System.Exception("IPlayerPropertySystem接口已经被注册过一次，请勿重复注册");
-        }
     }
-    public ITimeSystem ItimeSystem 
+    public ITimeSystem ITimeSystem 
     {
         get
         {
             _timeSystem = FindObjectOfType<TimeSystem>();
-            interfaceTable.Add("ITimeSystem", _timeSystem);
             if (_timeSystem is null)
             {
                 Debug.LogWarning("未能在Hierarchy中找到ITimeSystem接口，将返回null");
@@ -92,7 +62,7 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             return _timeSystem;
         }
     }
-    public IInventorySystem IinventorySystem 
+    public IInventorySystem IInventorySystem 
     {
         get 
         {
@@ -104,12 +74,11 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             return _inventorySystem;
         }
     }
-    public IArbitorSystem IarbitorSystem
+    public IArbitorSystem IArbitorSystem
     {
         get
         {
             _arbitorSystem = FindObjectOfType<ArbitorSystem>();
-            interfaceTable.Add("IArbitorSystem", _arbitorSystem);
             if (_arbitorSystem is null)
             {
                 Debug.LogWarning("未能在Hierarchy中找到IArbitorSystem接口，将返回null");
@@ -117,28 +86,16 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             return _arbitorSystem;
         }
     }
-    public T GetInterface<T>()
+    public IInGameUIComponentsInterface InGameUIComponentsManager
     {
-        string type = typeof(T).ToString();
-        var hasInterface = interfaceTable.ContainsKey(type);
-        if (hasInterface)
+        get
         {
-            return (T)interfaceTable[type];
-        }
-        else
-        {
-            RegisterInterface(type);
-            return (T)interfaceTable[type];
-        }
-        throw new System.Exception();
-    }
-
-    void RegisterInterface(string name)
-    {
-        if (name == typeof(IInventorySystem).ToString())
-        {
-            _inventorySystem = FindObjectOfType<InventorySystem>();
-            interfaceTable.Add(typeof(IInventorySystem).ToString(), _inventorySystem);
-        }
+            if (inGameUiComponentsManager is null)
+            {
+                inGameUiComponentsManager = FindObjectOfType<InGameUIComponentInterface>();
+                Assert.IsNotNull(inGameUiComponentsManager, "IInGameUIComponentsManager");
+            }
+            return inGameUiComponentsManager;
+        }    
     }
 }
