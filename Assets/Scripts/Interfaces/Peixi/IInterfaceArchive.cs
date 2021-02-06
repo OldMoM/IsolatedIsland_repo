@@ -7,5 +7,10 @@ using Peixi;
 public interface IInterfaceArchive
 {
     IBuildSystem IbuildSystem { get; set; }
-    IPlayerPropertySystem playerPropertySystem { get; set; }
+    IPlayerPropertySystem IplayerPropertySystem { get; set; }
+    ITimeSystem ItimeSystem { get; }
+    IInventorySystem IinventorySystem { get; }
+    IArbitorSystem IarbitorSystem { get; }
+
+    T GetInterface<T>();
 }

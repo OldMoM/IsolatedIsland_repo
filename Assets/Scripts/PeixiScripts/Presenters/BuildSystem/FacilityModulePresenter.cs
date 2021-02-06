@@ -13,7 +13,8 @@ namespace Peixi
     public class FacilityModulePresenter : MonoBehaviour
     {
         private GridModule<Vector2Int, FacilityGridData> model = new GridModule<Vector2Int, FacilityGridData>();
-        public System.IObservable<DictionaryAddEvent<Vector2Int, FacilityGridData>> OnFacilityAdded => model.OnDataAdded;
+        public IObservable<DictionaryAddEvent<Vector2Int, FacilityGridData>> OnFacilityAdded => model.OnDataAdded;
+        public IObservable<DictionaryRemoveEvent<Vector2Int, FacilityGridData>> OnFacilityRemoved => model.OnDataRemoved;
         IBuildSystem buildSystem;
         private void Awake()
         {

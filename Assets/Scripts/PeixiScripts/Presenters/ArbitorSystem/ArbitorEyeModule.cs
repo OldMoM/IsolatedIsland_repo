@@ -14,7 +14,7 @@ namespace Peixi
     /// </summary>
     public class ArbitorEyeModule
     {
-        CollectHandle collectHandle;
+        CollectInteractionHandle collectHandle;
         private PlayerSystem playerSystem;
 
         Subject<int> onItemQueneCountChanged = new Subject<int>();
@@ -38,7 +38,7 @@ namespace Peixi
         public IObservable<BaseItem> HandleItem => currentHandleItem;
     
         IDisposable releasdInteractBtnPressedThread;
-        public ArbitorEyeModule(CollectHandle handle)
+        public ArbitorEyeModule(CollectInteractionHandle handle)
         {
             collectHandle = handle;
             playerSystem = GameObject.FindObjectOfType<PlayerSystem>();

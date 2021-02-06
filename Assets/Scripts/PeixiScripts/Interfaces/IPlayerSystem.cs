@@ -7,7 +7,8 @@ namespace Peixi
     public interface IPlayerSystem
     {
         PlayerMovementPresenter Movement { get; }
-
         Rigidbody Rigid { get; }
+        PlayerState PlayerState { get; }
+        PlayerStateController StateController { get; }
     }
 }

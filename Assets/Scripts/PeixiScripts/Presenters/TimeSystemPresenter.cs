@@ -4,6 +4,7 @@ using UnityEngine;
 using UniRx;
 using System;
 
+[Obsolete("Please replace it with Peixi.TimeSystem")]
 public class TimeSystemPresenter : MonoBehaviour, ITimeSystemData
 {
     [SerializeField]

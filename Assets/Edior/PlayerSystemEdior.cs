@@ -9,28 +9,30 @@ namespace GameEditors
     [CustomEditor(typeof(PlayerSystem))]
     public class PlayerSystemEdior : Editor
     {
-        private PlayerSystem m_playerSystem;
+        private PlayerSystem playerSystem;
         private bool foldMovementModel;
         private void OnEnable()
         {
-            m_playerSystem = (PlayerSystem)target;
+            playerSystem = (PlayerSystem)target;
         }
         public override void OnInspectorGUI()
         {
-            if (m_playerSystem.Movement == null)
+            if (playerSystem.Movement == null)
             {
                 return;
             }
             GUILayout.Label("-----为了方便校准-----");
             GUILayout.Label("-----以下参数为只读的数值-----");
 
-            foldMovementModel = EditorGUILayout.Foldout(foldMovementModel, "Movement model");
+            foldMovementModel = EditorGUILayout.Foldout(foldMovementModel, "移动状态运行参数");
 
             if (foldMovementModel)
             {
-                EditorGUILayout.FloatField("移动速率:", m_playerSystem.Movement.moveSpeed);
-                EditorGUILayout.Vector3Field("移动速度", m_playerSystem.Movement.Velocity);
+                EditorGUILayout.FloatField("移动速率:", playerSystem.Movement.moveSpeed);
+                EditorGUILayout.Vector3Field("移动速度", playerSystem.Movement.Velocity);
             }
+
+            EditorGUILayout.EnumFlagsField("玩家当前状态", playerSystem.PlayerState);
         }
     }
 }

@@ -547,6 +547,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9073012829014688, guid: 7297c57a2725c4d42990d1b250bf70dd, type: 3}
   m_PrefabInstance: {fileID: 785299963}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &241531046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 241531047}
+  m_Layer: 0
+  m_Name: IslandlandSet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &241531047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241531046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1760182190}
+  - {fileID: 1600675925}
+  - {fileID: 1568210920}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &317662592 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1529574128897013477, guid: 29916a72dd106a6478649d8966d316de, type: 3}
@@ -1727,7 +1760,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9073012829014688, guid: 7297c57a2725c4d42990d1b250bf70dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9073012829014688, guid: 7297c57a2725c4d42990d1b250bf70dd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1735,7 +1768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9073012829014688, guid: 7297c57a2725c4d42990d1b250bf70dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9073012829014688, guid: 7297c57a2725c4d42990d1b250bf70dd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2619,7 +2652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9073012829014688, guid: 7297c57a2725c4d42990d1b250bf70dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9073012829014688, guid: 7297c57a2725c4d42990d1b250bf70dd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3026,15 +3059,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5548710185833927506, guid: e091aaba34357a841b34339de1320c5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.09
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548710185833927506, guid: e091aaba34357a841b34339de1320c5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548710185833927506, guid: e091aaba34357a841b34339de1320c5d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548710185833927506, guid: e091aaba34357a841b34339de1320c5d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3377,7 +3410,7 @@ GameObject:
   - component: {fileID: 1568210922}
   - component: {fileID: 1568210921}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: floatingGarbageCollideGeo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3390,12 +3423,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568210919}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.43, z: 0.18}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 9, y: 4, z: 9}
   m_Children: []
-  m_Father: {fileID: 1760182190}
-  m_RootOrder: 10
+  m_Father: {fileID: 241531047}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1568210921
 BoxCollider:
@@ -3472,7 +3505,7 @@ GameObject:
   - component: {fileID: 1600675927}
   - component: {fileID: 1600675926}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: islandsGroundCollideGeo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3485,12 +3518,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600675924}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.13, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 3, z: 1.5}
   m_Children: []
-  m_Father: {fileID: 1760182190}
-  m_RootOrder: 9
+  m_Father: {fileID: 241531047}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1600675926
 MeshCollider:
@@ -3513,7 +3546,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600675924}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3791,7 +3824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1715675534
 Transform:
   m_ObjectHideFlags: 0
@@ -3908,12 +3941,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1760182190}
   m_Layer: 0
-  m_Name: IslandScale (1)
+  m_Name: IslandModelSet_scale3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1760182190
 Transform:
   m_ObjectHideFlags: 0
@@ -3934,10 +3967,8 @@ Transform:
   - {fileID: 1922819924}
   - {fileID: 238955981}
   - {fileID: 51587714}
-  - {fileID: 1600675925}
-  - {fileID: 1568210920}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 241531047}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1840915783
 PrefabInstance:
@@ -4364,7 +4395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9073012829014688, guid: 7297c57a2725c4d42990d1b250bf70dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9073012829014688, guid: 7297c57a2725c4d42990d1b250bf70dd, type: 3}
       propertyPath: m_LocalRotation.x

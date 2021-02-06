@@ -10,6 +10,7 @@ public class InputSystem : MonoBehaviour, IKeyboardInput
     Subject<string> onInteractBtnPressed = new Subject<string>();
     Subject<string> onInteractBtnReleased = new Subject<string>();
     Subject<string> onInteractBtnPressing = new Subject<string>();
+    Subject<Unit> _onInteractBtnPressed = new Subject<Unit>();
     public static IKeyboardInput Singleton
     {
         get  
@@ -32,6 +33,7 @@ public class InputSystem : MonoBehaviour, IKeyboardInput
     public Subject<string> OnInteractBtnPressed { get => onInteractBtnPressed; }
     public Subject<string> OnInteractBtnReleased { get => onInteractBtnReleased; }
     public Subject<string> OnInteractBtnPressing { get => onInteractBtnPressing; }
+    public IObservable<Unit> onSwitchBtnPressed => _onInteractBtnPressed;
     #endregion
 
     private void Awake()
@@ -57,6 +59,13 @@ public class InputSystem : MonoBehaviour, IKeyboardInput
             .Subscribe(x =>
             {
                 onInteractBtnPressing.OnNext("e");
+            });
+
+        Observable.EveryUpdate()
+            .Where(x => Input.GetButtonDown("Switch"))
+            .Subscribe(x =>
+            {
+                _onInteractBtnPressed.OnNext(Unit.Default);
             });
     }
 }

@@ -9,7 +9,7 @@ namespace Peixi
     public interface IArbitorSystem
     {
         IInventorySystem InventorySystem { get; }
-        CollectHandle CollectModule { get; }
+        CollectInteractionHandle CollectModule { get; }
         ArbitorEyeModule ArbitorEye { get; }
         void OnPlayerTouch(BaseItem item);
         void OnPlayerUntouch(BaseItem item);
@@ -21,5 +21,7 @@ namespace Peixi
         IObservable<BaseItem> HandleItem { get; }
         IObservable<int> OnCollectHandleCountChanged { get; }
         void OnItemRecycle(BaseItem itemHashCode);
+
+        FacilityInteractionAgent facilityInteractionHandle { get; }
     }
 }
