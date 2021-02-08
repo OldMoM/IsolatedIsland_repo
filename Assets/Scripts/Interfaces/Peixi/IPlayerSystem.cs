@@ -8,7 +8,6 @@ namespace Peixi
     {
         PlayerMovementPresenter Movement { get; }
         Rigidbody Rigid { get; }
-        PlayerState PlayerState { get; }
         PlayerStateController StateController { get; }
         IPlayerPropertySystem PlayerPropertySystem { get; }
     }

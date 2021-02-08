@@ -8,19 +8,18 @@ namespace Peixi
 {
     public class FoodPlantInteractHandle
     {
-        public IObservable<Unit> onInteractStart => _onInteractStart;
-        public IObservable<Unit> onInteractEnd => _onInteractEnd;
+        public IObservable<Unit> OnInteractStart => onInteractStart;
+        public IObservable<Unit> OnInteractEnd => onInteractEnd;
 
-        private Subject<Unit> _onInteractStart = new Subject<Unit>();
-        private Subject<Unit> _onInteractEnd = new Subject<Unit>();
+        private Subject<Unit> onInteractStart = new Subject<Unit>();
+        private Subject<Unit> onInteractEnd = new Subject<Unit>();
         public void EndInteract()
         {
-            Debug.Log("player end interaction with food plant");
+            onInteractEnd.OnNext(Unit.Default);
         }
         public void StartInteract()
         {
-            Debug.Log("player start interaction with food plant");
-            EndInteract();
+            onInteractStart.OnNext(Unit.Default);
         }
     }
 }

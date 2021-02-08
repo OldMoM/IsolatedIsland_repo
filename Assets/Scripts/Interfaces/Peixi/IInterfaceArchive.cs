@@ -12,4 +12,5 @@ public interface IInterfaceArchive
     IInventorySystem IInventorySystem { get; }
     IArbitorSystem IArbitorSystem { get; }
     IInGameUIComponentsInterface InGameUIComponentsManager { get; }
+    IPlayerSystem PlayerSystem { get; }
 }

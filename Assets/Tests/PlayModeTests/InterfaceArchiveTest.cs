@@ -14,6 +14,12 @@ namespace Tests
             var archive_go = new GameObject();
             return archive_go.AddComponent<InterfaceArichives>();
         }
+
+        IArbitorSystem CreateArbitorSystem()
+        {
+            var arbitor_go = new GameObject();
+            return arbitor_go.AddComponent<ArbitorSystem>();
+        }
         [UnityTest]
         public IEnumerator GetTimeSystem_notnull()
         {

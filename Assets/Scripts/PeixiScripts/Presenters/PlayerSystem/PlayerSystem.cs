@@ -10,14 +10,13 @@ namespace Peixi
         private PlayerMovementPresenter _movement;
         private PlayerBehaviorView _behaivor;
         private PlayerStateController stateController = new PlayerStateController();
-        private PlayerState playerState;
         private PlayerPropertySystem property = new PlayerPropertySystem();
 
         public PlayerMovementPresenter Movement => _movement;
 
         Rigidbody rigid;
         public Rigidbody Rigid => rigid;
-        public PlayerState PlayerState => playerState;
+        //public PlayerState PlayerState => playerState;
 
         public PlayerStateController StateController => stateController;
 

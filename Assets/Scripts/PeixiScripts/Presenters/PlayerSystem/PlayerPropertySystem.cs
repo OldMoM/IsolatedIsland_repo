@@ -8,15 +8,26 @@ namespace Peixi
     public class PlayerPropertySystem : IPlayerPropertySystem
     {
         public PlayerPropertySystemModel property;
-        public int Health { get => property.health.Value; }
-        public int Hunger { get => property.hunger.Value;}
-        public int Thirst { get => property.thirst.Value; }
-        public int Pleasure { get => property.pleasure.Value; }
+        public int Health => property.health.Value;
+        public int Hunger => property.hunger.Value;
+        public int Thirst => property.thirst.Value;
+        public int Pleasure => property.pleasure.Value;
+
+        public PropertyLevel HealthLevel => property.healthLevel.Value;
+        public PropertyLevel HungerLevel => property.hungerLevel.Value;
+        public PropertyLevel ThirstLevel => property.thirstLevel.Value;
+        public PropertyLevel PleasureLevel => property.pleasureLevel.Value;
+
         public IObservable<int> OnHealthChanged => property.health;
         public IObservable<int> OnHungerChanged => property.hunger;
         public IObservable<int> OnThirstChanged => property.thirst;
         public IObservable<int> OnPleasureChanged => property.pleasure;
         public IObservable<Unit> OnPlayerDied => property.onPlayerDied;
+        public IObservable<PropertyLevel> OnHealthLevelChanged => property.healthLevel;
+        public IObservable<PropertyLevel> OnHungerLevelChanged => property.hungerLevel;
+        public IObservable<PropertyLevel> OnThirstLevelChanged => property.thirstLevel;
+        public IObservable<PropertyLevel> OnPleasureLevelChanged => property.pleasureLevel;
+
         public int ChangeHealth(int changeValue)
         {
             var tempHealth = Health;
@@ -57,11 +68,64 @@ namespace Peixi
         }
         public PlayerPropertySystem()
         {
+            Config()
+                .React(onHealthChanged)
+                .React(onHungerChanged)
+                .React(onThirstChanged)
+                .React(onPleasureChanged);
+        }
+
+        PlayerPropertySystem Config()
+        {
             property.health = new IntReactiveProperty(100);
             property.hunger = new IntReactiveProperty(10);
             property.thirst = new IntReactiveProperty(10);
             property.pleasure = new IntReactiveProperty(10);
             property.onPlayerDied = new Subject<Unit>();
+            property.healthLevel = new ReactiveProperty<PropertyLevel>(PropertyLevel.Safe);
+            property.hungerLevel = new ReactiveProperty<PropertyLevel>();
+            property.thirstLevel = new ReactiveProperty<PropertyLevel>();
+            property.pleasureLevel = new ReactiveProperty<PropertyLevel>();
+
+            return this;
+        }
+        PlayerPropertySystem React(Action action)
+        {
+            action();
+            return this;
+        }
+        void onHealthChanged()
+        {
+            OnHealthChanged
+                .Subscribe(x =>
+                {
+                    property.healthLevel.Value = property.NegativeEvaluate(x);
+                });
+        }
+        void onHungerChanged()
+        {
+            OnHungerChanged
+                .Subscribe(x =>
+                {
+                    property.hungerLevel.Value = property.PositiveEvaluate(x);
+                });
+               
+        }
+        void onThirstChanged()
+        {
+            OnThirstChanged
+                .Subscribe(x =>
+                {
+                    property.thirstLevel.Value = property.PositiveEvaluate(x);
+                });
+        }
+        void onPleasureChanged()
+        {
+            OnPleasureChanged
+                .Subscribe(x =>
+                {
+                    property.pleasureLevel.Value = property.PositiveEvaluate(x);
+                });
         }
     }
     [Serializable]
@@ -73,5 +137,50 @@ namespace Peixi
         public IntReactiveProperty pleasure;
         public bool isDied;
         public Subject<Unit> onPlayerDied;
+        public ReactiveProperty<PropertyLevel> healthLevel;
+        public ReactiveProperty<PropertyLevel> hungerLevel;
+        public ReactiveProperty<PropertyLevel> thirstLevel;
+        public ReactiveProperty<PropertyLevel> pleasureLevel;
+
+        /// <summary>
+        /// It's safe while the evalueated property at 71~100
+        /// </summary>
+        /// <param name="property"></param>
+        /// <returns></returns>
+        public PropertyLevel NegativeEvaluate(int property)
+        {
+            if (property>=67 && property<=100)
+            {
+                return PropertyLevel.Safe;
+            }
+            else if (property >=31 && property<= 66)
+            {
+                return PropertyLevel.Euclid;
+            }
+            return PropertyLevel.Keter;
+        }
+        /// <summary>
+        /// It's safe while the evalueated property at 0~30
+        /// </summary>
+        /// <param name="property"></param>
+        /// <returns></returns>
+        public PropertyLevel PositiveEvaluate(int property)
+        {
+            if (property >= 67 && property <= 100)
+            {
+                return PropertyLevel.Keter;
+            }
+            else if (property >= 31 && property <= 66)
+            {
+                return PropertyLevel.Euclid;
+            }
+            return PropertyLevel.Safe;
+        }
+    }
+    public enum PropertyLevel
+    {
+        Safe,
+        Euclid,
+        Keter
     }
 }

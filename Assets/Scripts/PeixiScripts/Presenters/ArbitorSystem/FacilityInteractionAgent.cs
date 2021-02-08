@@ -12,19 +12,22 @@ namespace Peixi
     public class FacilityInteractionAgent
     {
         public FacilityData targetData => _targetData.Value;
-        public IObservable<FacilityType> onInteractStart => _onInteractStart;
-        public IObservable<FacilityType> onInteractEnd => _onInteractEnd;
+        public IObservable<FacilityType> OnInteractStart => onInteractStart;
+        public IObservable<Unit> OnInteractEnd => onInteractEnd;
         public IObservable<FacilityData> onTargetChanged => _targetData;
         public IObservable<InteractState> onStateChanged => _state;
         public FishPointInteractHandle fishUnit => fishPointHandle;
+        public FoodPlantInteractHandle FoodPlantInteract => foodPlantHandle;
 
         public InteractState state => _state.Value;
 
         private ReactiveProperty<FacilityData> _targetData = new ReactiveProperty<FacilityData>();
         private ReactiveProperty<InteractState> _state = new ReactiveProperty<InteractState>(InteractState.Idle);
         private BoolReactiveProperty _isActive = new BoolReactiveProperty(false);
-        private Subject<FacilityType> _onInteractStart = new Subject<FacilityType>();
-        private Subject<FacilityType> _onInteractEnd = new Subject<FacilityType>();
+
+        private Subject<FacilityType> onInteractStart = new Subject<FacilityType>();
+        private Subject<Unit> onInteractEnd = new Subject<Unit>();
+
         private List<FacilityData> _pendingItems = new List<FacilityData>();
         private Dictionary<FacilityType, Action> _startInteractCode = new Dictionary<FacilityType, Action>();
 
@@ -78,6 +81,7 @@ namespace Peixi
         }
         public void InteractStart(FacilityType type)
         {
+            onInteractStart.OnNext(type);
             if (type == FacilityType.FishPoint && discriminator.FishPointInteractCondition)
             {
                 fishUnit.startInteract();
@@ -119,7 +123,7 @@ namespace Peixi
             fishUnit.onInteractEnd
                 .Subscribe(x =>
                 {
-                    if (_pendingItems.Count > 1)
+                    if (_pendingItems.Count > 0)
                     {
                         _state.Value = InteractState.Contact;
                     }
@@ -128,6 +132,23 @@ namespace Peixi
                         _state.Value = InteractState.Idle;
                     }
                 });
+        }
+        private void OnFoodPlantInteractEnd()
+        {
+            foodPlantHandle.OnInteractEnd
+                .Subscribe(x =>
+                {
+                    if (_pendingItems.Count > 0)
+                    {
+                        _state.Value = InteractState.Contact;
+                    }
+                    else
+                    {
+                        _state.Value = InteractState.Idle;
+                    }
+                    onInteractEnd.OnNext(Unit.Default);
+                });
+            
         }
         private FacilityInteractionAgent React(Action action)
         {
@@ -145,7 +166,9 @@ namespace Peixi
             Init()
                 .React(onSwitchBtnPressed)
                 .React(onInteractBtnPressed)
-                .React(onFishingEnd);
+                .React(onFishingEnd)
+                .React(OnFoodPlantInteractEnd);
+            
         }
     }
     [Serializable]

@@ -15,11 +15,14 @@ namespace Peixi
         public PlayerMovementPresenter(IPlayerSystem playerSystem)
         {
             m_playerSystem = playerSystem;
-            Active();
+            Init();
         }
 
         PlayerMovementModel movementModel = new PlayerMovementModel();
         PlayerStateModel stateModel = new PlayerStateModel();
+
+        IObservable<PlayerState> OnPlayerStateChanged => m_playerSystem.StateController.onInteractStateChanged;
+        PlayerState PlayerState => m_playerSystem.StateController.playerState.Value;
 
         public float moveSpeed = 5;
         [Obsolete]
@@ -35,19 +38,36 @@ namespace Peixi
         /// 玩家当前的速度
         /// </summary>
         public Vector3 Velocity => velocity.Value;
-        private void Active()
+        private void Init()
+        {
+            React(OnPlayerInput)
+                .React(OnInteractStart);
+        }
+        PlayerMovementPresenter React(Action action)
+        {
+            action();
+            return this;
+        }
+        void OnPlayerInput()
         {
             Observable.EveryFixedUpdate()
-                .SkipWhile(x=> m_playerSystem.PlayerState == PlayerState.InteractState)
-                .Subscribe(x =>
-                {
-                    Vector3 _direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-                    _direction = -_direction.normalized; ;
-
-                    var _velocity = _direction * moveSpeed;
-
-                    velocity.Value = RotateVelocityBy(_velocity, -60);
-                });
+              .Where(x => PlayerState != PlayerState.InteractState)
+              .Subscribe(x =>
+              {
+                  Vector3 _direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+                  _direction = -_direction.normalized; ;
+                  var _velocity = _direction * moveSpeed;
+                  velocity.Value = RotateVelocityBy(_velocity, -60);
+              });
+        }
+        void OnInteractStart()
+        {
+            OnPlayerStateChanged
+               .Where(x => x == PlayerState.InteractState)
+               .Subscribe(x =>
+               {
+                   velocity.Value = Vector3.zero;
+               });
         }
         /// <summary>
         /// 旋转XOZ平面的移动速度
@@ -65,26 +85,6 @@ namespace Peixi
             z_rotated = -z_rotated;
             var velocity_rotated = new Vector3(x_rotated, y, z_rotated);
             return velocity_rotated;
-        }
-        private void Start()
-        {
-            //stateModel.playerState
-            //    //.Where(x => stateModel.playerState.Value == PlayerState.MotionState)
-            //    .Subscribe(x =>
-            //    {
-
-            //    });
-
-            
-
-            #region//InteractState
-            //stateModel.playerState
-            ////.Where(x => stateModel.playerState.Value == PlayerState.InteractState)
-            //.Subscribe(x =>
-            //{
-            //    movementModel.velocity.Value = Vector3.zero;
-            //});
-            #endregion
         }
     }
 }

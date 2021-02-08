@@ -22,7 +22,6 @@ namespace Peixi
                 .React(OnPlayerTouched)
                 .React(OnPlayerUntouched);
         }
-
         FacilityFoodPlantPresenter Config()
         {
             agent = InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent;

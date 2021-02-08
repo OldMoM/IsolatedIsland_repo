@@ -7,7 +7,7 @@ using Peixi;
 using UniRx;
 namespace Tests
 {
-    public class FacilityInteractHandleTest
+    public class FacilityInteractAgentTest
     {
         [Test]
         public void onPlayerTouchFacility_1()
@@ -181,18 +181,19 @@ namespace Tests
             handle.InteractStart(FacilityType.FishPoint);
         }
         [Test]
-        public void endFishPointInteract_Idle()
+        public void endFoodPlantInteract_UnitDefault()
         {
             var handle = new FacilityInteractionAgent();
-            handle.onStateChanged
-                .Skip(2)
+
+            handle.OnInteractEnd
                 .Subscribe(x =>
                 {
-                    Assert.AreEqual(InteractState.Idle, x);
+                    Debug.Log(x);
+                    Assert.AreEqual(Unit.Default, x);
                 });
 
-            handle.InteractStart(FacilityType.FishPoint);
-            handle.InteractEnd(FacilityType.FishPoint);
+            handle.FoodPlantInteract.EndInteract();
+
         }
     }
 }

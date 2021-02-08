@@ -6,17 +6,43 @@ using System;
 
 namespace Peixi
 {
-    public struct PlayerStateController
+    public class PlayerStateController
     {
-        public ReactiveProperty<PlayerState> playerState;
-        private IObservable<InteractState> onInteractStateChanged;
+        public ReactiveProperty<PlayerState> playerState = new ReactiveProperty<PlayerState>(PlayerState.IdleState);
+        public IObservable<PlayerState> onInteractStateChanged => playerState;
+
+        private IObservable<FacilityType> onInteractStart => InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent.OnInteractStart;
+        private IObservable<Unit> onInteractEnd => InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent.OnInteractEnd;
         public void Init()
         {
-            InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent.onStateChanged
-                .Where(x => x == InteractState.Interact)
+            React(OnInteractStart)
+                .React(OnInteractEnd);
+
+        }
+        public PlayerStateController()
+        {
+            //React(OnInteractStart)
+                //.React(OnInteractEnd);
+        }
+        PlayerStateController React(Action action)
+        {
+            action();
+            return this;
+        }
+        void OnInteractStart()
+        {
+            onInteractStart.Subscribe(x =>
+            {
+                playerState.Value = PlayerState.InteractState;
+            });
+        }
+        void OnInteractEnd()
+        {
+            var controller = this;
+            onInteractEnd
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
+                    playerState.Value = PlayerState.IdleState;
                 });
         }
     }

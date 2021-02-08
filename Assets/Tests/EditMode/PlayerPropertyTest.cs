@@ -102,5 +102,161 @@ namespace Tests
                 });
             property.ChangePleasure(5);
         }
+        [Test]
+        public void EvaluateHealthLevel_reduce12_Safe()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnHealthLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Safe, x);
+                });
+            property.ChangeHealth(-12);
+        }
+        [Test]
+        public void EvaluateHealthLevel_reduce40_Euclid()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnHealthLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Euclid, x);
+                });
+            property.ChangeHealth(-40);
+        }
+        [Test]
+        public void EvaluateHealthLevel_reduce80_Keter()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnHealthLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Keter, x);
+                });
+            property.ChangeHealth(-80);
+        }
+        [Test]
+        public void EvaluateHungerLevel_increase12_Safe()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnHungerLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Safe, x);
+                });
+            property.ChangeHunger(12);
+        }
+        [Test]
+        public void EvaluateHungerLevel_increase40_Euclid()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnHungerLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Euclid, x);
+                });
+            property.ChangeHunger(40);
+        }
+        [Test]
+        public void EvaluateHungerLevel_increase70_Keter()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnHungerLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Keter, x);
+                });
+            property.ChangeHunger(70);
+        }
+        [Test]
+        public void EvaluateThirstLevel_increase10_Safe()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnThirstLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Safe, x);
+                });
+            property.ChangeThirst(10);
+        }
+        [Test]
+        public void EvaluateThirstLevel_increase40_Euclid()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnThirstLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Euclid, x);
+                });
+            property.ChangeThirst(40);
+        }
+        [Test]
+        public void EvaluateThirstLevel_increase70_Keter()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnThirstLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Keter, x);
+                });
+            property.ChangeThirst(70);
+        }
+        [Test]
+        public void EvaluatePleasureLevel_increase10_Safe()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnPleasureLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Safe, x);
+                });
+            property.ChangePleasure(10);
+        }
+        [Test]
+        public void EvaluatePleasureLevel_increase40_Euclid()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnPleasureLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Euclid, x);
+                });
+            property.ChangePleasure(40);
+        }
+        [Test]
+        public void EvaluatePleasureLevel_increase70_Keter()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.OnPleasureLevelChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    Assert.AreEqual(PropertyLevel.Keter, x);
+                });
+            property.ChangePleasure(70);
+        }
     }
 }

@@ -15,6 +15,8 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
     private IInventorySystem _inventorySystem;
     private IArbitorSystem _arbitorSystem;
     private IInGameUIComponentsInterface inGameUiComponentsManager;
+    private IPlayerSystem playerSystem;
+    private IPlayerPropertySystem propertySystem;
 
     public static IInterfaceArchive Archive
     {
@@ -38,19 +40,8 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             return _buildSystem;
         }
     }
-    public IPlayerPropertySystem IPlayerPropertySystem
-    {
-        get
-        {
-            if (_playerPropertySystem == null)
-            {
-                //_playerPropertySystem = FindObjectOfType<PlayerPropertySystem>();
-            }
-            Debug.LogWarning("未能在Hierarchy中找到IbuildSystem接口，确保其中存在BuildSystem，将返回null");
-            return _playerPropertySystem;
-        }
-    }
-    public ITimeSystem ITimeSystem 
+    public IPlayerPropertySystem IPlayerPropertySystem => PlayerSystem.PlayerPropertySystem;
+    public ITimeSystem ITimeSystem
     {
         get
         {
@@ -62,9 +53,9 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             return _timeSystem;
         }
     }
-    public IInventorySystem IInventorySystem 
+    public IInventorySystem IInventorySystem
     {
-        get 
+        get
         {
             if (_inventorySystem is null)
             {
@@ -96,6 +87,19 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
                 Assert.IsNotNull(inGameUiComponentsManager, "IInGameUIComponentsManager");
             }
             return inGameUiComponentsManager;
-        }    
+        }
+    }
+
+    public IPlayerSystem PlayerSystem 
+    {
+        get
+        {
+            if (playerSystem is null)
+            {
+                playerSystem = FindObjectOfType<PlayerSystem>();
+            }
+            Assert.IsNotNull(playerSystem, "未在Hierarchy中部署PlayerHandle.prefab");
+            return playerSystem;
+        }
     }
 }
