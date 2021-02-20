@@ -13,8 +13,10 @@ namespace Peixi
 
         private Subject<Unit> onInteractStart = new Subject<Unit>();
         private Subject<Unit> onInteractEnd = new Subject<Unit>();
+        private IInventorySystem InventorySystem => InterfaceArichives.Archive.IInventorySystem;
         public void EndInteract()
         {
+            InventorySystem.AddItem(ItemTags.bread,1);
             onInteractEnd.OnNext(Unit.Default);
         }
         public void StartInteract()

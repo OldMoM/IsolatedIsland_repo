@@ -38,7 +38,9 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 0e1ccb64303778e4081913a6d9cca677, type: 3}
     - {fileID: 2800000, guid: f8a9cfc721a20ce409c3d743e9b251bc, type: 3}
     - {fileID: 2800000, guid: 046f821c76a004e4c91b9f27ee906194, type: 3}
-    totalSpriteSurfaceArea: 8192
+    - {fileID: 21300000, guid: ea55e0ae186d59d41a0b270559045dd7, type: 3}
+    - {fileID: 2800000, guid: 1a58749f555f75e48baa41893215b26e, type: 3}
+    totalSpriteSurfaceArea: 10240
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -52,6 +54,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3281101b955224c4f9bfd58e8ab4c342, type: 3}
   - {fileID: 21300000, guid: e577f30c6bd976a429addedf4c4ad662, type: 3}
   - {fileID: 21300000, guid: 046f821c76a004e4c91b9f27ee906194, type: 3}
+  - {fileID: 21300000, guid: ea55e0ae186d59d41a0b270559045dd7, type: 3}
+  - {fileID: 21300000, guid: 1a58749f555f75e48baa41893215b26e, type: 3}
   m_PackedSpriteNamesToIndex:
   - String
   - Wood Log
@@ -61,5 +65,7 @@ SpriteAtlas:
   - Rope
   - Fabric
   - Wool
+  - Water
+  - Bread
   m_Tag: IconSprite
   m_IsVariant: 0

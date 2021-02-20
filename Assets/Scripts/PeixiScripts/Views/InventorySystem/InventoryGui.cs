@@ -5,6 +5,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using UniRx.Triggers;
 
 
 namespace Peixi
@@ -64,8 +65,7 @@ namespace Peixi
                 .React(OnInventoryChanged)
                 .React(OnItemClicked);
         }
-
-     public void OnInventoryBtnPressed()
+        public void OnInventoryBtnPressed()
         {
               isOpened = !isOpened;
 
@@ -195,10 +195,31 @@ namespace Peixi
         private void OnItemClicked()
         {
             clickedItem
+               .Where(x=>x == "None" || x==string.Empty)
                .Subscribe(x =>
                {
-                   descriptionLabel.text = x;
+                   descriptionLabel.text = string.Empty;
+                   useBtn.interactable = false;
                });
+
+            clickedItem
+                .Where(x => x != "None")
+                .Subscribe(x =>
+                {
+                    descriptionLabel.text = x;
+                    useBtn.interactable = true;
+                });
+
+            
+        }
+        private void OnUseBtnClicked()
+        {
+            useBtn.OnPointerClickAsObservable()
+                .Subscribe(x =>
+                {
+                    PotionUseAgent agent = new PotionUseAgent();
+                    agent.UsePotion(ClickedItem);
+                });
         }
         #endregion
 
@@ -210,7 +231,9 @@ namespace Peixi
                .InitGrids()
                .InitDescrptionWidge()
                .React(OnInventoryChanged)
-               .React(OnItemClicked);
+               .React(OnItemClicked)
+               .React(OnUseBtnClicked);
+
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Peixi
         public IObservable<InteractState> onStateChanged => _state;
         public FishPointInteractHandle fishUnit => fishPointHandle;
         public FoodPlantInteractHandle FoodPlantInteract => foodPlantHandle;
+        public ConcreteDistillerInteractAgent DistillerAgent => distilerAgent;
 
         public InteractState state => _state.Value;
 
@@ -33,6 +34,7 @@ namespace Peixi
 
         private FishPointInteractHandle fishPointHandle = new FishPointInteractHandle();
         private FoodPlantInteractHandle foodPlantHandle = new FoodPlantInteractHandle();
+        private ConcreteDistillerInteractAgent distilerAgent = new ConcreteDistillerInteractAgent();
 
         private FacilityInteractConditonDiscriminator discriminator;
       
@@ -91,6 +93,11 @@ namespace Peixi
             {
                 foodPlantHandle.StartInteract();
             }
+
+            if (type == FacilityType.Distiller && discriminator.DistillerInteractCondition)
+            {
+                distilerAgent.StartInteract();
+            }
         }
         public void InteractEnd(FacilityType type)
         {
@@ -131,6 +138,7 @@ namespace Peixi
                     {
                         _state.Value = InteractState.Idle;
                     }
+                    onInteractEnd.OnNext(Unit.Default);
                 });
         }
         private void OnFoodPlantInteractEnd()
@@ -150,6 +158,23 @@ namespace Peixi
                 });
             
         }
+
+        private void OnDistillerInteractEnd()
+        {
+            distilerAgent.OnInteractEnd
+                .Subscribe(x =>
+                {
+                    if (_pendingItems.Count > 0)
+                    {
+                        _state.Value = InteractState.Contact;
+                    }
+                    else
+                    {
+                        _state.Value = InteractState.Idle;
+                    }
+                    onInteractEnd.OnNext(Unit.Default);
+                });
+        }
         private FacilityInteractionAgent React(Action action)
         {
             action();
@@ -167,7 +192,8 @@ namespace Peixi
                 .React(onSwitchBtnPressed)
                 .React(onInteractBtnPressed)
                 .React(onFishingEnd)
-                .React(OnFoodPlantInteractEnd);
+                .React(OnFoodPlantInteractEnd)
+                .React(OnDistillerInteractEnd);
             
         }
     }

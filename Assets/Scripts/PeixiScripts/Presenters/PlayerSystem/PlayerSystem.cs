@@ -16,8 +16,7 @@ namespace Peixi
 
         Rigidbody rigid;
         public Rigidbody Rigid => rigid;
-        //public PlayerState PlayerState => playerState;
-
+ 
         public PlayerStateController StateController => stateController;
 
         public IPlayerPropertySystem PlayerPropertySystem => property;
@@ -28,8 +27,10 @@ namespace Peixi
             rigid = GetComponent<Rigidbody>();
             _movement = new PlayerMovementPresenter(this);
             _behaivor = gameObject.AddComponent<PlayerBehaviorView>();
-
-            stateController.Init();
+            stateController.Init
+                (
+                    _movement
+                );
         }
 
     }

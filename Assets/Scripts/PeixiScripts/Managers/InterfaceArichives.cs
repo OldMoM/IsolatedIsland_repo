@@ -37,6 +37,7 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             {
                 _buildSystem = FindObjectOfType<BuildSystem>();
             }
+            Assert.IsNotNull(_buildSystem);
             return _buildSystem;
         }
     }
@@ -60,7 +61,11 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             if (_inventorySystem is null)
             {
                 _inventorySystem = FindObjectOfType<InventorySystem>();
-                Assert.IsNotNull(_inventorySystem, "未能在Hierarchy中找到IInventorySystem接口，将返回null");
+            }
+
+            if (_inventorySystem is null)
+            {
+                throw new Exception("未在Hierarchy中部署GameSystems.prefab");
             }
             return _inventorySystem;
         }
@@ -69,11 +74,16 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
     {
         get
         {
-            _arbitorSystem = FindObjectOfType<ArbitorSystem>();
             if (_arbitorSystem is null)
             {
-                Debug.LogWarning("未能在Hierarchy中找到IArbitorSystem接口，将返回null");
+                _arbitorSystem = FindObjectOfType<ArbitorSystem>();
             }
+
+            if (_arbitorSystem is null)
+            {
+                throw new Exception("未在Hierarchy中部署GameSystems.prefab");
+            }
+
             return _arbitorSystem;
         }
     }
@@ -86,6 +96,7 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
                 inGameUiComponentsManager = FindObjectOfType<InGameUIComponentInterface>();
                 Assert.IsNotNull(inGameUiComponentsManager, "IInGameUIComponentsManager");
             }
+            
             return inGameUiComponentsManager;
         }
     }

@@ -12,6 +12,7 @@ namespace Peixi
         private IPlayerSystem m_playerSystem;
         [SerializeField]
         private Vector3ReactiveProperty velocity = new Vector3ReactiveProperty();
+        private Vector3 faceDir;
         public PlayerMovementPresenter(IPlayerSystem playerSystem)
         {
             m_playerSystem = playerSystem;
@@ -21,9 +22,9 @@ namespace Peixi
         PlayerMovementModel movementModel = new PlayerMovementModel();
         PlayerStateModel stateModel = new PlayerStateModel();
 
-        IObservable<PlayerState> OnPlayerStateChanged => m_playerSystem.StateController.onInteractStateChanged;
+        IObservable<PlayerState> OnPlayerStateChanged => m_playerSystem.StateController.onStateChanged;
         PlayerState PlayerState => m_playerSystem.StateController.playerState.Value;
-
+        public Vector3 FaceDirection => faceDir;
         public float moveSpeed = 5;
         [Obsolete]
         public ReactiveProperty<Vector3> ObserleteVelocity
@@ -55,9 +56,13 @@ namespace Peixi
               .Subscribe(x =>
               {
                   Vector3 _direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-                  _direction = -_direction.normalized; ;
+                  _direction = -_direction.normalized;
+                  _direction = RotateVelocityBy(_direction, -60);
+
                   var _velocity = _direction * moveSpeed;
-                  velocity.Value = RotateVelocityBy(_velocity, -60);
+                  //velocity.Value = RotateVelocityBy(_velocity, -60);
+                  velocity.Value = _velocity;
+                  ComputeFaceDir(_direction);
               });
         }
         void OnInteractStart()
@@ -68,6 +73,20 @@ namespace Peixi
                {
                    velocity.Value = Vector3.zero;
                });
+        }
+        /// <summary>
+        /// ISO坐标朝向
+        /// </summary>
+        /// <param name="moveDir"></param>
+        void ComputeFaceDir(Vector3 moveDir)
+        {
+            if (moveDir == Vector3.zero)
+            {
+                return;
+            }
+
+            faceDir = moveDir;
+
         }
         /// <summary>
         /// 旋转XOZ平面的移动速度

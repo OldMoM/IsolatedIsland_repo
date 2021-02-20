@@ -9,21 +9,20 @@ namespace Peixi
     public class PlayerStateController
     {
         public ReactiveProperty<PlayerState> playerState = new ReactiveProperty<PlayerState>(PlayerState.IdleState);
-        public IObservable<PlayerState> onInteractStateChanged => playerState;
-
+        public IObservable<PlayerState> onStateChanged => playerState;
         private IObservable<FacilityType> onInteractStart => InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent.OnInteractStart;
         private IObservable<Unit> onInteractEnd => InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent.OnInteractEnd;
-        public void Init()
+        private PlayerMovementPresenter movementPresenter;
+        public void Init(PlayerMovementPresenter movementPresenter)
         {
-            React(OnInteractStart)
-                .React(OnInteractEnd);
+            this.movementPresenter = movementPresenter;
 
+            React(OnInteractStart)
+                .React(OnInteractEnd)
+                .React(OnPlayerStartMove)
+                .React(OnPlayerEndMove);
         }
-        public PlayerStateController()
-        {
-            //React(OnInteractStart)
-                //.React(OnInteractEnd);
-        }
+
         PlayerStateController React(Action action)
         {
             action();
@@ -40,6 +39,25 @@ namespace Peixi
         {
             var controller = this;
             onInteractEnd
+                .Subscribe(x =>
+                {
+                    playerState.Value = PlayerState.IdleState;
+                });
+        }
+
+        void OnPlayerStartMove()
+        {
+            movementPresenter.OnVelocityChanged
+                .Where(x => x.sqrMagnitude > 0.1f)
+                .Subscribe(x =>
+                {
+                    playerState.Value = PlayerState.MotionState;
+                });
+        }
+        void OnPlayerEndMove()
+        {
+            movementPresenter.OnVelocityChanged
+                .Where(x => x.sqrMagnitude <= 0.1f)
                 .Subscribe(x =>
                 {
                     playerState.Value = PlayerState.IdleState;

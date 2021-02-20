@@ -42,6 +42,7 @@ namespace GameEditors
             {
                 EditorGUILayout.FloatField("移动速率:", playerSystem.Movement.moveSpeed);
                 EditorGUILayout.Vector3Field("移动速度", playerSystem.Movement.Velocity);
+                EditorGUILayout.Vector3Field("玩家朝向", playerSystem.Movement.FaceDirection);
             }
             EditorGUILayout.EnumFlagsField("玩家当前状态", playerSystem.StateController.playerState.Value);
 
