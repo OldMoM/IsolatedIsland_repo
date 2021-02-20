@@ -20,6 +20,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Mat_Prop_fishingPoint_shengZi
+    second: {fileID: 2100000, guid: 22aba6c6e27fe0d4685032271d85b1c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Mat_Prop_fishingPoint_taiZi
     second: {fileID: 2100000, guid: 66ebdf15ae3f5144e9c5c18c39fb9547, type: 2}
   - first:
