@@ -27,16 +27,16 @@ namespace Peixi
     }
     public struct IslandGridData
     {
-        public IslandGridData(Vector2Int pos,
+        public IslandGridData(Vector2Int islandPos,
             bool hasIsland,
             string islandType = "Soil")
         {
-            m_hasIsland = hasIsland;
-            m_pos = pos;
-            m_islandType = islandType;
+            has = hasIsland;
+            pos = islandPos;
+            type = islandType;
         }
-        public Vector2Int m_pos;
-        public bool m_hasIsland;
-        public string m_islandType;
+        public Vector2Int pos;
+        public bool has;
+        public string type;
     }
 }

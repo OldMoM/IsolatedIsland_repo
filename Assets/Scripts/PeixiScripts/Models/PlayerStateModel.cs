@@ -9,6 +9,8 @@ public class PlayerStateModel
 }
 public enum PlayerState
 {
+    IdleState,
     MotionState,
     InteractState
 }
+

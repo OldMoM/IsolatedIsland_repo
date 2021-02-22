@@ -1,26 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 using UnityEditor;
+using Peixi;
 
-namespace Peixi
+public class IslandEditor : MonoBehaviour
 {
-    public class IslandEditor : MonoBehaviour
-    {
-        private IslandPresenter presenter;
-        private void OnEnable()
-        {
-            presenter = GetComponent<IslandPresenter>();
-        }
+    private IslandPresenter presenter;
 
-        private void OnDrawGizmos()
+    private void OnEnable()
+    {
+        presenter = GetComponent<IslandPresenter>();
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (presenter != null)
         {
-            if (presenter != null)
-            {
-                Handles.Label(transform.position, "耐久度:" + presenter.Durability_current);
-            }
-          
+            Handles.Label(transform.position, "耐久度:" + presenter.Durability_current);
         }
     }
 }
+
+

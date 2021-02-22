@@ -24,7 +24,7 @@ namespace Peixi {
 
             //-----10秒后回收Garbage-----
             Observable
-                .Timer(System.TimeSpan.FromSeconds(10))
+                .Timer(System.TimeSpan.FromSeconds(25))
                 .First()
                 .Subscribe(x =>
                 {

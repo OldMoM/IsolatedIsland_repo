@@ -65,12 +65,6 @@ public class GameConfig
         JsonData _jsonData = JsonMapper.ToObject(configJsonData);
         foreach (JsonData item in _jsonData)
         {
-            //Debug.Log(item["ClipName"].ToString());
-            //Debug.Log(item["AudioMixerGroup"].ToString());
-            //Debug.Log((double)item["Volume"]);
-            //Debug.Log((bool)item["PlayerOnAwake"]);
-            //Debug.Log((bool)item["Loop"]);
-
             AudioInfo _audioInfo = new AudioInfo();
     
             AudioClip _audioClip = Resources.Load<AudioClip>("Audios/" + item["ClipName"].ToString());

@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   propSampleRepo:
   - {fileID: 7048989393739741277, guid: e41026f82340eca4aaf154ffc4fd44f7, type: 3}
-  gridSize: 5
+  gridSize: 3
   gridOrigialPos: {x: 0, y: 0, z: 0}
   gridOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2642517664778897719

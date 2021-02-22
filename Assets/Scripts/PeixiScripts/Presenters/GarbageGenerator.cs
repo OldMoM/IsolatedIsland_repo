@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-//using UnityEditor;
-namespace Peixi {
+
+namespace Peixi 
+{
     public class GarbageGenerator : MonoBehaviour
     {
         ReactiveProperty<bool> isActive = new ReactiveProperty<bool>(false);
         System.IDisposable generateGarbageMicrotime;
         float garbageGenerateIntervalTime = 2;
+        [Range(1,4)]
+        public float floatSpeed = 2.5f;
 
         public Transform garbageDes;
         public GameObject[] garbageModels;
@@ -32,7 +35,7 @@ namespace Peixi {
                         spawnPosition,
                         Quaternion.Euler(direction));
                     var garbage_script = garbage_prefab.GetComponent<GarbagePresenter>();
-                    garbage_script.Active(5, direction);
+                    garbage_script.Active(floatSpeed, direction);
                     garbage_prefab.transform.right = direction;
                 });
 

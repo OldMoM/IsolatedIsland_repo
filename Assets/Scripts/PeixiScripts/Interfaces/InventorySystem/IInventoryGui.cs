@@ -23,12 +23,13 @@ namespace Peixi
         /// 指针当前选中的Item改变时触发此事件
         /// </summary>
         IObservable<string> OnSelectedItemChanged { get; }
-        void OnPointerEnterGrid(int gridSerial);
+        void OnPointerEnterGrid(int gridSerial,string name);
         void OnPointerExitGrid(int gridSerial);
         /// <summary>
         /// 指针点击的格子是触发时，由GridView调用此事件
         /// </summary>
         /// <param name="gridSerial"></param>
-        void OnPointerClickGrid(int gridSerial);
+        void OnPointerClickGrid(int gridSerial,string name);
+        InventoryGui SetActive(bool active);
     }
 }

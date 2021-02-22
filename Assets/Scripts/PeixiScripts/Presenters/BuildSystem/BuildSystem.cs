@@ -12,72 +12,115 @@ namespace Peixi
     /// </summary>
     public class BuildSystem : MonoBehaviour, IBuildSystem
     {
-        public IObservable<int> test;
-        IslandGridModulePresenter islandGridModule;
-        FacilityModulePresenter facilityModule;
-        GameObjectBuiltModuleView view;
-        public IObservable<DictionaryAddEvent<Vector2Int, IslandGridData>> OnIslandBuilt => islandGridModule.OnIslandBuilt;
-        public IObservable<DictionaryRemoveEvent<Vector2Int, IslandGridData>> OnIslandRemoved => islandGridModule.OnIslandRemoved;
-        private Subject<Vector2Int> onIslandSunk = new Subject<Vector2Int>();
-        public Subject<Vector2Int> OnIslandSunk => onIslandSunk;
+        public GridSetting settings = new GridSetting(3, Vector2.zero);
 
-        private void Start()
+        #region//privates
+        private IslandGridModulePresenter _islandGridModule;
+        private FacilityModulePresenter _facilityModule;
+        private GameObjectBuiltModuleView _view;
+        private PositionConvent _posTransMod = new PositionConvent();
+        private Subject<Vector2Int> _onIslandSunk = new Subject<Vector2Int>();
+        #endregion
+
+        #region IObservables
+        public IObservable<DictionaryAddEvent<Vector2Int, IslandGridData>> OnIslandBuilt => _islandGridModule.OnIslandBuilt;
+        public IObservable<DictionaryRemoveEvent<Vector2Int, IslandGridData>> OnIslandRemoved => _islandGridModule.OnIslandRemoved;
+        public IObservable<Vector2Int> OnIslandSunk => _onIslandSunk;
+        public IObservable<DictionaryAddEvent<Vector2Int, FacilityGridData>> OnFacilityBuilt => _facilityModule.OnFacilityAdded;
+        public IObservable<DictionaryRemoveEvent<Vector2Int, FacilityGridData>> OnFacilityRemoved => _facilityModule.OnFacilityRemoved;
+
+        #endregion
+
+        #region//Methods
+        public void BuildFacility(Vector2Int gridPos,string facilityName = "workbench")
         {
-
+            _facilityModule.BuildFacility(facilityName, gridPos);
         }
-        private void OnEnable()
+        public void BuildFacility(string facilityName, Vector2Int gridPos)
         {
             
         }
-        public void BuildFacility(Vector2Int gridPos,string facilityName = "workbench")
-        {
-            facilityModule.BuildFacility(facilityName, gridPos);
-        }
-
-        public void BuildFacility(string facilityName, Vector2Int gridPos)
-        {
-            //throw new NotImplementedException();
-        }
-
         public void BuildIslandAt(Vector2Int gridPos,int durability = 100)
         {
-            Assert.IsNotNull(islandGridModule);
-            islandGridModule.BuildIslandAt(gridPos,durability);
+            Assert.IsNotNull(_islandGridModule);
+            _islandGridModule.BuildIslandAt(gridPos,durability);
         }
-
         public bool CheckThePositionHasIsland(Vector2Int gridPos)
         {
-            Assert.IsNotNull(islandGridModule);
-            var hasIsland = islandGridModule.CheckThePositionHasIsland(gridPos);
+            Assert.IsNotNull(_islandGridModule);
+            var hasIsland = _islandGridModule.CheckThePositionHasIsland(gridPos);
             return hasIsland;
         }
-
         public IIsland GetIslandInterface(Vector2Int gridpos)
         {
-            print("msg has ben delivered to BuildSystem");
-            return view.GetIslandInterface(gridpos);
+            return _view.GetIslandInterface(gridpos);
         }
         public void RemoveFacility(Vector2Int gridPos)
         {
-            facilityModule.RemoveFacility(gridPos);
+            _facilityModule.RemoveFacility(gridPos);
         }
-
         public void RemoveIslandAt(Vector2Int gridPos)
         {
-            Assert.IsNotNull(islandGridModule);
-            islandGridModule.RemoveIslandAt(gridPos);
+            Assert.IsNotNull(_islandGridModule);
+            _islandGridModule.RemoveIslandAt(gridPos);
 
         }
-        public void SetIslanDurability(Vector2Int islandGridPos, int targetValue)
-        {
-            
-        }
+        public Func<Vector3, GridSetting,Vector2Int> worldToGridPosition => _posTransMod.WorldToGridPosition;
+        public Func<Vector2Int,GridSetting, Vector3> gridToWorldPosition => _posTransMod.GridToWorldPosition;
+        public GridSetting Settings => settings;
+        #endregion
+
         private void Awake()
         {
-            print("init buildsystem at awake");
-            islandGridModule = GetComponentInChildren<IslandGridModulePresenter>();
-            facilityModule = GetComponentInChildren<FacilityModulePresenter>();
-            view = GetComponent<GameObjectBuiltModuleView>();
+            _islandGridModule = GetComponentInChildren<IslandGridModulePresenter>();
+            _facilityModule = GetComponentInChildren<FacilityModulePresenter>();
+            _view = GetComponent<GameObjectBuiltModuleView>();
+        }
+    }
+    public struct PositionConvent 
+    {
+        public Vector2Int WorldToGridPosition(Vector3 worldPosition, GridSetting gridSetting)
+        {
+            var _size = gridSetting._cellSize;
+            var _halfSize = _size / 2;
+
+            var gridX_temp = (worldPosition.x + _halfSize) / _size;
+            var gridX = Mathf.Floor(gridX_temp);
+
+            var gridY_temp = (worldPosition.z + _halfSize) / _size;
+            var gridY = Mathf.Floor(gridY_temp);
+
+            return new Vector2Int(
+                Convert.ToInt32(gridX),
+                Convert.ToInt32(gridY));
+        }
+        public Vector3 GridToWorldPosition(Vector2Int gridPosition,GridSetting gridSetting)
+        {
+            var size = gridSetting._cellSize;
+            var worldPos_x = gridPosition.x * size;
+            var worldPos_z = gridPosition.y * size;
+            return new Vector3(worldPos_x, 0, worldPos_z);
+        }
+    }
+
+    [Serializable]
+    /// <summary>
+    /// 网格参数设置
+    /// </summary>
+    public struct GridSetting
+    {
+        /// <summary>
+        /// 网格宽度
+        /// </summary>
+        public readonly float _cellSize;
+        /// <summary>
+        /// 网格起始坐标
+        /// </summary>
+        public readonly Vector2 _origin;
+        public GridSetting(float cellSize,Vector2 origin)
+        {
+            _cellSize = cellSize;
+            _origin = origin;
         }
     }
 }

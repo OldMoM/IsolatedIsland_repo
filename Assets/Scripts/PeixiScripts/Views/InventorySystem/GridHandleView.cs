@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine.Assertions;
+using UnityEngine.U2D;
 
 namespace Peixi
 {
@@ -15,16 +16,67 @@ namespace Peixi
     public class GridHandleView : MonoBehaviour
     {
         private Button button;
+        private Image icon;
+        private Text amount;
         IInventoryGui iinventoryGui;
-        public int gridSerial;
-        // Start is called before the first frame update
-        void Start()
+
+        public Transform icon_transform;
+
+        public int gridSerial 
+        { 
+            get=> gridModel.gridSerial;
+            set 
+            {
+                gridModel.gridSerial = value;
+            }
+        } 
+        public string itemName 
+        { 
+            get => gridModel.itemName;
+            set
+            {
+                gridModel.itemName = value;
+                icon.sprite = atlas.GetSprite(value);
+                icon.color = new Color(1, 1, 1, 1);
+            }
+        } 
+        public int itemAmount 
         {
+            get => gridModel.amount;
+            set 
+            {
+                if (value > 0)
+                {
+                    amount.text = "×" + value.ToString();
+                    gridModel.amount = value;
+                }
+            }
+        } 
+
+        public GridModel gridModel;
+        public SpriteAtlas atlas;
+
+        public void Active(IInventoryGui _inventoryGui, int _gridSerial)
+        {
+            iinventoryGui = _inventoryGui;
+            gridSerial = _gridSerial;
+
+            var button_transform = transform.Find("Button");
+            var icon_tranform = transform.Find("Icon");
+            var content_transform = transform.Find("Content");
+
             button = GetComponentInChildren<Button>();
+            icon = icon_tranform.GetComponent<Image>();
+            amount = GetComponentInChildren<Text>();
+
+            Assert.IsNotNull(icon);
+            Assert.IsNotNull(button);
+            Assert.IsNotNull(amount);
+
             button.OnPointerEnterAsObservable()
                 .Subscribe(x =>
                 {
-                    iinventoryGui.OnPointerEnterGrid(gridSerial);
+                    iinventoryGui.OnPointerEnterGrid(gridSerial, itemName);
                 });
             button.OnPointerExitAsObservable()
                 .Subscribe(x =>
@@ -34,13 +86,23 @@ namespace Peixi
             button.OnPointerClickAsObservable()
                 .Subscribe(x =>
                 {
-                    iinventoryGui.OnPointerClickGrid(gridSerial);
-                });   
+                    iinventoryGui.OnPointerClickGrid(gridSerial,itemName);
+                });
         }
-        public void Active(IInventoryGui _inventoryGui, int _gridSerial)
+
+        public void clearGrid()
         {
-            iinventoryGui = _inventoryGui;
-            gridSerial = _gridSerial;
+            amount.text = string.Empty;
+            icon.color = new Color(1, 1, 1, 0);
+            gridModel.amount = 0;
+            gridModel.itemName = string.Empty;
         }
+    }
+    [System.Serializable]
+    public struct GridModel
+    {
+        public string itemName;
+        public int amount;
+        public int gridSerial;
     }
 }

@@ -12,11 +12,14 @@ namespace Peixi
     /// </summary>
     public class ArbitorSystem : MonoBehaviour,IArbitorSystem
     {
-        private CollectHandle collectModule;
+        private CollectInteractionHandle collectModule;
+        private FacilityInteractionAgent _facilityInteractHandle;
         private InventorySystem inventorySystem;
         private ArbitorEyeModule eye;
+        [SerializeField]
+        private FacilityData facility;
         public IInventorySystem InventorySystem => inventorySystem;
-        public CollectHandle CollectModule => collectModule;
+        public CollectInteractionHandle CollectModule => collectModule;
         public ArbitorEyeModule ArbitorEye => eye;
         public IObservable<Unit> OnCollectCompleted => collectModule.OnCollectCompleted;
         public IObservable<Unit> OnAllCollectCompleted => ArbitorEye.AllCollectCompleted;
@@ -35,6 +38,18 @@ namespace Peixi
             }
         }
 
+        public FacilityInteractionAgent facilityInteractAgent 
+        {
+            get
+            {
+                if (_facilityInteractHandle is null)
+                {
+                    _facilityInteractHandle = new FacilityInteractionAgent();
+                }
+                return _facilityInteractHandle;
+            }
+        }
+
         [SerializeField]
         [Tooltip("Collect互动过程的监视参数")]
         internal CollectWatchParam collectParams = new CollectWatchParam();
@@ -44,7 +59,11 @@ namespace Peixi
         {
             Singlton = this;
             inventorySystem = FindObjectOfType<InventorySystem>();
-            collectModule = new CollectHandle(this);
+      
+        }
+        private void OnEnable()
+        {
+            collectModule = new CollectInteractionHandle(this);
             eye = new ArbitorEyeModule(collectModule);
         }
         void Start()
@@ -90,8 +109,12 @@ namespace Peixi
         {
             eye.RemoveItemFromPendingQuene(item);
         }
-    }
 
+        private void Update()
+        {
+            facility = facilityInteractAgent.targetData;
+        }
+    }
     [Serializable]
     public struct CollectWatchParam
     {
