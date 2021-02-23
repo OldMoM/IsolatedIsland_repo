@@ -32,7 +32,9 @@ namespace Peixi
         {
             onInteractStart.Subscribe(x =>
             {
+                Debug.Log("on player interact start");
                 playerState.Value = PlayerState.InteractState;
+                Debug.Log(playerState.Value);
             });
         }
         void OnInteractEnd()
@@ -58,6 +60,7 @@ namespace Peixi
         {
             movementPresenter.OnVelocityChanged
                 .Where(x => x.sqrMagnitude <= 0.1f)
+                .Where(x=> playerState.Value == PlayerState.MotionState)
                 .Subscribe(x =>
                 {
                     playerState.Value = PlayerState.IdleState;
