@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad2348d92842ec4dadc35839c3be3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!4 &298629071
 Transform:
   m_ObjectHideFlags: 0
@@ -341,17 +342,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &377952689 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2561757615587089018, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-  m_PrefabInstance: {fileID: 340418736315340174}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1221284156
 GameObject:
   m_ObjectHideFlags: 1
@@ -483,6 +473,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 502141303647399153, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: itemId
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1764758225719187869, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -527,14 +521,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2975219042264918008, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: selfDialogList.Array.size
-      value: 0
+    - target: {fileID: 2559398672906184887, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: itemId
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 2975219042264918008, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: flowchart
-      value: 
-      objectReference: {fileID: 377952689}
+    - target: {fileID: 4526438918496737215, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: itemId
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942699891581154804, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: itemId
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100497134168147592, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: itemId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301375199499563013, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: itemId
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7582610351347405391, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: m_Name
       value: DialogueSystem
