@@ -6,27 +6,23 @@ using System;
 
 namespace Peixi
 {
+    //玩家移动数值逻辑计算模块
     [Serializable]
     public class PlayerMovementPresenter 
     {
-        private IPlayerSystem m_playerSystem;
-        [SerializeField]
-        private Vector3ReactiveProperty velocity = new Vector3ReactiveProperty();
-        public PlayerMovementPresenter(IPlayerSystem playerSystem)
-        {
-            m_playerSystem = playerSystem;
-            Active();
-        }
-
-        PlayerMovementModel movementModel = new PlayerMovementModel();
-        PlayerStateModel stateModel = new PlayerStateModel();
-
+        //-----公共方法-----
+        /// <summary>
+        /// 屏幕坐标系下，面部方向改变时触发此事件
+        /// </summary>
+        public IObservable<Vector3> OnFaceDirectionScreenChanged => faceDir_screen;
+        /// <summary>
+        /// 玩家ISO坐标系下面部朝向
+        /// </summary>
+        public Vector3 FaceDirection => faceDir;
+        /// <summary>
+        /// 移动速度
+        /// </summary>
         public float moveSpeed = 5;
-        [Obsolete]
-        public ReactiveProperty<Vector3> ObserleteVelocity
-        {
-            get => movementModel.velocity;
-        }
         /// <summary>
         /// 当玩家速度改变时触发此事件
         /// </summary>
@@ -35,19 +31,52 @@ namespace Peixi
         /// 玩家当前的速度
         /// </summary>
         public Vector3 Velocity => velocity.Value;
-        private void Active()
+
+        //-----内部变量-----
+        private Vector3ReactiveProperty velocity = new Vector3ReactiveProperty();
+        private Vector3ReactiveProperty faceDir_screen = new Vector3ReactiveProperty();
+        private PlayerMovementModel movementModel = new PlayerMovementModel();
+        private PlayerStateModel stateModel = new PlayerStateModel();
+        private IPlayerSystem m_playerSystem;
+        private Vector3 faceDir;
+
+        //-----内部方法-----
+        private void Init()
         {
-            Observable.EveryFixedUpdate()
-                .SkipWhile(x=> m_playerSystem.PlayerState == PlayerState.InteractState)
-                .Subscribe(x =>
-                {
-                    Vector3 _direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-                    _direction = -_direction.normalized; ;
+            React(OnPlayerInput)
+                .React(OnInteractStart);
+        }
+        private PlayerMovementPresenter React(Action action)
+        {
+            action();
+            return this;
+        }
+        /// <summary>
+        /// ISO坐标朝向
+        /// </summary>
+        /// <param name="moveDir"></param>
+        private void ComputeFaceDir_ISO(Vector3 moveDir)
+        {
+            if (moveDir == Vector3.zero)
+            {
+                return;
+            }
 
-                    var _velocity = _direction * moveSpeed;
+            faceDir = moveDir;
 
-                    velocity.Value = RotateVelocityBy(_velocity, -60);
-                });
+        }
+        /// <summary>
+        /// 计算玩家在屏幕坐标中面部方向
+        /// </summary>
+        /// <param name="moveDirection"></param>
+        /// <returns></returns>
+        private Vector3 ComputeFaceDirection_screen(Vector3 moveDirection)
+        {
+            if (moveDirection == Vector3.zero)
+            {
+                return faceDir_screen.Value;
+            }
+            return moveDirection;
         }
         /// <summary>
         /// 旋转XOZ平面的移动速度
@@ -66,25 +95,44 @@ namespace Peixi
             var velocity_rotated = new Vector3(x_rotated, y, z_rotated);
             return velocity_rotated;
         }
-        private void Start()
+
+        //-----响应事件-----
+        private void OnPlayerInput()
         {
-            //stateModel.playerState
-            //    //.Where(x => stateModel.playerState.Value == PlayerState.MotionState)
-            //    .Subscribe(x =>
-            //    {
+            Observable.EveryFixedUpdate()
+              .Where(x => PlayerState != PlayerState.InteractState)
+              .Subscribe(x =>
+              {
+                  Vector3 _direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+                  _direction = -_direction.normalized;
+                  faceDir_screen.Value = ComputeFaceDirection_screen(_direction);
+                  _direction = RotateVelocityBy(_direction, -60);
 
-            //    });
+                  var _velocity = _direction * moveSpeed;
+                  //velocity.Value = RotateVelocityBy(_velocity, -60);
+                  velocity.Value = _velocity;
+                  ComputeFaceDir_ISO(_direction);
+              });
+        }
+        private void OnInteractStart()
+        {
+            OnPlayerStateChanged
+               .Where(x => x == PlayerState.InteractState)
+               .Subscribe(x =>
+               {
+                   velocity.Value = Vector3.zero;
+               });
+        }
 
-            
+        //-----内部属性，获取引用地址-----
+        private IObservable<PlayerState> OnPlayerStateChanged => m_playerSystem.StateController.onStateChanged;
+        private PlayerState PlayerState => m_playerSystem.StateController.playerState.Value;
 
-            #region//InteractState
-            //stateModel.playerState
-            ////.Where(x => stateModel.playerState.Value == PlayerState.InteractState)
-            //.Subscribe(x =>
-            //{
-            //    movementModel.velocity.Value = Vector3.zero;
-            //});
-            #endregion
+        //-----运行入口-----
+        public PlayerMovementPresenter(IPlayerSystem playerSystem)
+        {
+            m_playerSystem = playerSystem;
+            Init();
         }
     }
 }

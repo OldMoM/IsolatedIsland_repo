@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Siwei;
+//using Siwei;
 using Peixi;
 
 public interface IInterfaceArchive
 {
-    IBuildSystem IbuildSystem { get; set; }
-    IPlayerPropertySystem IplayerPropertySystem { get; set; }
-    ITimeSystem ItimeSystem { get; }
-    IInventorySystem IinventorySystem { get; }
-    IArbitorSystem IarbitorSystem { get; }
-
-    T GetInterface<T>();
+    IBuildSystem IBuildSystem { get;}
+    IPlayerPropertySystem IPlayerPropertySystem { get; }
+    ITimeSystem ITimeSystem { get; }
+    IInventorySystem IInventorySystem { get; }
+    IArbitorSystem IArbitorSystem { get; }
+    IInGameUIComponentsInterface InGameUIComponentsManager { get; }
+    IPlayerSystem PlayerSystem { get; }
 }

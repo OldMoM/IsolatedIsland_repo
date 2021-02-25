@@ -38,7 +38,7 @@ namespace Peixi
             }
         }
 
-        public FacilityInteractionAgent facilityInteractionHandle 
+        public FacilityInteractionAgent facilityInteractAgent 
         {
             get
             {
@@ -112,7 +112,7 @@ namespace Peixi
 
         private void Update()
         {
-            facility = facilityInteractionHandle.targetData;
+            facility = facilityInteractAgent.targetData;
         }
     }
     [Serializable]

@@ -49,13 +49,12 @@ namespace Peixi
         {
             if (other.transform.tag == "Player" )
             {
-               // print(data.name + " untouch with player, which hashcode is " + GetHashCode());
                 ArbitorSystem.Singlton.OnPlayerUntouch(this);
             }
         }
         protected IArbitorSystem getArbitorSysten()
         {
-            return InterfaceArichives.Archive.IarbitorSystem;    
+            return InterfaceArichives.Archive.IArbitorSystem;    
         }
         protected virtual void init()
         {
