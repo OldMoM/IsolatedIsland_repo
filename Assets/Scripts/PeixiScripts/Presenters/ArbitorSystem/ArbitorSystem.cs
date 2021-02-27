@@ -13,8 +13,11 @@ namespace Peixi
     public class ArbitorSystem : MonoBehaviour,IArbitorSystem
     {
         private CollectInteractionHandle collectModule;
+        private FacilityInteractionAgent _facilityInteractHandle;
         private InventorySystem inventorySystem;
         private ArbitorEyeModule eye;
+        [SerializeField]
+        private FacilityData facility;
         public IInventorySystem InventorySystem => inventorySystem;
         public CollectInteractionHandle CollectModule => collectModule;
         public ArbitorEyeModule ArbitorEye => eye;
@@ -32,6 +35,18 @@ namespace Peixi
                 {
                     arbitor = value;
                 }
+            }
+        }
+
+        public FacilityInteractionAgent facilityInteractAgent 
+        {
+            get
+            {
+                if (_facilityInteractHandle is null)
+                {
+                    _facilityInteractHandle = new FacilityInteractionAgent();
+                }
+                return _facilityInteractHandle;
             }
         }
 
@@ -93,6 +108,11 @@ namespace Peixi
         public void OnItemRecycle(BaseItem item) 
         {
             eye.RemoveItemFromPendingQuene(item);
+        }
+
+        private void Update()
+        {
+            facility = facilityInteractAgent.targetData;
         }
     }
     [Serializable]

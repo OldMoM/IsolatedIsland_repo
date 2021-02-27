@@ -22,7 +22,21 @@ namespace Peixi
 
         private static IPrefabFactory _singleton;
 
+
+        private Transform activatedObjects_tran;
+        private Transform dormantObjects_tran;
+        private Dictionary<int, GameObject> activedGameObjects = new Dictionary<int, GameObject>();
         private Dictionary<string, GameObject> searchCache = new Dictionary<string, GameObject>();
+
+
+        private void Awake()
+        {
+            activatedObjects_tran = transform.Find("acivatedObjects");
+            dormantObjects_tran = transform.Find("dormantObjects");
+
+            Assert.IsNotNull(activatedObjects_tran);
+            Assert.IsNotNull(dormantObjects_tran);
+        }
 
         public GameObject creatGameobject(string name)
         {
@@ -34,7 +48,7 @@ namespace Peixi
             {
                 var go = searchEntity(name);
                 searchCache.Add(name, go);
-                return Instantiate(go);
+                return Instantiate(go,activatedObjects_tran);
             }
         }
         public void recycleGameobject(int instanceId)

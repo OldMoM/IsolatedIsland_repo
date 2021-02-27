@@ -21,5 +21,7 @@ namespace Peixi
         IObservable<BaseItem> HandleItem { get; }
         IObservable<int> OnCollectHandleCountChanged { get; }
         void OnItemRecycle(BaseItem itemHashCode);
+
+        FacilityInteractionAgent facilityInteractAgent { get; }
     }
 }

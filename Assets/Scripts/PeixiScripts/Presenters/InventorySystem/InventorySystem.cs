@@ -62,9 +62,9 @@ namespace Peixi
         public void Init()
         {
             presenter = new InventoryPresenter(this);
-            gui = FindObjectOfType<InventoryGui>();
-            Assert.IsNotNull(gui, "Failed to find InventoryGui script in Hierarchy");
-            gui.init(this);
+            //gui = FindObjectOfType<InventoryGui>();
+            //Assert.IsNotNull(gui, "Failed to find InventoryGui script in Hierarchy");
+            //gui.init(this);
         }
         private void OnEnable()
         {

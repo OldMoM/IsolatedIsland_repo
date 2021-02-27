@@ -10,12 +10,12 @@ public class PlayerStatePresenter : MonoBehaviour
     {
         get => stateModel;
     }
-    [Header("the readonly variables")]
+    //[Header("the readonly variables")]
     [SerializeField]
-    PlayerState state;
+    //PlayerState state;
     private void Awake()
     {
-        stateModel.playerState.Value = PlayerState.MotionState;
+        //stateModel.playerState.Value = PlayerState.MotionState;
     }
     // Start is called before the first frame update
     void Start()
@@ -24,10 +24,12 @@ public class PlayerStatePresenter : MonoBehaviour
     }
     void ForTest()
     {
-        stateModel.playerState
-            .Subscribe(x =>
-            {
-                state = x;
-            });
+
+    }
+    public enum PlayerState
+    {
+        IdleState,
+        MotionState,
+        InteractState
     }
 }

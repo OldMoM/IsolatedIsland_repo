@@ -30,5 +30,6 @@ namespace Peixi
         /// </summary>
         /// <param name="gridSerial"></param>
         void OnPointerClickGrid(int gridSerial,string name);
+        InventoryGui SetActive(bool active);
     }
 }

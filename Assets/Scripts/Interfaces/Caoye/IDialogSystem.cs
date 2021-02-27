@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 namespace Caoye
 {
     public interface IDialogSystem 
@@ -10,6 +11,6 @@ namespace Caoye
         void StartDialog(string dialogId);
         IObservable<string> OnDialogStart { get; }
         IObservable<string> OnDialogEnd { get; }
-
+        bool isActive { get; }
     }
 }

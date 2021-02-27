@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scripts/PeixiScripts/Workshop/Demo.unity
     guid: b640f1fd264022b4bac9301f1ecb1dcc
   - enabled: 0
-    path: Assets/Scripts/PeixiScripts/Workshop/InventorySystemWorkShop.unity
+    path: Assets/Scripts/PeixiScripts/Workshop/InventorySystem_workshop.unity
     guid: ab9e8c9eaa83e7d49ae40d7db45a535e
   - enabled: 0
     path: Assets/Scripts/PeixiScripts/Workshop/GameSystemBuildTest.unity
