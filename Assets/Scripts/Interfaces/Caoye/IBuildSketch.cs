@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Caoye
+namespace Siwei
 {
     public interface IBuildSketch
     {
@@ -9,7 +9,7 @@ namespace Caoye
         /// 进入建造模式时，激活BuildSketch
         /// </summary>
         IObservable<bool> OnActiveChanged﻿ { get; }
-        /// <summary>
+        /// <summary>   
         /// 当鼠标悬停坐标变化时触发此事件，传递当前指 针的所指的世界坐标
         /// </summary>
         IObservable<Vector3> OnMouseHoverPositionChanged﻿ { get; }
