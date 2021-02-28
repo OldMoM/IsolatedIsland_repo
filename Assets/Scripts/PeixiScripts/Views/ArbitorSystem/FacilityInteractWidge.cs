@@ -49,7 +49,8 @@ namespace Peixi
                 {
                     var worldPos = x.position;
                     var screenPos = FindObjectOfType<Camera>().WorldToScreenPoint(worldPos);
-                    transform.position = screenPos;
+                    var offset_screen = new Vector3(0, 200, 0);
+                    transform.position = screenPos + offset_screen;
                 });
         }
         void OnStateChanged()

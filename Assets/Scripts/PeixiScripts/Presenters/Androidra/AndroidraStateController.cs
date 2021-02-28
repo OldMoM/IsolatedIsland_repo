@@ -8,11 +8,6 @@ namespace Peixi
 {
     public class AndroidraStateController
     {
-        private IPlayerSystem playerSystem;
-
-        private ReactiveProperty<AndroidraState> state = new ReactiveProperty<AndroidraState>();
-        private AndroidraNavPresenter navModule;
-
         public IObservable<AndroidraState> OnStateChanged => state;
         public AndroidraState State
         {
@@ -23,39 +18,62 @@ namespace Peixi
                 Debug.Log(state.Value);
             }
         }
-
-        public AndroidraStateController(IPlayerSystem playerSystem,AndroidraNavPresenter nav)
+        public AndroidraStateController(IPlayerSystem playerSystem,AndroidraNavPresenter nav, AndroidraStateControllerModel controlModel,IAndroidraSystem system)
         {
             this.playerSystem = playerSystem;
             navModule = nav;
+            model = controlModel;
+            _system = system;
 
             React(OnPlayerStartMoveToFollow)
-               .React(OnPlayerEndMoveToEndFollow);
+               .React(OnPlayerEndMoveToEndFollow)
+               .React(OnBuildMsgReceived)
+               .React(OnBuildAnimationEnd);
+            
         }
         public AndroidraStateController React(Action action)
         {
             action();
             return this;
         }
-        public void OnPlayerStartMoveToFollow()
+
+        private IPlayerSystem playerSystem;
+        private ReactiveProperty<AndroidraState> state = new ReactiveProperty<AndroidraState>();
+        private AndroidraNavPresenter navModule;
+        private AndroidraStateControllerModel model;
+        private IAndroidraSystem _system;
+        private void OnPlayerStartMoveToFollow()
         {
             playerSystem.StateController.onStateChanged
                 .Where(x => x == PlayerState.MotionState)
+                .Where(x => state.Value != AndroidraState.Building)
                 .Subscribe(x =>
                 {
-                    Debug.Log("androidra start follow player");
                     state.Value = AndroidraState.Follow;
                 });
                 
         }
-        public void OnPlayerEndMoveToEndFollow()
+        private void OnPlayerEndMoveToEndFollow()
         {
- 
+        
         }
-    }
-    public struct AndroidraEngineModel
-    {
-        public float speed;
+        private void OnBuildMsgReceived()
+        {
+            model.OnBuildMsgReceived
+                .Subscribe(x =>
+                {
+                    state.Value = AndroidraState.Building;
+                    //Debug.Log("Set androidra's state as " + state.Value);
+                });
+        }        
+        private void OnBuildAnimationEnd()
+        {
+            _system.BuildAnim.OnBuildAnimEnd
+                 .Subscribe(x =>
+                 {
+                     state.Value = AndroidraState.Follow;
+                 });
+        }
     }
     
     public enum AndroidraState

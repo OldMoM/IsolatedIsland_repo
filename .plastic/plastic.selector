@@ -1,0 +1,4 @@
+repository "IsolatedIsland_repo@ssl://wechat_os_qy0xakglslil7jxpc16zjy5hs@sh03-plasticscm.unity.cn:8787"
+  path "/"
+    smartbranch "/main/1090347251" 
+     

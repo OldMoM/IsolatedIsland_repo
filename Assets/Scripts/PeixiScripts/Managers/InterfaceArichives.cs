@@ -17,6 +17,7 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
     private IInGameUIComponentsInterface inGameUiComponentsManager;
     private IPlayerSystem playerSystem;
     private IPlayerPropertySystem propertySystem;
+    private IAndroidraSystem androidraSystem;
 
     public static IInterfaceArchive Archive
     {
@@ -100,7 +101,6 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             return inGameUiComponentsManager;
         }
     }
-
     public IPlayerSystem PlayerSystem 
     {
         get
@@ -111,6 +111,18 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             }
             Assert.IsNotNull(playerSystem, "未在Hierarchy中部署PlayerHandle.prefab");
             return playerSystem;
+        }
+    }
+    public IAndroidraSystem IAndroidraSystem
+    {
+        get
+        {
+            if (androidraSystem is null)
+            {
+                androidraSystem = FindObjectOfType<AndroidraSystem>();
+            }
+            Assert.IsNotNull(androidraSystem, "未在Hierarchy中部署Androidra.prefab");
+            return androidraSystem;
         }
     }
 }

@@ -2,24 +2,49 @@
 using UnityEngine.AI;
 using UnityEngine.Assertions;
 using UniRx;
+using System;
 
 namespace Peixi
 {
-    public class AndroidraSystem : MonoBehaviour
+    public class AndroidraSystem : MonoBehaviour,IAndroidraSystem
     {
         private AndroidraStateController state;
         private AndroidraNavPresenter nav;
+        private AndroidraControl control;
+        private AndroidraBuildAnimationPresenter buildAnim;
 
         private IPlayerSystem playerSystem => InterfaceArichives.Archive.PlayerSystem;
 
-        // Start is called before the first frame update
-        void Start()
+        public AndroidraControl Control
         {
+            get
+            {
+                if (control is null)
+                {
+                    control = new AndroidraControl();
+                }
+                return control;
+            }
+        }
+        public AndroidraStateController androidState => state;
+        public AndroidraNavPresenter navPresenter => nav;
+        public AndroidraBuildAnimationPresenter BuildAnim => buildAnim;
 
+        public AndroidraStateControllerModel createAndroidraStateControllerModel()
+        {
+            var controllerModel = new AndroidraStateControllerModel();
+            controllerModel.OnBuildMsgReceived = control.OnBuildMsgReceived;
+            return controllerModel;
+        }
+    
+        // Start is called before the first frame update
+        void Awake()
+        {
             var navAgent = GetComponent<NavMeshAgent>();
             Assert.IsNotNull(navAgent);
-            nav = new AndroidraNavPresenter(navAgent,playerSystem);
-            state = new AndroidraStateController(playerSystem, nav);
+            nav = new AndroidraNavPresenter(navAgent,playerSystem,this);
+            buildAnim = new AndroidraBuildAnimationPresenter(nav);
+            state = new AndroidraStateController(playerSystem, nav,createAndroidraStateControllerModel(),this);
         }
     }
 }

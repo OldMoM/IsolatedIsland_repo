@@ -33,14 +33,19 @@ namespace Peixi
         /// </summary>
         /// <param name="gridPos">移除点的坐标</param>
         void RemoveFacility(Vector2Int gridPos);
+        [Obsolete]
         /// <summary>
         /// 世界转换为网格坐标
         /// </summary>
         Func<Vector3,GridSetting, Vector2Int> worldToGridPosition { get; }
+        [Obsolete]
         /// <summary>
         /// 网格坐标转换为世界坐标
         /// </summary>
         Func<Vector2Int,GridSetting, Vector3> gridToWorldPosition { get; }
+
+        Func<Vector2Int,Vector3> newGridToWorldPosition { get; }
+
         /// <summary>
         /// 获得某处岛块的操作接口
         /// </summary>
@@ -74,6 +79,7 @@ namespace Peixi
         /// 网格设置参数
         /// </summary>
         GridSetting Settings { get; }
+        FacilityBuildModulePresenter facilityBuildMod { get; }
     }
 }
 

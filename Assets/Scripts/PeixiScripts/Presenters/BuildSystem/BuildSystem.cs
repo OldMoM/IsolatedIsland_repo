@@ -16,7 +16,7 @@ namespace Peixi
 
         #region//privates
         private IslandGridModulePresenter _islandGridModule;
-        private FacilityModulePresenter _facilityModule;
+        private FacilityBuildModulePresenter _facilityModule;
         private GameObjectBuiltModuleView _view;
         private PositionConvent _posTransMod = new PositionConvent();
         private Subject<Vector2Int> _onIslandSunk = new Subject<Vector2Int>();
@@ -68,12 +68,32 @@ namespace Peixi
         public Func<Vector3, GridSetting,Vector2Int> worldToGridPosition => _posTransMod.WorldToGridPosition;
         public Func<Vector2Int,GridSetting, Vector3> gridToWorldPosition => _posTransMod.GridToWorldPosition;
         public GridSetting Settings => settings;
+
+        public FacilityBuildModulePresenter facilityBuildMod
+        {
+            get
+            {
+                if (_facilityModule is null)
+                {
+                    _facilityModule = new FacilityBuildModulePresenter(this);
+                }
+                return _facilityModule;
+            }
+        }
+
+        public Func<Vector2Int, Vector3> newGridToWorldPosition => (Vector2Int gridPos) =>
+        {
+            var worldPos = _posTransMod.GridToWorldPosition(gridPos, settings);
+            return worldPos;
+        };
         #endregion
 
         private void Awake()
         {
             _islandGridModule = GetComponentInChildren<IslandGridModulePresenter>();
-            _facilityModule = GetComponentInChildren<FacilityModulePresenter>();
+            //_facilityModule = GetComponentInChildren<FacilityModulePresenter>();
+            //_facilityModule = new FacilityModulePresenter(this);
+
             _view = GetComponent<GameObjectBuiltModuleView>();
         }
     }

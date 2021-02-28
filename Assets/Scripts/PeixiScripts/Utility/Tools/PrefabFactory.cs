@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.Assertions;
+
 namespace Peixi
 {
     public class PrefabFactory : MonoBehaviour,IPrefabFactory
@@ -27,7 +28,6 @@ namespace Peixi
         private Transform dormantObjects_tran;
         private Dictionary<int, GameObject> activedGameObjects = new Dictionary<int, GameObject>();
         private Dictionary<string, GameObject> searchCache = new Dictionary<string, GameObject>();
-
 
         private void Awake()
         {

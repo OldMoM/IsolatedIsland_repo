@@ -10,10 +10,28 @@ namespace Tests
     {
         // A Test behaves as an ordinary method
         [Test]
-        public void creatIsland_notNull()
+        public void createIsland_notNull()
         {
-            var islandEntity = PrefabFactory.singleton.creatGameobject("prop_island");
+            var islandEntity = ToolKit.prefabFactory.creatGameobject(PrefabTags.island);
             Assert.IsNotNull(islandEntity);
+        }
+        [Test]
+        public void createWaterPuifier_notNull()
+        {
+            var waterPuifier = ToolKit.prefabFactory.creatGameobject(PrefabTags.waterPuifier);
+            Assert.IsNotNull(waterPuifier);
+        }
+        [Test]
+        public void createFoodPlant_notNull()
+        {
+            var foodPlant = ToolKit.prefabFactory.creatGameobject(PrefabTags.foodPlant);
+            Assert.IsNotNull(foodPlant);
+        }
+        [Test]
+        public void creatFishPoint_notNull()
+        {
+            var fishPoint = ToolKit.prefabFactory.creatGameobject(PrefabTags.fishPoint);
+            Assert.IsNotNull(fishPoint);
         }
     }
 }

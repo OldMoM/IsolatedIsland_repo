@@ -12,7 +12,7 @@ namespace Peixi
     {
         IslandGridModulePresenter grid;
         WallGridModulePresenter wall;
-        FacilityModulePresenter facility;
+        FacilityBuildModulePresenter facility;
         IBuildSystem system;
         public GameObject[] propSampleRepo;
 
@@ -22,13 +22,14 @@ namespace Peixi
 
         protected Dictionary<Vector2Int, GameObject> islandSquares = new Dictionary<Vector2Int, GameObject>();
         protected Dictionary<Vector2Int, GameObject> wallCubes = new Dictionary<Vector2Int, GameObject>();
+        protected Dictionary<Vector2Int, GameObject> facilityPrefabs = new Dictionary<Vector2Int, GameObject>();
         private void OnEnable()
         {
             system = GetComponent<IBuildSystem>();
             Assert.IsNotNull(system, "system was null at GameObjectBuiltModuleView.cs");
             grid = GetComponentInChildren<IslandGridModulePresenter>();
             wall = GetComponentInChildren<WallGridModulePresenter>();
-            facility = GetComponentInChildren<FacilityModulePresenter>();
+            facility = system.facilityBuildMod;
         }
         private void Start()
         {
@@ -55,7 +56,18 @@ namespace Peixi
                     RemoveWallCube(x.Key);
                 });
 
-            facility.OnFacilityAdded.Subscribe(OnFacilityAdded);
+            facility.OnFacilityAdded
+                .Subscribe(x =>
+                {
+                    var facility = ToolKit.prefabFactory.creatGameobject(x.Value.type);
+
+                    var gridPos = x.Value.position;
+                    var convert = new PositionConvent();
+                    var worldPos = convert.GridToWorldPosition(gridPos, system.Settings);
+                    facility.transform.position = worldPos;
+
+                    facilityPrefabs.Add(gridPos, facility);
+                });
 
             system.OnIslandSunk
                 .Subscribe(RemoveIslandAt);
@@ -108,10 +120,6 @@ namespace Peixi
             renderer.material.color = new Color(0, 139 / 255.0f, 139 / 255f);
 
             wallCubes.Add(gridPos, blueCube);
-        }
-        private void OnFacilityAdded(DictionaryAddEvent<Vector2Int,FacilityGridData> data)
-        {
-            CreateFacility(data.Key);
         }
         public IIsland GetIslandInterface(Vector2Int islandGridPos)
         {

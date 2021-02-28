@@ -13,4 +13,5 @@ public interface IInterfaceArchive
     IArbitorSystem IArbitorSystem { get; }
     IInGameUIComponentsInterface InGameUIComponentsManager { get; }
     IPlayerSystem PlayerSystem { get; }
+    IAndroidraSystem IAndroidraSystem { get; }
 }

@@ -7,24 +7,31 @@ using UnityEngine.Assertions;
 
 namespace Peixi
 {
-    /// <summary>
-    /// 处理Facility的数据逻辑
-    /// </summary>
-    public class FacilityModulePresenter : MonoBehaviour
+    public class FacilityBuildModulePresenter
     {
         private GridModule<Vector2Int, FacilityGridData> model = new GridModule<Vector2Int, FacilityGridData>();
         public IObservable<DictionaryAddEvent<Vector2Int, FacilityGridData>> OnFacilityAdded => model.OnDataAdded;
         public IObservable<DictionaryRemoveEvent<Vector2Int, FacilityGridData>> OnFacilityRemoved => model.OnDataRemoved;
         IBuildSystem buildSystem;
-        private void Awake()
+
+        public FacilityBuildModulePresenter(IBuildSystem buildSystem)
         {
-            buildSystem = GetComponentInParent<IBuildSystem>();
+            this.buildSystem = buildSystem;
         }
-        public void BuildFacility(string name,Vector2Int gridPos)
+
+        public void BuildFacility(string type,Vector2Int gridPos)
         {
-            var hasIsland = buildSystem.CheckThePositionHasIsland(gridPos);
-            Assert.IsTrue(hasIsland, "Facility必须建造在Island上");
-            model.AddData(gridPos,new FacilityGridData());
+            Debug.Log(type);
+            //var hasIsland = buildSystem.CheckThePositionHasIsland(gridPos);
+            //Assert.IsTrue(hasIsland, "Facility必须建造在Island上");
+
+            var facilityData = new FacilityGridData();
+            facilityData.type = type;
+            facilityData.position = gridPos;
+            //facilityData.FacilityName = gridPos;
+
+
+            model.AddData(gridPos,facilityData);
         }
         public bool HasFacility(Vector2Int gridPos)
         {
@@ -42,7 +49,11 @@ namespace Peixi
     {
         private Vector2Int facilityPosition;
         private string facilityName;
+        [Obsolete]
         public string FacilityName => facilityName;
+        [Obsolete]
         public Vector2Int FacilityPosition => facilityPosition;
+        public string type;
+        public Vector2Int position;
     }
 }
