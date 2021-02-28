@@ -56,7 +56,7 @@ namespace Peixi
         {
             return InterfaceArichives.Archive.IArbitorSystem;    
         }
-        protected virtual void init()
+        public virtual void init()
         {
             trigger = GetComponent<SphereCollider>();
             trigger.radius = data.detectRadius;

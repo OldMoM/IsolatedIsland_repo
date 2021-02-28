@@ -21,7 +21,7 @@ namespace Peixi
 
         private Dictionary<string, float> _config;
 
-        private FishPointInteractHandle unit;
+        private FishPointInteractAgent unit;
 
         private void ShowChildren(bool active)
         {

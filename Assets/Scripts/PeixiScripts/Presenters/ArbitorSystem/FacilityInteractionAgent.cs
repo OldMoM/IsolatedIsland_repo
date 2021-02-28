@@ -16,7 +16,7 @@ namespace Peixi
         public IObservable<Unit> OnInteractEnd => onInteractEnd;
         public IObservable<FacilityData> onTargetChanged => _targetData;
         public IObservable<InteractState> onStateChanged => _state;
-        public FishPointInteractHandle fishUnit => fishPointHandle;
+        public FishPointInteractAgent fishUnit => fishPointHandle;
         public FoodPlantInteractHandle FoodPlantInteract => foodPlantHandle;
         public ConcreteDistillerInteractAgent DistillerAgent => distilerAgent;
 
@@ -32,7 +32,7 @@ namespace Peixi
         private List<FacilityData> _pendingItems = new List<FacilityData>();
         private Dictionary<FacilityType, Action> _startInteractCode = new Dictionary<FacilityType, Action>();
 
-        private FishPointInteractHandle fishPointHandle = new FishPointInteractHandle();
+        private FishPointInteractAgent fishPointHandle = new FishPointInteractAgent();
         private FoodPlantInteractHandle foodPlantHandle = new FoodPlantInteractHandle();
         private ConcreteDistillerInteractAgent distilerAgent = new ConcreteDistillerInteractAgent();
 

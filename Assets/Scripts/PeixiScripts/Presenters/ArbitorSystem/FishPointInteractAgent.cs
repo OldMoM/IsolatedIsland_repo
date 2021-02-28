@@ -6,7 +6,7 @@ using UniRx;
 
 namespace Peixi
 {
-    public class FishPointInteractHandle 
+    public class FishPointInteractAgent 
     {
         public IObservable<Unit> onInteractStart => _onInteractStart;
         public IObservable<FishingResult> onInteractEnd => _onInteractEnd;

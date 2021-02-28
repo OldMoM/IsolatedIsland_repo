@@ -1,40 +1,59 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UniRx.Triggers;
+using UniRx;
 
 namespace Peixi
 {
-    public class FacilityFishPoint : BaseItem
+    public class FacilityFishPoint : MonoBehaviour
     {
+  
         public FacilityData facilityData;
-        protected override void OnPlayerTouch(Collider other)
-        {
-            if (other.transform.tag == "Player" && data.isContact == false)
-            {
-                data.isContact = true;
 
-                getArbitorSysten()
-                    .facilityInteractAgent
-                    .PlayerTouchFacility(facilityData);
-            }
-        }
-        protected override void OnPlayerUntouch(Collider other)
-        {
-            if (other.transform.tag == "Player" && data.isContact == true)
-            {
-                data.isContact = false;
+        public FishPointModel model;
 
-                getArbitorSysten()
-                    .facilityInteractAgent
-                    .PlayerUntouchFacility(facilityData);
-                    
-            }
-        }
-        protected override void init()
+        private FacilityInteractionAgent agent;
+        private SphereCollider trigger;
+
+        private void Start()
         {
-            base.init();
             facilityData.position = transform.position;
+            print(transform.position);
             facilityData.instanceId = this.GetInstanceID();
+            trigger = GetComponent<SphereCollider>();
+
+            model.isContact = new BoolReactiveProperty();
+
+            agent = InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent;
+
+
+            OnPlayerTouched();
+            OnPlayerUntouched();
         }
+
+        void OnPlayerTouched()
+        {
+            ObservableTriggerExtensions.OnTriggerEnterAsObservable(trigger)
+                .Where(x => x.tag == "Player" && !model.isContact.Value)
+                .Subscribe(x =>
+                {
+                    model.isContact.Value = true;
+                    agent.PlayerTouchFacility(facilityData);
+                });
+        }
+        void OnPlayerUntouched()
+        {
+            ObservableTriggerExtensions.OnTriggerExitAsObservable(trigger)
+                .Where(x => x.tag == "Player" && model.isContact.Value)
+                .Subscribe(x =>
+                {
+                    model.isContact.Value = false;
+                    agent.PlayerUntouchFacility(facilityData);
+                });
+        }
+    }
+
+    public struct FishPointModel
+    {
+        public BoolReactiveProperty isContact;
     }
 }
