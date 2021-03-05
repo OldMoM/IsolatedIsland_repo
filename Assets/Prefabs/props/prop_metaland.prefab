@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2454104126510399095}
   - component: {fileID: 8863250128512821764}
   m_Layer: 0
-  m_Name: Prop_island
+  m_Name: prop_metaland
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

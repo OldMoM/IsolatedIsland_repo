@@ -5,6 +5,7 @@ using UnityEngine;
 using UniRx;
 using System;
 using UnityEngine.Assertions;
+using UnityEngine.AI;
 
 namespace Peixi
 {
@@ -97,10 +98,14 @@ namespace Peixi
         {
             var cellsize = system.Settings._cellSize;
             var redCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            redCube.transform.localScale = new Vector3(cellsize, 2, cellsize);
-            redCube.transform.position = new Vector3(gridPos.x * cellsize, 1, gridPos.y * cellsize);
+            redCube.AddComponent<NavMeshObstacle>();
+
+            var offset = new Vector3(-0.5f, 0, -0.5f);
+            redCube.transform.localScale = new Vector3(cellsize - 0.5f, 2, cellsize - 0.5f);
+            redCube.transform.position = new Vector3(gridPos.x * cellsize, 1, gridPos.y * cellsize) + offset;
             var renderer = redCube.GetComponent<MeshRenderer>();
-            renderer.material.color = Color.red;
+            //renderer.material.color = new Color(1, 1, 1, 1);
+            renderer.enabled = false;
 
             var wallSet = GameObject.Find("WallSet");
             redCube.transform.parent = wallSet.transform;

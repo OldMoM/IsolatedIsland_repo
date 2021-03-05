@@ -17,7 +17,6 @@ namespace Peixi
         private void Start()
         {
             facilityData.position = transform.position;
-            print(transform.position);
             facilityData.instanceId = this.GetInstanceID();
             trigger = GetComponent<SphereCollider>();
 

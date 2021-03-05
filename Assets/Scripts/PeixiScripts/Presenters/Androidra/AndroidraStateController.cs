@@ -38,20 +38,30 @@ namespace Peixi
         }
 
         private IPlayerSystem playerSystem;
-        private ReactiveProperty<AndroidraState> state = new ReactiveProperty<AndroidraState>();
+        private ReactiveProperty<AndroidraState> state = new ReactiveProperty<AndroidraState>(AndroidraState.Idle);
         private AndroidraNavPresenter navModule;
         private AndroidraStateControllerModel model;
         private IAndroidraSystem _system;
         private void OnPlayerStartMoveToFollow()
         {
+            Debug.Log(1);
             playerSystem.StateController.onStateChanged
                 .Where(x => x == PlayerState.MotionState)
                 .Where(x => state.Value != AndroidraState.Building)
                 .Subscribe(x =>
                 {
+                    Debug.Log(2);
                     state.Value = AndroidraState.Follow;
                 });
-                
+
+            playerSystem.StateController.onStateChanged
+                .Where(x => x == PlayerState.MotionState)
+                .Subscribe(x =>
+                {
+                    Debug.Log(3);
+                    state.Value = AndroidraState.Follow;
+                });
+
         }
         private void OnPlayerEndMoveToEndFollow()
         {
@@ -63,7 +73,6 @@ namespace Peixi
                 .Subscribe(x =>
                 {
                     state.Value = AndroidraState.Building;
-                    //Debug.Log("Set androidra's state as " + state.Value);
                 });
         }        
         private void OnBuildAnimationEnd()

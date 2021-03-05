@@ -39,9 +39,9 @@ namespace Peixi
                     if (time >= model.dayTime)
                     {
                         model.isDay = false;
+                        _onDayEnd.OnNext(day);
                         startNight();
                     }
-                    
                 });
         }
 
@@ -55,9 +55,9 @@ namespace Peixi
                     model.time.Value = 0;
                     model.day.Value++;                   
                     model.isDay = true;
+                    _onDayStart.OnNext(day);
                 }).AddTo(this);
         }
-
     }
     [Serializable]
     public struct TimeSystemModel

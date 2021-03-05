@@ -10,9 +10,9 @@ namespace Tests
     {
         // A Test behaves as an ordinary method
         [Test]
-        public void createIsland_notNull()
+        public void createPlantIsland_notNull()
         {
-            var islandEntity = ToolKit.prefabFactory.creatGameobject(PrefabTags.island);
+            var islandEntity = ToolKit.prefabFactory.creatGameobject(PrefabTags.plantIsland);
             Assert.IsNotNull(islandEntity);
         }
         [Test]
@@ -32,6 +32,12 @@ namespace Tests
         {
             var fishPoint = ToolKit.prefabFactory.creatGameobject(PrefabTags.fishPoint);
             Assert.IsNotNull(fishPoint);
+        }
+        [Test]
+        public void createMetalIsland_notNull()
+        {
+            var metalIsland = ToolKit.prefabFactory.creatGameobject(PrefabTags.metaland);
+            Assert.IsNotNull(metalIsland);
         }
     }
 }

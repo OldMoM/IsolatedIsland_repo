@@ -54,7 +54,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3
 --- !u!114 &1396979404908261067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,3 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae665aa5cd9b72e408ae7c99b9956856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amplitude: 0.157
+  frequency: 1
+  time: 0

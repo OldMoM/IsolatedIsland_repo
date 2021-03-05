@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Peixi;
-//using Siwei;
+using Siwei;
 using UnityEngine.Assertions;
 using System;
 
@@ -18,6 +18,7 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
     private IPlayerSystem playerSystem;
     private IPlayerPropertySystem propertySystem;
     private IAndroidraSystem androidraSystem;
+    private IBuildSketch buildSketch;
 
     public static IInterfaceArchive Archive
     {
@@ -123,6 +124,18 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             }
             Assert.IsNotNull(androidraSystem, "未在Hierarchy中部署Androidra.prefab");
             return androidraSystem;
+        }
+    }
+    public IBuildSketch IBuildSketch
+    {
+        get
+        {
+            if (buildSketch is null)
+            {
+                buildSketch = FindObjectOfType<BuildSketch>();
+            }
+            Assert.IsNotNull(buildSketch, "未在Hierarchy中部署BuildSketch.prefab");
+            return buildSketch;
         }
     }
 }

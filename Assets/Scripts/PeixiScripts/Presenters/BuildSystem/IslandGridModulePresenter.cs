@@ -22,7 +22,6 @@ namespace Peixi
         protected GridModule<Vector2Int,IslandGridData> model = new GridModule<Vector2Int, IslandGridData>();
         public IObservable<DictionaryAddEvent<Vector2Int, IslandGridData>> OnIslandBuilt => model.OnDataAdded;
         public IObservable<DictionaryRemoveEvent<Vector2Int, IslandGridData>> OnIslandRemoved => model.OnDataRemoved;
-
         public void BuildIslandAt(Vector2Int buildPos,int durability = 100)
         {
             model.AddData(buildPos,

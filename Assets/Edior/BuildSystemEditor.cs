@@ -21,9 +21,10 @@ namespace GameEditors
             foldSettings = EditorGUILayout.Foldout(foldSettings, "Grid Settings");
             if (foldSettings)
             {
-                EditorGUILayout.FloatField("Cell size", _system.settings._cellSize);
-                EditorGUILayout.Vector2Field("Grid origin", _system.settings._origin);
+                _system.settings._cellSize = EditorGUILayout.FloatField("Cell size", _system.settings._cellSize);
+                _system.settings._origin = EditorGUILayout.Vector2Field("Grid origin", _system.settings._origin);
+
             }
-        }
+        }                    
     }
 }

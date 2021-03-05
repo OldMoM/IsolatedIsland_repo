@@ -4,6 +4,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Peixi;
+using Siwei;
 
 namespace Tests
 {
@@ -49,6 +50,15 @@ namespace Tests
             var achive = config();
             var buildSystem = new GameObject().AddComponent<BuildSystem>();
             Assert.IsNotNull(achive.IBuildSystem);
+            yield return null;
+        }
+        [UnityTest] 
+        public IEnumerator GetInterface_IBuildSketch_notnull()
+        {
+            var achive = config();
+            var ibuildSketch = new GameObject().AddComponent<BuildSketch>();
+           
+            Assert.IsNotNull(achive.IBuildSketch);
             yield return null;
         }
     }

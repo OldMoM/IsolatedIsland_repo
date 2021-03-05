@@ -3,66 +3,69 @@ using UnityEngine;
 using System;
 using UniRx;
 
-public class TimeSystemView : MonoBehaviour
-{
-    public Text time;
-    public Text day;
-    public RawImage blackScreen;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //监视时间系统数值的变化
-        GameEvents.Sigton.timeSystem
-            .Throttle(TimeSpan.FromSeconds(0.1f))//过滤过密的数据请求
-            .Subscribe(_data =>
-            {
-                time.text = _data.TimeCountdown.ToString();
-                day.text = _data.DayCount.ToString();
-            });
 
-        GameEvents.Sigton.onDayStart += () =>
-        {
-            BlackScreenFadeOut();
-        };
-        GameEvents.Sigton.onDayEnd += () =>
-        {
-            BlackScreenFadeIn();
-        };
-    }
-
-    public void BlackScreenFadeOut()
+namespace Peixi {
+    public class TimeSystemView : MonoBehaviour
     {
-        IDisposable fadeInMircotine = null;
-        Color _color = new Color();
-        fadeInMircotine = Observable.EveryLateUpdate()
-            .Subscribe(x => 
-            {
-                _color.a = Mathf.Lerp(blackScreen.color.a, 0, 0.1f);
-                blackScreen.color = _color;
-                if (_color.a < 0.05f)
+        public RawImage blackScreen;
+        public float fadeTime;
+
+        private ITimeSystem itimeSystem;
+        // Start is called before the first frame update
+        void Start()
+        {
+            itimeSystem = InterfaceArichives.Archive.ITimeSystem;
+
+            itimeSystem.onDayEnd
+                .Subscribe(x =>
                 {
-                    _color.a = 0;
+                    print("the day ended");
+                    BlackScreenFadeIn();
+                });
+
+            itimeSystem.onDayStart
+                .Subscribe(x =>
+                {
+                    print("the day started");
+                    BlackScreenFadeOut();
+                });
+        }
+
+        public void BlackScreenFadeOut()
+        {
+            IDisposable fadeInMircotine = null;
+            Color _color = new Color();
+            fadeInMircotine = Observable.EveryLateUpdate()
+                .Subscribe(x =>
+                {
+
+                    _color.a = Mathf.Lerp(blackScreen.color.a, 0, fadeTime * Time.deltaTime);
+                    blackScreen.color = _color;
+                    if (_color.a < 0.05f)
+                    {
+                        _color.a = 0;
+                        blackScreen.color = _color;
+                        fadeInMircotine.Dispose();
+                    }
+                });
+        }
+
+        public void BlackScreenFadeIn()
+        {
+            IDisposable fadeInMircotine = null;
+            Color _color = new Color();
+            fadeInMircotine = Observable.EveryLateUpdate()
+            .Subscribe(x =>
+            {
+                _color.a = Mathf.Lerp(blackScreen.color.a, 1, fadeTime * Time.deltaTime);
+                blackScreen.color = _color;
+                if (_color.a > 0.99f)
+                {
+                    _color.a = 1;
                     blackScreen.color = _color;
                     fadeInMircotine.Dispose();
                 }
             });
+        }
     }
-
-    public void BlackScreenFadeIn()
-    {
-        IDisposable fadeInMircotine = null;
-        Color _color = new Color();
-        fadeInMircotine = Observable.EveryLateUpdate()
-        .Subscribe(x =>
-        {
-            _color.a = Mathf.Lerp(blackScreen.color.a,1, 0.1f);
-            blackScreen.color = _color;
-            if (_color.a > 0.99f)
-            {
-                _color.a = 1;
-                blackScreen.color = _color;
-                fadeInMircotine.Dispose();
-            }
-        });
-    }
-}  
+}

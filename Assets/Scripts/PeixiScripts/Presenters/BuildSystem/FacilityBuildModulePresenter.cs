@@ -21,16 +21,9 @@ namespace Peixi
 
         public void BuildFacility(string type,Vector2Int gridPos)
         {
-            Debug.Log(type);
-            //var hasIsland = buildSystem.CheckThePositionHasIsland(gridPos);
-            //Assert.IsTrue(hasIsland, "Facility必须建造在Island上");
-
             var facilityData = new FacilityGridData();
             facilityData.type = type;
             facilityData.position = gridPos;
-            //facilityData.FacilityName = gridPos;
-
-
             model.AddData(gridPos,facilityData);
         }
         public bool HasFacility(Vector2Int gridPos)

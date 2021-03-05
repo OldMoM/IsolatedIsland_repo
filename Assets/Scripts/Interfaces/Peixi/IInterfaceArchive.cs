@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Siwei;
+using Siwei;
 using Peixi;
 
 public interface IInterfaceArchive
@@ -14,4 +14,5 @@ public interface IInterfaceArchive
     IInGameUIComponentsInterface InGameUIComponentsManager { get; }
     IPlayerSystem PlayerSystem { get; }
     IAndroidraSystem IAndroidraSystem { get; }
+    IBuildSketch IBuildSketch { get; }
 }

@@ -45,6 +45,7 @@ namespace Peixi
         Func<Vector2Int,GridSetting, Vector3> gridToWorldPosition { get; }
 
         Func<Vector2Int,Vector3> newGridToWorldPosition { get; }
+        Func<Vector3, Vector2Int> newWorldToGridPosition { get; }
 
         /// <summary>
         /// 获得某处岛块的操作接口
@@ -78,8 +79,8 @@ namespace Peixi
         /// <summary>
         /// 网格设置参数
         /// </summary>
-        GridSetting Settings { get; }
-        FacilityBuildModulePresenter facilityBuildMod { get; }
+        GridSetting Settings { get; set; }
+        FacilityBuildModulePresenter facilityBuildMod { get;}
     }
 }
 

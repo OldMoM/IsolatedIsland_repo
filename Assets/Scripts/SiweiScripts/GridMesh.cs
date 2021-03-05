@@ -72,8 +72,6 @@ namespace Siwei {
             meshRenderer.material = new Material(Shader.Find("Sprites/Default"));
             meshRenderer.material.color = Color.white;
         }
-
-
         public void DrawOnMouseClicked(Vector3 pos)
         {
             Vector2 idx = GetGridIndex(pos);

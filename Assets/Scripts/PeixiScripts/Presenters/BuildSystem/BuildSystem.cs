@@ -12,7 +12,7 @@ namespace Peixi
     /// </summary>
     public class BuildSystem : MonoBehaviour, IBuildSystem
     {
-        public GridSetting settings = new GridSetting(3, Vector2.zero);
+        public GridSetting settings = new GridSetting(4, Vector2.zero);
 
         #region//privates
         private IslandGridModulePresenter _islandGridModule;
@@ -20,6 +20,7 @@ namespace Peixi
         private GameObjectBuiltModuleView _view;
         private PositionConvent _posTransMod = new PositionConvent();
         private Subject<Vector2Int> _onIslandSunk = new Subject<Vector2Int>();
+        private BuildSketchAgent sketchAgent;
         #endregion
 
         #region IObservables
@@ -67,8 +68,15 @@ namespace Peixi
         }
         public Func<Vector3, GridSetting,Vector2Int> worldToGridPosition => _posTransMod.WorldToGridPosition;
         public Func<Vector2Int,GridSetting, Vector3> gridToWorldPosition => _posTransMod.GridToWorldPosition;
-        public GridSetting Settings => settings;
-
+        public GridSetting Settings
+        {
+            get => settings;
+            set
+            {
+                settings = value;
+            }
+        }
+  
         public FacilityBuildModulePresenter facilityBuildMod
         {
             get
@@ -80,21 +88,36 @@ namespace Peixi
                 return _facilityModule;
             }
         }
-
         public Func<Vector2Int, Vector3> newGridToWorldPosition => (Vector2Int gridPos) =>
         {
             var worldPos = _posTransMod.GridToWorldPosition(gridPos, settings);
             return worldPos;
         };
+
+        public Func<Vector3, Vector2Int> newWorldToGridPosition => (Vector3 worldPos) =>
+        {
+            var gridPos = _posTransMod.WorldToGridPosition(worldPos,settings);
+            return gridPos;
+        };
+
+        private IEnumerator CreateBuildSketchAgent()
+        {
+            var ibuildSketch = InterfaceArichives.Archive.IBuildSketch;
+            yield return new WaitForSeconds(1);
+            print(ibuildSketch.OnMouseClicked == null);
+            sketchAgent = new BuildSketchAgent(InterfaceArichives.Archive.IBuildSketch, this);
+        }
         #endregion
 
         private void Awake()
         {
             _islandGridModule = GetComponentInChildren<IslandGridModulePresenter>();
-            //_facilityModule = GetComponentInChildren<FacilityModulePresenter>();
-            //_facilityModule = new FacilityModulePresenter(this);
+            //sketchAgent = new BuildSketchAgent(InterfaceArichives.Archive.IBuildSketch,
+            //_islandGridModule);
+            //StartCoroutine(CreateBuildSketchAgent());
 
             _view = GetComponent<GameObjectBuiltModuleView>();
+           
         }
     }
     public struct PositionConvent 
@@ -132,11 +155,11 @@ namespace Peixi
         /// <summary>
         /// 网格宽度
         /// </summary>
-        public readonly float _cellSize;
+        public float _cellSize;
         /// <summary>
         /// 网格起始坐标
         /// </summary>
-        public readonly Vector2 _origin;
+        public Vector2 _origin;
         public GridSetting(float cellSize,Vector2 origin)
         {
             _cellSize = cellSize;
