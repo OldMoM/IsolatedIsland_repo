@@ -46,9 +46,16 @@ namespace Caoye
         public void StartDialog(string dialogId)
         {
             //check dialogId Valid
-            
+
             //send context to flowchart
-            flowchart.SendFungusMessage(dialogId);
+            if (!isActive)
+            {
+                flowchart.SendFungusMessage(dialogId);
+            } else
+            {
+                Debug.Log("当前有对话正在进行！");
+            }
+            
         }
 
         public void StartSelfDialog(int characterId, string context)
