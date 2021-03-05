@@ -23,7 +23,7 @@ public class DrawGizmoGrid : MonoBehaviour
 	public int maxY = 15;
 
 	// nudges the whole grid rel
-	public Vector3 gridOffset = Vector3.zero;
+	private Vector3 gridOffset = new Vector3(-0.5f, 0, -0.5f);
 
 	// is this an XY or an XZ grid?
 	public bool topDownGrid = true;

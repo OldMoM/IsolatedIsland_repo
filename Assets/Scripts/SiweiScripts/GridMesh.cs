@@ -7,15 +7,23 @@ namespace Siwei {
     [RequireComponent(typeof(MeshFilter))]
     public class GridMesh : MonoBehaviour
     {
-        public int GridSize;
-        public float gridScale;
-        public Vector3 offset = Vector3.zero;
-        //public Vector3 worldPosition;
-        public static Plane plane = new Plane(Vector3.up, 0);
+        private BuildSketch sketch;
+
+        private Vector3 offset = Vector3.zero;
         private float distance;
+
+        public int gridSize;
+        public float gridScale;
+        public static Plane plane = new Plane(Vector3.up, 0);
+        
         public GameObject gridMesh;
         public GameObject drawObject;
+        public GameObject drawCoord;
 
+        private void Start()
+        {
+            
+        }
 
         private void Update()
         {
@@ -37,27 +45,30 @@ namespace Siwei {
         }
         void Awake()
         {
+            sketch = FindObjectOfType<BuildSketch>();
+            offset -= gridScale*0.5f * new Vector3(1f, 0, 1f);
+            offset -= gridSize / 2 * gridScale * new Vector3(1f, 0, 1f);
+            //Debug.Log("Offset is [:" + offset.x + "," + offset.y + "," + offset.z + "]");
 
             MeshFilter filter = gridMesh.GetComponent<MeshFilter>();
             var mesh = new Mesh();
             var verticies = new List<Vector3>();
 
             var indicies = new List<int>();
-            for (int i = 0; i <= GridSize; i++)
-            {
 
+            for (int i = 0; i <= gridSize; i++)
+            {
                 verticies.Add(new Vector3(i * gridScale, 0, 0)+offset);
-                verticies.Add(new Vector3(i * gridScale, 0, GridSize * gridScale) + offset);
+                verticies.Add(new Vector3(i * gridScale, 0, gridSize * gridScale) + offset);
 
                 indicies.Add(4 * i + 0);
                 indicies.Add(4 * i + 1);
 
                 verticies.Add(new Vector3(0, 0, i * gridScale) + offset);
-                verticies.Add(new Vector3(GridSize * gridScale, 0, i * gridScale) + offset);
+                verticies.Add(new Vector3(gridSize * gridScale, 0, i * gridScale) + offset);
 
                 indicies.Add(4 * i + 2);
                 indicies.Add(4 * i + 3);
-
             }
             //// checking drawing lines
             //for (int i = 0; i < verticies.Count; i++) {
@@ -71,6 +82,31 @@ namespace Siwei {
             MeshRenderer meshRenderer = gridMesh.GetComponent<MeshRenderer>();
             meshRenderer.material = new Material(Shader.Find("Sprites/Default"));
             meshRenderer.material.color = Color.white;
+
+
+            /*
+            // draw Coord for debug
+            MeshFilter _filter = drawCoord.GetComponent<MeshFilter>();
+            var _mesh = new Mesh();
+            var _verticies = new List<Vector3>();
+            var _indicies = new List<int>();
+            _verticies.Add(new Vector3(-50f, 0, 0));
+            _verticies.Add(new Vector3(50f, 0, 0));
+            _indicies.Add(0);
+            _indicies.Add(1);
+
+            _verticies.Add(new Vector3(0, 0, 50f));
+            _verticies.Add(new Vector3(0, 0, -50f));
+            _indicies.Add(2);
+            _indicies.Add(3);
+
+            _mesh.vertices = _verticies.ToArray();
+            _mesh.SetIndices(_indicies.ToArray(), MeshTopology.Lines, 0);
+            _filter.mesh = _mesh;
+            MeshRenderer _meshRenderer = drawCoord.GetComponent<MeshRenderer>();
+            _meshRenderer.material = new Material(Shader.Find("Sprites/Default"));
+            _meshRenderer.material.color = Color.yellow;
+            */
         }
 
 
@@ -97,13 +133,23 @@ namespace Siwei {
 
             MeshRenderer meshRenderer = drawObject.GetComponent<MeshRenderer>();
             meshRenderer.material = new Material(Shader.Find("Sprites/Default"));
-            meshRenderer.material.color = Color.green;
+
+            if (sketch.PermitBuildIsland)
+            {
+                meshRenderer.material.color = Color.green;
+            }
+            else {
+                meshRenderer.material.color = Color.red;
+            }
+            
         }
 
         public Vector2 GetGridIndex(Vector3 pos) { 
             Vector2 idx = new Vector2(Mathf.Floor((pos.x - offset.x) / gridScale), Mathf.Floor((pos.z - offset.z) / gridScale));
+            /*
             if (Input.GetMouseButtonDown(0))
                 Debug.Log("Current Grid index:" + "(" + idx.x + "," + idx.y + ")");
+            */
             return idx;
         }
     }

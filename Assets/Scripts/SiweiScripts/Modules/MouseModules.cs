@@ -14,16 +14,21 @@ namespace Siwei {
         }
         public IObservable<Vector3> OnMouseHoverPositionChanged()
         {
-            return mousePos.Distinct().Select(_ => GetMouseChangedPos(Input.mousePosition));
+            return mousePos.Distinct().Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
         }
 
         public IObservable<Vector3> OnMouseClicked﻿()
         {
+            //return mousePos.Where(_ => Input.GetMouseButtonDown(0)).Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition));
             return mousePos.Where(_ => Input.GetMouseButtonDown(0)).Select(_ => GetGridPosition(Input.mousePosition));
-
         }
 
+        /// <summary>
+        /// 得到鼠标在y=0平面的投影三维坐标
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
         private Vector3 GetGridPosition(Vector3 pos)
         {
             Plane plane = GridMesh.plane;
@@ -37,12 +42,6 @@ namespace Siwei {
             }
             Debug.Log("Ray did not get to the target plane");
             return new Vector3(10000, 10000, 10000);
-        }
-
-        private Vector3 GetMouseChangedPos(Vector3 pos)
-        {
-            //this.mousePos = pos;
-            return GetGridPosition(pos);
         }
     }
 }
