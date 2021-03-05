@@ -20,8 +20,7 @@ namespace Siwei {
 
         public IObservable<Vector3> OnMouseClicked﻿()
         {
-            //return mousePos.Where(_ => Input.GetMouseButtonDown(0)).Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            return mousePos.Where(_ => Input.GetMouseButtonDown(0)).Select(_ => GetGridPosition(Input.mousePosition));
+            return mousePos.Where(_ => Input.GetMouseButtonDown(0)).Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
 
         /// <summary>
