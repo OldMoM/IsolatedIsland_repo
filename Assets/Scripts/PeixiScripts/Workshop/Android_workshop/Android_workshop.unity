@@ -2307,7 +2307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4059663972355947467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.401, z: 0}
+  m_LocalPosition: {x: 0, y: -0.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7643164496242122357}
@@ -2324,13 +2324,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Androidra_actived
       objectReference: {fileID: 0}
+    - target: {fileID: 1396979404908261064, guid: dc8481e1b75fa1c4d99c12e7c400660e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1396979404908261070, guid: dc8481e1b75fa1c4d99c12e7c400660e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.63
       objectReference: {fileID: 0}
     - target: {fileID: 1396979404908261070, guid: dc8481e1b75fa1c4d99c12e7c400660e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.3333322
       objectReference: {fileID: 0}
     - target: {fileID: 1396979404908261070, guid: dc8481e1b75fa1c4d99c12e7c400660e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2368,12 +2372,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3467797855673237378, guid: dc8481e1b75fa1c4d99c12e7c400660e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4693940605738175344, guid: dc8481e1b75fa1c4d99c12e7c400660e, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9179330623285881633, guid: dc8481e1b75fa1c4d99c12e7c400660e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc8481e1b75fa1c4d99c12e7c400660e, type: 3}
+--- !u!4 &1396979406902720586 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9179330623285881633, guid: dc8481e1b75fa1c4d99c12e7c400660e, type: 3}
+  m_PrefabInstance: {fileID: 1396979406902720585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!135 &2045383043554132985
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2465,6 +2482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7643164496242122357}
   - component: {fileID: 7643164496242122356}
+  - component: {fileID: 7643164496242122358}
   m_Layer: 0
   m_Name: DeactivedAndroidraForPlayAnimatin
   m_TagString: Untagged
@@ -2485,6 +2503,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDetectCollider: {fileID: 404256783}
+  RealAndroidActiveArtModel: {fileID: 1396979406902720586}
+  fakeArtModel: {fileID: 437236545857362842}
   readyToActive: 0
 --- !u!4 &7643164496242122357
 Transform:
@@ -2494,7 +2514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7643164496242122355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.63, y: 1, z: -3.12}
+  m_LocalPosition: {x: -3.63, y: 0.3333322, z: -3.12}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 437236545857362842}
@@ -2503,3 +2523,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7643164496242122358
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7643164496242122355}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e56b3b922914ff44b5cacbce99f2415, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

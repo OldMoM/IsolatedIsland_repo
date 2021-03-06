@@ -17,6 +17,8 @@ namespace Peixi
         private IDialogSystem dialogSystem;
         private IPlayerSystem iplayerSystem;
 
+        public AndroidActiveProgram activeProgram;
+
         private void Start()
         {
             blackScreen.gameObject.SetActive(true);
@@ -67,6 +69,20 @@ namespace Peixi
                     playerState.Value = PlayerState.IdleState;
                 });
 
+            activeProgram.OnAndroidraActiveCompleted
+                .Subscribe(x =>
+                {
+                    dialogSystem.StartDialog(DialogIdTags.Androidra_actived);
+                });
+
+            //Androidra被激活后播放对话Androidra_actived
+            //对话完成后，玩家获得操作
+            dialogSystem.OnDialogEnd
+                .Where(x => x == DialogIdTags.Androidra_actived)
+                .Subscribe(x =>
+                {
+                    iplayerSystem.StateController.playerState.Value = PlayerState.IdleState;
+                });
         }
 
         public void InitScene()

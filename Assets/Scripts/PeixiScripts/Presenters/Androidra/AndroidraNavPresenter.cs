@@ -67,6 +67,7 @@ namespace Peixi
                 });
 
             Observable.EveryUpdate()
+                .Where(x=> _state.State != AndroidraState.Sleep)
                 .Subscribe(x =>
                 {
                     _agent.SetDestination(target);

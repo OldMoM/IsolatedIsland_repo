@@ -15,11 +15,16 @@ namespace Peixi
         public float amplitude;
         public float frequency;
         public float time;
+
+        private AndroidraStateController state;
         public IDisposable EnableAndroidModelFloating(Transform androidraModel)
         {
+            state = InterfaceArichives.Archive.IAndroidraSystem.androidState;
+
             var positionStart_y = androidraModel.position.y;
             IDisposable floatingProcess = 
             Observable.EveryLateUpdate()
+                .Where(x=> state.State != AndroidraState.Sleep)
                 .Subscribe(x =>
                 {
                     var position_y = amplitude * Mathf.Sin(time * 2 * Mathf.PI * frequency) + positionStart_y;
