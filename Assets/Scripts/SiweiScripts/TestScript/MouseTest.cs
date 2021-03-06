@@ -17,10 +17,9 @@ namespace Siwei
         {
             
             sketch.OnMouseClicked.Subscribe(pos => {
-                Debug.Log("Mouse x:" + pos.x);
-                Debug.Log("Mouse y:" + pos.y);
-                Debug.Log("Mouse z:" + pos.z);
+                Debug.Log("Clicked Mouse position:[" + pos.x + "," + pos.z+"]"); 
             });
+            
             /*
             sketch.OnMouseHoverPositionChanged.Subscribe(pos =>
             {
@@ -34,7 +33,12 @@ namespace Siwei
         // Update is called once per frame
         void Update()
         {
-
+            if (Input.GetKeyDown(KeyCode.E)) {
+                bool curState = sketch.PermitBuildIsland;
+                Debug.Log("Before state change:" + sketch.PermitBuildIsland);
+                sketch.PermitBuildIsland = !curState;
+                Debug.Log("Permit state changed to:" + sketch.PermitBuildIsland);
+            }
         }
     }
 }
