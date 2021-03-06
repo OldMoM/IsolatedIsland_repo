@@ -157,7 +157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1407680519083032534}
-  - component: {fileID: 1461494391302230647}
+  - component: {fileID: 564162471}
   m_Layer: 0
   m_Name: TimeSystem
   m_TagString: Untagged
@@ -179,7 +179,7 @@ Transform:
   m_Father: {fileID: 8675821203183731929}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1461494391302230647
+--- !u!114 &564162471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,19 +188,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1827492171411797847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0dc6c7fc6505274e90016dd821ada52, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e4904f620d7392448c0f312c69ad4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeModel:
-    dayCount:
-      value: 1
-    timeCountdown:
+  model:
+    day:
       value: 0
-    isDay:
+    time:
       value: 0
-    dayLastTime: 30
-    nightLastTime: 5
-    isActive: 0
+    dayTime: 0
+    nightTime: 0
+    isDay: 0
 --- !u!1 &2503035310596052043
 GameObject:
   m_ObjectHideFlags: 0

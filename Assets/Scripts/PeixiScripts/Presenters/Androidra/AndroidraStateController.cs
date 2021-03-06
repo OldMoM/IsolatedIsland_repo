@@ -44,7 +44,6 @@ namespace Peixi
         private IAndroidraSystem _system;
         private void OnPlayerStartMoveToFollow()
         {
-            Debug.Log(1);
             playerSystem.StateController.onStateChanged
                 .Where(x => x == PlayerState.MotionState)
                 .Where(x => state.Value != AndroidraState.Building)

@@ -34,7 +34,7 @@ namespace Peixi
             var hasKey = CheckHasTheKey(key);
             if (hasKey)
             {
-                throw new System.Exception(exMsg);
+                throw new System.Exception(key + "处已经添加了数据，无法在重复添加");
             }
             model.gridData.Add(key, value);
         }

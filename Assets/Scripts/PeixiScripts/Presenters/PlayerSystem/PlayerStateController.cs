@@ -33,7 +33,6 @@ namespace Peixi
             onInteractStart.Subscribe(x =>
             {
                 Debug.Log("on player interact start");
-                playerState.Value = PlayerState.InteractState;
                 Debug.Log(playerState.Value);
             });
         }

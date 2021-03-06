@@ -3,6 +3,7 @@ using IngameDebugConsole;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Peixi;
 
 public class DebugDialogue : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class DebugDialogue : MonoBehaviour
     {
         DebugLogConsole.AddCommand<string>("startDialog", "进行对话", (stringId) =>
         {
-            IDialogSystem testDialog = FindObjectOfType<DialogueSystem>();
+            IDialogSystem testDialog = FindObjectOfType<LvDialogSystem>();
             testDialog.StartDialog(stringId);
         });
 
