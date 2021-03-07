@@ -21,5 +21,10 @@ namespace Siwei
         /// 允许鼠标在指向点处建造Island
         /// </summary>
         bool PermitBuildIsland﻿ { get; set; }
+
+        /// <summary>
+        /// 设置是否开启建造模式
+        /// </summary>
+        bool SetBuildMode { get; set; }
     }
 }
