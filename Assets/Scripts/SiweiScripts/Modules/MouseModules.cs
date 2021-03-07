@@ -14,13 +14,13 @@ namespace Siwei {
         }
         public IObservable<Vector3> OnMouseHoverPositionChanged()
         {
-            return mousePos.Distinct().Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            return mousePos.Distinct().Select(_ => GetGridPosition(Input.mousePosition));
 
         }
 
         public IObservable<Vector3> OnMouseClicked﻿()
         {
-            return mousePos.Where(_ => Input.GetMouseButtonDown(0)).Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            return mousePos.Where(_ => Input.GetMouseButtonDown(0)).Select(_ => GetGridPosition(Input.mousePosition));
         }
 
         /// <summary>

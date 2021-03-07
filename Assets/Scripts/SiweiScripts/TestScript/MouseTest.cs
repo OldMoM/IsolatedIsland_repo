@@ -17,7 +17,7 @@ namespace Siwei
         {
             
             sketch.OnMouseClicked.Subscribe(pos => {
-                Debug.Log("Clicked Mouse position:[" + pos.x + "," + pos.z+"]"); 
+                Debug.Log("Clicked Mouse position:[" + pos.x + ","+pos.z+"]"); 
             });
             
             /*
