@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using Siwei;
+using System;
 
 public class BuildSketchTest : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class BuildSketchTest : MonoBehaviour
     public BoolReactiveProperty permitBuildIsland = new BoolReactiveProperty();
 
     IBuildSketch buildSketch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,15 +22,34 @@ public class BuildSketchTest : MonoBehaviour
         });
 
         buildSketch.OnMouseClicked
-            .Subscribe(x =>
+                .Subscribe(y =>
+                {
+                    print("The mouse click position: " + y);
+                });
+
+        activeBuildSketch
+            .Subscribe(y =>
             {
-                print("The mouse click position: " + x);
+                buildSketch.SetBuildMode = y;
             });
+
+
+        //Observable.Timer(TimeSpan.FromSeconds(1))
+        //    .Subscribe(x =>
+        //    {
+        //        buildSketch.OnMouseClicked
+        //        .Subscribe(y =>
+        //        {
+        //            print("The mouse click position: " + y);
+        //        });
+
+        //        activeBuildSketch
+        //            .Subscribe(y =>
+        //            {
+        //                buildSketch.SetBuildMode = y;
+        //            });
+        //    });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
