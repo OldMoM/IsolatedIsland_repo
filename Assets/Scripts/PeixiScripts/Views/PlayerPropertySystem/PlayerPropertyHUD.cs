@@ -15,6 +15,15 @@ namespace Peixi
         public Image pleasureMask;
 
         public IPlayerPropertySystem property;
+
+        public void SetActiveHUD(bool active)
+        {
+            foreach (Transform item in transform)
+            {
+                item.gameObject.SetActive(active);
+            }
+        }
+
         private void Start()
         {
             Config()
@@ -22,7 +31,7 @@ namespace Peixi
                 .React(onHealthLevelChanged)
                 .React(OnPleasureLevelChanged)
                 .React(OnHungerLevelChanged)
-                .React(OnThirstLevelChanged);  
+                .React(OnThirstLevelChanged);
         }
 
         PlayerPropertyHUD Config()

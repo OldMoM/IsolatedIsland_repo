@@ -11,6 +11,7 @@ namespace Peixi
         public List<GameObject> childUICompoents;
 
         private IInventoryGui inventoryGui;
+        private PlayerPropertyHUD playerPropertyHUD;
 
         public IInventoryGui InventoryGui
         {
@@ -23,5 +24,7 @@ namespace Peixi
                 return inventoryGui;
             }
         }
+
+        public PlayerPropertyHUD PlayerPropertyHUD => playerPropertyHUD;
     }
 }

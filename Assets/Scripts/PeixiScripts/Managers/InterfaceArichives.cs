@@ -5,6 +5,7 @@ using Peixi;
 using Siwei;
 using UnityEngine.Assertions;
 using System;
+using Caoye;
 
 public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
 {
@@ -19,6 +20,7 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
     private IPlayerPropertySystem propertySystem;
     private IAndroidraSystem androidraSystem;
     private IBuildSketch buildSketch;
+    private IDialogSystem dialogSystem;
 
     public static IInterfaceArchive Archive
     {
@@ -136,6 +138,19 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             }
             Assert.IsNotNull(buildSketch, "未在Hierarchy中部署BuildSketch.prefab");
             return buildSketch;
+        }
+    }
+
+    public IDialogSystem IDialogSystem
+    {
+        get
+        {
+            if (dialogSystem is null)
+            {
+                dialogSystem = FindObjectOfType<LvDialogSystem>();
+            }
+            Assert.IsNotNull(dialogSystem, "未在Hierarchy中部署DialogueSystem.prefab");
+            return dialogSystem;
         }
     }
 }

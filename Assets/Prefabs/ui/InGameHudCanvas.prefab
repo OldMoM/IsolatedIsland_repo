@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2831497719694555065, guid: 4635e3c18a4bfae4d99b4011048c7397, type: 3}
       propertyPath: m_Name
-      value: AndroidBuildTimerWidege
+      value: androidraBuildTimerWidege
       objectReference: {fileID: 0}
     - target: {fileID: 2831497719694555066, guid: 4635e3c18a4bfae4d99b4011048c7397, type: 3}
       propertyPath: m_LocalPosition.x
@@ -556,9 +556,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7205631644429252924}
     m_Modifications:
+    - target: {fileID: 1182050405430133887, guid: 65ad120740c12044db7028b09e56d8c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4179364389079903527, guid: 65ad120740c12044db7028b09e56d8c5, type: 3}
       propertyPath: m_Name
       value: playerPropertyHUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802042585499910369, guid: 65ad120740c12044db7028b09e56d8c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5423355369351112829, guid: 65ad120740c12044db7028b09e56d8c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -643,6 +651,14 @@ PrefabInstance:
     - target: {fileID: 5423355369351112829, guid: 65ad120740c12044db7028b09e56d8c5, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851710743446855966, guid: 65ad120740c12044db7028b09e56d8c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778683687327951292, guid: 65ad120740c12044db7028b09e56d8c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65ad120740c12044db7028b09e56d8c5, type: 3}

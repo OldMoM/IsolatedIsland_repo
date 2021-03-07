@@ -2171,10 +2171,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2143144325, guid: 086f96b84024706428467a46834472b1, type: 3}
-      propertyPath: m_Name
-      value: androidraBuildTimerWidege
-      objectReference: {fileID: 0}
     - target: {fileID: 7205631644429252912, guid: 086f96b84024706428467a46834472b1, type: 3}
       propertyPath: m_Name
       value: InGameHudCanvas

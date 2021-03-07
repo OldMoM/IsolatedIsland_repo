@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Siwei;
 using Peixi;
+using Caoye;
 
 public interface IInterfaceArchive
 {
@@ -15,4 +16,5 @@ public interface IInterfaceArchive
     IPlayerSystem PlayerSystem { get; }
     IAndroidraSystem IAndroidraSystem { get; }
     IBuildSketch IBuildSketch { get; }
+    IDialogSystem IDialogSystem { get; }
 }

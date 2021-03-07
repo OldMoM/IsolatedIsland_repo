@@ -61,5 +61,15 @@ namespace Tests
             Assert.IsNotNull(achive.IBuildSketch);
             yield return null;
         }
+        [UnityTest]
+        public IEnumerator GetInterface_IDialogSystem_notnull()
+        {
+            var achive = config();
+            var iDialogSystem = new GameObject().AddComponent<LvDialogSystem>();
+
+            Assert.IsNotNull(achive.IDialogSystem);
+            yield return null;
+        }
+
     }
 }

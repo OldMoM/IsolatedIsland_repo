@@ -16,7 +16,6 @@ namespace Peixi
         public Transform blackScreen;
         private IDialogSystem dialogSystem;
         private IPlayerSystem iplayerSystem;
-
         public AndroidActiveProgram activeProgram;
 
         private void Start()
@@ -26,7 +25,6 @@ namespace Peixi
             iplayerSystem = InterfaceArichives.Archive.PlayerSystem;
 
             iplayerSystem.StateController.playerState.Value = PlayerState.InteractState;
-
 
             Observable.Timer(TimeSpan.FromSeconds(1))
                 .First()
@@ -73,15 +71,24 @@ namespace Peixi
                 .Subscribe(x =>
                 {
                     dialogSystem.StartDialog(DialogIdTags.Androidra_actived);
+                    iplayerSystem.StateController.playerState.Value = PlayerState.InteractState;
                 });
 
-            //Androidra被激活后播放对话Androidra_actived
-            //对话完成后，玩家获得操作
+            /*Androidra被激活后播放对话Androidra_actived
+            对话完成后，玩家获得操作
+            Androidra状态设置为Idle
+            激活PlayerPropertyHUD*/
             dialogSystem.OnDialogEnd
                 .Where(x => x == DialogIdTags.Androidra_actived)
                 .Subscribe(x =>
                 {
                     iplayerSystem.StateController.playerState.Value = PlayerState.IdleState;
+
+                    var iandroidra = InterfaceArichives.Archive.IAndroidraSystem;
+                    iandroidra.androidState.SetState(AndroidraState.Idle, this.name);
+
+                    var UIComponents = InterfaceArichives.Archive.InGameUIComponentsManager;
+                    UIComponents.PlayerPropertyHUD.SetActiveHUD(true);
                 });
         }
 

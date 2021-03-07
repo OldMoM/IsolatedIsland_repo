@@ -16,6 +16,7 @@ namespace Peixi
         private PlayerPropertySystem property = new PlayerPropertySystem();
         private PlayerAnimationView animationView;
         private Rigidbody rigid;
+        private PlayerSystemAgents systemAgents;
         #endregion
 
         #region//接口实现
@@ -69,6 +70,7 @@ namespace Peixi
             _behaivor       = createPlayerBehaviorView();
             stateController = createPlayerStateController(_movement);
             animationView   = createAnimationView();
+            //systemAgents = new PlayerSystemAgents(this);
         }
     }
 }
