@@ -7,29 +7,37 @@ using Caoye;
 
 namespace Peixi 
 {
-    public class PlayerSystemAgents
+    public class PlayerSystemAgent
     {
         private IPlayerSystem iPlayerSystem;
         private IDialogSystem iDialogSystem;
         private PlayerStateController controller;
+        private Rigidbody rigid;
 
-        public PlayerSystemAgents (IPlayerSystem playerSystem)
+        private void SetPlayState(PlayerState state)
+        {
+            controller.playerState.Value = state;
+        }
+
+        public PlayerSystemAgent (IPlayerSystem playerSystem)
         {
             iPlayerSystem = playerSystem;
             iDialogSystem = InterfaceArichives.Archive.IDialogSystem;
             controller = playerSystem.StateController;
+            rigid = iPlayerSystem.Rigid;
 
 
             iDialogSystem.OnDialogStart
                 .Subscribe(x =>
                 {
-                    controller.playerState.Value = PlayerState.InteractState;
+                    SetPlayState(PlayerState.InteractState);
+                    rigid.velocity = Vector3.zero;
                 });
 
             iDialogSystem.OnDialogEnd
                 .Subscribe(x =>
                 {
-                    controller.playerState.Value = PlayerState.IdleState;
+                    SetPlayState(PlayerState.IdleState);
                 });
         }
     }

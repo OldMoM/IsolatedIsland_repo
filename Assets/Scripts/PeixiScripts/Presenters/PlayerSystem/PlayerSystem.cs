@@ -16,7 +16,7 @@ namespace Peixi
         private PlayerPropertySystem property = new PlayerPropertySystem();
         private PlayerAnimationView animationView;
         private Rigidbody rigid;
-        private PlayerSystemAgents systemAgents;
+        private PlayerSystemAgent systemAgents;
         #endregion
 
         #region//接口实现
