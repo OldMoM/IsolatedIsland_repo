@@ -19,6 +19,7 @@ namespace Peixi
         public FishPointInteractAgent fishUnit => fishPointHandle;
         public FoodPlantInteractHandle FoodPlantInteract => foodPlantHandle;
         public ConcreteDistillerInteractAgent DistillerAgent => distilerAgent;
+        public TentInteractionProgress TentInteractionProgress => tentInteractionProgress;
 
         public InteractState state => _state.Value;
 
@@ -35,6 +36,7 @@ namespace Peixi
         private FishPointInteractAgent fishPointHandle = new FishPointInteractAgent();
         private FoodPlantInteractHandle foodPlantHandle = new FoodPlantInteractHandle();
         private ConcreteDistillerInteractAgent distilerAgent = new ConcreteDistillerInteractAgent();
+        private TentInteractionProgress tentInteractionProgress = new TentInteractionProgress();
 
         private FacilityInteractConditonDiscriminator discriminator;
       
@@ -97,6 +99,11 @@ namespace Peixi
             if (type == FacilityType.Distiller && discriminator.DistillerInteractCondition)
             {
                 distilerAgent.StartInteract();
+            }
+
+            if (type == FacilityType.Tent)
+            {
+                tentInteractionProgress.StartInteract();
             }
         }
         public void InteractEnd(FacilityType type)
@@ -211,7 +218,8 @@ namespace Peixi
         Island,
         FishPoint,
         FoodPlant,
-        Distiller
+        Distiller,
+        Tent
     }
     public enum InteractState
     {

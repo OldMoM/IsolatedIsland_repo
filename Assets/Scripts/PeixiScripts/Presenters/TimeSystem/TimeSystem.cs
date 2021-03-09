@@ -15,7 +15,7 @@ namespace Peixi
         public IObservable<int> onDayStart => _onDayStart;
         public IObservable<int> onDayEnd => _onDayEnd;
         public IObservable<int> onTimeChanged => model.time;
-
+        public Action StartNight => startNight;
 
         private IDisposable nightTimeCount_thread;
         private Subject<int> _onDayStart = new Subject<int>();
@@ -38,8 +38,6 @@ namespace Peixi
                     model.time.Value = time;
                     if (time >= model.dayTime)
                     {
-                        model.isDay = false;
-                        _onDayEnd.OnNext(day);
                         startNight();
                     }
                 });
@@ -47,6 +45,8 @@ namespace Peixi
 
         void startNight()
         {
+            model.isDay = false;
+            _onDayEnd.OnNext(day);
             Observable
                 .Timer(TimeSpan.FromSeconds(model.nightTime))
                 .First()

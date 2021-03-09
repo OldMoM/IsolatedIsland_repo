@@ -14,5 +14,6 @@ namespace Peixi
         IObservable<int> onDayStart { get; }
         IObservable<int> onDayEnd { get; }
         IObservable<int> onTimeChanged { get; }
+        Action StartNight { get; }
     }
 }

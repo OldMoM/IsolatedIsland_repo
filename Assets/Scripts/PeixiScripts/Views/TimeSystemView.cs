@@ -4,10 +4,12 @@ using System;
 using UniRx;
 
 
-namespace Peixi {
+namespace Peixi 
+{
     public class TimeSystemView : MonoBehaviour
     {
         public RawImage blackScreen;
+        [Range(1,4)]
         public float fadeTime;
 
         private ITimeSystem itimeSystem;
@@ -19,14 +21,12 @@ namespace Peixi {
             itimeSystem.onDayEnd
                 .Subscribe(x =>
                 {
-                    print("the day ended");
                     BlackScreenFadeIn();
                 });
 
             itimeSystem.onDayStart
                 .Subscribe(x =>
                 {
-                    print("the day started");
                     BlackScreenFadeOut();
                 });
         }
@@ -38,8 +38,8 @@ namespace Peixi {
             fadeInMircotine = Observable.EveryLateUpdate()
                 .Subscribe(x =>
                 {
-
-                    _color.a = Mathf.Lerp(blackScreen.color.a, 0, fadeTime * Time.deltaTime);
+                    _color.a = blackScreen.color.a;
+                    _color.a -= 1 / fadeTime * Time.deltaTime;
                     blackScreen.color = _color;
                     if (_color.a < 0.05f)
                     {
@@ -57,7 +57,8 @@ namespace Peixi {
             fadeInMircotine = Observable.EveryLateUpdate()
             .Subscribe(x =>
             {
-                _color.a = Mathf.Lerp(blackScreen.color.a, 1, fadeTime * Time.deltaTime);
+                _color.a = blackScreen.color.a;
+                _color.a += 1 / fadeTime * Time.deltaTime;
                 blackScreen.color = _color;
                 if (_color.a > 0.99f)
                 {

@@ -70,5 +70,8 @@ namespace Peixi
         /// </summary>
         /// <param name="gridSerial">格子编号</param>
         void OnPointerExitGrid(int gridSerial);
+
+        IObservable<bool> OnOpenStateChanged { get; }
+        IObservable<string> OnItemUsed { get; }
     }
 }

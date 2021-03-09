@@ -70,7 +70,7 @@ namespace Peixi
             _behaivor       = createPlayerBehaviorView();
             stateController = createPlayerStateController(_movement);
             animationView   = createAnimationView();
-            //systemAgents = new PlayerSystemAgents(this);
+            systemAgents = new PlayerSystemAgent(this);
         }
     }
 }

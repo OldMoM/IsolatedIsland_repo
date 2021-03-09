@@ -31,5 +31,7 @@ namespace Peixi
         /// <param name="gridSerial"></param>
         void OnPointerClickGrid(int gridSerial,string name);
         InventoryGui SetActive(bool active);
+        IObservable<bool> OnOpenStateChanged { get; }
+        IObservable<string> OnItemUsed { get; }
     }
 }

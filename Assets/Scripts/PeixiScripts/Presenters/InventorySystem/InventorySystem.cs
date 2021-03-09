@@ -30,6 +30,11 @@ namespace Peixi
         }
         public string SelectedItem { get => gui.SelectedItem; set => throw new NotImplementedException(); }
         public IObservable<string> OnSelectedItemChanged => gui.OnSelectedItemChanged;
+
+        public IObservable<bool> OnOpenStateChanged => throw new NotImplementedException();
+
+        public IObservable<string> OnItemUsed => throw new NotImplementedException();
+
         public InventoryPresenter AddItem(string name, int amount = 1)
         {
             return presenter.AddItem(name, amount);

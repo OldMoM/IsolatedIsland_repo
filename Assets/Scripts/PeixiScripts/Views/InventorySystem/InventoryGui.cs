@@ -33,7 +33,10 @@ namespace Peixi
 
         IInventorySystem iinventroy;
 
-        bool isOpened = false;
+        private BoolReactiveProperty isOpened = new BoolReactiveProperty(false);
+        private Subject<string> onItemUsed = new Subject<string>();
+        //private BoolReactiveProperty onOpenStateChanged = new BoolReactiveProperty(false);
+
 
         [SerializeField]
         [Tooltip("当前选中的Item")]
@@ -55,6 +58,11 @@ namespace Peixi
             }
         }
         public string ClickedItem => clickedItem.Value;
+
+        public IObservable<bool> OnOpenStateChanged => isOpened;
+
+        public IObservable<string> OnItemUsed => onItemUsed;
+
         public void Init(IInventorySystem inventorySystem)
         {
             Config()
@@ -67,14 +75,15 @@ namespace Peixi
         }
         public void OnInventoryBtnPressed()
         {
-              isOpened = !isOpened;
+            var isOpen = isOpened.Value;
+            isOpened.Value = isOpen;
 
-              gridManagers_tran.gameObject.SetActive(isOpened);
-              back_tran.gameObject.SetActive(isOpened);
-              useBtn.gameObject.SetActive(isOpened);
-              holdBtn.gameObject.SetActive(isOpened);
-              throwBtn.gameObject.SetActive(isOpened);
-              descriptions_tran.gameObject.SetActive(isOpened);
+              gridManagers_tran.gameObject.SetActive(isOpen);
+              back_tran.gameObject.SetActive(isOpen);
+              useBtn.gameObject.SetActive(isOpen);
+              holdBtn.gameObject.SetActive(isOpen);
+              throwBtn.gameObject.SetActive(isOpen);
+              descriptions_tran.gameObject.SetActive(isOpen);
         }
         public void OnPointerEnterGrid(int gridSerial,string name)
         {
@@ -94,8 +103,10 @@ namespace Peixi
             {
                 x.SetActive(active);
             });
+            //onOpenStateChanged.onne
             return this;
         }
+
         #endregion
 
         #region//Privates
@@ -219,6 +230,7 @@ namespace Peixi
                 {
                     PotionUseAgent agent = new PotionUseAgent();
                     agent.UsePotion(ClickedItem);
+                    onItemUsed.OnNext(ClickedItem);
                 });
         }
         #endregion
