@@ -8,6 +8,8 @@ namespace Siwei {
     public class MouseModules : MonoBehaviour
     {
         private IObservable<Vector3> mousePos;
+        public bool isActive;
+
         private void Start()
         {
             mousePos = Observable.EveryUpdate().Select(_ => Input.mousePosition);

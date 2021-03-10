@@ -14,13 +14,26 @@ namespace Siwei
         #region//privates
         private MouseModules _mouseModule;
         private GridMesh _gridMesh;
+        private Transform gridMesh_trans;
+        private Transform mouseModule_trans;
         #endregion
 
         #region IObservables
         public IObservable<bool> OnActiveChanged => Observable.Return(buildMode);
         public IObservable<Vector3> OnMouseHoverPositionChanged => _mouseModule.OnMouseHoverPositionChanged();
-        public IObservable<Vector3> OnMouseClicked => _mouseModule.OnMouseClicked();
-
+        //public IObservable<Vector3> OnMouseClicked => _mouseModule.OnMouseClicked();
+        public IObservable<Vector3> OnMouseClicked
+        {
+            get
+            {
+                if (_mouseModule is null)
+                {
+                    _mouseModule = GetComponentInChildren<MouseModules>();
+                }
+                return _mouseModule.OnMouseClicked();
+            }
+            
+        }
         #endregion
 
         #region//Methods
@@ -31,10 +44,10 @@ namespace Siwei
             set
             {
                 if (buildMode != value) {
-                    _gridMesh.gameObject.SetActive(value);
+                    _gridMesh.transform.gameObject.SetActive(value);
+                    mouseModule_trans.gameObject.SetActive(value);
                     buildMode = value;
                 }                   
-                
             }
         }
 
@@ -45,15 +58,18 @@ namespace Siwei
             set
             {
                 permitBuild = value;
-
             }
         }
 
         #endregion
         private void Awake()
         {
-            _mouseModule = GetComponentInChildren<MouseModules>();
-            _gridMesh = FindObjectOfType<GridMesh>();
+            gridMesh_trans = transform.Find("GridMesh");
+            mouseModule_trans = transform.Find("MouseModule");
+            //_mouseModule = GetComponentInChildren<MouseModules>();
+            _gridMesh = gridMesh_trans.GetComponent<GridMesh>();
+
+            SetBuildMode = false;
         }
 
         // 测试是否进入建造模式
@@ -65,6 +81,7 @@ namespace Siwei
                 SetBuildMode = !isOpen;
             }
             */
+            
             
         }
     }

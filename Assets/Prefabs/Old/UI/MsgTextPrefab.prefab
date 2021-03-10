@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4423547493633840940}
   - component: {fileID: 4423547493633840942}
   - component: {fileID: 4423547493633840943}
+  - component: {fileID: 8478371707582869537}
   m_Layer: 5
   m_Name: MsgTextPrefab
   m_TagString: Untagged
@@ -79,3 +80,15 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: message 1
+--- !u!114 &8478371707582869537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4423547493633840941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb83d506f52be3440b000afab831d33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

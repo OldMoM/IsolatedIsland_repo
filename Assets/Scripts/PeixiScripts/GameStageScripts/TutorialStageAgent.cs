@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using UnityEngine.Assertions;
 
 namespace Peixi
 {
@@ -28,6 +29,7 @@ namespace Peixi
         {
             inventoryGui = InterfaceArichives.Archive.InGameUIComponentsManager.InventoryGui;
             tent = FindObjectOfType<Tent>();
+            Assert.IsNotNull(tent,"Failed to find Tent in Hierarchy");
 
             inventory.OnInventoryChanged
                 .Where(x => x.NewValue.Name == "Apple")

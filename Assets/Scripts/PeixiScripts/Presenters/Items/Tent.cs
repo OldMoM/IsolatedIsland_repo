@@ -10,7 +10,19 @@ namespace Peixi
         private CollectableObjectAgent collectableAgent;
         private FacilityInteractionAgent interactAgent;
         public FacilityData data;
-        public CollectableObjectAgent CollectableAgent => collectableAgent;
+        public CollectableObjectAgent CollectableAgent
+        {
+            get
+            {
+                if (collectableAgent is null)
+                {
+                    var collider = GetComponent<SphereCollider>();
+                    collectableAgent = new CollectableObjectAgent(collider);
+                }
+                return collectableAgent;
+            }
+        }
+
 
 
         private FacilityData createFacilityData
@@ -28,8 +40,7 @@ namespace Peixi
         // Start is called before the first frame update
         void Start()
         {
-            var collider = GetComponent<SphereCollider>();
-            collectableAgent = new CollectableObjectAgent(collider);
+            
             data = createFacilityData;
             interactAgent = InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent;
  
