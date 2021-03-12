@@ -66,7 +66,7 @@ namespace Siwei
         {
             gridMesh_trans = transform.Find("GridMesh");
             mouseModule_trans = transform.Find("MouseModule");
-            //_mouseModule = GetComponentInChildren<MouseModules>();
+            Debug.Log("name:"+gridMesh_trans.gameObject.name);
             _gridMesh = gridMesh_trans.GetComponent<GridMesh>();
 
             SetBuildMode = false;
@@ -75,12 +75,12 @@ namespace Siwei
         // 测试是否进入建造模式
         private void Update()
         {
-            /*
+            
             if (Input.GetKeyUp(KeyCode.A)) {
                 bool isOpen = SetBuildMode;
                 SetBuildMode = !isOpen;
             }
-            */
+            
             
             
         }

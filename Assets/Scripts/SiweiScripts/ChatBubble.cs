@@ -12,59 +12,52 @@ namespace Siwei
     {
         private bool active = false;
         private Text text;
-        public float duration;
-
-        private void Awake()
-        {
-            duration = 2;
-            text = GetComponentInChildren<Text>();
-        }
-
-        // Test
-        private void Start()
-        {
-            string[] msg = new string[]{ "how", "are", "you" };
-            GameObject player = GameObject.Find("Player");
-            IObservable<Vector3> pos = Observable.EveryUpdate().Select(_ => player.transform.position);
-            StartChat(msg, pos);
-        }
-
+        public int duration;
+        private Vector3 offset = new Vector3(0, 10, 0);
+        //public Transform dialogueBox;
 
         public void StartChat(string[] msg, IObservable<Vector3> onPlayerPositionChanged) {
+            /*
+             if (dialogueBox == null)
+                {
+                    dialogueBox = transform.Find("dialogueBox");
+                }
+            */
+            active = true;
 
-            StartCoroutine(Chat(msg, onPlayerPositionChanged));            
+            text = GetComponentInChildren<Text>(true);
+
+            onPlayerPositionChanged.TakeWhile(_=>active)
+                .Subscribe(pos =>
+                {
+                    transform.position = SetDialogueBoxPos(pos);
+                    if (!gameObject.activeSelf)
+                    {
+                        gameObject.SetActive(true);
+                    }
+                });
+
+            var interval = Observable
+                .Timer(TimeSpan.Zero,TimeSpan.FromSeconds(duration))
+                .Take(msg.Length+1)
+                .Subscribe(x =>
+                    {
+                        if(x < msg.Length)
+                        {
+                            text.text = msg[x];
+                        }                        
+                    },()=> { active = false; gameObject.SetActive(false); }).AddTo(this);
+            
+            
         }
         public bool Active { get { return active; } }
 
-        private IEnumerator Chat(string[] msg, IObservable<Vector3> onPlayerPositionChanged)
-        {
-            Debug.Log("Message length is:" + msg.Length);
-            int i = 0;
-            DateTime curTime = DateTime.Now;
-            onPlayerPositionChanged.TakeWhile(_ => i < msg.Length)
-                .Subscribe(pos =>
-                {
-                    DrawBubble(msg[i], pos);
-                    
-                });
-            
-            while (i < msg.Length)
-            {
-                
-                yield return new WaitForSeconds(duration);
-                i++;
-                Debug.Log(i);
-            }
-            
-
+        private Vector3 SetDialogueBoxPos(Vector3 pos) {
+            //return Camera.main.WorldToScreenPoint(pos) + offset;
+            return pos+offset;
         }
 
-        private void DrawBubble(string msg, Vector3 pos)
-        {
-            this.transform.position = Camera.main.transform.InverseTransformPoint(pos);
-            text.text = msg;
-        }
-
+        
     }
 }
 
