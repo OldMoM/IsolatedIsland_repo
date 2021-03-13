@@ -10,5 +10,6 @@ namespace Peixi
         Rigidbody Rigid { get; }
         PlayerStateController StateController { get; }
         IPlayerPropertySystem PlayerPropertySystem { get; }
+        IObservable<Vector3> OnPlayerPositionChanged { get; }
     }
 }

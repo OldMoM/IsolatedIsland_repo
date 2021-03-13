@@ -16,6 +16,7 @@ namespace Peixi
         private FacilityInteractionAgent _facilityInteractHandle;
         private InventorySystem inventorySystem;
         private ArbitorEyeModule eye;
+        private IslandInteractAgent islandInteractAgent;
         [SerializeField]
         private FacilityData facility;
         public IInventorySystem InventorySystem => inventorySystem;
@@ -25,6 +26,8 @@ namespace Peixi
         public IObservable<Unit> OnAllCollectCompleted => ArbitorEye.AllCollectCompleted;
         public IObservable<BaseItem> HandleItem => ArbitorEye.HandleItem;
         public IObservable<int> OnCollectHandleCountChanged => eye.OnQuenedCountChanged;
+        public IslandInteractAgent IslandInteractAgent => islandInteractAgent;
+     
         private static IArbitorSystem arbitor;
         public static IArbitorSystem Singlton
         {
@@ -53,6 +56,12 @@ namespace Peixi
         [SerializeField]
         [Tooltip("Collect互动过程的监视参数")]
         internal CollectWatchParam collectParams = new CollectWatchParam();
+
+        private IslandInteractAgent CreateIslandInteractAgent()
+        {
+            var iPlayerSystem = InterfaceArichives.Archive.PlayerSystem;
+            return new IslandInteractAgent(iPlayerSystem.OnPlayerPositionChanged);
+        }
 
         // Start is called before the first frame update
         void Awake()
@@ -96,6 +105,8 @@ namespace Peixi
                     collectParams.handleItemName = "None";
                     collectParams.handleItemHasCode = 0;
                 });
+
+            islandInteractAgent = CreateIslandInteractAgent();
         }
         public void OnPlayerTouch(BaseItem item)
         {

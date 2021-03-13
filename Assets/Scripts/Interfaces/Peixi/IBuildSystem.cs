@@ -43,10 +43,8 @@ namespace Peixi
         /// 网格坐标转换为世界坐标
         /// </summary>
         Func<Vector2Int,GridSetting, Vector3> gridToWorldPosition { get; }
-
         Func<Vector2Int,Vector3> newGridToWorldPosition { get; }
         Func<Vector3, Vector2Int> newWorldToGridPosition { get; }
-
         /// <summary>
         /// 获得某处岛块的操作接口
         /// </summary>

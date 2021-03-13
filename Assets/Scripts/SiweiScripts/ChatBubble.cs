@@ -13,7 +13,7 @@ namespace Siwei
         private bool active = false;
         private Text text;
         public int duration;
-        private Vector3 offset = new Vector3(0, 10, 0);
+        [SerializeField]private Vector3 offset = new Vector3(0, 10, 0);
         //public Transform dialogueBox;
 
         public void StartChat(string[] msg, IObservable<Vector3> onPlayerPositionChanged) {
@@ -53,7 +53,7 @@ namespace Siwei
         public bool Active { get { return active; } }
 
         private Vector3 SetDialogueBoxPos(Vector3 pos) {
-            //return Camera.main.WorldToScreenPoint(pos) + offset;
+            return Camera.main.WorldToScreenPoint(pos) + offset;
             return pos+offset;
         }
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UniRx;
 
 namespace Peixi 
 {
@@ -17,6 +18,7 @@ namespace Peixi
         private PlayerAnimationView animationView;
         private Rigidbody rigid;
         private PlayerSystemAgent systemAgents;
+        private Vector3ReactiveProperty onPositionChanged = new Vector3ReactiveProperty();
         #endregion
 
         #region//接口实现
@@ -24,6 +26,8 @@ namespace Peixi
         public Rigidbody Rigid => rigid;
         public PlayerStateController StateController => stateController;
         public IPlayerPropertySystem PlayerPropertySystem => property;
+        public IObservable<Vector3> OnPlayerPositionChanged => onPositionChanged;
+   
         #endregion
 
         #region//内部模块私有初始化方法
@@ -71,6 +75,14 @@ namespace Peixi
             stateController = createPlayerStateController(_movement);
             animationView   = createAnimationView();
             systemAgents = new PlayerSystemAgent(this);
+        }
+        void Start()
+        {
+            Observable.EveryLateUpdate()
+                .Subscribe(x =>
+                {
+                    onPositionChanged.Value = transform.position;
+                });
         }
     }
 }
