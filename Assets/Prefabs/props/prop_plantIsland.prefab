@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3414088673280334237}
   - component: {fileID: 2454104126510399095}
   - component: {fileID: 8863250128512821764}
+  - component: {fileID: 2561315050545754793}
   m_Layer: 0
   m_Name: prop_plantIsland
   m_TagString: Untagged
@@ -111,6 +112,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   durability_current:
     value: 100
+--- !u!135 &2561315050545754793
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048989393739741277}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1054516116843379030
 PrefabInstance:
   m_ObjectHideFlags: 0

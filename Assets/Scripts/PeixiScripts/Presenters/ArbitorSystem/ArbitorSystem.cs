@@ -106,7 +106,7 @@ namespace Peixi
                     collectParams.handleItemHasCode = 0;
                 });
 
-            islandInteractAgent = CreateIslandInteractAgent();
+            //islandInteractAgent = CreateIslandInteractAgent();
         }
         public void OnPlayerTouch(BaseItem item)
         {

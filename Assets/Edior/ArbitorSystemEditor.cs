@@ -7,25 +7,27 @@ using Peixi;
 [CustomEditor(typeof(ArbitorSystem))]
 public class ArbitorSystemEditor : Editor
 {
-    private ArbitorSystem _arbitor;
+    private ArbitorSystem arbitor;
     private FacilityData facility;
     private bool facilityDataFolder;
     private bool IslandInteractAgent;
 
     private void OnEnable()
     {
-        _arbitor = (ArbitorSystem)target;
+        arbitor = (ArbitorSystem)target;
     }
     public override void OnInspectorGUI()
     {
-
-        IslandInteractAgent = EditorGUILayout.Foldout(IslandInteractAgent, "岛块互动运行参数");
-
-        if (_arbitor.IslandInteractAgent != null && IslandInteractAgent)
+        if (arbitor.facilityInteractAgent != null)
         {
-            EditorGUILayout.Vector2IntField("玩家网格坐标", _arbitor.IslandInteractAgent.ContactBrokenIsland);
-            EditorGUILayout.TextField("玩家同损坏岛块接触", _arbitor.IslandInteractAgent.IsContactBrokenIsland.ToString());
+            EditorGUILayout.LabelField("和玩家接触的互动物体:");
+            arbitor.facilityInteractAgent.ContactingItems
+                .ForEach(x =>
+                {
+                    EditorGUILayout.LabelField("Name: " + x.name + " Hashcode: " + x.instanceId);
+                });
         }
+        
         
     }
 }

@@ -17,21 +17,24 @@ namespace Peixi
         private ReactiveProperty<Vector2Int> brokenIslandPos = new ReactiveProperty<Vector2Int>();
         private BoolReactiveProperty isContactBrokenIsland = new BoolReactiveProperty();
 
-        IBuildSystem buildSystem;    
-        private bool IsBrokenIsland(Vector2Int islandPos)
+        IBuildSystem buildSystem;
+  
+        FacilityInteractionAgent interactionAgent;
+        private bool IsBrokenIsland(Vector2Int islandPos,ref IIsland island)
         {
             var hasIsland = buildSystem.CheckThePositionHasIsland(islandPos);
             bool isBroken = false;
             if (hasIsland)
             {
-                var island = buildSystem.GetIslandInterface(islandPos);
-                isBroken = island.Durability_current < 50;
+                island = buildSystem.GetIslandInterface(islandPos);
+                isBroken = island.Durability_current < 100;
             }
             return isBroken;
         }
         public IslandInteractAgent(IObservable<Vector3> onPlayerPosChanged)
         {
             buildSystem = InterfaceArichives.Archive.IBuildSystem;
+            interactionAgent = InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent;
             _onPlayerPosChanged = onPlayerPosChanged;
 
             _onPlayerPosChanged.Subscribe(x =>
@@ -43,7 +46,15 @@ namespace Peixi
             brokenIslandPos
                 .Subscribe(x =>
                 {
-                    isContactBrokenIsland.Value = IsBrokenIsland(x);
+                    IIsland island = null;
+                    isContactBrokenIsland.Value = IsBrokenIsland(x,ref island);
+                    if (isContactBrokenIsland.Value)
+                    {
+                        var islandData = new FacilityData();
+                        islandData.gridPos = x;
+                        islandData.instanceId = island.GetHashCode();
+                        islandData.position = island.PositionInWorld;
+                    }
                 });
         }
     }

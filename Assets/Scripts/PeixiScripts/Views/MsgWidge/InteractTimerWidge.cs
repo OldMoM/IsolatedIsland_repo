@@ -13,10 +13,50 @@ namespace Peixi
         GameObject timeCircleGameObject;
         FacilityInteractionAgent agent;
         ConcreteDistillerInteractAgent distillerAgent;
+        RestoreIslandProgress restoreIslandProgress;
 
         public bool isCounting;
         IDisposable countProcess;
         private Vector3 targetPosition => InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent.targetData.position;
+
+        private void OnInteractStart(string interactType)
+        {
+            isCounting = true;
+            timeCircleGameObject.SetActive(true);
+            FollowTarget();
+        }
+        private void OnInteractCompleted()
+        {
+            isCounting = false;
+            timeCircleGameObject.SetActive(false);
+        }
+        private void OnInteractTicking(float progress)
+        {
+            timeCircleImange.fillAmount = progress;
+        }
+
+        private void RestoreIslandAgent()
+        {
+            agent.RestoreIslandProgress
+                 .OnInteractStart
+                 .Subscribe(x =>
+                 {
+                     OnInteractStart("RestoreIsland");
+                 });
+
+            agent.RestoreIslandProgress
+                 .Progress
+                 .Where(x => isCounting)
+                 .Subscribe(OnInteractTicking);
+
+            agent.RestoreIslandProgress
+                .OnInteractEnd
+                .Subscribe(x =>
+                {
+                    OnInteractCompleted();
+                });
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -25,7 +65,7 @@ namespace Peixi
             timeCircleGameObject = timeCircleImange_trans.gameObject;
 
             agent = InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent;
-            
+
             OnFoodPlantInteractionStart();
 
             agent.DistillerAgent
@@ -52,8 +92,10 @@ namespace Peixi
                     isCounting = false;
                     timeCircleGameObject.SetActive(false);
                 });
-                
+
+            RestoreIslandAgent();
         }
+
 
         void OnFoodPlantInteractionStart()
         {

@@ -20,6 +20,8 @@ namespace Peixi
         public FoodPlantInteractHandle FoodPlantInteract => foodPlantHandle;
         public ConcreteDistillerInteractAgent DistillerAgent => distilerAgent;
         public TentInteractionProgress TentInteractionProgress => tentInteractionProgress;
+        public RestoreIslandProgress RestoreIslandProgress => restoreIslandProgress;
+        public List<FacilityData> ContactingItems => _pendingItems;
 
         public InteractState state => _state.Value;
 
@@ -37,9 +39,26 @@ namespace Peixi
         private FoodPlantInteractHandle foodPlantHandle = new FoodPlantInteractHandle();
         private ConcreteDistillerInteractAgent distilerAgent = new ConcreteDistillerInteractAgent();
         private TentInteractionProgress tentInteractionProgress = new TentInteractionProgress();
+        private RestoreIslandProgress restoreIslandProgress = new RestoreIslandProgress();
 
         private FacilityInteractConditonDiscriminator discriminator;
-      
+        /// <summary>
+        /// Item1:玩家是否同损坏的岛块接触
+        /// Item2:同玩家接触的岛块网格坐标
+        /// </summary>
+        private ValueTuple<bool, Vector2Int> islandInteractRuntimeParams;
+
+        #region//Public methods
+        public FacilityInteractionAgent()
+        {
+            Init()
+                .React(onSwitchBtnPressed)
+                .React(onInteractBtnPressed)
+                .React(onFishingEnd)
+                .React(OnFoodPlantInteractEnd)
+                .React(OnDistillerInteractEnd);
+
+        }
         public void PlayerTouchFacility(FacilityData facility)
         {
             var result = _pendingItems.Contains(facility);
@@ -49,6 +68,11 @@ namespace Peixi
                 _pendingItems.Add(facility);
                 _state.Value = InteractState.Contact;
                 _targetData.Value = facility;
+            }
+
+            if (facility.type == FacilityType.Island)
+            {
+                islandInteractRuntimeParams.Item2 = facility.gridPos;
             }
         }
         public void PlayerUntouchFacility(FacilityData facility)
@@ -66,9 +90,7 @@ namespace Peixi
                 else
                 {
                     _state.Value = InteractState.Idle;
-
                     _targetData.Value = new FacilityData();
-
                 }
             }
         }
@@ -105,6 +127,11 @@ namespace Peixi
             {
                 tentInteractionProgress.StartInteract();
             }
+
+            if (type == FacilityType.Island)
+            {
+                restoreIslandProgress.StartInteract(targetData);
+            }
         }
         public void InteractEnd(FacilityType type)
         {
@@ -113,6 +140,10 @@ namespace Peixi
                 _state.Value = InteractState.Idle;
             }
         }
+
+        #endregion
+
+        #region//Privates methods
         private void onSwitchBtnPressed()
         {
             InputSystem.Singleton.onSwitchBtnPressed
@@ -165,7 +196,6 @@ namespace Peixi
                 });
             
         }
-
         private void OnDistillerInteractEnd()
         {
             distilerAgent.OnInteractEnd
@@ -193,21 +223,13 @@ namespace Peixi
             _startInteractCode.Add(FacilityType.FishPoint, fishUnit.startInteract);
             return this;
         }
-        public FacilityInteractionAgent()
-        {
-            Init()
-                .React(onSwitchBtnPressed)
-                .React(onInteractBtnPressed)
-                .React(onFishingEnd)
-                .React(OnFoodPlantInteractEnd)
-                .React(OnDistillerInteractEnd);
-            
-        }
+        #endregion
     }
     [Serializable]
     public struct FacilityData
     {
         public Vector3 position;
+        public Vector2Int gridPos;
         public int instanceId;
         public string name;
         public FacilityType type;

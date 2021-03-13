@@ -12,6 +12,8 @@ namespace Peixi
     /// </summary>
     public class IslandPresenter : MonoBehaviour,IIsland
     {
+        private CollectableObjectAgent agent;
+        [SerializeField] private FacilityData islandData;
         [SerializeField]
         IntReactiveProperty durability_current = new IntReactiveProperty(100);
         public int Durability_current
@@ -26,6 +28,8 @@ namespace Peixi
             durability_current.Value = _current;
         }
         public IObservable<int> OnDurabilityChanged => durability_current;
+
+        public Vector3 PositionInWorld => transform.position;
 
         private int durability_max = 100;
         private Vector2Int m_gridPos;
@@ -55,6 +59,31 @@ namespace Peixi
                     ibuildSystem.RemoveIslandAt(m_gridPos);
                     Destroy(gameObject);
                 }).AddTo(this);
+
+            islandData = new FacilityData();
+            islandData.instanceId = this.GetHashCode();
+            islandData.position = transform.position;
+            islandData.gridPos = InterfaceArichives.Archive.IBuildSystem.newWorldToGridPosition(transform.position);
+            islandData.type = FacilityType.Island;
+            islandData.name = transform.name;
+
+            agent = new CollectableObjectAgent(GetComponent<SphereCollider>());
+            agent.OnPlayerTouch
+                .Subscribe(x =>
+                {
+                    if (Durability_current < 90)
+                    {
+                        InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent
+                        .PlayerTouchFacility(islandData);
+                    }
+                });
+
+            agent.OnPlayerUntouch
+                .Subscribe(x =>
+                {
+                    InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent
+                    .PlayerUntouchFacility(islandData);
+                });
         }
         public void Active(Vector2Int gridPos,int durability_max = 100)
         {
@@ -84,5 +113,6 @@ namespace Peixi
         /// </summary>
         /// <param name="targetValue">耐久度目标值</param>
         void SetDurabilityTo(int targetValue);
+        Vector3 PositionInWorld { get; }
     }
 }
