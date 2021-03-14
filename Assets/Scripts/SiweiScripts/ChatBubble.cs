@@ -12,22 +12,18 @@ namespace Siwei
     {
         private bool active = false;
         private Text text;
+        private IDisposable interval;
+        private IDisposable posDisposable;
         public int duration;
         [SerializeField]private Vector3 offset = new Vector3(0, 10, 0);
         //public Transform dialogueBox;
 
         public void StartChat(string[] msg, IObservable<Vector3> onPlayerPositionChanged) {
-            /*
-             if (dialogueBox == null)
-                {
-                    dialogueBox = transform.Find("dialogueBox");
-                }
-            */
+
             active = true;
 
             text = GetComponentInChildren<Text>(true);
-
-            onPlayerPositionChanged.TakeWhile(_=>active)
+            posDisposable = onPlayerPositionChanged.TakeWhile(_ => active)
                 .Subscribe(pos =>
                 {
                     transform.position = SetDialogueBoxPos(pos);
@@ -35,9 +31,10 @@ namespace Siwei
                     {
                         gameObject.SetActive(true);
                     }
-                });
+                }).AddTo(this);
+            
 
-            var interval = Observable
+            interval = Observable
                 .Timer(TimeSpan.Zero,TimeSpan.FromSeconds(duration))
                 .Take(msg.Length+1)
                 .Subscribe(x =>
@@ -46,7 +43,12 @@ namespace Siwei
                         {
                             text.text = msg[x];
                         }                        
-                    },()=> { active = false; gameObject.SetActive(false); }).AddTo(this);
+                    },()=> { 
+                        active = false; 
+                        gameObject.SetActive(false);
+                        interval.Dispose();
+                        posDisposable.Dispose();
+                    }).AddTo(this);
             
             
         }
@@ -54,7 +56,6 @@ namespace Siwei
 
         private Vector3 SetDialogueBoxPos(Vector3 pos) {
             return Camera.main.WorldToScreenPoint(pos) + offset;
-            return pos+offset;
         }
 
         

@@ -586,6 +586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1664902017640129666, guid: b145e630602d3864d85717097ce59ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1664902017640129667, guid: b145e630602d3864d85717097ce59ce3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

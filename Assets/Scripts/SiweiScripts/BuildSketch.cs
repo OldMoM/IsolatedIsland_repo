@@ -21,14 +21,14 @@ namespace Siwei
         #region IObservables
         public IObservable<bool> OnActiveChanged => Observable.Return(buildMode);
         public IObservable<Vector3> OnMouseHoverPositionChanged => _mouseModule.OnMouseHoverPositionChanged();
-        //public IObservable<Vector3> OnMouseClicked => _mouseModule.OnMouseClicked();
         public IObservable<Vector3> OnMouseClicked
         {
             get
             {
                 if (_mouseModule is null)
                 {
-                    _mouseModule = GetComponentInChildren<MouseModules>();
+                    _mouseModule = GetComponentInChildren<MouseModules>(true);
+                    Debug.Log("_mouseModule:" + _mouseModule.gameObject.name);
                 }
                 return _mouseModule.OnMouseClicked();
             }
@@ -71,7 +71,7 @@ namespace Siwei
 
             SetBuildMode = false;
         }
-
+        /*
         // 测试是否进入建造模式
         private void Update()
         {
@@ -84,6 +84,7 @@ namespace Siwei
             
             
         }
+        */
     }
 }
 
