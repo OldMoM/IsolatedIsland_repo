@@ -15,7 +15,7 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
     private ITimeSystem _timeSystem;
     private IInventorySystem _inventorySystem;
     private IArbitorSystem _arbitorSystem;
-    private IInGameUIComponentsInterface inGameUiComponentsManager;
+    private IInGameUIComponents inGameUiComponentsManager;
     private IPlayerSystem playerSystem;
     private IPlayerPropertySystem propertySystem;
     private IAndroidraSystem androidraSystem;
@@ -91,13 +91,13 @@ public class InterfaceArichives : MonoBehaviour, IInterfaceArchive
             return _arbitorSystem;
         }
     }
-    public IInGameUIComponentsInterface InGameUIComponentsManager
+    public IInGameUIComponents InGameUIComponentsManager
     {
         get
         {
             if (inGameUiComponentsManager is null)
             {
-                inGameUiComponentsManager = FindObjectOfType<InGameUIComponentInterface>();
+                inGameUiComponentsManager = FindObjectOfType<InGameUIComponents>();
                 Assert.IsNotNull(inGameUiComponentsManager, "IInGameUIComponentsManager");
             }
             

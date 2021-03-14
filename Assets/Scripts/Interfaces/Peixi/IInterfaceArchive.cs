@@ -12,7 +12,7 @@ public interface IInterfaceArchive
     ITimeSystem ITimeSystem { get; }
     IInventorySystem IInventorySystem { get; }
     IArbitorSystem IArbitorSystem { get; }
-    IInGameUIComponentsInterface InGameUIComponentsManager { get; }
+    IInGameUIComponents InGameUIComponentsManager { get; }
     IPlayerSystem PlayerSystem { get; }
     IAndroidraSystem IAndroidraSystem { get; }
     IBuildSketch IBuildSketch { get; }

@@ -1,6 +1,7 @@
 ﻿using UniRx;
 using System;
 using UnityEngine;
+using Siwei;
 namespace Peixi
 {
     public class RestoreIslandProgress
@@ -12,6 +13,14 @@ namespace Peixi
         private Subject<FacilityType> startInteract = new Subject<FacilityType>();
         private Subject<FacilityType> endInteract = new Subject<FacilityType>();
         private ConcurrentTimer timer = new ConcurrentTimer();
+        
+        private IChatBubble chatBubble=> InterfaceArichives.Archive.InGameUIComponentsManager.ChatBubble;
+        private IObservable<Vector3> playerPosition => InterfaceArichives.Archive.PlayerSystem.OnPlayerPositionChanged;
+        private int GetMatAmount(string mat)
+        {
+            var inventory = InterfaceArichives.Archive.IInventorySystem;
+            return inventory.GetAmount(mat);
+        }
 
         /// <summary>
         /// 待修复的岛块的Data
@@ -21,7 +30,6 @@ namespace Peixi
         {
             if (EoughMat)
             {
-                Debug.Log("开始修复岛块计时");
                 startInteract.OnNext(FacilityType.Island);
                 timer.OnTimerEnd
                     .First()
@@ -36,14 +44,17 @@ namespace Peixi
             }
             else
             {
-
+                string[] msg = { "没有足够的材料" };
+                chatBubble.StartChat(msg, playerPosition);
             }
         }   
         public bool EoughMat
         {
             get
             {
-                return true;
+                var plasticAmount = GetMatAmount("Plastic");
+                var stringAmount = GetMatAmount("String");
+                return false;
             }
         }
     }

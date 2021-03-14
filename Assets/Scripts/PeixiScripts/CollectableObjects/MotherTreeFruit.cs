@@ -21,8 +21,21 @@ namespace Peixi
                     print("player picked mother tree fruit");
                     var inventory = InterfaceArichives.Archive.IInventorySystem;
                     inventory.AddItem("Apple", 1);
+                    ShowMessage.singlton.Message("");
                     Destroy(gameObject, 0.2f);
                 }).AddTo(this);
+
+            agent.OnPlayerTouch
+                .Subscribe(x =>
+                {
+                    ShowMessage.singlton.Message("按E键摘取苹果");
+                });
+
+            agent.OnPlayerUntouch
+                .Subscribe(x =>
+                {
+                    ShowMessage.singlton.Message("");
+                });
         }
     }
 }

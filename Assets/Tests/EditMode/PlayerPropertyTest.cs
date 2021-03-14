@@ -23,7 +23,6 @@ namespace Tests
                 .Skip(1)
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
                     Assert.AreEqual(93, x);
                 });
             property.ChangeHealth(-7);

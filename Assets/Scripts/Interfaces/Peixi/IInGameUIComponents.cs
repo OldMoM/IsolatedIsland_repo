@@ -1,10 +1,11 @@
-﻿using UniRx;
+﻿using Siwei;
 
 namespace Peixi
 {
-    public interface IInGameUIComponentsInterface
+    public interface IInGameUIComponents
     {
         IInventoryGui InventoryGui { get; }
         PlayerPropertyHUD PlayerPropertyHUD { get; }
+        IChatBubble ChatBubble { get; }
     }
 }

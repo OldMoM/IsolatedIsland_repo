@@ -6,7 +6,7 @@ using UniRx;
 
 namespace Peixi
 {
-    [CommandInfo("GameStageAgent",
+    [CommandInfo("GameStage",
                  "OnStageStart",
                  ""
         )]

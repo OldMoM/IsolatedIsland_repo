@@ -39,7 +39,7 @@ namespace Peixi
                 .Subscribe(x =>
                 {
                     
-                    InitScene();
+                    //InitScene();
                 });
 
             dialogSystem.OnDialogEnd
@@ -52,7 +52,7 @@ namespace Peixi
                 });
 
             dialogSystem.OnDialogEnd
-                .Delay(TimeSpan.FromSeconds(5))
+                .Delay(TimeSpan.FromSeconds(3))
                 .First()
                 .Subscribe(x =>
                 {
@@ -65,6 +65,7 @@ namespace Peixi
                 {
                     var playerState = iplayerSystem.StateController.playerState;
                     playerState.Value = PlayerState.IdleState;
+                    blackScreen.gameObject.SetActive(false);
                 });
 
             activeProgram.OnAndroidraActiveCompleted
