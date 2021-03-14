@@ -8,15 +8,16 @@ namespace Siwei
     public class MouseTest : MonoBehaviour
     {
         private BuildSketch sketch;
-
         private void Awake()
         {
             sketch = FindObjectOfType<BuildSketch>();
         }
+
         void Start()
         {
-            
-            sketch.OnMouseClicked.Subscribe(pos => {
+            Debug.Log("sketch:" + sketch.gameObject.name);
+            sketch.OnMouseClicked.
+                Subscribe(pos => {
                 Debug.Log("Clicked Mouse position:[" + pos.x + ","+pos.z+"]"); 
             });
             
@@ -38,6 +39,12 @@ namespace Siwei
                 Debug.Log("Before state change:" + sketch.PermitBuildIsland);
                 sketch.PermitBuildIsland = !curState;
                 Debug.Log("Permit state changed to:" + sketch.PermitBuildIsland);
+            }
+
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                bool isOpen = sketch.SetBuildMode;
+                sketch.SetBuildMode = !isOpen;
             }
         }
     }
