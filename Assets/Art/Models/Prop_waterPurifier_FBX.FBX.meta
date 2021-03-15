@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: 4c792d5e1c2fc754db588a79d02587fa
 ModelImporter:
   serializedVersion: 20101
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Prop_waterPurifier_Anim_01
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -37,6 +40,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Mat_Prop_waterPurifier_tengWan_01
+    second: {fileID: 2100000, guid: 0ec9efbb9b322bc48a05ef699b31c5f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Prop_waterPurifier_tengWan_02
+    second: {fileID: 2100000, guid: 250dbac0447e8274bbf74d26fc97d9f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Mat_Prop_waterPurifier_xiaQiu
     second: {fileID: 2100000, guid: e9ac2606f1499244096abd7d7a17395d, type: 2}
   - first:
@@ -49,6 +62,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Mat_Prop_waterPurifier_yeZi_02
     second: {fileID: 2100000, guid: 57f7ba232f115b1468616fe0cbe5bb8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Prop_waterPurifier_yeZi_03
+    second: {fileID: 2100000, guid: da4864ab4f5181f48875bc03ea6443ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Prop_waterPurifier_yeZi_04
+    second: {fileID: 2100000, guid: 8a4397ba7ecc727478207a212a1571a9, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -75,7 +98,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Prop_waterPurifier_Anim_01
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
