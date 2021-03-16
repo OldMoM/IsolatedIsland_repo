@@ -15,31 +15,30 @@ namespace Peixi
         private IBuildSketch _buildSketch;
         private IBuildSystem _ibuildSystem;
 
+        private bool permitBuildIsland;
+        private Vector2Int buildTarget;
+
         public BuildSketchAgent(IBuildSketch ibuildSketch, IBuildSystem buildSystem)
         {
             Debug.Log("init BuildSketchAgent");
             _buildSketch = ibuildSketch;
             _ibuildSystem = buildSystem;
 
-            _buildSketch.PermitBuildIsland = false;
-
-            Debug.Log("_buildSketch.PermitBuildIsland is " + _buildSketch.PermitBuildIsland);
-
             ibuildSketch.OnMouseHoverPositionChanged
                 .Subscribe(x =>
                 {
-                    var gridPos = buildSystem.newWorldToGridPosition(x);
-                    var hasIsland = buildSystem.CheckThePositionHasIsland(gridPos);
-                    _buildSketch.PermitBuildIsland = hasIsland;
+                    
+                    buildTarget = buildSystem.newWorldToGridPosition(x);
+                    permitBuildIsland = !buildSystem.CheckThePositionHasIsland(buildTarget);
+                    _buildSketch.PermitBuildIsland = permitBuildIsland;
                 });
-        }
-        void OnMouseHoverPositionChanged()
-        {
 
-        }
-        void OnMouseClicked()
-        {
-
+            ibuildSketch.OnMouseClicked
+                .Where(x=> permitBuildIsland)
+                .Subscribe(x =>
+                {
+                    buildSystem.BuildIslandAt(buildTarget);
+                });
         }
     }
 }

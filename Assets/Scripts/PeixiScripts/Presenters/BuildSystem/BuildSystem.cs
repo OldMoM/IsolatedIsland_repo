@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Siwei;
 
 namespace Peixi
 {
@@ -29,7 +30,6 @@ namespace Peixi
         public IObservable<Vector2Int> OnIslandSunk => _onIslandSunk;
         public IObservable<DictionaryAddEvent<Vector2Int, FacilityGridData>> OnFacilityBuilt => _facilityModule.OnFacilityAdded;
         public IObservable<DictionaryRemoveEvent<Vector2Int, FacilityGridData>> OnFacilityRemoved => _facilityModule.OnFacilityRemoved;
-
         #endregion
 
         #region//Methods
@@ -112,12 +112,8 @@ namespace Peixi
         private void Awake()
         {
             _islandGridModule = GetComponentInChildren<IslandGridModulePresenter>();
-            //sketchAgent = new BuildSketchAgent(InterfaceArichives.Archive.IBuildSketch,
-            //_islandGridModule);
-            //StartCoroutine(CreateBuildSketchAgent());
-
             _view = GetComponent<GameObjectBuiltModuleView>();
-           
+            sketchAgent = new BuildSketchAgent(FindObjectOfType<BuildSketch>(),this);
         }
     }
     public struct PositionConvent 

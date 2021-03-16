@@ -6,6 +6,7 @@ using Extensions;
 using System;
 using UniRx;
 using UniRx.Triggers;
+using Siwei;
 
 namespace Peixi
 {
@@ -24,6 +25,8 @@ namespace Peixi
 
         private bool active;
         private bool inventoryState;
+
+        private IBuildSketch buildSketch;
         // Start is called before the first frame update
         void Start()
         {
@@ -39,6 +42,7 @@ namespace Peixi
             var openInventory_trans = transform.Find("openInventoryBtn");
             var startBuild_trans = transform.Find("startBuildBtn");
             var checkSketch_trans = transform.Find("checkSketchBtn");
+            buildSketch = FindObjectOfType<BuildSketch>();
 
             mainControl_go = mainControl_trans.gameObject;
             openInventory_go = openInventory_trans.gameObject;
@@ -64,6 +68,7 @@ namespace Peixi
             Assert.IsNotNull(openInventoryBtn);
             Assert.IsNotNull(startBuildBtn);
             Assert.IsNotNull(checkSketchBtn);
+            Assert.IsNotNull(buildSketch);
 
             return this;
         }
@@ -107,7 +112,9 @@ namespace Peixi
             startBuildBtn.OnPointerClickAsObservable()
                 .Subscribe(x =>
                 {
-                    print("start build");
+                    var activeState = buildSketch.SetBuildMode;
+                    activeState = !activeState;
+                    buildSketch.SetBuildMode = activeState;
                 });
         }
         void onCheckSketchBtnPressed()

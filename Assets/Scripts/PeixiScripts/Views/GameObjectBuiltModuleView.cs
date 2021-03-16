@@ -81,7 +81,7 @@ namespace Peixi
             var position = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
             var _island = GameObject.Instantiate(propSampleRepo[0], position, Quaternion.identity, islandSet.transform);
             _island.transform.name = "IslandAt" + gridPos.x + "dot" + gridPos.y;
-            _island.transform.localScale = new Vector3(cellsize, 1, cellsize);
+            _island.transform.localScale = new Vector3(3, 1, 3);
 
             var islandPresenter = _island.GetComponent<IslandPresenter>();
             Assert.IsNotNull(islandPresenter);

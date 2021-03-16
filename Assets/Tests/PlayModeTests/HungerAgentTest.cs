@@ -34,6 +34,7 @@ namespace Tests
         {
             var dependency = CreateHungerAgentDependency();
             var agent = new HungerAgent(dependency);
+
             dependency.playerPropertySystem.ChangeSatiety(-30);
             Debug.Log(dependency.playerPropertySystem.SatietyLevel);
             Assert.AreEqual(PropertyLevel.Euclid, dependency.playerPropertySystem.SatietyLevel);
