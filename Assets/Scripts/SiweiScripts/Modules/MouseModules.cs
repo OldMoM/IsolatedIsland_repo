@@ -16,16 +16,23 @@ namespace Siwei {
         }
         public IObservable<Vector3> OnMouseHoverPositionChanged()
         {
+            if (mousePos == null)
+            {
+                mousePos = Observable.EveryUpdate().Select(_ => Input.mousePosition);
+            }
             return mousePos.Distinct()
-                           .TakeWhile(_ =>gameObject.activeSelf)
+                           .Where(_ =>gameObject.activeSelf)
                            .Select(_ => GetGridPosition(Input.mousePosition));
 
         }
 
         public IObservable<Vector3> OnMouseClicked﻿()
         {
-            return mousePos.Where(_ => Input.GetMouseButtonDown(0))
-                           .TakeWhile(_ => gameObject.activeSelf)
+            if (mousePos == null)
+            {
+                mousePos = Observable.EveryUpdate().Select(_ => Input.mousePosition);
+            }
+            return mousePos.Where(_ => Input.GetMouseButtonDown(0) && gameObject.activeSelf)
                            .Select(_ => GetGridPosition(Input.mousePosition));
         }
 
