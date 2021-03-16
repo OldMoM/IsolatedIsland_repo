@@ -11,7 +11,7 @@ namespace Tests
         // A Test behaves as an ordinary method
         IInGameUIComponents CreateInGameHudCanvas()
         {
-            var inGameUICompoentsPrefab = LoadPrefab.GetUIComponents(UIComponentsTags.InGameHudCanvas);
+            var inGameUICompoentsPrefab = LoadPrefab.GetUIPrefab(UIComponentsTags.InGameHudCanvas);
             return inGameUICompoentsPrefab.GetComponent<InGameUIComponents>();
         }
 

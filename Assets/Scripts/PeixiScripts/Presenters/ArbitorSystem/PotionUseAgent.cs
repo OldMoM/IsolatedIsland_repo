@@ -19,7 +19,7 @@ namespace Peixi
             }
             if (name == ItemTags.bread)
             {
-                Property.ChangeHunger(-5);
+                Property.ChangeSatiety(-5);
             }
         }
     }

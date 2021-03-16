@@ -22,11 +22,19 @@ namespace Tests
         [TestCase("PlayerPropertyHUD")]
         [TestCase("TransferBalckScreen")]
         [TestCase("InGameHudCanvas")]
-        public void LoadPrefab_notnull(string uiComponents)
+        public void LoadPrefab_GetUIPrefab_Notnull(string uiComponents)
         {
             Debug.Log(uiComponents);
-            var components = LoadPrefab.GetUIComponents(uiComponents);
+            var components = LoadPrefab.GetUIPrefab(uiComponents);
             Assert.IsNotNull(components);
+        }
+        [Test]
+        [TestCase("GameSystems")]
+        public void LoadPrefab_GetSystemPrefab_NotNull(string systemPrefab)
+        {
+            Debug.Log(systemPrefab);
+            var prefab = LoadPrefab.GetSystemPrefab(systemPrefab);
+            Assert.IsNotNull(prefab);
         }
 
     }

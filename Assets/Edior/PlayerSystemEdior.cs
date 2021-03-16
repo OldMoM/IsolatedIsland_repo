@@ -25,7 +25,7 @@ namespace GameEditors
             if (foldProperty)
             {
                 EditorGUILayout.IntField("健康值", playerSystem.PlayerPropertySystem.Health);
-                EditorGUILayout.IntField("饥饿值", playerSystem.PlayerPropertySystem.Hunger);
+                EditorGUILayout.IntField("饥饿值", playerSystem.PlayerPropertySystem.Satiety);
                 EditorGUILayout.IntField("心情值", playerSystem.PlayerPropertySystem.Pleasure);
                 EditorGUILayout.IntField("口渴值", playerSystem.PlayerPropertySystem.Thirst);
             }

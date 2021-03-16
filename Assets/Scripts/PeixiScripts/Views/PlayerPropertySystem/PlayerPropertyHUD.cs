@@ -55,7 +55,7 @@ namespace Peixi
         }
         void OnHungerLevelChanged()
         {
-            property.OnHungerLevelChanged
+            property.OnSatietyLevelChanged
                 .Subscribe(x =>
                 {
                     ChangeImageColor(hungerMask, x);

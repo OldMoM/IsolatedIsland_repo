@@ -16,7 +16,7 @@ public class PlayerSystemTestConsoleCommands : MonoBehaviour
         });
         DebugLogConsole.AddCommand<int>("changeplayer.hunger", "增减玩家的饥饿值", (change) =>
         {
-            property.ChangeHunger(change);
+            property.ChangeSatiety(change);
         });
         DebugLogConsole.AddCommand<int>("changeplayer.thirst", "增减玩家的口渴值", (change) =>
         {

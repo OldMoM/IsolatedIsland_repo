@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UniRx;
 using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Siwei
 {
@@ -28,7 +29,7 @@ namespace Siwei
                 if (_mouseModule is null)
                 {
                     _mouseModule = GetComponentInChildren<MouseModules>(true);
-                    Debug.Log("_mouseModule:" + _mouseModule.gameObject.name);
+                    Debug.Log("_mouseModule:" + _mouseModule.gameObject.name); 
                 }
                 return _mouseModule.OnMouseClicked();
             }
