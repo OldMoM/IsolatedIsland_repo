@@ -6,7 +6,7 @@ using UniRx;
 using UnityEngine;
 
 
-namespace peixi
+namespace Peixi
 {
     public class HealthAgent
     {

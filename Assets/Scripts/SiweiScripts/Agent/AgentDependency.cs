@@ -7,11 +7,12 @@ using UniRx;
 
 namespace Peixi
 {
-    public struct AgentDependency 
+    public class AgentDependency 
     {
         public float speed;
         public IObservable<Unit> onRainDay;
         public IObservable<bool> isDay;
         public IPlayerPropertySystem playerPropertySystem;
+        public Subject<Unit> onGameEnd = new Subject<Unit>();
     }
 }

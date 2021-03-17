@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
-
-namespace peixi
+namespace Peixi
 {
     public class ThirstAgent
     {
@@ -25,10 +24,10 @@ namespace peixi
                });
 
             //根据口渴值设置口渴等级
-            dependency.playerPropertySystem.OnSatietyChanged
+            //你之前写成OnSatietyChanged，这传递的是饱腹感值
+            dependency.playerPropertySystem.OnThirstChanged
                 .Subscribe(x =>
                 {
-                    //Debug.Log(x);
                     if (x > 0 && x < 70)
                     {
                         dependency.playerPropertySystem.ThirstLevel = PropertyLevel.Euclid;
@@ -48,7 +47,6 @@ namespace peixi
             dependency.playerPropertySystem.OnThirstChanged
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
                     if (x == 0)
                     {
                         dependency.speed = 2;

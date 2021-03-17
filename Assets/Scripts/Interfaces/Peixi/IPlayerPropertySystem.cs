@@ -65,5 +65,9 @@ namespace Peixi
         IObservable<PropertyLevel> OnSatietyLevelChanged { get; }
         IObservable<PropertyLevel> OnThirstLevelChanged { get; }
         IObservable<PropertyLevel> OnPleasureLevelChanged { get; }
+        /// <summary>
+        /// 最大健康值
+        /// </summary>
+        int MaxHealth { get; set; }
     }
 }

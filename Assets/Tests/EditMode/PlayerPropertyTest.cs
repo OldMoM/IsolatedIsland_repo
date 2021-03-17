@@ -131,5 +131,27 @@ namespace Tests
             property.PleasureLevel = PropertyLevel.Euclid;
             Assert.AreEqual(PropertyLevel.Euclid, property.PleasureLevel);
         }
+        [Test]
+        public void PlayerPropertyTest_SetHealth_120()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.MaxHealth = 120;
+            Assert.AreEqual(120, property.MaxHealth);
+        }
+        [Test]
+        public void PlayerPropertyTest_SetMaxHealth80_Health80()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            property.MaxHealth = 80;
+            Assert.AreEqual(80, property.Health);
+        }
+        [Test]
+        public void PlayerPropertyTest_SetMaxHealth25WhenHealthIs100_Health25()
+        {
+            PlayerPropertySystem property = new PlayerPropertySystem();
+            Assert.AreEqual(100, property.Health);
+            property.MaxHealth = 25;
+            Assert.AreEqual(25, property.Health);
+        }
     }
 }

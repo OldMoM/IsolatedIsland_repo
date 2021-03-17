@@ -12,7 +12,6 @@ namespace Peixi
         public int Satiety => property.hunger.Value;
         public int Thirst => property.thirst.Value;
         public int Pleasure => property.pleasure.Value;
-
         public PropertyLevel HealthLevel
         {
             get => property.healthLevel.Value;
@@ -45,7 +44,6 @@ namespace Peixi
                 property.pleasureLevel.Value = value;
             }
         }
-
         public IObservable<int> OnHealthChanged => property.health;
         public IObservable<int> OnSatietyChanged => property.hunger;
         public IObservable<int> OnThirstChanged => property.thirst;
@@ -55,12 +53,25 @@ namespace Peixi
         public IObservable<PropertyLevel> OnSatietyLevelChanged => property.hungerLevel;
         public IObservable<PropertyLevel> OnThirstLevelChanged => property.thirstLevel;
         public IObservable<PropertyLevel> OnPleasureLevelChanged => property.pleasureLevel;
+        public int MaxHealth
+        {
+            get => property.maxHealth;
+            set
+            {
+                property.maxHealth = value;
+                var currentHealth = Health;
+                if (currentHealth >= property.maxHealth)
+                {
+                    property.health.Value = MaxHealth;
+                }
+            }
+        }
 
         public int ChangeHealth(int changeValue)
         {
             var tempHealth = Health;
             tempHealth += changeValue;
-            tempHealth = Mathf.Clamp(tempHealth, 0, 100);
+            tempHealth = Mathf.Clamp(tempHealth, 0, property.maxHealth);
             property.health.Value = tempHealth;
 
             if (tempHealth <= 0 )
@@ -106,8 +117,8 @@ namespace Peixi
         {
             property.health = new IntReactiveProperty(100);
             property.hunger = new IntReactiveProperty(60);
-            property.thirst = new IntReactiveProperty(10);
-            property.pleasure = new IntReactiveProperty(10);
+            property.thirst = new IntReactiveProperty(80);
+            property.pleasure = new IntReactiveProperty(40);
 
             property.onPlayerDied = new Subject<Unit>();
 
@@ -116,45 +127,14 @@ namespace Peixi
             property.thirstLevel = new ReactiveProperty<PropertyLevel>(PropertyLevel.Safe);
             property.pleasureLevel = new ReactiveProperty<PropertyLevel>(PropertyLevel.Safe);
 
+            property.maxHealth = 100;
+
             return this;
         }
         PlayerPropertySystem React(Action action)
         {
             action();
             return this;
-        }
-        void onHealthChanged()
-        {
-            OnHealthChanged
-                .Subscribe(x =>
-                {
-                    property.healthLevel.Value = property.NegativeEvaluate(x);
-                });
-        }
-        void onHungerChanged()
-        {
-            OnSatietyChanged
-                .Subscribe(x =>
-                {
-                    property.hungerLevel.Value = property.PositiveEvaluate(x);
-                });
-               
-        }
-        void onThirstChanged()
-        {
-            OnThirstChanged
-                .Subscribe(x =>
-                {
-                    property.thirstLevel.Value = property.PositiveEvaluate(x);
-                });
-        }
-        void onPleasureChanged()
-        {
-            OnPleasureChanged
-                .Subscribe(x =>
-                {
-                    property.pleasureLevel.Value = property.PositiveEvaluate(x);
-                });
         }
     }
     [Serializable]
@@ -170,6 +150,7 @@ namespace Peixi
         public ReactiveProperty<PropertyLevel> hungerLevel;
         public ReactiveProperty<PropertyLevel> thirstLevel;
         public ReactiveProperty<PropertyLevel> pleasureLevel;
+        public int maxHealth;
 
         /// <summary>
         /// It's safe while the evalueated property at 71~100

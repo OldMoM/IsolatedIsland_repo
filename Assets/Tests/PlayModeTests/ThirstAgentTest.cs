@@ -5,7 +5,6 @@ using Siwei;
 using UniRx;
 using System.Collections;
 using NUnit.Framework;
-using peixi;
 
 public class ThirstAgentTest : MonoBehaviour
 {
@@ -51,6 +50,27 @@ public class ThirstAgentTest : MonoBehaviour
         dependency.playerPropertySystem.ChangeThirst(-90);
         Debug.Log("ThisrtLevel:" + dependency.playerPropertySystem.ThirstLevel);
         Assert.AreEqual(2, dependency.speed);
+        yield return null;
+    }
+    [UnityTest]
+    public IEnumerator ThirstAgentTest_ThirstEqualsZero_Keter()
+    {
+        var dependency = CreateThirstAgentDependency();
+        var agent = new ThirstAgent(dependency);
+
+        dependency.playerPropertySystem.ChangeThirst(-90);
+        Assert.AreEqual(PropertyLevel.Keter, dependency.playerPropertySystem.ThirstLevel);
+
+        yield return null;
+    }
+    [UnityTest]
+    public IEnumerator ThirstAgentTest_ThirstEquals80_Safe()
+    {
+        var dependency = CreateThirstAgentDependency();
+        var agent = new ThirstAgent(dependency);
+
+        dependency.playerPropertySystem.ChangeThirst(10);
+        Assert.AreEqual(PropertyLevel.Safe, dependency.playerPropertySystem.ThirstLevel);
         yield return null;
     }
 }

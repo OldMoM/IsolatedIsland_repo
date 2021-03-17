@@ -42,15 +42,12 @@ namespace Peixi
                 });
             
             dependency.playerPropertySystem.OnSatietyChanged
+                .Where(x => x==0)
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
-                    if (x == 0)
-                    {
-                        Debug.Log("Script hashcode:"+dependency.GetHashCode());
-                        dependency.speed = 2;                        
-                    }
-                    Debug.Log("Speed changed to:" + dependency.speed);
+                    Debug.Log("sdfsdf");
+                    dependency.speed = 2;
+                    Debug.Log(dependency.GetHashCode());
                 });
         }
     }
