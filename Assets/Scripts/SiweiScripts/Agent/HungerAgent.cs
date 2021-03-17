@@ -8,8 +8,8 @@ namespace Peixi
 {
     public class HungerAgent
     {
-        private HungerAgentDependency dependency;
-        public HungerAgent(HungerAgentDependency Dependency)
+        private AgentDependency dependency;
+        public HungerAgent(AgentDependency Dependency)
         {
             dependency = Dependency;
 
@@ -19,11 +19,12 @@ namespace Peixi
                 {
                     dependency.playerPropertySystem.ChangeSatiety(-1);
                 });
+            
             //根据饱腹值设定饱腹值等级
             dependency.playerPropertySystem.OnSatietyChanged
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
+                    //Debug.Log(x);
                     if (x > 0 && x < 60)
                     {
                         dependency.playerPropertySystem.SatietyLevel = PropertyLevel.Euclid;
@@ -38,6 +39,18 @@ namespace Peixi
                     {
                         dependency.playerPropertySystem.SatietyLevel = PropertyLevel.Safe;
                     }  
+                });
+            
+            dependency.playerPropertySystem.OnSatietyChanged
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                    if (x == 0)
+                    {
+                        Debug.Log("Script hashcode:"+dependency.GetHashCode());
+                        dependency.speed = 2;                        
+                    }
+                    Debug.Log("Speed changed to:" + dependency.speed);
                 });
         }
     }

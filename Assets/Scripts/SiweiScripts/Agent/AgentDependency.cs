@@ -7,7 +7,7 @@ using UniRx;
 
 namespace Peixi
 {
-    public struct HungerAgentDependency 
+    public struct AgentDependency 
     {
         public float speed;
         public IObservable<Unit> onRainDay;
