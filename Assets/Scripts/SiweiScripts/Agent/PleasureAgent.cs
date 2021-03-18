@@ -58,13 +58,18 @@ namespace Peixi
             dependency.playerPropertySystem.OnPleasureChanged
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
                     if (x <30)
                     {
-                        Debug.Log("Script hashcode:" + dependency.GetHashCode());
                         dependency.speed = 2;
                     }
-                    Debug.Log("Speed changed to:" + dependency.speed);
+                });
+
+            dependency.onRainDay
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    Debug.Log(1);
+                    dependency.playerPropertySystem.ChangePleasure(-10);
                 });
         }
     }

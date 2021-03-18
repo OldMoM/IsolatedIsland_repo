@@ -22,14 +22,11 @@ public class PleasureAgentTest
     {
         var dependency = new AgentDependency();
         dependency.isDay = new BoolReactiveProperty(false);
-        dependency.onRainDay = new Subject<Unit>(Unit.Default);
+        dependency.onRainDay = new Subject<Unit>();
         dependency.playerPropertySystem = new PlayerPropertySystem();
         dependency.speed = 5;
         return dependency;
     }
-
-
-
     [UnityTest]
     public IEnumerator PleasureAgentTest_PleasureInitial_40_Euclid()
     {
@@ -76,7 +73,11 @@ public class PleasureAgentTest
     public IEnumerator PleasureAgentTest_PleasureOnRainDay_PleasureMinus10()
     {
         var dependency = CreatePleasureRainAgentDependency();
+        var onRainDay_test = new Subject<Unit>();
+        dependency.onRainDay = onRainDay_test;
+
         var agent = new PleasureAgent(dependency);
+        onRainDay_test.OnNext(Unit.Default);
         Assert.AreEqual(30, dependency.playerPropertySystem.Pleasure);
         yield return null;
     }

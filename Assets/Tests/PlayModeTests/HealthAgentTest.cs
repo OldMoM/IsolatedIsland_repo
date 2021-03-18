@@ -24,8 +24,13 @@ public class HealthAgentTest
     {
         var dependency = CreateHealthAgentDependency();
         var agent = new HealthAgent(dependency);
+        dependency.onGameEnd
+            .Subscribe(x =>
+            {
+                Assert.AreEqual(Unit.Default, x);
+            });
         dependency.playerPropertySystem.ChangeHealth(-50);
-        Assert.AreEqual(true, dependency.playerPropertySystem.OnPlayerDied);
+        
         yield return null;
     }
 
@@ -33,40 +38,125 @@ public class HealthAgentTest
     public IEnumerator HealthAgentTest_Pleasure60_MaxHealth100()
     {
         var dependency = CreateHealthAgentDependency();
-        var pleasureAgent = new HealthAgent(dependency);
+        var healthAgent = new HealthAgent(dependency);
 
         dependency.playerPropertySystem.ChangePleasure(20);
+
+        Assert.AreEqual(60, dependency.playerPropertySystem.Pleasure);
         Assert.AreEqual(100, dependency.playerPropertySystem.MaxHealth);
         yield return null;
     }
-
     [UnityTest]
     public IEnumerator HealthAgentTest_Pleasure40_MaxHealth80()
     {
         var dependency = CreateHealthAgentDependency();
-        var pleasureAgent = new HealthAgent(dependency);
+        var healthAgent = new HealthAgent(dependency);
+        var pleasureAgent = new PleasureAgent(dependency);
+
+        Assert.AreEqual(PropertyLevel.Euclid, dependency.playerPropertySystem.PleasureLevel);
+        Assert.AreEqual(40, dependency.playerPropertySystem.Pleasure);
         Assert.AreEqual(80, dependency.playerPropertySystem.MaxHealth);
         yield return null;
     }
-
     [UnityTest]
     public IEnumerator HealthAgentTest_Pleasure20_MaxHealth60()
     {
         var dependency = CreateHealthAgentDependency();
+        var healthAgent = new HealthAgent(dependency);
+        //缺少一个PleasureAgent去修改PleasureLevel
+        var pleasureAgent = new PleasureAgent(dependency);
+
         dependency.playerPropertySystem.ChangePleasure(-20);
-        var pleasureAgent = new HealthAgent(dependency);
+        Debug.Log(dependency.GetHashCode());
+
+        Assert.AreEqual(20, dependency.playerPropertySystem.Pleasure);
+        Assert.AreEqual(PropertyLevel.Keter, dependency.playerPropertySystem.PleasureLevel);
         Assert.AreEqual(60, dependency.playerPropertySystem.MaxHealth);
+        yield return null;
+    }
+    [UnityTest]
+    public IEnumerator HealthAgentTest_ThirstEquals80_HealthChangeRateEquals5()
+    {
+        var dependency = CreateHealthAgentDependency();
+        var healthAgent = new HealthAgent(dependency);
+
+        dependency.playerPropertySystem.ChangeThirst(30);
+        yield return null;
+        Assert.AreEqual(5, healthAgent.thirstBuff);
+    }
+    [UnityTest]
+    public IEnumerator HealthAgentTest_ThirstEquals50_HealthChangeEquals0()
+    {
+        var dependency = CreateHealthAgentDependency();
+        var healthAgent = new HealthAgent(dependency);
+
+        dependency.playerPropertySystem.ChangeThirst(-30);
+        yield return null;
+        Assert.AreEqual(50, dependency.playerPropertySystem.Thirst);
+        Assert.AreEqual(0, healthAgent.thirstBuff);
+    }
+    [UnityTest]
+    public IEnumerator HealthAgentTest_ThirstEquals0_HealthChangeEqualsNegative10()
+    {
+        var dependency = CreateHealthAgentDependency();
+        var healthAgent = new HealthAgent(dependency);
+
+        dependency.playerPropertySystem.ChangeThirst(-80);
+        yield return null;
+        Assert.AreEqual(0, dependency.playerPropertySystem.Thirst);
+        Assert.AreEqual(-10, healthAgent.thirstBuff);
+    }
+    [UnityTest]
+    public IEnumerator HealthAgentTest_SatietyEquals70_SatietyBuffEquals5()
+    {
+        var dependency = CreateHealthAgentDependency();
+        var healthAgent = new HealthAgent(dependency);
+
+        dependency.playerPropertySystem.ChangeSatiety(10);
+
+        Assert.AreEqual(70, dependency.playerPropertySystem.Satiety);
+        Assert.AreEqual(5, healthAgent.satietyBuff);
+
+        yield return null;
+    }
+    [UnityTest]
+    public IEnumerator HealthAgentTest_SatietyEquals30_SatietyBuffEquals0()
+    {
+        var dependency = CreateHealthAgentDependency();
+        var healthAgent = new HealthAgent(dependency);
+
+        dependency.playerPropertySystem.ChangeSatiety(-30);
+
+        Assert.AreEqual(30, dependency.playerPropertySystem.Satiety);
+        Assert.AreEqual(0, healthAgent.satietyBuff);
+
+        yield return null;
+    }
+    [UnityTest]
+    public IEnumerator HealthAgentTest_SatietyEquals0_SatietyBuffEqualsNegative10()
+    {
+        var dependency = CreateHealthAgentDependency();
+        var healthAgent = new HealthAgent(dependency);
+
+        dependency.playerPropertySystem.ChangeSatiety(-80);
+
+        Assert.AreEqual(0, dependency.playerPropertySystem.Satiety);
+        Assert.AreEqual(-10, healthAgent.satietyBuff);
+
         yield return null;
     }
 
     [UnityTest]
-    public IEnumerator HealthAgentTest_Hunger59Thirst80_Health51()
+    public IEnumerator HealthAgentTest_SatietyEquals70AndThirstEquals80_HealthChangeRate10()
     {
         var dependency = CreateHealthAgentDependency();
-        var pleasureAgent = new HealthAgent(dependency);
-        dependency.playerPropertySystem.ChangeSatiety(-1);
-        yield return new WaitForSeconds(12);
-        Assert.AreEqual(51, dependency.playerPropertySystem.Health);
+        var healthAgent = new HealthAgent(dependency);
+
+        dependency.playerPropertySystem.ChangeSatiety(10);
+        dependency.playerPropertySystem.ChangeThirst(20);
+
+        Assert.AreEqual(10, healthAgent.changeRate);
         yield return null;
     }
+
 }

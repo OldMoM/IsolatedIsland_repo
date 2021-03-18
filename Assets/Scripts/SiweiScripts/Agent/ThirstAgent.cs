@@ -19,7 +19,7 @@ namespace Peixi
             Observable.Interval(TimeSpan.FromSeconds(4))
                .Subscribe(x =>
                {
-                   Debug.Log("Thirst is:" + dependency.playerPropertySystem.Thirst);
+                   //Debug.Log("Thirst is:" + dependency.playerPropertySystem.Thirst);
                    dependency.playerPropertySystem.ChangeThirst(-1);
                });
 

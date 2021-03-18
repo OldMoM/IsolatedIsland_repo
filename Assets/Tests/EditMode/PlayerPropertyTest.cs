@@ -63,14 +63,14 @@ namespace Tests
             property.ChangeSatiety(-2);
         }
         [Test]
-        public void ChangeThirst_13()
+        public void ChangeThirst_83()
         {
             PlayerPropertySystem property = new PlayerPropertySystem();
             property.ChangeThirst(3);
-            Assert.AreEqual(13, property.Thirst);
+            Assert.AreEqual(83, property.Thirst);
         }
         [Test]
-        public void OnThirstChanged_13()
+        public void OnThirstChanged_83()
         {
             PlayerPropertySystem property = new PlayerPropertySystem();
             property.OnThirstChanged
@@ -78,7 +78,7 @@ namespace Tests
                 .Subscribe(x =>
                 {
                     Debug.Log(x);
-                    Assert.AreEqual(13, x);
+                    Assert.AreEqual(83, x);
                 });
             property.ChangeThirst(3);
         }

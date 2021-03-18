@@ -108,14 +108,10 @@ namespace Peixi
         public PlayerPropertySystem()
         {
             Config();
-                //.React(onHealthChanged)
-                //.React(onHungerChanged)
-                //.React(onThirstChanged)
-                //.React(onPleasureChanged);
         }
         PlayerPropertySystem Config()
         {
-            property.health = new IntReactiveProperty(100);
+            property.health = new IntReactiveProperty(50);
             property.hunger = new IntReactiveProperty(60);
             property.thirst = new IntReactiveProperty(80);
             property.pleasure = new IntReactiveProperty(40);

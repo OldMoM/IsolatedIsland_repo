@@ -11,20 +11,34 @@ namespace Peixi
     public class HealthAgent
     {
         private AgentDependency dependency;
-
+        /// <summary>
+        /// 由饮水量变化引起的健康值改变Buff
+        /// </summary>
+        public int thirstBuff = 0;
+        /// <summary>
+        /// 由饱腹值变化引起的健康值BUFF
+        /// </summary>
+        public int satietyBuff = 0;
+        /// <summary>
+        /// 各种Buff叠加后健康值总体变化量
+        /// </summary>
+        public int changeRate = 0;
+        
         public HealthAgent(AgentDependency Dependency)
         {
             dependency = Dependency;
-
-            dependency.playerPropertySystem.OnPlayerDied.Subscribe(x => {
-                Debug.Log("Player died");
-            });
+   
+            dependency.playerPropertySystem.OnPlayerDied
+                .Subscribe(x =>
+                {
+                    dependency.onGameEnd.OnNext(Unit.Default);
+                });
 
             // 根据心情改变健康值上限
             dependency.playerPropertySystem.OnPleasureLevelChanged
+                .Skip(1)
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
                     switch (x)
                     {
                         case PropertyLevel.Euclid:
@@ -39,14 +53,11 @@ namespace Peixi
                         default:
                             break;
                     }
-
-
                 });
             // 根据饱腹值改变健康值
             dependency.playerPropertySystem.OnSatietyLevelChanged
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
                     if (x == PropertyLevel.Keter)
                     {
                         dependency.playerPropertySystem.ChangeHealth(-10);
@@ -63,7 +74,6 @@ namespace Peixi
             dependency.playerPropertySystem.OnThirstLevelChanged
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
                     if (x == PropertyLevel.Keter)
                     {
                         dependency.playerPropertySystem.ChangeHealth(-10);
@@ -77,7 +87,53 @@ namespace Peixi
                     }
                 });
 
+            #region//健康值对饮水量变化的响应行为
+            dependency.playerPropertySystem.OnThirstChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    if (x >= 70)//当饮水量=>70时，Health +5/min
+                    {
+                        thirstBuff = 5;
+                    }
+                    else if (x>0 && x<70)//当0<饮水量<70时，Health +0/min
+                    {
+                        thirstBuff = 0;
+                    }
+                    else if (x == 0)//当饮水量=0时，Health -10/min
+                    {
+                        thirstBuff = -10;
+                    }
+                    changeRate += thirstBuff;
+                });
+            #endregion
 
+            dependency.playerPropertySystem.OnSatietyChanged
+                .Skip(1)
+                .Subscribe(x =>
+                {
+                    if (x >= 60)//当饱腹量=>60时，Health +5/min
+                    {
+                        satietyBuff = 5;
+                    }
+                    else if (x<60 && x>0)
+                    {
+                        satietyBuff = 0;
+
+                    }
+                    else if (x == 0)
+                    {
+                        satietyBuff = -10;
+                    }
+                    changeRate += satietyBuff;
+                });
+
+            Observable.Interval(TimeSpan.FromSeconds(1))
+                .Subscribe(x =>
+                {
+                    dependency.playerPropertySystem.ChangeHealth(changeRate);
+                });
+                
         }
     }
 }
