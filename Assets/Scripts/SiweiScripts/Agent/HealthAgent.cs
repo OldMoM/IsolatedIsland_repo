@@ -24,6 +24,22 @@ namespace Peixi
             dependency.playerPropertySystem.OnPleasureLevelChanged
                 .Subscribe(x =>
                 {
+                    Debug.Log(x);
+                    switch (x)
+                    {
+                        case PropertyLevel.Euclid:
+                            dependency.playerPropertySystem.MaxHealth = 80;
+                            break;
+                        case PropertyLevel.Keter:
+                            dependency.playerPropertySystem.MaxHealth = 60;
+                            break;
+                        case PropertyLevel.Safe:
+                            dependency.playerPropertySystem.MaxHealth = 100;
+                            break;
+                        default:
+                            break;
+                    }
+
 
                 });
             // 根据饱腹值改变健康值

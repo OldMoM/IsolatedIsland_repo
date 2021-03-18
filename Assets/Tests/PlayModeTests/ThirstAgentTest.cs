@@ -6,7 +6,7 @@ using UniRx;
 using System.Collections;
 using NUnit.Framework;
 
-public class ThirstAgentTest : MonoBehaviour
+public class ThirstAgentTest
 {
     AgentDependency CreateThirstAgentDependency()
     {

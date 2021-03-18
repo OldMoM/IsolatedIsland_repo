@@ -33,24 +33,22 @@ namespace Peixi
                         dependency.playerPropertySystem.ThirstLevel = PropertyLevel.Euclid;
                     }
 
-                    else if (x == 0)
+                    if (x == 0)
                     {
                         dependency.playerPropertySystem.ThirstLevel = PropertyLevel.Keter;
                     }
 
-                    else // (x >= 70)
+                    if(x > 70)
                     {
                         dependency.playerPropertySystem.ThirstLevel = PropertyLevel.Safe;
                     }
                 });
 
             dependency.playerPropertySystem.OnThirstChanged
+                .Where(x=>x==0)
                 .Subscribe(x =>
                 {
-                    if (x == 0)
-                    {
                         dependency.speed = 2;
-                    }
                 });
         }
     }
