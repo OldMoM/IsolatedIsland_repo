@@ -41,10 +41,20 @@
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                // 模型空间下的PDF
                 o.ro = mul(unity_WorldToObject, float4(_WorldSpaceCameraPos,1));
                 o.hitPos = v.vertex;
+                // 世界空间下的PDF
                 // o.ro = _WorldSpaceCameraPos;
                 // o.hitPos = mul(unity_ObjectToWorld, v.vertex);
+                // 也可以直接求出摄像机到顶点方向
+                // rd = -WorldSpaceViewDir(v.vertex);
+
+                //想要找到该像素点的世界坐标
+                // float3 vP = UnityObjectToViewPos(v.vertex);
+                // vP.z = -1;
+                // o.ro = mul(unity_CameraToWorld,vP).xyz;
+
                 return o;
             }
 
@@ -86,7 +96,7 @@
                 //摄像机原点坐标
                 float3 ro = i.ro;
                 //射线反向
-                float3 rd = normalize(i.hitPos-ro);
+                float3 rd = normalize(i.hitPos - ro);
                 float d = RayMarch(ro, rd);
                 if(d >= MAX_DIST)
                     discard;

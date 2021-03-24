@@ -7,6 +7,41 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Mat_Prop_foodProcessPlant_Guo
+    second: {fileID: 2100000, guid: 6b842a1c6b1cbff469c0d356d87dcc0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Prop_foodProcessPlant_JiXieBi
+    second: {fileID: 2100000, guid: 0c4a20c26e62b7445bbf45d63a4007c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Prop_foodProcessPlant_Wan
+    second: {fileID: 2100000, guid: f0fd5fae2adbcfe43b2227b64106f725, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Prop_foodProcessPlant_YeZi
+    second: {fileID: 2100000, guid: 671a805470d487f4ab2c3c77ee89e190, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Prop_foodProcessPlant_Yu
+    second: {fileID: 2100000, guid: 955bc039098973b4680bd7070c6fadcf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Prop_foodProcessPlant_Zhi
+    second: {fileID: 2100000, guid: c4aaac0b762138c489265c03ef816b96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Prop_foodProcessPlant_ZhuTi
+    second: {fileID: 2100000, guid: 917ed60c7feeaf94da3febcc92c44a02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Mat_Prop_foodProcessPlant_fangBu
     second: {fileID: 2100000, guid: 9ae3e44cfc5be0945ab55816dbd373e9, type: 2}
   - first:
