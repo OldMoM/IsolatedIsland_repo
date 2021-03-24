@@ -100,12 +100,23 @@ namespace Peixi
             return gridPos;
         };
 
-        private IEnumerator CreateBuildSketchAgent()
+        //private IEnumerator CreateBuildSketchAgent()
+        //{
+        //    var ibuildSketch = InterfaceArichives.Archive.IBuildSketch;
+        //    yield return new WaitForSeconds(1);
+        //    sketchAgent = new BuildSketchAgent(InterfaceArichives.Archive.IBuildSketch, this);
+        //}
+
+        private BuildSketchAgent CreateBuildSketchAgent()
         {
-            var ibuildSketch = InterfaceArichives.Archive.IBuildSketch;
-            yield return new WaitForSeconds(1);
-            print(ibuildSketch.OnMouseClicked == null);
-            sketchAgent = new BuildSketchAgent(InterfaceArichives.Archive.IBuildSketch, this);
+            var ibuildSketch = FindObjectOfType<BuildSketch>();
+            var dependency = new BuildSketchAgentDependency();
+            var iAndroid = InterfaceArichives.Archive.IAndroidraSystem;
+
+            dependency.AndroidBuildAt = iAndroid.Control.BuildAt;
+            dependency.onAndroidCompleteBuildIsland = iAndroid.BuildAnim.OnBuildAnimEnd;
+            var agent = new BuildSketchAgent(ibuildSketch, this, dependency);
+            return agent;
         }
         #endregion
 
@@ -113,7 +124,7 @@ namespace Peixi
         {
             _islandGridModule = GetComponentInChildren<IslandGridModulePresenter>();
             _view = GetComponent<GameObjectBuiltModuleView>();
-            sketchAgent = new BuildSketchAgent(FindObjectOfType<BuildSketch>(),this);
+            sketchAgent = CreateBuildSketchAgent();
         }
     }
     public struct PositionConvent 

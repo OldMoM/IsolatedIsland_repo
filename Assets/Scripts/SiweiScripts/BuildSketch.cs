@@ -75,7 +75,6 @@ namespace Siwei
         {
             gridMesh_trans = transform.Find("GridMesh");
             mouseModule_trans = transform.Find("MouseModule");
-            Debug.Log("name:"+gridMesh_trans.gameObject.name);
             _gridMesh = gridMesh_trans.GetComponent<GridMesh>();
 
             SetBuildMode = false;

@@ -32,23 +32,6 @@ public class BuildSketchTest : MonoBehaviour
             {
                 buildSketch.SetBuildMode = y;
             });
-
-
-        //Observable.Timer(TimeSpan.FromSeconds(1))
-        //    .Subscribe(x =>
-        //    {
-        //        buildSketch.OnMouseClicked
-        //        .Subscribe(y =>
-        //        {
-        //            print("The mouse click position: " + y);
-        //        });
-
-        //        activeBuildSketch
-        //            .Subscribe(y =>
-        //            {
-        //                buildSketch.SetBuildMode = y;
-        //            });
-        //    });
     }
 
     

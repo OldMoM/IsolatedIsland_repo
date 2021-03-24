@@ -38,7 +38,7 @@ namespace Peixi
         }
 
         private IPlayerSystem playerSystem;
-        private ReactiveProperty<AndroidraState> state = new ReactiveProperty<AndroidraState>(AndroidraState.Sleep);
+        private ReactiveProperty<AndroidraState> state = new ReactiveProperty<AndroidraState>(AndroidraState.Idle);
         private AndroidraNavPresenter navModule;
         private AndroidraStateControllerModel model;
         private IAndroidraSystem _system;

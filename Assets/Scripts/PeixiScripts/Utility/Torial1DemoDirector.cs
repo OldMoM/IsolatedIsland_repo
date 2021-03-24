@@ -61,11 +61,13 @@ namespace Peixi
 
             dialogSystem.OnDialogEnd
                 .Where(x => x == DialogIdTags.Lee_firstWakeUp)
+                .First()
                 .Subscribe(x =>
                 {
                     var playerState = iplayerSystem.StateController.playerState;
                     playerState.Value = PlayerState.IdleState;
                     blackScreen.gameObject.SetActive(false);
+                    ShowMessage.singlton.Message("按下WASD移动");
                 });
 
             activeProgram.OnAndroidraActiveCompleted

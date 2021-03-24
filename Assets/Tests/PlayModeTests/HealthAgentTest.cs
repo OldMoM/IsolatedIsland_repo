@@ -159,4 +159,22 @@ public class HealthAgentTest
         yield return null;
     }
 
+    [UnityTest]
+    public IEnumerator HealthAgentTest_OnPlayerDied_false()
+    {
+        var dependency = CreateHealthAgentDependency();
+        var healthAgent = new HealthAgent(dependency);
+
+        healthAgent.IsAlive
+            .Where(x => !x)
+            .Subscribe(x =>
+            {
+                Debug.Log("Player died");
+                Assert.IsFalse(x);
+            });
+
+        dependency.playerPropertySystem.ChangeHealth(-100);
+
+        yield return null;
+    }
 }

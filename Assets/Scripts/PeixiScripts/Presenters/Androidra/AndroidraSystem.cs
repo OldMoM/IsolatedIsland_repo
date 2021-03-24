@@ -28,8 +28,20 @@ namespace Peixi
         }
         public AndroidraStateController androidState => state;
         public AndroidraNavPresenter navPresenter => nav;
-        public AndroidraBuildAnimationPresenter BuildAnim => buildAnim;
-
+        public AndroidraBuildAnimationPresenter BuildAnim
+        {
+            get
+            {
+                if (buildAnim is null)
+                {
+                    var navAgent = GetComponent<NavMeshAgent>();
+                    Assert.IsNotNull(navAgent);
+                    nav = new AndroidraNavPresenter(navAgent, playerSystem, this);
+                    buildAnim = new AndroidraBuildAnimationPresenter(nav);
+                }
+                return buildAnim;
+            }
+        }
         public AndroidraStateControllerModel createAndroidraStateControllerModel()
         {
             var controllerModel = new AndroidraStateControllerModel();

@@ -14,31 +14,63 @@ namespace Peixi
     {
         private IBuildSketch _buildSketch;
         private IBuildSystem _ibuildSystem;
+        private IInventorySystem inventorySystem;
+        private IChatBubble chatBubble;
 
-        private bool permitBuildIsland;
+        private bool hasIsland;
         private Vector2Int buildTarget;
 
-        public BuildSketchAgent(IBuildSketch ibuildSketch, IBuildSystem buildSystem)
+        private BuildSketchAgentDependency dependency;
+
+        public BuildSketchAgent(IBuildSketch ibuildSketch, IBuildSystem buildSystem,BuildSketchAgentDependency dependency)
         {
-            Debug.Log("init BuildSketchAgent");
             _buildSketch = ibuildSketch;
             _ibuildSystem = buildSystem;
+            inventorySystem = InterfaceArichives.Archive.IInventorySystem;
+            chatBubble = InterfaceArichives.Archive.InGameUIComponentsManager.ChatBubble;
+            this.dependency = dependency;
 
             ibuildSketch.OnMouseHoverPositionChanged
+                .Where(x => _buildSketch.SetBuildMode)
                 .Subscribe(x =>
                 {
-                    
                     buildTarget = buildSystem.newWorldToGridPosition(x);
-                    permitBuildIsland = !buildSystem.CheckThePositionHasIsland(buildTarget);
-                    _buildSketch.PermitBuildIsland = permitBuildIsland;
+                    hasIsland = !buildSystem.CheckThePositionHasIsland(buildTarget);
+                    _buildSketch.PermitBuildIsland = hasIsland && HasEnoughMat();
                 });
 
             ibuildSketch.OnMouseClicked
-                .Where(x=> permitBuildIsland)
+                .Where(x => _buildSketch.SetBuildMode)
+                .Where(x => hasIsland)
+                .Subscribe(x =>
+                {
+                    if (HasEnoughMat())
+                    {
+                        dependency.AndroidBuildAt(PrefabTags.plantIsland, buildTarget);
+                        ibuildSketch.SetBuildMode = false;
+                    }
+                    else
+                    {
+                        chatBubble.StartChat(new string[] { "我没有足够的材料" },
+                                             InterfaceArichives.Archive.PlayerSystem.OnPlayerPositionChanged);
+                    }
+                });
+
+            dependency.onAndroidCompleteBuildIsland
                 .Subscribe(x =>
                 {
                     buildSystem.BuildIslandAt(buildTarget);
                 });
+        }
+        public bool HasEnoughMat()
+        {
+            var plastic = inventorySystem.GetAmount("Plastic");
+            var _string = inventorySystem.GetAmount("String");
+
+            var hasEoughPlastic = (plastic == 16);
+            var hasEnoughString = (_string == 8);
+
+            return hasEnoughString && hasEoughPlastic;
         }
     }
 }

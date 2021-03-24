@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using System;
 
 
 namespace Peixi
@@ -23,6 +24,12 @@ namespace Peixi
         /// 各种Buff叠加后健康值总体变化量
         /// </summary>
         public int changeRate = 0;
+        /// <summary>
+        /// 玩家死亡事件
+        /// </summary>
+        public IObservable<bool> IsAlive => isAlive;
+
+        private BoolReactiveProperty isAlive = new BoolReactiveProperty(true);
         
         public HealthAgent(AgentDependency Dependency)
         {
@@ -133,7 +140,13 @@ namespace Peixi
                 {
                     dependency.playerPropertySystem.ChangeHealth(changeRate);
                 });
-                
+
+            dependency.playerPropertySystem.OnHealthChanged
+                .Where(x => x == 0)
+                .Subscribe(x =>
+                {
+                    isAlive.Value = false;
+                });
         }
     }
 }
