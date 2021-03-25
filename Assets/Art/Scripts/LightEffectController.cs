@@ -38,7 +38,7 @@ public class LightEffectController : MonoBehaviour
         RenderSettings.ambientIntensity = AmbientIntensity;
         // 帐篷
         float inten = (AmbientIntensity + DirectLightIntensity)/2;
-        print(inten);
+        // print(inten);
         Color tentCol = new Color(inten, inten, inten);
         Prop_Tent.GetComponent<MeshRenderer>().material.color = tentCol;
         //点光源
