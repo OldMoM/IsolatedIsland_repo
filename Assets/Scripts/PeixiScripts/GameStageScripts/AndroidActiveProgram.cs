@@ -16,6 +16,7 @@ namespace Peixi
         public Transform RealAndroidActiveArtModel;
         public Transform fakeArtModel;
         public TextMeshProUGUI textMeshForTip;
+        public Transform android;
 
         public Flowchart gameFlow;
 
@@ -69,7 +70,6 @@ namespace Peixi
                 .Subscribe(y =>
                 {
                     ToDoFlowChart("OnAdroidraStartActive");
-                    //print("start active android");
                     animator.Play("AndroidraActiveAnimation");
                 });
         }
@@ -79,7 +79,7 @@ namespace Peixi
             print("active completed");
             fakeArtModel.gameObject.SetActive(false);
             RealAndroidActiveArtModel.gameObject.SetActive(true);
-            //androidStateController.SetState(AndroidraState.Idle, this.name);
+            android.position = transform.position;
             onAndroidActiveCompleted.OnNext(Unit.Default);
             gameObject.SetActive(false);
         }

@@ -37,7 +37,11 @@ namespace Peixi
 
             inventoryGui.OnOpenStateChanged
                 .Where(x => x)
-                .Subscribe(x => { GameStageManager.StartStage(onPropertySpecification_OpenInventory); });
+                .Subscribe(x =>
+                {
+                    GameStageManager.StartStage(onPropertySpecification_OpenInventory);
+                });
+
 
             inventoryGui.OnItemUsed
                 .Where(x => x == "Apple")

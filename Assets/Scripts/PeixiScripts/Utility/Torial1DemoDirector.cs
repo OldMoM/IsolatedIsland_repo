@@ -20,6 +20,8 @@ namespace Peixi
 
         private void Start()
         {
+            
+
             blackScreen.gameObject.SetActive(true);
             dialogSystem = FindObjectOfType<LvDialogSystem>();
             iplayerSystem = InterfaceArichives.Archive.PlayerSystem;
@@ -38,7 +40,6 @@ namespace Peixi
                 .First()
                 .Subscribe(x =>
                 {
-                    
                     //InitScene();
                 });
 
@@ -67,7 +68,15 @@ namespace Peixi
                     var playerState = iplayerSystem.StateController.playerState;
                     playerState.Value = PlayerState.IdleState;
                     blackScreen.gameObject.SetActive(false);
-                    ShowMessage.singlton.Message("按下WASD移动");
+                    //ShowMessage.singlton.Message("按下WASD移动");
+                });
+
+            dialogSystem.OnDialogEnd
+                .Delay(TimeSpan.FromSeconds(2))
+                .First()
+                .Subscribe(x =>
+                {
+                    ShowMessage.singlton.Message("");
                 });
 
             activeProgram.OnAndroidraActiveCompleted
@@ -92,6 +101,8 @@ namespace Peixi
 
                     var UIComponents = InterfaceArichives.Archive.InGameUIComponentsManager;
                     UIComponents.PlayerPropertyHUD.SetActiveHUD(true);
+
+                    GameStageManager.StartStage("onPropertySpecification_Start");
                 });
         }
 

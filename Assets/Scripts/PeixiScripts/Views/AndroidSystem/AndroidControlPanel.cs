@@ -27,6 +27,7 @@ namespace Peixi
         private bool inventoryState;
 
         private IBuildSketch buildSketch;
+
         // Start is called before the first frame update
         void Start()
         {

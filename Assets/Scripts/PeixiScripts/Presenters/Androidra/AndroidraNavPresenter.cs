@@ -63,7 +63,7 @@ namespace Peixi
                 {
                     var playerPos = _playerSystem.Rigid.position;
                     var playerFaceDir = _playerSystem.Movement.FaceDirection;
-                    target = playerPos + playerFaceDir * -1.5f + Vector3.up * 2;
+                    target = playerPos + playerFaceDir * -0.5f + Vector3.up * 2;
                 });
 
             Observable.EveryUpdate()

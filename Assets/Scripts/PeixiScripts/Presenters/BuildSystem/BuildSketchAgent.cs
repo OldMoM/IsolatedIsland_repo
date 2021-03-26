@@ -70,7 +70,7 @@ namespace Peixi
             var hasEoughPlastic = (plastic == 16);
             var hasEnoughString = (_string == 8);
 
-            return hasEnoughString && hasEoughPlastic;
+            return true;
         }
     }
 }

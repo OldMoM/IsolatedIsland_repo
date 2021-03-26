@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
+using Siwei;
 
 namespace Peixi 
 {
@@ -19,6 +20,11 @@ namespace Peixi
         private Rigidbody rigid;
         private PlayerSystemAgent systemAgents;
         private Vector3ReactiveProperty onPositionChanged = new Vector3ReactiveProperty();
+
+        private HealthAgent healthAgent;
+        private HungerAgent hungerAgent;
+        private ThirstAgent thirstAgent;
+        private PleasureAgent pleasureAgent;
         #endregion
 
         #region//接口实现
@@ -65,6 +71,16 @@ namespace Peixi
             return stateController;
         }
 
+        private AgentDependency CreateDependency()
+        {
+            AgentDependency dependency = new AgentDependency();
+
+            dependency.speed = _movement.moveSpeed;
+            dependency.playerPropertySystem = property;
+            dependency.isDay = new BoolReactiveProperty(false);
+            dependency.onRainDay = new Subject<Unit>();
+            return dependency;
+        }
         #endregion
 
         void Awake()
@@ -83,6 +99,12 @@ namespace Peixi
                 {
                     onPositionChanged.Value = transform.position;
                 });
+
+            healthAgent = new HealthAgent(CreateDependency());
+            hungerAgent = new HungerAgent(CreateDependency());
+            thirstAgent = new ThirstAgent(CreateDependency());
+            pleasureAgent = new PleasureAgent(CreateDependency());
+
         }
     }
 }

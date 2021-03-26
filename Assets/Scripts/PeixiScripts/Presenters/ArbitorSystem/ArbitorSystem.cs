@@ -17,6 +17,8 @@ namespace Peixi
         private InventorySystem inventorySystem;
         private ArbitorEyeModule eye;
         private IslandInteractAgent islandInteractAgent;
+        private SuppleUseAgent suppleUseAgent;
+
         [SerializeField]
         private FacilityData facility;
         public IInventorySystem InventorySystem => inventorySystem;
@@ -77,6 +79,8 @@ namespace Peixi
         }
         void Start()
         {
+            suppleUseAgent = new SuppleUseAgent(InterfaceArichives.Archive.InGameUIComponentsManager.InventoryGui.OnItemUsed);
+
             eye.OnQuenedCountChanged
                 .Subscribe(x =>
                 {

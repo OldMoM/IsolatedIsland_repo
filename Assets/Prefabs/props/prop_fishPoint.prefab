@@ -171,14 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34dfb848c9d04374986e86af41049f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    name: 
-    amount: 0
-    itemType: 0
-    detectRadius: 1.5
-    isContact: 0
   facilityData:
     position: {x: 0, y: 0, z: 0}
+    gridPos: {x: 0, y: 0}
     instanceId: 0
     name: fishpoint
     type: 2

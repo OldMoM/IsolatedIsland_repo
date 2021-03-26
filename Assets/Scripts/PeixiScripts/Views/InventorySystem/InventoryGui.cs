@@ -35,7 +35,6 @@ namespace Peixi
 
         private BoolReactiveProperty isOpened = new BoolReactiveProperty(false);
         private Subject<string> onItemUsed = new Subject<string>();
-        //private BoolReactiveProperty onOpenStateChanged = new BoolReactiveProperty(false);
 
 
         [SerializeField]
@@ -58,11 +57,8 @@ namespace Peixi
             }
         }
         public string ClickedItem => clickedItem.Value;
-
         public IObservable<bool> OnOpenStateChanged => isOpened;
-
         public IObservable<string> OnItemUsed => onItemUsed;
-
         public void Init(IInventorySystem inventorySystem)
         {
             Config()
@@ -77,7 +73,7 @@ namespace Peixi
         {
             var isOpen = isOpened.Value;
             isOpened.Value = isOpen;
-
+            Debug.Log(isOpened.Value);
               gridManagers_tran.gameObject.SetActive(isOpen);
               back_tran.gameObject.SetActive(isOpen);
               useBtn.gameObject.SetActive(isOpen);
@@ -103,7 +99,7 @@ namespace Peixi
             {
                 x.SetActive(active);
             });
-            //onOpenStateChanged.onne
+            isOpened.Value = active;
             return this;
         }
 
