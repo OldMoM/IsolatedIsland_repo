@@ -15,7 +15,7 @@ public class IslandEditor : MonoBehaviour
     {
         if (presenter != null)
         {
-            Handles.Label(transform.position, "耐久度:" + presenter.Durability_current);
+            //Handles.Label(transform.position, "耐久度:" + presenter.Durability_current);
         }
     }
 }

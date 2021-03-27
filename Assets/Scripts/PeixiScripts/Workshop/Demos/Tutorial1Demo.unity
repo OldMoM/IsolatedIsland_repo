@@ -1275,176 +1275,6 @@ Transform:
   m_Father: {fileID: 1307412595}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &420557799 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7698655049647103244, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-  m_PrefabInstance: {fileID: 1245993709}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &420557801
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420557799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: 491.34204
-    y: 576.2138
-    width: 141.13922
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 61
-  blockName: "\u5F00\u59CB\u5C5E\u6027\u751F\u5B58\u6559\u5B66"
-  description: 
-  eventHandler: {fileID: 0}
-  commandList:
-  - {fileID: 420557933}
-  - {fileID: 420557932}
-  suppressAllAutoSelections: 0
---- !u!114 &420557802
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420557799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 142
-  indentLevel: 0
-  text: "\u64AD\u653E\u751F\u5B58\u6559\u5B661"
-  description: 
-  targetBlock: {fileID: 420557801}
-  hideIfVisited: 0
-  interactable:
-    booleanRef: {fileID: 0}
-    booleanVal: 1
-  setMenuDialog: {fileID: 0}
-  hideThisOption:
-    booleanRef: {fileID: 0}
-    booleanVal: 0
---- !u!114 &420557803
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420557799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: 102.926056
-    y: 1252.2567
-    width: 198.10123
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 159
-  blockName: "\u674E\u83B7\u5F97\u5EFA\u9020\u6750\u6599\u540E\u89E6\u53D1\u7684\u5BF9\u8BDD"
-  description: 
-  eventHandler: {fileID: 420557805}
-  commandList:
-  - {fileID: 420557804}
-  suppressAllAutoSelections: 0
---- !u!114 &420557804
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420557799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 160
-  indentLevel: 0
-  storyText: "\u83B7\u53D6\u5230\u6750\u6599\u540E\uFF0C\u5C31\u662F\u6839\u636E\u5BF9\u5E94\u56FE\u7EB8\u5EFA\u9020\u8BBE\u65BD\u4E86\uFF0C\u6BCF\u4E00\u79CD\u8BBE\u65BD\u7684\u5EFA\u9020\u90FD\u9700\u8981\u673A\u5668\u4EBA\u83B7\u53D6\u5E76\u4E14\u89E3\u9501\u5BF9\u5E94\u7684\u56FE\u7EB8\uFF0C\u56FE\u7EB8\u662F\u975E\u5E38\u73CD\u8D35\u7684\u54E6\uFF0C\u636E\u8BF4\u5728\u6D77\u4E0A\u7684\u5176\u4ED6\u51E0\u4E2A\u805A\u5C45\u5730\u8FD8\u8981\u975E\u5E38\u7279\u522B\u7684\u56FE\u7EB8\u3002\u866B\u4E38\u4EE5\u53CA\u5185\u7F6E\u4E86\u591A\u4E2A\u56FE\u7EB8\uFF0C\u5148\u5EFA\u9020\u84B8\u998F\u673A\u5427\uFF0C\u83B7\u53D6\u975E\u5E38\u91CD\u8981\u7684\u6DE1\u6C34\u8D44\u6E90\u3002"
-  description: 
-  character: {fileID: 1167781683}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &420557805
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420557799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 420557803}
-  suppressBlockAutoSelect: 0
-  message: robot_afterLeeGetEnoughMaterial
---- !u!114 &420557932
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420557799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee652b959ea3c28468a43caea3d4877c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 162
-  indentLevel: 0
-  stageId: onPropertySpecification_Start
---- !u!114 &420557933
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420557799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 161
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 870996477}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
 --- !u!1001 &426425900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2384,11 +2214,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
---- !u!1 &870996477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7582610351347405391, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+--- !u!114 &870996478 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 397520625, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
   m_PrefabInstance: {fileID: 1245993709}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a30caf5e2cf8444192969bf132d2d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &989902191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 40c59a67d83cc064e9f3829bfd1b5908, type: 3}
@@ -2590,17 +2426,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067802427}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1167781683 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4375249412294494059, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-  m_PrefabInstance: {fileID: 1245993709}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1173270225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2848,69 +2673,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 127708501, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 105.56896
-      objectReference: {fileID: 0}
-    - target: {fileID: 127708501, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 581.1551
-      objectReference: {fileID: 0}
-    - target: {fileID: 127708519, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 66.318245
-      objectReference: {fileID: 0}
-    - target: {fileID: 127708519, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 267.31824
-      objectReference: {fileID: 0}
-    - target: {fileID: 127708525, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: commandList.Array.size
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 127708525, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 287.1785
-      objectReference: {fileID: 0}
-    - target: {fileID: 127708525, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 418.4704
-      objectReference: {fileID: 0}
-    - target: {fileID: 127708525, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: description
-      value: "\u64AD\u653E\u7236\u6BCD\u7684\u7559\u8A00"
-      objectReference: {fileID: 0}
-    - target: {fileID: 127708525, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: commandList.Array.data[23]
-      value: 
-      objectReference: {fileID: 420557802}
     - target: {fileID: 605025723191447237, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: nodeRect.x
-      value: 100.63985
-      objectReference: {fileID: 0}
-    - target: {fileID: 605025723191447237, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 1358.4044
-      objectReference: {fileID: 0}
-    - target: {fileID: 605025723191447237, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 156
-      objectReference: {fileID: 0}
-    - target: {fileID: 1003049445974373550, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 103.455826
-      objectReference: {fileID: 0}
-    - target: {fileID: 1003049445974373550, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 1026.9861
-      objectReference: {fileID: 0}
-    - target: {fileID: 1003049445974373550, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 154
-      objectReference: {fileID: 0}
-    - target: {fileID: 1692742695492329731, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: message
-      value: Lee_firstWakeUp
+      value: 102.00971
       objectReference: {fileID: 0}
     - target: {fileID: 1764758225719187869, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2957,148 +2722,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2561757615587089018, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: selectedBlocks.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2561757615587089018, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: blockViewHeight
-      value: 460
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740685748945214446, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: -6.962425
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740685748945214446, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 417.76816
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740685748945214446, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 148
-      objectReference: {fileID: 0}
-    - target: {fileID: 2992995971295022063, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: blockName
-      value: onLeeFirstAwkeup
-      objectReference: {fileID: 0}
-    - target: {fileID: 2992995971295022063, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 180.27274
-      objectReference: {fileID: 0}
-    - target: {fileID: 2992995971295022063, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 55.124588
-      objectReference: {fileID: 0}
-    - target: {fileID: 3340798079679958426, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 104.365585
-      objectReference: {fileID: 0}
-    - target: {fileID: 3340798079679958426, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 1091.8168
-      objectReference: {fileID: 0}
-    - target: {fileID: 3340798079679958426, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 153
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020883206085641011, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 149
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020883206085641011, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 31.990799
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020883206085641011, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 325.80466
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144226175016648578, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 105.214745
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144226175016648578, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 954.0844
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144226175016648578, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 152
-      objectReference: {fileID: 0}
-    - target: {fileID: 4283313698757812033, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 106.86364
-      objectReference: {fileID: 0}
-    - target: {fileID: 5573987340672603554, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 105.74027
-      objectReference: {fileID: 0}
-    - target: {fileID: 5573987340672603554, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 1170.855
-      objectReference: {fileID: 0}
-    - target: {fileID: 5573987340672603554, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 155
-      objectReference: {fileID: 0}
-    - target: {fileID: 6083776296809789339, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: m_IsActive
+      propertyPath: selectedCommands.Array.size
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6100497134168147592, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - target: {fileID: 2561757615587089018, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: selectedBlocks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340798079679958426, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: nodeRect.x
-      value: 360.9626
+      value: 116.69435
       objectReference: {fileID: 0}
-    - target: {fileID: 6100497134168147592, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 209.79135
-      objectReference: {fileID: 0}
-    - target: {fileID: 6186984833458894949, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - target: {fileID: 4144226175016648578, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: nodeRect.x
-      value: 84.15512
-      objectReference: {fileID: 0}
-    - target: {fileID: 6186984833458894949, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 504.76746
-      objectReference: {fileID: 0}
-    - target: {fileID: 6186984833458894949, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 151
-      objectReference: {fileID: 0}
-    - target: {fileID: 6544394156742555417, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 109.64858
-      objectReference: {fileID: 0}
-    - target: {fileID: 6544394156742555417, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 650.3968
-      objectReference: {fileID: 0}
-    - target: {fileID: 6544394156742555417, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 6591516466541659239, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 1445.1256
-      objectReference: {fileID: 0}
-    - target: {fileID: 6591516466541659239, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 100.682884
-      objectReference: {fileID: 0}
-    - target: {fileID: 6591516466541659239, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 157
-      objectReference: {fileID: 0}
-    - target: {fileID: 7250351291343332586, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 101.22469
-      objectReference: {fileID: 0}
-    - target: {fileID: 7250351291343332586, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 146
-      objectReference: {fileID: 0}
-    - target: {fileID: 7462272967573560138, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: message
-      value: Androidra_playerOpenInventory
+      value: 109.32434
       objectReference: {fileID: 0}
     - target: {fileID: 7582610351347405391, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: m_Name
@@ -3108,52 +2745,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7606634443462350971, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 104.28758
-      objectReference: {fileID: 0}
-    - target: {fileID: 7606634443462350971, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 879.42303
-      objectReference: {fileID: 0}
-    - target: {fileID: 7606634443462350971, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.width
-      value: 195.74467
-      objectReference: {fileID: 0}
-    - target: {fileID: 7606634443462350971, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 145
-      objectReference: {fileID: 0}
-    - target: {fileID: 7606634443462350971, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: blockName
-      value: Androidra_playerOpenInventory
-      objectReference: {fileID: 0}
-    - target: {fileID: 8797267934277206466, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 1541.6277
-      objectReference: {fileID: 0}
-    - target: {fileID: 8797267934277206466, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 100.24523
-      objectReference: {fileID: 0}
-    - target: {fileID: 8797267934277206466, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 158
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893769731004100445, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 102.2896
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893769731004100445, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 801.92694
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893769731004100445, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: itemId
-      value: 147
+    - target: {fileID: 7698655049647103244, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 127708500, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - {fileID: 6100497134168147592, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - {fileID: 120881863225796842, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - {fileID: 4020883206085641011, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - {fileID: 2740685748945214446, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - {fileID: 6186984833458894949, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - {fileID: 6544394156742555417, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - {fileID: 4144226175016648578, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - {fileID: 3340798079679958426, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - {fileID: 605025723191447237, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - {fileID: 6591516466541659239, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
 --- !u!1 &1251431340
 GameObject:
@@ -3188,13 +2794,9 @@ GameObject:
   - component: {fileID: 1251431363}
   - component: {fileID: 1251431370}
   - component: {fileID: 1251431361}
-  - component: {fileID: 1251431362}
-  - component: {fileID: 1251431371}
-  - component: {fileID: 1251431372}
   - component: {fileID: 1251431375}
   - component: {fileID: 1251431374}
   - component: {fileID: 1251431373}
-  - component: {fileID: 1251431378}
   - component: {fileID: 1251431376}
   - component: {fileID: 1251431389}
   - component: {fileID: 1251431387}
@@ -3214,7 +2816,6 @@ GameObject:
   - component: {fileID: 1251431390}
   - component: {fileID: 1251431386}
   - component: {fileID: 1251431391}
-  - component: {fileID: 1251431392}
   - component: {fileID: 1251431393}
   - component: {fileID: 1251431394}
   - component: {fileID: 1251431395}
@@ -3222,6 +2823,10 @@ GameObject:
   - component: {fileID: 1251431397}
   - component: {fileID: 1251431399}
   - component: {fileID: 1251431398}
+  - component: {fileID: 1251431362}
+  - component: {fileID: 1251431378}
+  - component: {fileID: 1251431372}
+  - component: {fileID: 1251431371}
   m_Layer: 0
   m_Name: GameFlow
   m_TagString: Untagged
@@ -3242,11 +2847,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 125.61438, y: -449.6906}
+  scrollPos: {x: 533.2037, y: -215.91081}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.64000034
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -3254,9 +2859,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1251431370}
-  selectedCommands:
-  - {fileID: 1251431398}
+  - {fileID: 1251431368}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -3352,9 +2956,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -17.926777
-    y: 151.48773
-    width: 194
+    x: -14.129309
+    y: 256.55106
+    width: 199.99992
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3578,9 +3182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 1.1463814
-    y: 81.14627
-    width: 158
+    x: -5.1827307
+    y: 183.67796
+    width: 162.49994
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3694,9 +3298,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 22.00002
-    y: 240.46335
-    width: 98
+    x: 15.150711
+    y: 373.34018
+    width: 99.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3737,9 +3341,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 17.637173
-    y: 668.65826
-    width: 122
+    x: 3.5746803
+    y: 671.78326
+    width: 124.99996
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3782,9 +3386,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -69.85405
+    x: -67.3224
     y: 1087.2312
-    width: 198
+    width: 192.18742
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3860,42 +3464,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 1251431340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 26
+  itemId: 61
   indentLevel: 0
   description: "\u64AD\u653E\u5C5E\u6027\u6559\u5B66\u5BF9\u8BDD"
-  targetObject: {fileID: 870996477}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: StartDialog
-  targetMethodText: 'StartDialog (String): Void'
-  methodParameters:
-  - objValue:
-      typeAssemblyname: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      typeFullname: System.String
-      intValue: 0
-      boolValue: 0
-      floatValue: 0
-      stringValue: Androidra_survivalTutorial
-      colorValue: {r: 0, g: 0, b: 0, a: 0}
-      gameObjectValue: {fileID: 0}
-      materialValue: {fileID: 0}
-      objectValue: {fileID: 0}
-      spriteValue: {fileID: 0}
-      textureValue: {fileID: 0}
-      vector2Value: {x: 0, y: 0}
-      vector3Value: {x: 0, y: 0, z: 0}
-    variableKey: 
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 870996478}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: StartDialog
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Androidra_survivalTutorial
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1251431363
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -3948,7 +3563,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 431.6449
     y: 540.7986
-    width: 93
+    width: 92.18748
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3958,7 +3573,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1251431364}
-  - {fileID: 1251431372}
+  - {fileID: 1251431371}
   - {fileID: 1251431396}
   - {fileID: 1251431363}
   suppressAllAutoSelections: 0
@@ -4013,8 +3628,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 157.84538
-    y: 542.2911
-    width: 95
+    y: 543.8536
+    width: 95.31248
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4024,7 +3639,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1251431367}
-  - {fileID: 1251431371}
+  - {fileID: 1251431378}
   - {fileID: 1251431397}
   - {fileID: 1251431366}
   suppressAllAutoSelections: 0
@@ -4065,7 +3680,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 575.348
     y: 672.9001
-    width: 110
+    width: 112.49997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4089,42 +3704,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 1251431340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 27
+  itemId: 64
   indentLevel: 0
   description: 
-  targetObject: {fileID: 870996477}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: StartDialog
-  targetMethodText: 'StartDialog (String): Void'
-  methodParameters:
-  - objValue:
-      typeAssemblyname: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      typeFullname: System.String
-      intValue: 0
-      boolValue: 0
-      floatValue: 0
-      stringValue: Androidra_playerGetFruit
-      colorValue: {r: 0, g: 0, b: 0, a: 0}
-      gameObjectValue: {fileID: 0}
-      materialValue: {fileID: 0}
-      objectValue: {fileID: 0}
-      spriteValue: {fileID: 0}
-      textureValue: {fileID: 0}
-      vector2Value: {x: 0, y: 0}
-      vector3Value: {x: 0, y: 0, z: 0}
-    variableKey: 
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 870996478}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: StartDialog
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MessageFromParentPart2
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1251431372
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4134,42 +3760,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 1251431340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 28
+  itemId: 63
   indentLevel: 0
   description: 
-  targetObject: {fileID: 870996477}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: StartDialog
-  targetMethodText: 'StartDialog (String): Void'
-  methodParameters:
-  - objValue:
-      typeAssemblyname: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      typeFullname: System.String
-      intValue: 0
-      boolValue: 0
-      floatValue: 0
-      stringValue: MessageFromParentPart2
-      colorValue: {r: 0, g: 0, b: 0, a: 0}
-      gameObjectValue: {fileID: 0}
-      materialValue: {fileID: 0}
-      objectValue: {fileID: 0}
-      spriteValue: {fileID: 0}
-      textureValue: {fileID: 0}
-      vector2Value: {x: 0, y: 0}
-      vector3Value: {x: 0, y: 0, z: 0}
-    variableKey: 
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 870996478}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: StartDialog
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Androidra_playerOpenInventory
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1251431373
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4220,9 +3857,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 276.36255
+    x: 285.73755
     y: 679.0009
-    width: 133
+    width: 128.12497
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4232,7 +3869,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1251431374}
-  - {fileID: 1251431378}
+  - {fileID: 1251431372}
   - {fileID: 1251431373}
   suppressAllAutoSelections: 0
 --- !u!114 &1251431376
@@ -4283,42 +3920,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 1251431340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 32
+  itemId: 62
   indentLevel: 0
   description: 
-  targetObject: {fileID: 870996477}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: StartDialog
-  targetMethodText: 'StartDialog (String): Void'
-  methodParameters:
-  - objValue:
-      typeAssemblyname: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      typeFullname: System.String
-      intValue: 0
-      boolValue: 0
-      floatValue: 0
-      stringValue: Androidra_playerOpenInventory
-      colorValue: {r: 0, g: 0, b: 0, a: 0}
-      gameObjectValue: {fileID: 0}
-      materialValue: {fileID: 0}
-      objectValue: {fileID: 0}
-      spriteValue: {fileID: 0}
-      textureValue: {fileID: 0}
-      vector2Value: {x: 0, y: 0}
-      vector3Value: {x: 0, y: 0, z: 0}
-    variableKey: 
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 870996478}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: StartDialog
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Androidra_playerGetFruit
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1251431379
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4368,7 +4016,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 138.19922
     y: 886.54047
-    width: 189
+    width: 182.81242
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4479,9 +4127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 352.3891
+    x: 353.6549
     y: 1086.5032
-    width: 187
+    width: 181.24992
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4526,7 +4174,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 564.2945
     y: 912.2882
-    width: 135
+    width: 131.24995
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4613,32 +4261,6 @@ MonoBehaviour:
   itemId: 52
   indentLevel: 0
   dialogId: robot_afterLeeGetEnoughMaterial
---- !u!114 &1251431392
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251431340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: 18.218517
-    y: 438.92267
-    width: 111
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 53
-  blockName: New Block
-  description: 
-  eventHandler: {fileID: 0}
-  commandList: []
-  suppressAllAutoSelections: 0
 --- !u!114 &1251431393
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4809,7 +4431,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &1251431396
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4865,7 +4487,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &1251431397
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4921,7 +4543,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &1251431398
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4977,7 +4599,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &1251431399
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

@@ -1050,9 +1050,6 @@ GameObject:
   - component: {fileID: 6100497134168147592}
   - component: {fileID: 5942699891581154804}
   - component: {fileID: 502141303647399153}
-  - component: {fileID: 127708497}
-  - component: {fileID: 127708498}
-  - component: {fileID: 127708499}
   - component: {fileID: 127708501}
   - component: {fileID: 127708504}
   - component: {fileID: 127708505}
@@ -1093,7 +1090,6 @@ GameObject:
   - component: {fileID: 127708546}
   - component: {fileID: 127708547}
   - component: {fileID: 127708548}
-  - component: {fileID: 127708500}
   - component: {fileID: 8147888169385327962}
   - component: {fileID: 3239414639353976016}
   - component: {fileID: 7250351291343332586}
@@ -1101,7 +1097,6 @@ GameObject:
   - component: {fileID: 5400672741689438907}
   - component: {fileID: 5351698837314117667}
   - component: {fileID: 5791010308506575636}
-  - component: {fileID: 4505823138100455108}
   - component: {fileID: 8893769731004100445}
   - component: {fileID: 984853521826318557}
   - component: {fileID: 5182309304402192506}
@@ -1117,8 +1112,6 @@ GameObject:
   - component: {fileID: 7462272967573560138}
   - component: {fileID: 2606878846578736044}
   - component: {fileID: 8338066168606167600}
-  - component: {fileID: 4471827033854512091}
-  - component: {fileID: 3989435306667780991}
   - component: {fileID: 2740685748945214446}
   - component: {fileID: 4020883206085641011}
   - component: {fileID: 6544394156742555417}
@@ -1141,8 +1134,6 @@ GameObject:
   - component: {fileID: 7038697034782437839}
   - component: {fileID: 998486159971638604}
   - component: {fileID: 8748720525285531618}
-  - component: {fileID: 1157422791912473196}
-  - component: {fileID: 9145578651515047801}
   - component: {fileID: 6613266098060457830}
   - component: {fileID: 7155085293358152855}
   - component: {fileID: 605025723191447237}
@@ -1154,7 +1145,6 @@ GameObject:
   - component: {fileID: 533285575966272042}
   - component: {fileID: 483097236825277140}
   - component: {fileID: 1271227476228938085}
-  - component: {fileID: 8456457199186518521}
   - component: {fileID: 4319704911269239376}
   - component: {fileID: 3586208363202990544}
   - component: {fileID: 7966945026107134241}
@@ -1163,6 +1153,22 @@ GameObject:
   - component: {fileID: 1142975642289871366}
   - component: {fileID: 9122228840384308183}
   - component: {fileID: 6258333060251073379}
+  - component: {fileID: 420557801}
+  - component: {fileID: 420557802}
+  - component: {fileID: 420557803}
+  - component: {fileID: 420557804}
+  - component: {fileID: 420557805}
+  - component: {fileID: 420557806}
+  - component: {fileID: 420557807}
+  - component: {fileID: 420557932}
+  - component: {fileID: 7943870788654025327}
+  - component: {fileID: 5799241943435958989}
+  - component: {fileID: 1429277586972233121}
+  - component: {fileID: 6936806704415166211}
+  - component: {fileID: 6652401169852640844}
+  - component: {fileID: 3001352463309785420}
+  - component: {fileID: 6322350539836678989}
+  - component: {fileID: 4974631188933908806}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1197,19 +1203,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 205.87534, y: -708.07404}
+  scrollPos: {x: 485.76932, y: -823.9481}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 541
-  zoom: 0.7900002
+  blockViewHeight: 460
+  zoom: 0.73000026
   scrollViewRect:
     serializedVersion: 2
     x: -343
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 8797267934277206466}
+  selectedCommands:
+  - {fileID: 4974631188933908806}
   variables: []
   description: 
   stepPause: 0
@@ -1235,9 +1243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 108
-    y: 113
-    width: 137.34175
+    x: 101.18184
+    y: 118.55234
+    width: 133.56161
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1250,7 +1258,7 @@ MonoBehaviour:
   - {fileID: 1236120133805467695}
   - {fileID: 8147888169385327962}
   - {fileID: 3239414639353976016}
-  - {fileID: 127708498}
+  - {fileID: 420557806}
   suppressAllAutoSelections: 0
 --- !u!114 &1462643291200977474
 MonoBehaviour:
@@ -1335,14 +1343,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 105.12455
-    y: 254.58281
-    width: 153.79744
+    x: 55.124588
+    y: 189.36368
+    width: 152.73969
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 5
-  blockName: Lee_moveTutorial
+  blockName: onLeeFirstAwkeup
   description: 
   eventHandler: {fileID: 1692742695492329731}
   commandList:
@@ -1351,7 +1359,7 @@ MonoBehaviour:
   - {fileID: 2239977731108584276}
   - {fileID: 5942699891581154804}
   - {fileID: 502141303647399153}
-  - {fileID: 127708499}
+  - {fileID: 420557807}
   suppressAllAutoSelections: 0
 --- !u!114 &1692742695492329731
 MonoBehaviour:
@@ -1367,7 +1375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentBlock: {fileID: 2992995971295022063}
   suppressBlockAutoSelect: 0
-  message: Lee_moveTutorial
+  message: Lee_firstWakeUp
 --- !u!114 &5500749696774518048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1464,8 +1472,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 84.94737
-    y: 31.36842
-    width: 176.58224
+    y: 46.27061
+    width: 184.24652
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1489,9 +1497,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 85.96309
-    y: 183.6549
-    width: 233.54425
+    x: 360.9626
+    y: 209.79135
+    width: 240
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1555,90 +1563,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &127708497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698655049647103244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 23
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 7582610351347405391}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &127708498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698655049647103244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 21
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 7582610351347405391}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &127708499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698655049647103244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 22
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 7582610351347405391}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
 --- !u!114 &127708501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,9 +1577,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 97.97402
-    y: 567.2312
-    width: 155.06326
+    x: 106.834785
+    y: 581.1551
+    width: 149.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1933,9 +1857,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 103.89472
-    y: 409.47427
-    width: 162.6582
+    x: 62.909164
+    y: 274.13635
+    width: 156.84927
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1945,7 +1869,7 @@ MonoBehaviour:
   eventHandler: {fileID: 127708521}
   commandList:
   - {fileID: 127708520}
-  - {fileID: 127708497}
+  - {fileID: 7943870788654025327}
   suppressAllAutoSelections: 0
 --- !u!114 &127708520
 MonoBehaviour:
@@ -2070,15 +1994,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 346.5496
-    y: 569.5379
-    width: 171.51895
+    x: 287.1785
+    y: 418.4704
+    width: 163.6986
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 36
   blockName: MessageFromParent
-  description: 
+  description: "\u64AD\u653E\u7236\u6BCD\u7684\u7559\u8A00"
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 127708548}
@@ -2104,7 +2028,7 @@ MonoBehaviour:
   - {fileID: 127708528}
   - {fileID: 127708527}
   - {fileID: 127708526}
-  - {fileID: 127708500}
+  - {fileID: 420557802}
   suppressAllAutoSelections: 1
 --- !u!114 &127708526
 MonoBehaviour:
@@ -2727,34 +2651,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &127708500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698655049647103244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 61
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 7582610351347405391}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
 --- !u!114 &8147888169385327962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2823,13 +2719,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 101.23685
+    x: 101.22469
     y: 725.89575
-    width: 199.36705
+    width: 193.83557
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 19
+  itemId: 146
   blockName: Androidra_survivalTutorial
   description: 
   eventHandler: {fileID: 5400672741689438907}
@@ -2844,7 +2740,7 @@ MonoBehaviour:
   - {fileID: 7620896737172496421}
   - {fileID: 4424303094800314325}
   - {fileID: 3786116297600366929}
-  - {fileID: 4505823138100455108}
+  - {fileID: 1429277586972233121}
   suppressAllAutoSelections: 0
 --- !u!114 &3489179803343863126
 MonoBehaviour:
@@ -2942,34 +2838,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &4505823138100455108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698655049647103244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 72
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 7582610351347405391}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
 --- !u!114 &8893769731004100445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2984,19 +2852,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 105.23685
-    y: 818.42206
-    width: 193.03793
+    x: 102.2896
+    y: 801.92694
+    width: 188.35611
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 19
+  itemId: 147
   blockName: Androidra_playerGetFruit
   description: 
   eventHandler: {fileID: 5182309304402192506}
   commandList:
   - {fileID: 984853521826318557}
-  - {fileID: 4471827033854512091}
+  - {fileID: 6936806704415166211}
   suppressAllAutoSelections: 0
 --- !u!114 &984853521826318557
 MonoBehaviour:
@@ -3243,21 +3111,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 99.73685
-    y: 902.42206
-    width: 191.77211
+    x: 104.28758
+    y: 879.42303
+    width: 225.3424
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 19
-  blockName: Androidra_playerEatFruit
+  itemId: 145
+  blockName: Androidra_playerOpenInventory
   description: 
   eventHandler: {fileID: 7462272967573560138}
   commandList:
   - {fileID: 8116602816199827438}
   - {fileID: 2606878846578736044}
   - {fileID: 8338066168606167600}
-  - {fileID: 3989435306667780991}
+  - {fileID: 6652401169852640844}
   suppressAllAutoSelections: 0
 --- !u!114 &8116602816199827438
 MonoBehaviour:
@@ -3300,7 +3168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentBlock: {fileID: 7606634443462350971}
   suppressBlockAutoSelect: 0
-  message: Androidra_playerEatFruit
+  message: Androidra_playerOpenInventory
 --- !u!114 &2606878846578736044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3355,62 +3223,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &4471827033854512091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698655049647103244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 91
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 7582610351347405391}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &3989435306667780991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698655049647103244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 92
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 7582610351347405391}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
 --- !u!114 &2740685748945214446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3425,13 +3237,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 95.029205
-    y: 487.70648
-    width: 204.43034
+    x: -6.962425
+    y: 417.76816
+    width: 215.75337
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 11
+  itemId: 148
   blockName: "\u56DB\u573A-\u5C0F\u673A\u5668\u4EBA\u6765\u5386\u3001\u4F5C\u7528\u8BF4\u660E"
   description: 
   eventHandler: {fileID: 0}
@@ -3451,13 +3263,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 91.081665
-    y: 333.75912
-    width: 147.46832
+    x: 53.581715
+    y: 347.39536
+    width: 154.10956
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 11
+  itemId: 149
   blockName: "\u4E09\u573A-\u6FC0\u6D3B\u5C0F\u673A\u5668\u4EBA"
   description: 
   eventHandler: {fileID: 0}
@@ -3477,13 +3289,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 99.239075
-    y: 645.6016
-    width: 124.683525
+    x: 128.63593
+    y: 656.7259
+    width: 129.45203
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 11
+  itemId: 150
   blockName: "\u516D\u573A-\u751F\u5B58\u6559\u5B66"
   description: 
   eventHandler: {fileID: 0}
@@ -3503,13 +3315,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 367.6604
-    y: 485.0751
-    width: 136.07593
+    x: 84.15512
+    y: 504.76746
+    width: 141.78079
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 11
+  itemId: 151
   blockName: "\u4E94\u573A-\u7236\u6BCD\u7684\u7559\u8A00"
   description: 
   eventHandler: {fileID: 0}
@@ -3529,13 +3341,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 104.34855
-    y: 985.5643
-    width: 124.683525
+    x: 105.214745
+    y: 954.0844
+    width: 129.45203
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 11
+  itemId: 152
   blockName: "\u4E03\u573A-\u91CD\u62FE\u5E0C\u671B"
   description: 
   eventHandler: {fileID: 0}
@@ -3555,13 +3367,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 109.22659
-    y: 1166.0507
-    width: 153.79744
+    x: 104.365585
+    y: 1091.8168
+    width: 159.589
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 11
+  itemId: 153
   blockName: "\u516B\u573A-\u5EFA\u9020\u6559\u5B66-\u767D\u5929"
   description: 
   eventHandler: {fileID: 0}
@@ -3581,13 +3393,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 106.7876
-    y: 1059.9529
-    width: 201.8987
+    x: 103.455826
+    y: 1026.9861
+    width: 193.83557
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 19
+  itemId: 154
   blockName: MessageFromParentPart2
   description: 
   eventHandler: {fileID: 5804961095213344243}
@@ -3601,7 +3413,7 @@ MonoBehaviour:
   - {fileID: 7038697034782437839}
   - {fileID: 998486159971638604}
   - {fileID: 8748720525285531618}
-  - {fileID: 1157422791912473196}
+  - {fileID: 3001352463309785420}
   suppressAllAutoSelections: 0
 --- !u!114 &3376339824773537095
 MonoBehaviour:
@@ -3713,13 +3525,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 110.446144
-    y: 1235.5625
-    width: 199.36705
+    x: 107.006096
+    y: 1170.855
+    width: 193.83557
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 19
+  itemId: 155
   blockName: Androidra_buildingTutorial
   description: 
   eventHandler: {fileID: 6961043475870939789}
@@ -3729,7 +3541,7 @@ MonoBehaviour:
   - {fileID: 5629104070047954697}
   - {fileID: 6613266098060457830}
   - {fileID: 7155085293358152855}
-  - {fileID: 9145578651515047801}
+  - {fileID: 6322350539836678989}
   suppressAllAutoSelections: 0
 --- !u!114 &1522017288801467652
 MonoBehaviour:
@@ -3989,62 +3801,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &1157422791912473196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698655049647103244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 109
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 7582610351347405391}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &9145578651515047801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698655049647103244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 110
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 7582610351347405391}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
 --- !u!114 &6613266098060457830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4113,13 +3869,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 115.93393
-    y: 1316.0494
-    width: 153.79744
+    x: 100.63985
+    y: 1358.4044
+    width: 159.589
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 11
+  itemId: 156
   blockName: "\u4E5D\u573A-\u5929\u6C14\u6559\u5B66-\u767D\u5929"
   description: 
   eventHandler: {fileID: 0}
@@ -4139,13 +3895,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 117.153435
-    y: 1508.7317
-    width: 131.01263
+    x: 100.682884
+    y: 1445.1256
+    width: 134.93149
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 11
+  itemId: 157
   blockName: "\u5341\u573A-\u751F\u65E5-\u591C\u665A"
   description: 
   eventHandler: {fileID: 0}
@@ -4165,13 +3921,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 121.42167
-    y: 1581.9061
-    width: 158.86073
+    x: 100.24523
+    y: 1541.6277
+    width: 154.10956
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 19
+  itemId: 158
   blockName: Androidra_birthday
   description: 
   eventHandler: {fileID: 1271227476228938085}
@@ -4189,7 +3945,7 @@ MonoBehaviour:
   - {fileID: 1142975642289871366}
   - {fileID: 9122228840384308183}
   - {fileID: 6258333060251073379}
-  - {fileID: 8456457199186518521}
+  - {fileID: 4974631188933908806}
   suppressAllAutoSelections: 0
 --- !u!114 &2377860207603079245
 MonoBehaviour:
@@ -4341,34 +4097,6 @@ MonoBehaviour:
   parentBlock: {fileID: 8797267934277206466}
   suppressBlockAutoSelect: 0
   message: Androidra_birthday
---- !u!114 &8456457199186518521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698655049647103244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 119
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 7582610351347405391}
-  targetComponentAssemblyName: Peixi.LvDialogSystem, GameScripts, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: LvDialogSystem
-  targetMethod: EndDialog
-  targetMethodText: 'EndDialog (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
 --- !u!114 &4319704911269239376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4585,6 +4313,703 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &420557801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 491.34204
+    y: 576.2138
+    width: 148.6301
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 61
+  blockName: "\u5F00\u59CB\u5C5E\u6027\u751F\u5B58\u6559\u5B66"
+  description: 
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 5799241943435958989}
+  - {fileID: 420557932}
+  suppressAllAutoSelections: 0
+--- !u!114 &420557802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 142
+  indentLevel: 0
+  text: "\u64AD\u653E\u751F\u5B58\u6559\u5B661"
+  description: 
+  targetBlock: {fileID: 420557801}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &420557803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 102.926056
+    y: 1252.2567
+    width: 210.27391
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 159
+  blockName: "\u674E\u83B7\u5F97\u5EFA\u9020\u6750\u6599\u540E\u89E6\u53D1\u7684\u5BF9\u8BDD"
+  description: 
+  eventHandler: {fileID: 420557805}
+  commandList:
+  - {fileID: 420557804}
+  suppressAllAutoSelections: 0
+--- !u!114 &420557804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 160
+  indentLevel: 0
+  storyText: "\u83B7\u53D6\u5230\u6750\u6599\u540E\uFF0C\u5C31\u662F\u6839\u636E\u5BF9\u5E94\u56FE\u7EB8\u5EFA\u9020\u8BBE\u65BD\u4E86\uFF0C\u6BCF\u4E00\u79CD\u8BBE\u65BD\u7684\u5EFA\u9020\u90FD\u9700\u8981\u673A\u5668\u4EBA\u83B7\u53D6\u5E76\u4E14\u89E3\u9501\u5BF9\u5E94\u7684\u56FE\u7EB8\uFF0C\u56FE\u7EB8\u662F\u975E\u5E38\u73CD\u8D35\u7684\u54E6\uFF0C\u636E\u8BF4\u5728\u6D77\u4E0A\u7684\u5176\u4ED6\u51E0\u4E2A\u805A\u5C45\u5730\u8FD8\u8981\u975E\u5E38\u7279\u522B\u7684\u56FE\u7EB8\u3002\u866B\u4E38\u4EE5\u53CA\u5185\u7F6E\u4E86\u591A\u4E2A\u56FE\u7EB8\uFF0C\u5148\u5EFA\u9020\u84B8\u998F\u673A\u5427\uFF0C\u83B7\u53D6\u975E\u5E38\u91CD\u8981\u7684\u6DE1\u6C34\u8D44\u6E90\u3002"
+  description: 
+  character: {fileID: 4375249412294494059}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &420557805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 420557803}
+  suppressBlockAutoSelect: 0
+  message: robot_afterLeeGetEnoughMaterial
+--- !u!114 &420557806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 163
+  indentLevel: 0
+  description: "\u5173\u95ED\u5BF9\u8BDD"
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397520625}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: EndDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &420557807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 164
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397520625}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: EndDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &420557932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee652b959ea3c28468a43caea3d4877c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 162
+  indentLevel: 0
+  stageId: onPropertySpecification_Start
+--- !u!114 &7943870788654025327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 165
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397520625}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: EndDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5799241943435958989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 166
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397520625}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: EndDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1429277586972233121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 167
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397520625}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: EndDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6936806704415166211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 168
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397520625}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: EndDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6652401169852640844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 169
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397520625}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: EndDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3001352463309785420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 170
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397520625}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: EndDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6322350539836678989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 171
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397520625}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: EndDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4974631188933908806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698655049647103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 172
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397520625}
+        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
+        m_MethodName: EndDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7900362086715854289
 GameObject:
   m_ObjectHideFlags: 0

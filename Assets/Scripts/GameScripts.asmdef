@@ -18,10 +18,8 @@
         "Stadia",
         "Switch",
         "tvOS",
-        "WSA",
         "WebGL",
-        "WindowsStandalone32",
-        "WindowsStandalone64"
+        "XboxOne"
     ],
     "allowUnsafeCode": false,
     "overrideReferences": false,
