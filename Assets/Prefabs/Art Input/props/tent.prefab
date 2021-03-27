@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8550290919087408975}
   m_Layer: 0
-  m_Name: foodProcessPlant_StandardScale
+  m_Name: Tent_StandardScale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
