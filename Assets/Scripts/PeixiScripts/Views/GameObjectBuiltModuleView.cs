@@ -100,9 +100,9 @@ namespace Peixi
             var redCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             redCube.AddComponent<NavMeshObstacle>();
 
-            var offset = new Vector3(-0.5f, 0, -0.5f);
-            redCube.transform.localScale = new Vector3(cellsize - 0.5f, 2, cellsize - 0.5f);
-            redCube.transform.position = new Vector3(gridPos.x * cellsize, 1, gridPos.y * cellsize) + offset;
+            var offset = new Vector3(0, 0, 0);
+            redCube.transform.localScale = new Vector3(3, 2, 3);
+            redCube.transform.position = new Vector3(gridPos.x * 3, 1, gridPos.y * 3) + offset;
             var renderer = redCube.GetComponent<MeshRenderer>();
             //renderer.material.color = new Color(1, 1, 1, 1);
             renderer.enabled = false;

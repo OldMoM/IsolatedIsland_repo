@@ -8,6 +8,7 @@ namespace Peixi
     public class MotherTreeFruit : MonoBehaviour
     {
         private CollectableObjectAgent agent;
+        public GameObject appleArtModel;
         // Start is called before the first frame update
         void Start()
         {
@@ -18,11 +19,14 @@ namespace Peixi
                 .Where(x => agent.PlayerIsTouch)
                 .Subscribe(x =>
                 {
-                    print("player picked mother tree fruit");
                     var inventory = InterfaceArichives.Archive.IInventorySystem;
                     inventory.AddItem("Apple", 1);
                     ShowMessage.singlton.Message("");
-                    Destroy(gameObject, 0.2f);
+                    appleArtModel.SetActive(false);
+
+                    AudioEvents.StartAudio("OnPlayerPickFruit");
+
+                    Destroy(gameObject, 1);
                 }).AddTo(this);
 
             agent.OnPlayerTouch

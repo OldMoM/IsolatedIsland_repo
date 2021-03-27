@@ -9,6 +9,7 @@ namespace Peixi
         {
             var timerSystem = InterfaceArichives.Archive.ITimeSystem;
             timerSystem.StartNight();
+            AudioEvents.StartAudio("OnRestStart");
         }
     }
 }

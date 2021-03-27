@@ -40,9 +40,9 @@ namespace Peixi
         AndroidControlPanel Config()
         {
             var mainControl_trans = transform.Find("mainControlBtn");
-            var openInventory_trans = transform.Find("openInventoryBtn");
-            var startBuild_trans = transform.Find("startBuildBtn");
-            var checkSketch_trans = transform.Find("checkSketchBtn");
+            var openInventory_trans = mainControl_trans.Find("openInventoryBtn");
+            var startBuild_trans = mainControl_trans.Find("startBuildBtn");
+            var checkSketch_trans = mainControl_trans.Find("checkSketchBtn");
             buildSketch = FindObjectOfType<BuildSketch>();
 
             mainControl_go = mainControl_trans.gameObject;
@@ -65,11 +65,11 @@ namespace Peixi
             startBuildBtn = startBuild_trans.GetComponent<Button>();
             checkSketchBtn = checkSketch_trans.GetComponent<Button>();
 
-            Assert.IsNotNull(mainControlBtn);
-            Assert.IsNotNull(openInventoryBtn);
-            Assert.IsNotNull(startBuildBtn);
-            Assert.IsNotNull(checkSketchBtn);
-            Assert.IsNotNull(buildSketch);
+            Assert.IsNotNull(mainControlBtn, "mainControlBtn is null");
+            Assert.IsNotNull(openInventoryBtn, "openInventoryBtn is null");
+            Assert.IsNotNull(startBuildBtn, "startBuildBtn is null");
+            Assert.IsNotNull(checkSketchBtn, "checkSketchBtn is null");
+            Assert.IsNotNull(buildSketch, "buildSketch is null");
 
             return this;
         }
@@ -93,6 +93,8 @@ namespace Peixi
                 .Subscribe(x =>
                 {
                     Switcher();
+
+                    AudioEvents.StartAudio("OnMainControlBtnPressed");
                 });
         }
         void onOpenInventoryBtnPressed()
@@ -106,6 +108,8 @@ namespace Peixi
                         .InGameUIComponentsManager
                         .InventoryGui
                         .SetActive(inventoryState);
+
+                    AudioEvents.StartAudio("OnNormalBtnPressed");
                 });
         }
         void onStartBuildBtnPressed()
@@ -116,6 +120,8 @@ namespace Peixi
                     var activeState = buildSketch.SetBuildMode;
                     activeState = !activeState;
                     buildSketch.SetBuildMode = activeState;
+
+                    AudioEvents.StartAudio("OnNormalBtnPressed");
                 });
         }
         void onCheckSketchBtnPressed()
@@ -125,6 +131,18 @@ namespace Peixi
                 {
                     print("check sktech");
                 });
+        }
+        public void OnOpenInventoryBtnPressed()
+        {
+            Debug.Log("inventoryBtn pressed");
+            inventoryState = !inventoryState;
+            InterfaceArichives
+                .Archive
+                .InGameUIComponentsManager
+                .InventoryGui
+                .SetActive(inventoryState);
+
+            AudioEvents.StartAudio("OnNormalBtnPressed");
         }
     }
 }

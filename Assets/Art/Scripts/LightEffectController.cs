@@ -42,7 +42,7 @@ public class LightEffectController : MonoBehaviour
         // print(inten);
         Color tentCol = new Color(inten, inten, inten);
         Prop_Tent.GetComponent<MeshRenderer>().material.color = tentCol;
-        Prop_FoodProcess.GetComponent<MeshRenderer>().material.color = tentCol;
+        //Prop_FoodProcess.GetComponent<MeshRenderer>().material.color = tentCol;
         //点光源
         if(DirectLightIntensity > 0.5)
         {

@@ -71,6 +71,8 @@ namespace Peixi
                 {
                     ToDoFlowChart("OnAdroidraStartActive");
                     animator.Play("AndroidraActiveAnimation");
+
+                    AudioEvents.StartAudio("OnAndroidraActived");
                 });
         }
 

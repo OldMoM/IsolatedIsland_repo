@@ -27,7 +27,7 @@ public static class AudioRegistration
         { "OnPlayerPickFloatingGarbage", ""},
         { "OnAndroidraActived", ""},
         { "OnRestoreIslandStart", ""},
-        { "OnRainDay", ""},
+        { "OnRainDay", "GameEvent_sunnyDay"},
         { "OnNightTime", ""}
     };
 }

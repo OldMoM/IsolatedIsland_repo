@@ -36,6 +36,8 @@ namespace Peixi
                     if (x == 0)
                     {
                         dependency.playerPropertySystem.ThirstLevel = PropertyLevel.Keter;
+
+                        AudioEvents.StartAudio("OnPlayerGetExtremeThirsty");
                     }
 
                     if(x > 70)

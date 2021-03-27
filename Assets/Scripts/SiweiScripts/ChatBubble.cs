@@ -5,6 +5,7 @@ using UnityEngine;
 using UniRx;
 using UnityEngine.UI;
 using System.Threading;
+using Peixi;
 
 namespace Siwei
 {
@@ -49,8 +50,8 @@ namespace Siwei
                         interval.Dispose();
                         posDisposable.Dispose();
                     }).AddTo(this);
-            
-            
+
+            AudioEvents.StartAudio("OnChatBubbleEnabled");
         }
         public bool Active { get { return active; } }
 

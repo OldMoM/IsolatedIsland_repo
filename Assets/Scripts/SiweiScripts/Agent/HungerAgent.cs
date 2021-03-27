@@ -28,11 +28,15 @@ namespace Peixi
                     if (x > 0 && x < 60)
                     {
                         dependency.playerPropertySystem.SatietyLevel = PropertyLevel.Euclid;
+
+                        AudioEvents.StartAudio("OnPlayerGetHungery");
                     }
 
                     if (x == 0)
                     {
                         dependency.playerPropertySystem.SatietyLevel = PropertyLevel.Keter;
+
+                        AudioEvents.StartAudio("OnPlayerGetExtremeHungery");
                     }
 
                     if (x >= 60)

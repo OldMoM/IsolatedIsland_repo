@@ -59,6 +59,8 @@ namespace Peixi
                 onDialogStart.OnNext(dialogId);
                 _isActive = true;
                 flowchart.SendFungusMessage(dialogId);
+
+                AudioEvents.StartAudio("OnDialogStart");
             }
             else
             {

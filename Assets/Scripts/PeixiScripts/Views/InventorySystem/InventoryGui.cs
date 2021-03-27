@@ -19,13 +19,14 @@ namespace Peixi
         List<GridHandleView> gridScripts = new List<GridHandleView>();
 
         private Transform back_tran;
-        private Transform gridManagers_tran;
+        [SerializeField]private Transform gridManagers_tran;
         private Transform descriptions_tran;
 
         private Text descriptionLabel;
         private Button useBtn;
         private Button holdBtn;
         private Button throwBtn;
+        private Button closeBtn;
 
         List<GameObject> childrendGameObjects = new List<GameObject>();
 
@@ -99,6 +100,7 @@ namespace Peixi
             {
                 x.SetActive(active);
             });
+
             isOpened.Value = active;
             return this;
         }
@@ -119,13 +121,15 @@ namespace Peixi
         }
         private InventoryGui InitGrids()
         {
+            
             for (int i = 0; i < iinventroy.Capacity; i++)
             {
-                var grid_gameobject = GameObject.Instantiate(gridPrefab, gridManagers_tran);
-                grid_gameobject.transform.name = "Grid" + i;
-                grids.Add(grid_gameobject);
+                var gridEntity = Instantiate(gridPrefab, gridManagers_tran);
+                gridEntity.transform.parent = gridManagers_tran;
+                gridEntity.transform.name = "Grid" + i;
+                grids.Add(gridEntity);
 
-                var gridScript = grid_gameobject.GetComponent<GridHandleView>();
+                var gridScript = gridEntity.GetComponent<GridHandleView>();
                 gridScripts.Add(gridScript);
                 gridScript.Active(this, i);
                 ClearGridContent(i);
@@ -152,8 +156,9 @@ namespace Peixi
         }
         private InventoryGui Config()
         {
+            //获取外部依赖
             iinventroy = InterfaceArichives.Archive.IInventorySystem;
-            gridManagers_tran = transform.Find("GridsManager");
+            //获取UI功能组件
             back_tran = transform.Find("Background");
             descriptionLabel = transform
                 .Find("DescriptionWidge")
@@ -162,16 +167,14 @@ namespace Peixi
             useBtn = transform.Find("UseBtn").GetComponent<Button>();
             holdBtn = transform.Find("HoldBtn").GetComponent<Button>();
             throwBtn = transform.Find("ThrowBtn").GetComponent<Button>();
+            closeBtn = transform.Find("CloseBtn").GetComponent<Button>();
             descriptions_tran = transform.Find("DescriptionWidge");
-
-            childrendGameObjects
-                .AddItem(gridManagers_tran.gameObject)
-                .AddItem(back_tran.gameObject)
-                .AddItem(descriptions_tran.gameObject)
-                .AddItem(useBtn.gameObject)
-                .AddItem(holdBtn.gameObject)
-                .AddItem(throwBtn.gameObject);
-
+            //获取UI组件的Gameobject
+            foreach (Transform child in transform)
+            {
+                childrendGameObjects.Add(child.gameObject);
+            }
+            //设置初始状态为false
             SetActive(false);
             return this;
         }
@@ -227,6 +230,8 @@ namespace Peixi
                     PotionUseAgent agent = new PotionUseAgent();
                     agent.UsePotion(ClickedItem);
                     onItemUsed.OnNext(ClickedItem);
+
+                    AudioEvents.StartAudio("OnItemUsed");
                 });
         }
         #endregion

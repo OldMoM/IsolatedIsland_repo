@@ -48,6 +48,8 @@ namespace Peixi
                     {
                         dependency.AndroidBuildAt(PrefabTags.plantIsland, buildTarget);
                         ibuildSketch.SetBuildMode = false;
+
+                        AudioEvents.StartAudio("OnIslandBuildStart");
                     }
                     else
                     {

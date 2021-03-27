@@ -41,32 +41,50 @@ SpriteAtlas:
     - {fileID: 21300000, guid: ea55e0ae186d59d41a0b270559045dd7, type: 3}
     - {fileID: 2800000, guid: 1a58749f555f75e48baa41893215b26e, type: 3}
     - {fileID: 2800000, guid: da7129ed6a246f048a49d8d97de2d2d4, type: 3}
-    totalSpriteSurfaceArea: 11264
+    - {fileID: 2800000, guid: 27da4609bef654d4db03a73dda311ae2, type: 3}
+    - {fileID: 2800000, guid: 0b487cb30e59db640866cf004beb8cef, type: 3}
+    - {fileID: 2800000, guid: 1bc63e10bc65ce449806cd3a09adc1c2, type: 3}
+    - {fileID: 2800000, guid: 8908e89d158969e40a63ba1aacfada0a, type: 3}
+    - {fileID: 2800000, guid: ffe1bb523d6e54147aa2f3371f02dd03, type: 3}
+    - {fileID: 21300000, guid: 1a88318a09e96dd43b47da9d54615ed2, type: 3}
+    totalSpriteSurfaceArea: 4092054
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 1bc63e10bc65ce449806cd3a09adc1c2, type: 3}
   - {fileID: 21300000, guid: 90192622496cded43ac060f5e25e20e8, type: 3}
+  - {fileID: 21300000, guid: ffe1bb523d6e54147aa2f3371f02dd03, type: 3}
+  - {fileID: 21300000, guid: 0b487cb30e59db640866cf004beb8cef, type: 3}
   - {fileID: 21300000, guid: 0e1ccb64303778e4081913a6d9cca677, type: 3}
   - {fileID: 21300000, guid: f8a9cfc721a20ce409c3d743e9b251bc, type: 3}
+  - {fileID: 21300000, guid: 27da4609bef654d4db03a73dda311ae2, type: 3}
   - {fileID: 21300000, guid: 615ecf391b0ba0b40a9c3882ac5e6afc, type: 3}
   - {fileID: 21300000, guid: c0e7217a07e49364db48c62cc2e2b376, type: 3}
+  - {fileID: 21300000, guid: 1a88318a09e96dd43b47da9d54615ed2, type: 3}
   - {fileID: 21300000, guid: 3281101b955224c4f9bfd58e8ab4c342, type: 3}
   - {fileID: 21300000, guid: e577f30c6bd976a429addedf4c4ad662, type: 3}
   - {fileID: 21300000, guid: 046f821c76a004e4c91b9f27ee906194, type: 3}
+  - {fileID: 21300000, guid: 8908e89d158969e40a63ba1aacfada0a, type: 3}
   - {fileID: 21300000, guid: da7129ed6a246f048a49d8d97de2d2d4, type: 3}
   - {fileID: 21300000, guid: ea55e0ae186d59d41a0b270559045dd7, type: 3}
   - {fileID: 21300000, guid: 1a58749f555f75e48baa41893215b26e, type: 3}
   m_PackedSpriteNamesToIndex:
+  - fruit
   - String
+  - plastic
+  - freshFish
   - Wood Log
   - Wooden Plank
+  - fiber
   - Paper
   - Leather
+  - water
   - Rope
   - Fabric
   - Wool
+  - grilledFish
   - Apple
   - Water
   - Bread

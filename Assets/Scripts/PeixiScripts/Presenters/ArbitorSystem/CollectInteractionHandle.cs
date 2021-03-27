@@ -42,6 +42,8 @@ namespace Peixi
                     m_arbitor.InventorySystem.AddItem(item.data.name, item.data.amount);
                     item.Recycle();
                     onCollectCompleted.OnNext(Unit.Default);
+
+                    AudioEvents.StartAudio("OnPlayerPickFloatingGarbage");
                     return this;
                 }
             }

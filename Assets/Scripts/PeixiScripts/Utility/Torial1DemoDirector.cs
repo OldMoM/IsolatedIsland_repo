@@ -117,10 +117,12 @@ namespace Peixi
                     {
                         iBuildSystem.BuildIslandAt(islandPos);
                     }
-                    iBuildSystem.BuildFacility(new Vector2Int(1, 1), PrefabTags.foodPlant);
-                    iBuildSystem.BuildFacility(new Vector2Int(0, -1), PrefabTags.waterPuifier);
-                    iBuildSystem.BuildFacility(new Vector2Int(-1, -1), PrefabTags.foodPlant);
                 });
+            var islands = FindObjectsOfType<IslandPresenter>();
+            islands.ToObservable().ForEachAsync(x =>
+            {
+                x.enabled = false;
+            });
         }
     }
 }

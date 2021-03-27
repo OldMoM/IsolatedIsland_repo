@@ -147,6 +147,14 @@ namespace Peixi
                 {
                     isAlive.Value = false;
                 });
+
+            //当生命值<=30，触发心跳声
+            dependency.playerPropertySystem.OnHealthChanged
+                .Where(x => x <= 30)
+                .Subscribe(x =>
+                {
+                    AudioEvents.StartAudio("OnPlayerGetExhausted");
+                });
         }
     }
 }

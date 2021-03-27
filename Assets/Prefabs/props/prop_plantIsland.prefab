@@ -118,7 +118,7 @@ MonoBehaviour:
     name: 
     type: 0
   durability_current:
-    value: 100
+    value: 6000
 --- !u!135 &2561315050545754793
 SphereCollider:
   m_ObjectHideFlags: 0

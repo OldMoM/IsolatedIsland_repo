@@ -20,6 +20,8 @@ namespace Peixi
         }
         public void Message(string msg)
         {
+            AudioEvents.StartAudio("OnTipPopped");
+
             msgText.text = msg;
         }
 
