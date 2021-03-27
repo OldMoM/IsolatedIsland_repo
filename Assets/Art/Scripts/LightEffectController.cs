@@ -9,6 +9,7 @@ public class LightEffectController : MonoBehaviour
     public Vector3 DirectLightRotation;
     public float AmbientIntensity;
     public GameObject Prop_Tent;
+    public GameObject Prop_FoodProcess;
     public Light CharacterLight;
     public Light RobotLight;
     public ParticleSystem SmokeParticle;
@@ -36,11 +37,12 @@ public class LightEffectController : MonoBehaviour
         SunSource.gameObject.transform.localRotation = rotation;
         // 环境光
         RenderSettings.ambientIntensity = AmbientIntensity;
-        // 帐篷
+        // 帐篷和食物处理器
         float inten = (AmbientIntensity + DirectLightIntensity)/2;
-        //print(inten);
+        // print(inten);
         Color tentCol = new Color(inten, inten, inten);
         Prop_Tent.GetComponent<MeshRenderer>().material.color = tentCol;
+        Prop_FoodProcess.GetComponent<MeshRenderer>().material.color = tentCol;
         //点光源
         if(DirectLightIntensity > 0.5)
         {

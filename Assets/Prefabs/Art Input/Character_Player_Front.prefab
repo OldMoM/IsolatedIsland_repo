@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &666170645
+--- !u!1 &25900510353241040
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 666170646}
-  - component: {fileID: 666170647}
+  - component: {fileID: 912528372324084523}
+  - component: {fileID: 2830750637726890559}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &666170646
+--- !u!4 &912528372324084523
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666170645}
+  m_GameObject: {fileID: 25900510353241040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 419432282854838025}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &666170647
+--- !u!108 &2830750637726890559
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666170645}
+  m_GameObject: {fileID: 25900510353241040}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
@@ -1277,7 +1277,7 @@ Transform:
   - {fileID: 138781114195086045}
   - {fileID: 9081250686824599073}
   - {fileID: 7854521051659317211}
-  - {fileID: 666170646}
+  - {fileID: 912528372324084523}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
