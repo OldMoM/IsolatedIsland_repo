@@ -63,7 +63,7 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
       m_SerializableObject: 1
     min: 0
-    max: 0
+    max: 1
     descendantCount: 0
   m_ImportDependencies: []
   m_GraphVersion: 4
@@ -5266,7 +5266,7 @@ MonoBehaviour:
     m_Type:
       m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-    m_SerializableObject: 
+    m_SerializableObject: 1
   m_IsOutput: 0
   m_Tooltip: 
   m_Nodes:
