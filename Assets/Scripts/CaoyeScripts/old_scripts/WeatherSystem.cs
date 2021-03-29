@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeatherSystem : MonoBehaviour
+public class WeatherControlSystem : MonoBehaviour
 {
-    static WeatherSystem weatherSystem;
+    static WeatherControlSystem weatherSystem;
     public WeatherState m_state;
     public GameObject rain;
     public GameObject storm;
@@ -13,7 +13,7 @@ public class WeatherSystem : MonoBehaviour
     public ParticleSystem[] stormParticles;
 
 
-    public static WeatherSystem Sigton
+    public static WeatherControlSystem Sigton
     {
         get => weatherSystem;
         set
