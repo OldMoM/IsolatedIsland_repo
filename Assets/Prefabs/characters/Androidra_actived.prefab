@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1396979404908261070}
   - component: {fileID: 1396979404908261066}
   - component: {fileID: 1396979404908261067}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Androidra_actived
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ NavMeshAgent:
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 0
   m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -189,6 +189,10 @@ PrefabInstance:
     - target: {fileID: 1306767541651139911, guid: 63e150330e30bb5488c64ec857fd5632, type: 3}
       propertyPath: m_Name
       value: Robot_Transform
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306767541651139911, guid: 63e150330e30bb5488c64ec857fd5632, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4618941609956024824, guid: 63e150330e30bb5488c64ec857fd5632, type: 3}
       propertyPath: m_LocalPosition.x

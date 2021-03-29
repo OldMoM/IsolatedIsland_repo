@@ -19,6 +19,7 @@ namespace Peixi
         readonly string onPlayerPickUpMaterial = "onPlayerPickUpMaterial";
         readonly string onWaterCollectAvailable = "onWaterCollectAvailable";
         readonly string onWaterCollectCompleted = "onWaterCollectCompleted";
+        readonly string onGetEnoughMaterial = "onGetEnoughMaterial";
 
         private IInventorySystem inventory => InterfaceArichives.Archive.IInventorySystem;
         private IInventoryGui inventoryGui;
@@ -49,8 +50,45 @@ namespace Peixi
 
             tent.CollectableAgent.OnPlayerTouch
                  .First()
-                 .Subscribe(x =>{ GameStageManager.StartStage(onPlayerTouchWithTent); });
-                
+                 .Subscribe(x =>
+                 {
+                     GameStageManager.StartStage(onPlayerTouchWithTent);
+                     Debug.Log("player touch tent");
+                 });
+
+            InterfaceArichives.Archive.IInventorySystem
+                .OnInventoryChanged
+                .Where(x => x.NewValue.Name == "fiber" || x.NewValue.Name == "plastic")
+                .First()
+                .Subscribe(x =>
+                {
+                    GameStageManager.StartStage(onPlayerPickUpMaterial);
+                });
+
+            InterfaceArichives.Archive.IInventorySystem
+                .OnInventoryChanged
+                .Where(x =>
+                {
+                    var fiberAmount = InterfaceArichives.Archive.IInventorySystem.GetAmount("fiber");
+                    var plasticAmout = InterfaceArichives.Archive.IInventorySystem.GetAmount("plastic");
+
+                    return fiberAmount >= 20 && plasticAmout >= 20;
+                })
+                .First()
+                .Subscribe(x =>
+                {
+                    GameStageManager.StartStage(onGetEnoughMaterial);
+                    Debug.Log("get enough mat");
+                });
+
+            InterfaceArichives.Archive.ITimeSystem
+                .onDayStart
+                .Where(x => x == 2)
+                .First()
+                .Subscribe(x =>
+                {
+                    GameStageManager.StartStage(on2ndDayStart);
+                });
         }
     }
 }

@@ -114,6 +114,17 @@ namespace Peixi
         }
         void onStartBuildBtnPressed()
         {
+            //startBuildBtn.OnPointerClickAsObservable()
+            //    .Subscribe(x =>
+            //    {
+            //        var activeState = buildSketch.SetBuildMode;
+            //        activeState = !activeState;
+            //        buildSketch.SetBuildMode = activeState;
+            //        Debug.Log("build btn pressed");
+
+            //        AudioEvents.StartAudio("OnNormalBtnPressed");
+            //    });
+
             startBuildBtn.OnPointerClickAsObservable()
                 .Subscribe(x =>
                 {

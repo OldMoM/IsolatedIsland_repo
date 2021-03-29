@@ -11,23 +11,29 @@ namespace Peixi
         public IObservable<AndroidraState> OnStateChanged => state;
         public AndroidraState State
         {
-            get => state.Value;
+            get
+            {
+                if (state is null)
+                {
+                    state = new ReactiveProperty<AndroidraState>(AndroidraState.Idle);
+                }
+                return state.Value;
+            }
             set
             {
                 state.Value = value;
                 Debug.Log(state.Value);
             }
         }
-        public AndroidraStateController(IPlayerSystem playerSystem,AndroidraNavPresenter nav, AndroidraStateControllerModel controlModel,IAndroidraSystem system)
+        public AndroidraStateController(IPlayerSystem playerSystem,IAndroidraSystem system)
         {
             this.playerSystem = playerSystem;
-            navModule = nav;
-            model = controlModel;
+            //model = controlModel;
             _system = system;
 
             React(OnPlayerStartMoveToFollow)
                .React(OnPlayerEndMoveToEndFollow)
-               .React(OnBuildMsgReceived)
+               //.React(OnBuildMsgReceived)
                .React(OnBuildAnimationEnd);
             
         }
@@ -38,8 +44,8 @@ namespace Peixi
         }
 
         private IPlayerSystem playerSystem;
-        private ReactiveProperty<AndroidraState> state = new ReactiveProperty<AndroidraState>(AndroidraState.Idle);
-        private AndroidraNavPresenter navModule;
+        private ReactiveProperty<AndroidraState> state;
+        //private AndroidraNavPresenter navModule;
         private AndroidraStateControllerModel model;
         private IAndroidraSystem _system;
         private void OnPlayerStartMoveToFollow()

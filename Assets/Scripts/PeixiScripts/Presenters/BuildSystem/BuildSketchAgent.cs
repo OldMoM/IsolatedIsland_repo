@@ -21,6 +21,7 @@ namespace Peixi
         private Vector2Int buildTarget;
 
         private BuildSketchAgentDependency dependency;
+        FixedSequenceBuilder builder = new FixedSequenceBuilder();
 
         public BuildSketchAgent(IBuildSketch ibuildSketch, IBuildSystem buildSystem,BuildSketchAgentDependency dependency)
         {
@@ -36,7 +37,10 @@ namespace Peixi
                 {
                     buildTarget = buildSystem.newWorldToGridPosition(x);
                     hasIsland = !buildSystem.CheckThePositionHasIsland(buildTarget);
-                    _buildSketch.PermitBuildIsland = hasIsland && HasEnoughMat();
+                    //_buildSketch.PermitBuildIsland = hasIsland && HasEnoughMat();
+                    var pointProperPos = (buildTarget == builder.CurrentBuildPos);
+                    //var pointProperPos = true;
+                    _buildSketch.PermitBuildIsland = pointProperPos;
                 });
 
             ibuildSketch.OnMouseClicked
@@ -47,7 +51,9 @@ namespace Peixi
                     if (HasEnoughMat())
                     {
                         dependency.AndroidBuildAt(PrefabTags.plantIsland, buildTarget);
+
                         ibuildSketch.SetBuildMode = false;
+                        builder.currentBuildPosPointer++;
 
                         AudioEvents.StartAudio("OnIslandBuildStart");
                     }

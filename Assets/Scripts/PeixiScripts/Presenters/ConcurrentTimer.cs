@@ -37,9 +37,12 @@ namespace Peixi
                     timeCountAtRatio.Value = timeAtRatio;
                     if (time <= 0)
                     {
-                        onTimeCountdownEnd.OnNext(Unit.Default);
+                        Debug.Log("end timer");
                         timeCountdownProcess.Dispose();
+                        onTimeCountdownEnd.OnNext(Unit.Default);
                     }
+                },()=> {
+                    
                 });
         }
     }

@@ -48,7 +48,7 @@ namespace Peixi
 
             var iandroid = InterfaceArichives.Archive.IAndroidraSystem;
             androidStateController = iandroid.androidState;
-            androidStateController.SetState(AndroidraState.Sleep, this.name);
+            //androidStateController.SetState(AndroidraState.Sleep, this.name);
 
             OnPlayerTouchBrokenAndroidra = 
             ObservableTriggerExtensions.OnTriggerEnterAsObservable(playerDetectCollider)
@@ -78,7 +78,6 @@ namespace Peixi
 
         public void AndroidraActiveProgramCompleted()
         {
-            print("active completed");
             fakeArtModel.gameObject.SetActive(false);
             RealAndroidActiveArtModel.gameObject.SetActive(true);
             android.position = transform.position;

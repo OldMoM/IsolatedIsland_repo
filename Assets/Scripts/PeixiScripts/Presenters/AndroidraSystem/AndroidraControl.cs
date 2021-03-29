@@ -16,7 +16,7 @@ namespace Peixi
         private Subject<ValueTuple<string,Vector2Int>> onBuildMsgReceived = new Subject<ValueTuple<string, Vector2Int>>();
         public void BuildAt(string type, Vector2Int pos)
         {
-            //Debug.Log("Androidra will build " + type + " at " + pos);
+            Debug.Log(1);
             onBuildMsgReceived.OnNext(new ValueTuple<string, Vector2Int>(type, pos));
         }
     }

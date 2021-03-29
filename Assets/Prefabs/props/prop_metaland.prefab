@@ -118,7 +118,7 @@ MonoBehaviour:
     name: 
     type: 0
   durability_current:
-    value: 100
+    value: 6000
 --- !u!1001 &1054516116843379030
 PrefabInstance:
   m_ObjectHideFlags: 0

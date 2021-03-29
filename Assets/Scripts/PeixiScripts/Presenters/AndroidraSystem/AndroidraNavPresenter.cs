@@ -2,6 +2,7 @@
 using UniRx;
 using UnityEngine;
 using System;
+using UnityEngine.Assertions;
 
 namespace Peixi
 {
@@ -9,10 +10,15 @@ namespace Peixi
     {
         private NavMeshAgent _agent;
         private IAndroidraSystem _system;
+
         private BoolReactiveProperty isMoving = new BoolReactiveProperty();
+
         private Subject<Unit> onAndroidraStartMove = new Subject<Unit>();
         private Subject<Unit> onAndroidraEndMove = new Subject<Unit>();
         private Subject<ValueTuple<string, Vector3>> onAndroidraReachBuildTarget = new Subject<(string, Vector3)>();
+
+        private Subject<Vector3> onAndroidReachTarget = new Subject<Vector3>();
+
 
         private string buildFacilityType;
 
@@ -21,6 +27,13 @@ namespace Peixi
         private Func<Vector2Int, Vector3> _gridPosToWorld;
         private AndroidraStateController _state => _system.androidState;
         private AndroidraControl _control => _system.Control;
+
+        private float distanceToTarget;
+        private BoolReactiveProperty hasReachedTarget = new BoolReactiveProperty();
+
+        private AndroidraStateController state;
+
+       
         Func<Vector2Int, Vector3> gridPosToWorld
         {
             get
@@ -32,7 +45,6 @@ namespace Peixi
                 return _gridPosToWorld;
             }
         }
-
         public Vector3 Target 
         {
             get => target;
@@ -41,21 +53,25 @@ namespace Peixi
                 target = value;
             }
         }
-
         public IObservable<Unit> OnAndroidraStartMove => onAndroidraStartMove;
         public IObservable<Unit> OnAndroidraEndMove => onAndroidraEndMove;
-
+        public IObservable<Vector3> OnAndroidraReachTarget => onAndroidReachTarget;
         /// <summary>
         /// The first param is the facility type.\n The second param is the build position.
         /// </summary>
         public IObservable<ValueTuple<string, Vector3>> OnAndroidraReachBuildTarget => onAndroidraReachBuildTarget;
+        public IObservable<bool> OnReachedTarget => hasReachedTarget;
+
+
 
         IDisposable disposable;
-        public AndroidraNavPresenter(NavMeshAgent agent,IPlayerSystem playerSystem, IAndroidraSystem state)
+        public AndroidraNavPresenter(NavMeshAgent agent,IPlayerSystem playerSystem, IAndroidraSystem system,AndroidraStateController stateController)
         {
             _agent = agent;
             _playerSystem = playerSystem;
-            _system = state;
+            _system = system;
+
+            state = stateController;
 
             Observable.EveryUpdate()
                 .Where(x => _state.State == AndroidraState.Idle || _state.State == AndroidraState.Follow)
@@ -71,20 +87,14 @@ namespace Peixi
                 .Subscribe(x =>
                 {
                     _agent.SetDestination(target);
+                    //distanceToTarget = (target - _agent.transform.position).sqrMagnitude;
+                    hasReachedTarget.Value = _agent.remainingDistance <= 0.5f;
                 });
 
             Observable.EveryLateUpdate()
-                .Where(x => _agent.velocity.magnitude > 0.01f)
                 .Subscribe(x =>
                 {
-                    isMoving.Value = true;
-                });
-
-            Observable.EveryLateUpdate()
-                .Where(x => _agent.velocity.magnitude <= 0.01f)
-                .Subscribe(x =>
-                {
-                    isMoving.Value = false;
+                    hasReachedTarget.Value = distanceToTarget <= 0.1f;
                 });
 
             isMoving
@@ -101,9 +111,9 @@ namespace Peixi
                     }
                 });
 
-            OnBuildMsgReceived();
+            //OnBuildMsgReceived();
 
-            OnAndroidReachBuildTarget();
+            //OnAndroidReachBuildTarget();
         }
 
         void OnBuildMsgReceived()
@@ -126,11 +136,14 @@ namespace Peixi
         }
         void OnAndroidReachBuildTarget()
         {
-            onAndroidraEndMove
-                .Where(x => _state.State == AndroidraState.Building)
+            //Assert.IsNotNull(_state, "@AndroidraNavPresenter _state is null");
+
+            hasReachedTarget
+                .Where(x => !x)
+                .Where(x => _system.androidState.State == AndroidraState.Building)
                 .Subscribe(x =>
                 {
-                    //Debug.Log("Androidra has reached the building target and start to build facility");
+                    Debug.Log("Androidra has reached the building target and start to build facility");
                     onAndroidraReachBuildTarget.OnNext(new ValueTuple<string, Vector3>(buildFacilityType,target));
                 });
         }

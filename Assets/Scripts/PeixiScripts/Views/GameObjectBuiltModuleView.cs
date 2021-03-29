@@ -98,7 +98,7 @@ namespace Peixi
         {
             var cellsize = system.Settings._cellSize;
             var redCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            redCube.AddComponent<NavMeshObstacle>();
+            //redCube.AddComponent<NavMeshObstacle>();
 
             var offset = new Vector3(0, 0, 0);
             redCube.transform.localScale = new Vector3(3, 2, 3);

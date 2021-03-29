@@ -7,6 +7,7 @@ using System;
 
 namespace Peixi
 {
+    /// <summary>进行互动时，计时UI</summary>
     public class InteractTimerWidge : MonoBehaviour
     {
         Image timeCircleImange;
@@ -95,8 +96,6 @@ namespace Peixi
 
             RestoreIslandAgent();
         }
-
-
         void OnFoodPlantInteractionStart()
         {
             agent.FoodPlantInteract.OnInteractStart
@@ -106,7 +105,6 @@ namespace Peixi
                     Counting(3);
                 }); 
         }
-
         void Counting(int lastTime)
         {
             isCounting = true;
@@ -128,7 +126,6 @@ namespace Peixi
                     }
                 });
         }
-
         void FollowTarget()
         {
             var screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
