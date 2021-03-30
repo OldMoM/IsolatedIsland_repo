@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scripts/PeixiScripts/Workshop/Demos/Tutorial1Demo.unity
     guid: 12bff0722ba6e8a45ae0b49433c8d5b4
+  - enabled: 0
+    path: Assets/Art/NewTestScene.unity
+    guid: 7dd0d25d73a78d24abd01a3bdbae58e5
   m_configObjects: {}

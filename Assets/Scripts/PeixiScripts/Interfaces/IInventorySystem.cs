@@ -33,7 +33,7 @@ namespace Peixi
         /// <param name="name"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        InventoryPresenter AddItem(string name, int amount = 1);
+        InventoryCorePresenter AddItem(string name, int amount = 1);
         /// <summary>
         /// 当修改背包中Item数据被修改时触发此事件
         /// </summary>

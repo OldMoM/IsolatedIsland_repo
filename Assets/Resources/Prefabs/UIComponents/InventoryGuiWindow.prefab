@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPrefab: {fileID: 1053705097805883432, guid: 7937ae1e07a0a4744977b021aaf509cd, type: 3}
-  gridManagers_tran: {fileID: 0}
+  gridManagers_tran: {fileID: 8923242777532598562}
   selectedItem:
     value: None
   clickedItem:
