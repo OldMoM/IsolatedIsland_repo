@@ -9,43 +9,78 @@ using UnityEngine.Assertions;
 namespace Peixi
 {
     /// <summary>
-    /// 处理背包系统的数据逻辑业务
+    ///   <para>基础设施层：只提供查询，写入和读取操作</para>
+    ///   <para>
+    ///     <br />
+    ///   </para>
     /// </summary>
-    public class InventoryPresenter 
+    /// <remarks>构造函数启动改为：提供Init方法，手段启动，增加其可测试性@wip</remarks>
+    public class InventoryCorePresenter 
     {
-        private InventoryModel<InventoryGridData> inventory = new InventoryModel<InventoryGridData>();
+        private InventoryModel<InventoryGridData> model = new InventoryModel<InventoryGridData>();
         private IInventorySystem m_inventorySystem;
-        public IObservable<CollectionReplaceEvent<InventoryGridData>> OnInventoryChanged => inventory.inventoryData.ObserveReplace();
 
+        public int gridCapacity = 9;
+
+        public IObservable<CollectionReplaceEvent<InventoryGridData>> OnInventoryChanged => model.set.ObserveReplace();
+
+        [Obsolete]
         /// <summary>
         /// This one is used for game
         /// </summary>
         /// <param name="system"></param>
-        public InventoryPresenter(IInventorySystem system)
+        public InventoryCorePresenter(IInventorySystem system)
         {
             m_inventorySystem = system;
 
             for (int i = 0; i < system.Capacity; i++)
             {
                 var _gridData = new InventoryGridData(i, "None", 0, true);
-                inventory.inventoryData.Add(_gridData);
+                model.set.Add(_gridData);
             }
         }
+        [Obsolete]
         /// <summary>
         /// This one is used for test
         /// </summary>
         /// <param name="capacity"></param>
-        public InventoryPresenter(int capacity = 6)
+        public InventoryCorePresenter(int capacity = 6)
         {
             for (int i = 0; i < capacity; i++)
             {
                 var _gridData = new InventoryGridData(i, "", 0, true);
-                inventory.inventoryData.Add(_gridData);
+                model.set.Add(_gridData);
             }
         }
-        public InventoryPresenter AddItem(string name,int amount=1)
+        public InventoryCorePresenter() { }
+
+
+        public void Init()
         {
-            var searchGrid = inventory.inventoryData
+            //创建核心数据
+
+            //断言
+
+
+            //初始创建9个数据格
+            for (int i = 0; i < gridCapacity; i++)
+            {
+                var _gridData = new InventoryGridData(i, "", 0, true);
+                model.set.Add(_gridData);
+            }
+        }
+
+        /// <summary>Adds the item.</summary>
+        /// <param name="name">The name.</param>
+        /// <param name="amount">The amount.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        /// <remarks>-在添加Item时需要经过添加规则判断，详见AddItemAgent</remarks>
+        /// <seealso cref="AddItemAgent" />
+        public InventoryCorePresenter AddItem(string name,int amount=1)
+        {
+            var searchGrid = model.set
                  .ToObservable();
 
             var itemInfo = GetItemPosition(name);
@@ -54,9 +89,9 @@ namespace Peixi
             if (itemInfo.Item1)
             {
                 var _position = itemInfo.Item2;
-                var data_temp = inventory.inventoryData[_position];
+                var data_temp = model.set[_position];
                 data_temp.Amount += amount;
-                inventory.inventoryData[_position] = data_temp;
+                model.set[_position] = data_temp;
             }
             else
             {
@@ -69,19 +104,18 @@ namespace Peixi
                     data_temp.Amount += amount;
                     data_temp.Name = name;
                     data_temp.IsEmpty = false;
-                    inventory.inventoryData[data_temp.Position] = data_temp;
+                    model.set[data_temp.Position] = data_temp;
 
-                    m_inventorySystem.Load++;
+                    //m_inventorySystem.Load++;
                 });
-
-                
             }
             return this;
         }
+        [Obsolete]
         public bool HasItem(string name)
         {
             bool hasItem = false;
-            inventory.inventoryData
+            model.set
                 .ToObservable()
                 .Where(x => x.Name == name)
                 .Subscribe(y =>
@@ -93,7 +127,7 @@ namespace Peixi
         public int GetAmount(string name)
         {
             int amount = 0;
-            inventory.inventoryData
+            model.set
              .Where(x => x.Name == name)
              .ToObservable()
              .Subscribe(y => 
@@ -108,7 +142,7 @@ namespace Peixi
             var gridInfo = GetItemPosition(name);
             Assert.IsTrue(gridInfo.Item1, name + " doesn't exist in backpack");
             var position = gridInfo.Item2;
-            var data = inventory.inventoryData[gridInfo.Item2];
+            var data = model.set[gridInfo.Item2];
 
             if (data.Amount > amount)
             {
@@ -126,14 +160,14 @@ namespace Peixi
                 operated = false;
             }
 
-            inventory.inventoryData[position] = data;
+            model.set[position] = data;
             return operated;
         }
         private ValueTuple<bool,int> GetItemPosition(string name)
         {
             ValueTuple<bool, int> info = new ValueTuple<bool, int>(false, 0);
             info.Item1 = false;
-            inventory.inventoryData
+            model.set
                 .ToObservable()
                 .Where(x => x.Name == name)
                 .Subscribe(y =>
@@ -144,14 +178,13 @@ namespace Peixi
 
             return info;
         }
-
         public ValueTuple<string, int> GetItemData(int gridSerial)
         {
-            var count = inventory.inventoryData.Count;
+            var count = model.set.Count;
             Assert.IsTrue(count > gridSerial, "");
 
             var itemData = new ValueTuple<string, int>("None", 0);
-            var items = inventory.inventoryData.ToList();
+            var items = model.set.ToList();
             itemData.Item1 = items[gridSerial].Name;
             itemData.Item2 = items[gridSerial].Amount;
             return itemData;

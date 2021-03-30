@@ -1,16 +1,13 @@
-﻿using UniRx;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Peixi
 {
-    public class InventoryModel<T> 
-    {
-        public ReactiveCollection<T> inventoryData = new ReactiveCollection<T>();
-    }
-
     public struct InventoryGridData
     {
-        public string Name 
-        { 
+        public string Name
+        {
             set { m_name = value; }
             get => m_name;
         }
@@ -20,8 +17,8 @@ namespace Peixi
             get => m_amount;
         }
         public int Position => m_posotion;
-        public bool IsEmpty 
-        { 
+        public bool IsEmpty
+        {
             set { m_isEmpty = value; }
             get => m_isEmpty;
         }
@@ -31,7 +28,7 @@ namespace Peixi
         private int m_posotion;
         private bool m_isEmpty;
 
-        public InventoryGridData(int position, string name,int amount,bool isEmpty)
+        public InventoryGridData(int position, string name, int amount, bool isEmpty)
         {
             m_name = name;
             m_amount = amount;

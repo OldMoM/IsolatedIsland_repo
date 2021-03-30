@@ -8,11 +8,17 @@ using UnityEngine.Assertions;
 namespace Peixi
 {
     /// <summary>
-    /// 将InventorySystem的各个组件用适配器模式进行组装
+    ///   <para>设计思路：背包的本质就是Crud操作</para>
+    ///   <para>功能需求：使用Excel管理物品信息----MVP架构</para>
+    ///   <para>                   背包数据要便于保存成json文件-----业务和数据分析</para>
+    ///   <para>                   背包中有3个栏位容纳：材料，消耗品，重要物品</para>
+    ///   <para>                   *背包有重量上线</para>
+    ///   <para>构成模块：<br /></para>
     /// </summary>
+    /// <seealso cref="InventoryGui" />
     public class InventorySystem : MonoBehaviour, IInventorySystem
     {
-        InventoryPresenter presenter;
+        InventoryCorePresenter presenter;
         InventoryGui gui;
 
         public InventorySetting setting;
@@ -35,7 +41,7 @@ namespace Peixi
 
         public IObservable<string> OnItemUsed => throw new NotImplementedException();
 
-        public InventoryPresenter AddItem(string name, int amount = 1)
+        public InventoryCorePresenter AddItem(string name, int amount = 1)
         {
             return presenter.AddItem(name, amount);
         }
@@ -66,22 +72,11 @@ namespace Peixi
         #endregion
         public void Init()
         {
-            presenter = new InventoryPresenter(this);
-            //gui = FindObjectOfType<InventoryGui>();
-            //Assert.IsNotNull(gui, "Failed to find InventoryGui script in Hierarchy");
-            //gui.init(this);
+            presenter = new InventoryCorePresenter(this);
         }
         private void OnEnable()
         {
             Init();
         }
-    }
-    [Serializable]
-    public struct InventorySetting
-    {
-        public int capacity;
-        public int load;
-        public Vector2 gridSize;
-        public int gridSpaceInPixel;
     }
 }

@@ -10,6 +10,10 @@ using UniRx.Triggers;
 
 namespace Peixi
 {
+    /// <summary>
+    ///   <para>主要功能：检测玩家对背包按钮的点击事件</para>
+    ///   <para>                   映射InventoryCorePresenter的数据变化</para>
+    /// </summary>
     [HelpURL("https://spicegamestudio.pingcode.com/wiki/spaces/5fd0cd48fee2547e79b1b100/pages/5ff96925890884b318232467")]
     public class InventoryGui : MonoBehaviour, IInventoryGui
     {
@@ -234,6 +238,15 @@ namespace Peixi
                     AudioEvents.StartAudio("OnItemUsed");
                 });
         }
+        private void OnCloseBtnClicked()
+        {
+            closeBtn.OnPointerClickAsObservable()
+                .Subscribe(x =>
+                {
+                    Debug.Log("close inventory");
+                    SetActive(false);
+                });
+        }
         #endregion
 
         private void Start()
@@ -245,7 +258,10 @@ namespace Peixi
                .InitDescrptionWidge()
                .React(OnInventoryChanged)
                .React(OnItemClicked)
-               .React(OnUseBtnClicked);
+               .React(OnUseBtnClicked)
+               .React(OnCloseBtnClicked);
+
+
 
         }
     }

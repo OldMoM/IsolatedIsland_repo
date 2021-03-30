@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
+using System;
 
 namespace Peixi.WeatherSystem
 {
@@ -26,6 +28,28 @@ namespace Peixi.WeatherSystem
         private EnvironmentLightAgent CreateEnvironmentLightAgent()
         {
             return null;
+        }
+
+        public Animator weatherAnimator;
+
+
+        private void Start()
+        {
+            weatherAnimator.speed = 1;
+            weatherAnimator.Play("AnimData", 0, 0);
+
+            InterfaceArichives.Archive.ITimeSystem.onDayStart
+                .Subscribe(x =>
+                {
+                    weatherAnimator.speed = 1;
+                    weatherAnimator.Play("AnimData", 0, 0);
+                });
+
+            InterfaceArichives.Archive.ITimeSystem.onDayEnd
+                .Subscribe(x =>
+                {
+                    weatherAnimator.speed = 0;
+                });
         }
     }
 }
