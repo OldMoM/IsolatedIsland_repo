@@ -17,6 +17,7 @@ namespace Peixi
         private IDialogSystem dialogSystem;
         private IPlayerSystem iplayerSystem;
         public AndroidActiveProgram activeProgram;
+        public Transform gameFlowPointer;
 
         private void Start()
         {
@@ -69,6 +70,8 @@ namespace Peixi
                     playerState.Value = PlayerState.IdleState;
                     blackScreen.gameObject.SetActive(false);
                     //ShowMessage.singlton.Message("按下WASD移动");
+
+                    gameFlowPointer.gameObject.SetActive(true);
                 });
 
             dialogSystem.OnDialogEnd
@@ -84,6 +87,8 @@ namespace Peixi
                 {
                     dialogSystem.StartDialog(DialogIdTags.Androidra_actived);
                     iplayerSystem.StateController.playerState.Value = PlayerState.InteractState;
+
+                    gameFlowPointer.gameObject.SetActive(false);
                 });
 
             /*Androidra被激活后播放对话Androidra_actived

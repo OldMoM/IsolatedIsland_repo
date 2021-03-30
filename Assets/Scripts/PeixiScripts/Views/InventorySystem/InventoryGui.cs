@@ -234,6 +234,14 @@ namespace Peixi
                     AudioEvents.StartAudio("OnItemUsed");
                 });
         }
+        private void OnCloseBtnClicked()
+        {
+            closeBtn.OnPointerClickAsObservable()
+                .Subscribe(x =>
+                {
+                    SetActive(false);
+                });
+        }
         #endregion
 
         private void Start()
@@ -245,7 +253,8 @@ namespace Peixi
                .InitDescrptionWidge()
                .React(OnInventoryChanged)
                .React(OnItemClicked)
-               .React(OnUseBtnClicked);
+               .React(OnUseBtnClicked)
+               .React(OnCloseBtnClicked);
 
         }
     }
