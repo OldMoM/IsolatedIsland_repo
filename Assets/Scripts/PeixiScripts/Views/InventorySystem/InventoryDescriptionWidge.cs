@@ -39,8 +39,8 @@ namespace Peixi
                     }
                     else
                     {
-                        //从Excel读取物品描述@wip
-                        description.text = x;
+                        //从ItemDescriptions读取物品描述@wip
+                        description.text = ItemDescriptions.des[x];
 
                         //从Altlas读取物品Icon
                         icon.color = Color.white;
