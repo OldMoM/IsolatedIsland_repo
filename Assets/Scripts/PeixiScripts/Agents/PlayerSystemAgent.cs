@@ -81,6 +81,8 @@ namespace Peixi
                 {
                     SetPlayState(PlayerState.IdleState);
                 });
+
+
             #endregion
         }
     }

@@ -11,11 +11,7 @@ namespace Peixi
         public SuppleUseAgent(IObservable<string> itemUsedEvent)
         {
             onItemUsed = itemUsedEvent;
-            onItemUsed
-                .Subscribe(x =>
-                {
-                    UseSupplyService.UseApple(InterfaceArichives.Archive.IPlayerPropertySystem);
-                });
+            onItemUsed.Subscribe(UseSupplyService.UseSupply);
         }
     }
 }

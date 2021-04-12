@@ -6,7 +6,7 @@ namespace Peixi
 {
     public class ItemTags 
     {
-        public const string water = "Water";
+        public const string water = "water";
         public const string bread = "Bread";
         public const string String = "String";
     }

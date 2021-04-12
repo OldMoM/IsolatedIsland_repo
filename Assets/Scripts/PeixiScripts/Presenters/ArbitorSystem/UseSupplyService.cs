@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace Peixi
 {
@@ -9,9 +10,38 @@ namespace Peixi
     /// </summary>
     public static class UseSupplyService 
     {
-        public static void UseApple(IPlayerPropertySystem property)
+        private static Dictionary<string, Action> useSuppleActions = new Dictionary<string, Action>()
         {
-            property.ChangeSatiety(15);
+            {"water", ()=>
+                {
+                    var playerProperty = InterfaceArichives.Archive.IPlayerPropertySystem;
+                    var preThirst = playerProperty.Thirst;
+                    playerProperty.ChangeThirst(10);
+                    Debug.Log("互动成功，先前Thirst为"+preThirst+"现在为"+ playerProperty.Thirst);
+                }
+            },
+
+            {
+                "apple",()=>{
+                    var playerProperty = InterfaceArichives.Archive.IPlayerPropertySystem;
+                    playerProperty.ChangeSatiety(10);
+                     Debug.Log("It's successful interaction message. Player Satiety now is "+ playerProperty.Satiety);
+                }
+            },
+
+            {
+                "grilledFish",()=>
+                {
+                    var playerProperty = InterfaceArichives.Archive.IPlayerPropertySystem;
+                    var preSatiety = playerProperty.Satiety;
+                    playerProperty.ChangeSatiety(10);
+                    Debug.Log("互动成功，先前Satiety为"+preSatiety+"现在为"+ playerProperty.Satiety);
+                }
+            }
+        };
+        public static void UseSupply(string item)
+        {
+            useSuppleActions[item]();
         }
     }
 }

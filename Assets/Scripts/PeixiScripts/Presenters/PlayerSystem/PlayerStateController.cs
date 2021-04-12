@@ -34,6 +34,7 @@ namespace Peixi
             {
                 //Debug.Log("on player interact start");
                 //Debug.Log(playerState.Value);
+                playerState.Value = PlayerState.InteractState;
             });
         }
         void OnInteractEnd()

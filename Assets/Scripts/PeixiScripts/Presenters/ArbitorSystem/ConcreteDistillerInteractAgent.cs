@@ -24,13 +24,11 @@ namespace Peixi
             timer.OnTimerEnd
                 .Subscribe(x =>
                 {
-                    Debug.Log("player end interact with distiller");
                     InventorySystem.AddItem(ItemTags.water);
                 });
         }
         public void StartInteract()
         {
-            Debug.Log("player start interact with distiller");
             timer.StartTimeCountdown(distillCostTime);
         }
     }
