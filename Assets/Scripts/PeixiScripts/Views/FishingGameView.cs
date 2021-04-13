@@ -46,7 +46,7 @@ namespace Peixi
             }
 
             ShowChildren(false);
-            unit.endInteract(new FishingResult());
+            
         }
         private void PointerLoopMoving(RectTransform trans, Vector3 startPos, Vector3 endPos)
         {
@@ -110,14 +110,16 @@ namespace Peixi
                 .Subscribe(x =>
                 {
                     var pointer_x = pointer.localPosition.x;
+                    //获得战利品
                     if (pointer_x > pointAreaStartPos.x && pointer_x < pointAreaEndPos.x)
                     {
-                        GUIEvents.Singleton.PlayerEndFishing.OnNext(true);
-                        AudioManager.Singleton.PlayAudio("Interact_positiveCollectResourceComplete");
+
+                        unit.endInteract(true);
                     }
-                    else
+                    else//未获得战利品
                     {
-                        GUIEvents.Singleton.PlayerEndFishing.OnNext(false);
+                        //GUIEvents.Singleton.PlayerEndFishing.OnNext(false);
+                        unit.endInteract(false);
                     }
                     EndFishGame();
                 });

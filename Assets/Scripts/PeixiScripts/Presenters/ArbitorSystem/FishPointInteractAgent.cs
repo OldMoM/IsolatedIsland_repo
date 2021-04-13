@@ -15,11 +15,13 @@ namespace Peixi
         private Subject<FishingResult> _onInteractEnd = new Subject<FishingResult>();
 
         private IInventorySystem Inventory => InterfaceArichives.Archive.IInventorySystem;
-        public void endInteract(FishingResult result)
+        public void endInteract(bool result)
         {
-            _onInteractEnd.OnNext(result);
-            Inventory.AddItem(ItemTags.String);
-            Debug.Log(result.plastic);
+            if (result)
+            {
+                Inventory.AddItem("fiber", 2);
+                Inventory.AddItem("plastic", 2);
+            }
         }
         public void startInteract()
         {
