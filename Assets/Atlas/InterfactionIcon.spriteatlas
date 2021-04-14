@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: InterfactionIcon
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 17139fe1c5ab3c641aa694eace1f2245, type: 3}
+    - {fileID: 2800000, guid: 64039f6aeb124ef48bd03468c2cd37c4, type: 3}
+    - {fileID: 2800000, guid: b798accee6b88b64896c34f661c12d8f, type: 3}
+    - {fileID: 21300000, guid: a4aa55c0657bde14e98dd1b159ef884d, type: 3}
+    - {fileID: 2800000, guid: e1dd350ad1809f94aa1f0b06271ce4b5, type: 3}
+    - {fileID: 2800000, guid: 922b76208e174fc439e31b2c99aed931, type: 3}
+    - {fileID: 21300000, guid: a4ba38ff1e782c34b9afbf5b8a862952, type: 3}
+    - {fileID: 21300000, guid: ebb1dc2d4159e0641b71a24095c5c5aa, type: 3}
+    totalSpriteSurfaceArea: 194680
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 922b76208e174fc439e31b2c99aed931, type: 3}
+  - {fileID: 21300000, guid: a4aa55c0657bde14e98dd1b159ef884d, type: 3}
+  - {fileID: 21300000, guid: 17139fe1c5ab3c641aa694eace1f2245, type: 3}
+  - {fileID: 21300000, guid: e1dd350ad1809f94aa1f0b06271ce4b5, type: 3}
+  - {fileID: 21300000, guid: 64039f6aeb124ef48bd03468c2cd37c4, type: 3}
+  - {fileID: 21300000, guid: ebb1dc2d4159e0641b71a24095c5c5aa, type: 3}
+  - {fileID: 21300000, guid: b798accee6b88b64896c34f661c12d8f, type: 3}
+  - {fileID: 21300000, guid: a4ba38ff1e782c34b9afbf5b8a862952, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Icon_Service
+  - Icon_Hugging
+  - Icon_Build
+  - Icon_ItemCollect
+  - Icon_Fishing
+  - Icon_Talk
+  - Icon_FoodCollect
+  - Icon_Sleeping
+  m_Tag: InterfactionIcon
+  m_IsVariant: 0
