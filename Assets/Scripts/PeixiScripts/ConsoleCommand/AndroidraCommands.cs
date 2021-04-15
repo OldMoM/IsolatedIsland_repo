@@ -11,5 +11,10 @@ namespace Peixi
             IAndroidraSystem androidra = InterfaceArichives.Archive.IAndroidraSystem;
             androidra.Control.BuildAt(type, pos);
         }
+        public static void RestoreIsland(Vector2Int islandPos)
+        {
+            IAndroidraSystem androidra = GameObject.FindObjectOfType<AndroidraSystem>();
+            androidra.Control.RestoreIsland(islandPos);
+        }
     }
 }

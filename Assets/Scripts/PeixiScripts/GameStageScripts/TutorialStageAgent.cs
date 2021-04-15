@@ -33,7 +33,7 @@ namespace Peixi
             Assert.IsNotNull(tent,"Failed to find Tent in Hierarchy");
 
             inventory.OnInventoryChanged
-                .Where(x => x.NewValue.Name == "Apple")
+                .Where(x => x.NewValue.Name == "fruit")
                 .Subscribe(x => { GameStageManager.StartStage(onPropertySpecification_GetFruit); });
 
             inventoryGui.OnOpenStateChanged

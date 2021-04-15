@@ -16,20 +16,10 @@ namespace Peixi
         private Subject<float> onBuildAnimProgressChanged = new Subject<float>();
 
         private ConcurrentTimer timer = new ConcurrentTimer();
-        //public AndroidraBuildAnimationPresenter(AndroidraNavPresenter androidraNavPresenter)
-        //{
-        //    navPresenter = androidraNavPresenter;
-        //    navPresenter.OnAndroidraReachBuildTarget
-        //        .Subscribe(x =>
-        //        {
-        //            onBuildAminStart.OnNext(x);
-        //            timer.StartTimeCountdown(3);
-        //        });
-        //}
 
-        public void StartPlayBuildAnimation()
+        public void StartPlayBuildAnimation(float time = 3)
         {
-            timer.StartTimeCountdown(3);
+            timer.StartTimeCountdown(time);
         }
     }
 }

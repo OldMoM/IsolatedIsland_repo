@@ -20,7 +20,7 @@ namespace Peixi
                 .Subscribe(x =>
                 {
                     var inventory = InterfaceArichives.Archive.IInventorySystem;
-                    inventory.AddItem("Apple", 1);
+                    inventory.AddItem("fruit", 1);
                     ShowMessage.singlton.Message("");
                     appleArtModel.SetActive(false);
 

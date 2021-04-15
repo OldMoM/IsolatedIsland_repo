@@ -22,7 +22,7 @@ namespace Peixi
             },
 
             {
-                "apple",()=>{
+                "fruit",()=>{
                     var playerProperty = InterfaceArichives.Archive.IPlayerPropertySystem;
                     playerProperty.ChangeSatiety(10);
                      Debug.Log("It's successful interaction message. Player Satiety now is "+ playerProperty.Satiety);

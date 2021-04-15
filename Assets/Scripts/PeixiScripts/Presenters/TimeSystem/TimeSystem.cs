@@ -18,8 +18,9 @@ namespace Peixi
         public Action StartNight => startNight;
 
         private IDisposable nightTimeCount_thread;
-        private Subject<int> _onDayStart = new Subject<int>();
+        private ReplaySubject<int> _onDayStart = new ReplaySubject<int>();
         private Subject<int> _onDayEnd = new Subject<int>();
+
 
         private void Start()
         {
@@ -28,6 +29,9 @@ namespace Peixi
 
         public void init()
         {
+            //Debug.Log("start first day");
+            _onDayStart.OnNext(1);
+
             Observable.Interval(TimeSpan.FromSeconds(1))
                 .Where(x => model.isDay)
                 .Subscribe(x =>

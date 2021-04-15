@@ -25,12 +25,12 @@ namespace Peixi
                 });
 
             itimeSystem.onDayStart
+                .Skip(1)
                 .Subscribe(x =>
                 {
                     BlackScreenFadeOut();
                 });
         }
-
         public void BlackScreenFadeOut()
         {
             IDisposable fadeInMircotine = null;
@@ -49,7 +49,6 @@ namespace Peixi
                     }
                 });
         }
-
         public void BlackScreenFadeIn()
         {
             IDisposable fadeInMircotine = null;

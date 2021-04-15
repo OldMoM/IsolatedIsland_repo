@@ -35,24 +35,22 @@ namespace Peixi
                     buildAnimation.StartPlayBuildAnimation();
                 });
 
-
             control.OnBuildMsgReceived
               .Subscribe(x =>
               {
-                  Debug.Log(3);
                   var targetWorldPos = InterfaceArichives.Archive.IBuildSystem.newGridToWorldPosition(x.Item2);
                   navPresenter.Target = targetWorldPos;
                   buildPos = x.Item2;
               });
 
-            buildAnimation.OnBuildAnimEnd
-                .Subscribe(x =>
-                {
-                    Debug.Log("end play build animation");
-                    stateController.SetState(AndroidraState.Follow, this.ToString());
+            //buildAnimation.OnBuildAnimEnd
+            //    .Subscribe(x =>
+            //    {
+            //        Debug.Log("end play build animation");
+            //        stateController.SetState(AndroidraState.Follow, this.ToString());
+            //        InterfaceArichives.Archive.IBuildSystem.BuildIslandAt(buildPos);
+            //    });
 
-                    InterfaceArichives.Archive.IBuildSystem.BuildIslandAt(buildPos);
-                });
         }
     }
 }
