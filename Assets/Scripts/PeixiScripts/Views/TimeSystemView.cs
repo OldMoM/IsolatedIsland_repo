@@ -25,6 +25,7 @@ namespace Peixi
                 });
 
             itimeSystem.onDayStart
+                .Skip(1)
                 .Subscribe(x =>
                 {
                     BlackScreenFadeOut();
