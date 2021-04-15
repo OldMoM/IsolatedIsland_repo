@@ -62,8 +62,6 @@ namespace Peixi
         public IObservable<ValueTuple<string, Vector3>> OnAndroidraReachBuildTarget => onAndroidraReachBuildTarget;
         public IObservable<bool> OnReachedTarget => hasReachedTarget;
 
-
-
         IDisposable disposable;
         public AndroidraNavPresenter(NavMeshAgent agent,IPlayerSystem playerSystem, IAndroidraSystem system,AndroidraStateController stateController)
         {
@@ -87,7 +85,6 @@ namespace Peixi
                 .Subscribe(x =>
                 {
                     _agent.SetDestination(target);
-                    //distanceToTarget = (target - _agent.transform.position).sqrMagnitude;
                     hasReachedTarget.Value = _agent.remainingDistance <= 0.5f;
                 });
 
@@ -110,42 +107,36 @@ namespace Peixi
                         onAndroidraEndMove.OnNext(Unit.Default);
                     }
                 });
-
-            //OnBuildMsgReceived();
-
-            //OnAndroidReachBuildTarget();
         }
 
-        void OnBuildMsgReceived()
-        {
-            _control.OnBuildMsgReceived
-                .Subscribe(x =>
-                {
-                    //record msg data
-                    var target_world = gridPosToWorld(x.Item2);
-                    buildFacilityType = x.Item1;
+        //void OnBuildMsgReceived()
+        //{
+        //    _control.OnBuildMsgReceived
+        //        .Subscribe(x =>
+        //        {
+        //            //record msg data
+        //            var target_world = gridPosToWorld(x.Item2);
+        //            buildFacilityType = x.Item1;
 
-                    //delay 5 frames to invoke
-                    Observable.Timer(TimeSpan.FromTicks(5))
-                    .First()
-                    .Subscribe(y =>
-                    {
-                        target = target_world;
-                    });
-                });
-        }
-        void OnAndroidReachBuildTarget()
-        {
-            //Assert.IsNotNull(_state, "@AndroidraNavPresenter _state is null");
-
-            hasReachedTarget
-                .Where(x => !x)
-                .Where(x => _system.androidState.State == AndroidraState.Building)
-                .Subscribe(x =>
-                {
-                    Debug.Log("Androidra has reached the building target and start to build facility");
-                    onAndroidraReachBuildTarget.OnNext(new ValueTuple<string, Vector3>(buildFacilityType,target));
-                });
-        }
+        //            //delay 5 frames to invoke
+        //            Observable.Timer(TimeSpan.FromTicks(5))
+        //            .First()
+        //            .Subscribe(y =>
+        //            {
+        //                target = target_world;
+        //            });
+        //        });
+        //}
+        //void OnAndroidReachBuildTarget()
+        //{
+        //    hasReachedTarget
+        //        .Where(x => !x)
+        //        .Where(x => _system.androidState.State == AndroidraState.Building)
+        //        .Subscribe(x =>
+        //        {
+        //            Debug.Log("Androidra has reached the building target and start to build facility");
+        //            onAndroidraReachBuildTarget.OnNext(new ValueTuple<string, Vector3>(buildFacilityType,target));
+        //        });
+        //}
     }
 }

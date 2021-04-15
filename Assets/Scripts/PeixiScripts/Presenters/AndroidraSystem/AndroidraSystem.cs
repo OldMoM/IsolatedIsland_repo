@@ -78,6 +78,9 @@ namespace Peixi
 
             //control = new AndroidraControl();
 
+            Control.onReachTarget = nav.OnReachedTarget;
+            Control.onTimeOut = buildAnim.OnBuildAnimEnd;
+            Control.stateController = state;
             Control.OnBuildMsgReceived
                 .Subscribe(x =>
                 {

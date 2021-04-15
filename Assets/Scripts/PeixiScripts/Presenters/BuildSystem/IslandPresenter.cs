@@ -19,6 +19,10 @@ namespace Peixi
         public int Durability_current
         {
             get => durability_current.Value;
+            set
+            {
+                durability_current.Value = value;
+            }
         }
         public void SetDurabilityTo(int targetValue)
         {
@@ -30,6 +34,8 @@ namespace Peixi
         public IObservable<int> OnDurabilityChanged => durability_current;
 
         public Vector3 PositionInWorld => transform.position;
+
+        public FacilityData data => islandData;
 
         private int durability_max = 100;
         private Vector2Int m_gridPos;
