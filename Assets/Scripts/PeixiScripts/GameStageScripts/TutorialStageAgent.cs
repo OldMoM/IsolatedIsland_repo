@@ -45,11 +45,11 @@ namespace Peixi
 
 
             inventoryGui.OnItemUsed
-                .Where(x => x == "Apple")
+                .Where(x => x == "fruit")
                 .Subscribe(x => { GameStageManager.StartStage(onPropertySpecification_EatFruit); });
 
             tent.CollectableAgent.OnPlayerTouch
-                 .First()
+                 //.First()
                  .Subscribe(x =>
                  {
                      GameStageManager.StartStage(onPlayerTouchWithTent);
