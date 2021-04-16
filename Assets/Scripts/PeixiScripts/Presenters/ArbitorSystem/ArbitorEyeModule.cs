@@ -96,7 +96,7 @@ namespace Peixi
         public ArbitorEyeModule() { }
         public void OnPlayerTouch(BaseItem item)
         {
-            ShowMessage.singlton.Message("Press E to gather resource");
+            ShowMessage.singlton.Message("Press E to collect resource");
             AddItemToPendingQuene(item);
         }
         public void OnPlayerUnTouch(BaseItem item)
