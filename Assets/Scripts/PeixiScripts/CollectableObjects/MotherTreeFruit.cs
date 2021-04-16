@@ -32,7 +32,7 @@ namespace Peixi
             agent.OnPlayerTouch
                 .Subscribe(x =>
                 {
-                    ShowMessage.singlton.Message("按E键摘取苹果");
+                    ShowMessage.singlton.Message("Press E to pick apples");
                 });
 
             agent.OnPlayerUntouch
