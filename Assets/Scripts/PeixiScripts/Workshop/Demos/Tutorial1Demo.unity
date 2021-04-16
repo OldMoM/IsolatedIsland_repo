@@ -1814,67 +1814,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381766636}
   m_CullTransparentMesh: 0
---- !u!1 &407690023 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7698655049647103244, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+--- !u!114 &407690024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2561757615587089018, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
   m_PrefabInstance: {fileID: 1245993709}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &407690025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407690023}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 173
-  indentLevel: 0
-  description: 
-  delay: 0
-  invokeType: 0
-  staticEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 870996478}
-        m_TargetAssemblyTypeName: Peixi.LvDialogSystem, GameScripts
-        m_MethodName: EndDialog
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  booleanParameter:
-    booleanRef: {fileID: 0}
-    booleanVal: 0
-  booleanEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  integerParameter:
-    integerRef: {fileID: 0}
-    integerVal: 0
-  integerEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  floatParameter:
-    floatRef: {fileID: 0}
-    floatVal: 0
-  floatEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  stringParameter:
-    stringRef: {fileID: 0}
-    stringVal: 
-  stringEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &408664829
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,7 +2214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1251431341}
+  selectedFlowchart: {fileID: 407690024}
 --- !u!4 &535931834
 Transform:
   m_ObjectHideFlags: 1
@@ -3472,25 +3422,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 420557803, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: commandList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 420557803, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 1253.3556
-      objectReference: {fileID: 0}
-    - target: {fileID: 420557803, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.width
-      value: 207.14284
-      objectReference: {fileID: 0}
-    - target: {fileID: 420557803, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: commandList.Array.data[1]
-      value: 
-      objectReference: {fileID: 407690025}
-    - target: {fileID: 605025723191447237, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - target: {fileID: 127708519, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: nodeRect.x
-      value: 102.00971
+      value: 97.23754
+      objectReference: {fileID: 0}
+    - target: {fileID: 127708519, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: nodeRect.y
+      value: 296.52423
+      objectReference: {fileID: 0}
+    - target: {fileID: 420557802, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: text
+      value: Play survival tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 1764758225719187869, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3540,49 +3482,19 @@ PrefabInstance:
       propertyPath: selectedCommands.Array.size
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2561757615587089018, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: selectedBlocks.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3340798079679958426, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    - target: {fileID: 2992995971295022063, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: nodeRect.x
-      value: 116.69435
+      value: 99.900696
       objectReference: {fileID: 0}
-    - target: {fileID: 4144226175016648578, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 109.32434
+    - target: {fileID: 2992995971295022063, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: nodeRect.y
+      value: 195.33383
       objectReference: {fileID: 0}
     - target: {fileID: 7582610351347405391, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: m_Name
       value: DialogueSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 7582610351347405391, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7698655049647103244, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8797267934277206466, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.x
-      value: 104.790695
-      objectReference: {fileID: 0}
-    - target: {fileID: 8797267934277206466, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-      propertyPath: nodeRect.y
-      value: 1341.6289
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6100497134168147592, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-    - {fileID: 120881863225796842, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-    - {fileID: 4020883206085641011, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-    - {fileID: 2740685748945214446, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-    - {fileID: 6186984833458894949, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-    - {fileID: 6544394156742555417, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-    - {fileID: 4144226175016648578, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-    - {fileID: 3340798079679958426, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-    - {fileID: 605025723191447237, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-    - {fileID: 6591516466541659239, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
 --- !u!1 &1251431340
 GameObject:
@@ -3674,7 +3586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 184.1351, y: -433.64853}
+  scrollPos: {x: 144.36227, y: -245.01254}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 407
@@ -3686,7 +3598,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1251431368}
+  - {fileID: 1251431365}
   selectedCommands: []
   variables: []
   description: 
@@ -3783,7 +3695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -14.129309
+    x: -12.992945
     y: 256.55106
     width: 199.99998
     height: 40
@@ -3897,7 +3809,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u6309E\u952E\u542F\u52A8\u866B\u4E38"
+          m_StringArgument: Press E to active android
           m_BoolArgument: 0
         m_CallState: 2
   booleanParameter:
@@ -6193,8 +6105,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: 0, y: 358}
+  m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1586173881
 MonoBehaviour:
