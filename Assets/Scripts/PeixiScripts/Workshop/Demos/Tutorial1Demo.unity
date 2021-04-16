@@ -8942,6 +8942,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6817344620108316295, guid: 086f96b84024706428467a46834472b1, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6984861782800659620, guid: 086f96b84024706428467a46834472b1, type: 3}
       propertyPath: m_IsActive
       value: 1
