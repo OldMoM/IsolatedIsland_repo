@@ -1814,17 +1814,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381766636}
   m_CullTransparentMesh: 0
---- !u!114 &407690024 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2561757615587089018, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
-  m_PrefabInstance: {fileID: 1245993709}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &408664829
 GameObject:
   m_ObjectHideFlags: 0
@@ -2214,7 +2203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 407690024}
+  selectedFlowchart: {fileID: 1251431341}
 --- !u!4 &535931834
 Transform:
   m_ObjectHideFlags: 1
@@ -3430,9 +3419,13 @@ PrefabInstance:
       propertyPath: nodeRect.y
       value: 296.52423
       objectReference: {fileID: 0}
+    - target: {fileID: 420557801, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: nodeRect.y
+      value: 577.5296
+      objectReference: {fileID: 0}
     - target: {fileID: 420557802, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: text
-      value: Play survival tutorial
+      value: Play Survival Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 1764758225719187869, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3482,6 +3475,10 @@ PrefabInstance:
       propertyPath: selectedCommands.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2561757615587089018, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: selectedBlocks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2992995971295022063, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: nodeRect.x
       value: 99.900696
@@ -3489,6 +3486,10 @@ PrefabInstance:
     - target: {fileID: 2992995971295022063, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: nodeRect.y
       value: 195.33383
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573987340672603554, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
+      propertyPath: nodeRect.x
+      value: 108.498634
       objectReference: {fileID: 0}
     - target: {fileID: 7582610351347405391, guid: 128c03eb6c7a18e4c8fe576f95744c55, type: 3}
       propertyPath: m_Name
@@ -3586,7 +3587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 144.36227, y: -245.01254}
+  scrollPos: {x: 288.68042, y: 11.8057375}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 407
@@ -3598,8 +3599,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1251431365}
-  selectedCommands: []
+  - {fileID: 1251431350}
+  selectedCommands:
+  - {fileID: 1251431347}
   variables: []
   description: 
   stepPause: 0
@@ -3809,7 +3811,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Press E to active android
+          m_StringArgument: Press E to activate android
           m_BoolArgument: 0
         m_CallState: 2
   booleanParameter:
