@@ -52,15 +52,45 @@ MonoBehaviour:
   - {fileID: 2202166401257563870}
   audio:
   - type: 1
-    clip: {fileID: 8300000, guid: ca56ca3ec924a414fa6924a5279a3e8d, type: 3}
+    clip: {fileID: 8300000, guid: 1205e822e66b8ba47858cba1367042ab, type: 3}
+  - type: 1
+    clip: {fileID: 8300000, guid: 06a4c47452c41ba42b5b187ddb69e017, type: 3}
+  - type: 1
+    clip: {fileID: 8300000, guid: 3e577cacfafc63e4794f1ce1a0077cfa, type: 3}
   - type: 2
-    clip: {fileID: 8300000, guid: c18ae2c530c264a6880266d5e0a71337, type: 3}
+    clip: {fileID: 8300000, guid: 2f600789fefc82d4ea8c2ce79ef291ef, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: f6351b7b27ad6fc4babf0ac0e3e9bb86, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: 2a5690013fea9d44abe21da99773a5ed, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: 1a96ae8f192b75343a5d3710d7782a01, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: e1cee3c571da580449e6b7c1fe5db82d, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: c711d82c43636864b855e72d5f638d15, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: a0ae6a61555ed2c4c9227ec9e4cf8820, type: 3}
   - type: 3
-    clip: {fileID: 8300000, guid: d88e387e612f25945a4edb9fc1e850ad, type: 3}
+    clip: {fileID: 8300000, guid: ca8d2e7ee35075246a1495d8d17f3bec, type: 3}
   - type: 3
-    clip: {fileID: 8300000, guid: d88e387e612f25945a4edb9fc1e850ad, type: 3}
+    clip: {fileID: 8300000, guid: bb94ad651b836d743a85302218f696b8, type: 3}
   - type: 3
-    clip: {fileID: 8300000, guid: d88e387e612f25945a4edb9fc1e850ad, type: 3}
+    clip: {fileID: 8300000, guid: f62a5e639700ed64d85a11a08552266e, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: d110222b0ce06f94d9b3d71e2b073024, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: 18f6e82e3eff29e45b4d35123ac5fe7e, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: 3c23f74081747e84899036a3dd05e6f6, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: 3c9417092876bd9428b93669a12faba8, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: c1ac52a641b63294db47c34d4f16e36d, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: 2f51546d730c9834dbca2386c1d6c36b, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: b3069c7a85bab59469b01f66c920a476, type: 3}
   debug: 0
 --- !u!1 &2512168300993721822
 GameObject:

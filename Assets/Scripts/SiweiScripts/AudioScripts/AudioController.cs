@@ -4,9 +4,11 @@
     using UnityEngine;
     using Peixi;
     using UniRx;
+    
 
     public class AudioController : MonoBehaviour
     {
+        private ITimeSystem timeSystem;
 
         private Hashtable m_AudioTable; // relationship of audio clip name (key) and audio object (value)
         private Hashtable m_JobTable;   // relationship between audio types (key) and jobs (value)
@@ -37,9 +39,29 @@
 
         private void Start()
         {
+            timeSystem = InterfaceArichives.Archive.ITimeSystem;
+            
+
+
+            timeSystem.onDayStart.Subscribe(x =>
+            {
+                Debug.Log("Receive onDayStart signal");
+                PlayAudio(AudioRegistration.audioTable["OnDayTime"]);
+            });
+
+            /*
+            timeSystem.onDayEnd.Subscribe(x =>
+            {
+                PlayAudio(AudioRegistration.audioTable["OnDayTime"]);
+            });
+            */
+
             AudioEvents.OnAudioStart.Subscribe(x =>
             {
-                PlayAudio(AudioRegistration.audioTable[x]);
+                if(AudioRegistration.audioTable[x] != "")
+                {
+                    PlayAudio(AudioRegistration.audioTable[x]);
+                }                
             });
         }
 
