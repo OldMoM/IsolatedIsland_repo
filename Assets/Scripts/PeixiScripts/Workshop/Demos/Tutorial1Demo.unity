@@ -2203,7 +2203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 2001921126}
+  selectedFlowchart: {fileID: 1251431341}
 --- !u!4 &535931834
 Transform:
   m_ObjectHideFlags: 1
@@ -3607,7 +3607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 235.51305, y: -554.97314}
+  scrollPos: {x: 119.555626, y: -350.7178}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 407
@@ -3619,8 +3619,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1251431358}
-  selectedCommands: []
+  - {fileID: 1251431370}
+  selectedCommands:
+  - {fileID: 1251431399}
   variables: []
   description: 
   stepPause: 0
@@ -5486,7 +5487,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u65F6\u95F4\u4E0D\u65E9\u4E86\uFF0C\u5988\u5988\u8BF4\u7684\u5BF9\uFF0C\u5E94\u8BE5\u65E9\u70B9\u4F11\u606F\uFF0C\u660E\u5929\u8FD8\u8981\u7EE7\u7EED\u8DDF\u968F\u866B\u4E38\u5B66\u4E60\u6D77\u4E0A\u751F\u5B58\u7684\u77E5\u8BC6\u3002"
+          m_StringArgument: It's too late, I need sleep
           m_BoolArgument: 0
         m_CallState: 2
   booleanParameter:
@@ -7207,17 +7208,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2445178677440279549, guid: be04207caad8c1f4d987025c57f300b4, type: 3}
   m_PrefabInstance: {fileID: 1997401784}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2001921126 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2561757615587089018, guid: a37c34a595fd7764282e51866a3aec8d, type: 3}
-  m_PrefabInstance: {fileID: 1545903085}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2019414668
 GameObject:
   m_ObjectHideFlags: 0
