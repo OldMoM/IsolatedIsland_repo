@@ -4,6 +4,7 @@ using UniRx;
 
 namespace Peixi
 {
+    [Obsolete]
     public class TimeSystem : MonoBehaviour, ITimeSystem
     {
         [SerializeField]

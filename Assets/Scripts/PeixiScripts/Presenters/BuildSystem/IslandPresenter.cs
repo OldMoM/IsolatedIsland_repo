@@ -16,6 +16,7 @@ namespace Peixi
         [SerializeField] private FacilityData islandData;
         [SerializeField]
         IntReactiveProperty durability_current = new IntReactiveProperty(100);
+
         public int Durability_current
         {
             get => durability_current.Value;
@@ -41,10 +42,25 @@ namespace Peixi
         private Vector2Int m_gridPos;
         private bool isActive = false;
 
+        private IObservable<int> onDayStart => InterfaceArichives.Archive.ITimeSystem.onDayStart;
+        private IObservable<int> onDayEnd => InterfaceArichives.Archive.ITimeSystem.onDayEnd;
+
         System.IDisposable endTimer;
+
+
         // Start is called before the first frame update
         private void OnEnable()
         {
+            //
+            onDayStart.Subscribe(x =>
+            {
+                isActive = true;
+            });
+            onDayEnd.Subscribe(x =>
+            {
+                isActive = false;
+            });
+
             endTimer = Observable.Interval(System.TimeSpan.FromSeconds(1))
                .TakeWhile(x => durability_current.Value > 0)
                .Subscribe(x =>
