@@ -11,6 +11,8 @@ namespace Peixi
             var data = model;
             data.durability.Value = 100;
 
+            RegisterEntity(ref model);
+
             IDisposable[] releaseSequences = new IDisposable[3];
 
             releaseSequences[0] =
@@ -32,6 +34,7 @@ namespace Peixi
                 {
                     data.onIslandDestoryed.OnNext(data.positionInGrid);
                     ReleaseAllSequences(releaseSequences);
+                    UnregisterEntity(ref data);
                 });
 
             releaseSequences[1] =
@@ -46,6 +49,15 @@ namespace Peixi
             {
                 item.Dispose();
             }
+        }
+
+        private static void RegisterEntity(ref IslandModel model)
+        {
+            EntityModel.islandModels.Add(model.positionInGrid, model);
+        }
+        public static void UnregisterEntity(ref IslandModel model)
+        {
+            EntityModel.islandModels.Remove(model.positionInGrid);
         }
     }
 }
