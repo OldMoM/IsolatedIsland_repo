@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2454104126510399095}
   - component: {fileID: 8863250128512821764}
   - component: {fileID: 2561315050545754793}
+  - component: {fileID: 5028630001612958426}
   m_Layer: 0
   m_Name: prop_plantIsland
   m_TagString: Untagged
@@ -55,7 +56,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7048989393739741277}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f625fcf3000bcc46a789728ee5a3a4a, type: 3}
   m_Name: 
@@ -81,6 +82,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5028630001612958426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048989393739741277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2725b09e32568ea46a3091e45dd7fb88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model:
+    durability:
+      value: 0
+    isActive: 0
+    positionInGrid: {x: 0, y: 0}
+    attachedObject: {fileID: 0}
 --- !u!1001 &8319231939744247357
 PrefabInstance:
   m_ObjectHideFlags: 0

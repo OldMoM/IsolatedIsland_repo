@@ -83,9 +83,13 @@ namespace Peixi
             _island.transform.name = "IslandAt" + gridPos.x + "dot" + gridPos.y;
             _island.transform.localScale = new Vector3(3, 1, 3);
 
-            var islandPresenter = _island.GetComponent<IslandPresenter>();
-            Assert.IsNotNull(islandPresenter);
-            islandPresenter.Active(gridPos, 100);
+            //var islandPresenter = _island.GetComponent<IslandPresenter>();
+            //Assert.IsNotNull(islandPresenter);
+            //islandPresenter.Active(gridPos, 100);
+
+            var islandEntity = _island.GetComponent<IslandEntity>();
+            Assert.IsNotNull(islandEntity);
+            islandEntity.Init(gridPos, 100);
 
             islandSquares.Add(gridPos, _island);
         }
