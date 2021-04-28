@@ -16,7 +16,7 @@ namespace Siwei
         /// <summary>
         ///  当鼠标点击时触发此事件，传递当前指针点击的世界坐标
         /// </summary>
-        IObservable<Vector3> OnMouseClicked﻿ { get; }
+        IObservable<(string,Vector3)> OnMouseClicked﻿ { get; }
         /// <summary>
         /// 允许鼠标在指向点处建造Island
         /// </summary>

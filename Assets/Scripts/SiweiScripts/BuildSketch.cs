@@ -10,7 +10,8 @@ namespace Siwei
     {
         private bool buildMode = false;
         private bool permitBuild = false;
-
+        private bool buildIslandMode = false;
+        private bool buildPropMode = false;
         #region//privates
         private MouseModules _mouseModule;
         private GridMesh _gridMesh;
@@ -31,7 +32,7 @@ namespace Siwei
                 return _mouseModule.OnMouseHoverPositionChanged();
             }
         }
-        public IObservable<Vector3> OnMouseClicked
+        public IObservable<(string, Vector3)> OnMouseClicked
         {
             get
             {
@@ -39,7 +40,8 @@ namespace Siwei
                 {
                     _mouseModule = GetComponentInChildren<MouseModules>(true);
                 }
-                return _mouseModule.OnMouseClicked();
+                string buildObject = GetBuildObject();
+                return _mouseModule.OnMouseClicked(buildObject);
             }
             
         }
@@ -60,6 +62,49 @@ namespace Siwei
             }
         }
 
+        // 是否建造岛屿
+        public bool SetBuildIslandMode
+        {
+            get { return buildIslandMode; }
+            set
+            {
+                if (buildIslandMode)
+                {
+                    SetBuildPropMode = false;
+                    buildIslandMode = true;
+                    mouseModule_trans.gameObject.SetActive(true);
+                }
+                else
+                {
+                    buildIslandMode = false;
+                    mouseModule_trans.gameObject.SetActive(false);
+                }
+            }
+        }
+
+        // 是否建造设施
+        public bool SetBuildPropMode
+        {
+            get { return buildPropMode; }
+            set
+            {
+                if (buildPropMode)
+                {
+                    SetBuildIslandMode = false;
+                    buildPropMode = true;
+                    _gridMesh.transform.gameObject.SetActive(true);
+                    mouseModule_trans.gameObject.SetActive(true);
+                }
+                else
+                {
+                    buildPropMode = false;
+                    _gridMesh.transform.gameObject.SetActive(false);
+                    mouseModule_trans.gameObject.SetActive(false);
+                }
+            }
+        }
+
+
         // 设置是否允许在该岛块进行建设
         public bool PermitBuildIsland
         {
@@ -69,6 +114,14 @@ namespace Siwei
                 permitBuild = value;
             }
         }
+
+        // 得到建造的对象（岛屿/设施名）
+        public string GetBuildObject()
+        {
+            return "";
+        }
+
+
 
         #endregion
         private void Awake()
