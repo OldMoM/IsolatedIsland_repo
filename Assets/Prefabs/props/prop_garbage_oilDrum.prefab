@@ -82,6 +82,12 @@ MonoBehaviour:
     itemType: 0
     detectRadius: 6
     isContact: 0
+  garbageData:
+    position: {x: 0, y: 0, z: 0}
+    gridPos: {x: 0, y: 0}
+    instanceId: 0
+    name: plastic
+    type: 0
 --- !u!65 &808464273119255209
 BoxCollider:
   m_ObjectHideFlags: 0

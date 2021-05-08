@@ -8,10 +8,31 @@ using UnityEngine.UI;
 namespace Peixi {
     public class GarbagePresenter : BaseItem
     {
+        public CollectableObjectAgent collectable;
         Rigidbody rigid;
+        public FacilityData garbageData;
+
+
         private void OnEnable()
         {
             rigid = GetComponent<Rigidbody>();
+
+            collectable = new CollectableObjectAgent(GetComponent<SphereCollider>());
+            garbageData.instanceId = gameObject.GetInstanceID();
+
+            collectable.OnPlayerTouch
+                .Subscribe(x =>
+                {
+                    var interactionAgent = InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent;
+                    interactionAgent.PlayerTouchFacility(garbageData);
+                });
+
+            collectable.OnPlayerUntouch
+                .Subscribe(x =>
+                {
+                    var interactionAgent = InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent;
+                    interactionAgent.PlayerUntouchFacility(garbageData);
+                });
         }
         /// <summary>
         /// 激活Garbage并设置速度和方向
@@ -39,11 +60,12 @@ namespace Peixi {
 
         private void OnTriggerEnter(Collider other)
         {
-            OnPlayerTouch(other);
+            //OnPlayerTouch(other);
+            
         }
         private void OnTriggerExit(Collider other)
         {
-            OnPlayerUntouch(other);
+            //OnPlayerUntouch(other);
         }
     }
 }

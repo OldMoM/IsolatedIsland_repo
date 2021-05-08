@@ -13,7 +13,7 @@ namespace Peixi
     /// <typeparam name="T2">Value类型</typeparam>
     public class GridModule<T1, T2>
     {
-        protected GridModuleModel<T1, T2> model = new GridModuleModel<T1, T2>();
+        public GridModuleModel<T1, T2> model = new GridModuleModel<T1, T2>();
         public bool CheckHasTheKey(T1 key)
         {
             return model.gridData.ContainsKey(key);

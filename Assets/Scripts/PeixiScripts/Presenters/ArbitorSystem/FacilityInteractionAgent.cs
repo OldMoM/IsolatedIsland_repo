@@ -132,6 +132,8 @@ namespace Peixi
             {
                 restoreIslandProgress.StartInteract(targetData);
             }
+
+            
         }
         public void InteractEnd(FacilityType type)
         {
@@ -241,7 +243,9 @@ namespace Peixi
         FishPoint,
         FoodPlant,
         Distiller,
-        Tent
+        Tent,
+        Plastic,
+        Fiber
     }
     public enum InteractState
     {

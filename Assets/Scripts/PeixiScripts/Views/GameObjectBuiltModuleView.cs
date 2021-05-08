@@ -21,7 +21,7 @@ namespace Peixi
         public Vector3 gridOrigialPos = Vector3.zero;
         public Vector3 gridOffset = Vector3.zero;
 
-        protected Dictionary<Vector2Int, GameObject> islandSquares = new Dictionary<Vector2Int, GameObject>();
+        public Dictionary<Vector2Int, GameObject> islandSquares = new Dictionary<Vector2Int, GameObject>();
         protected Dictionary<Vector2Int, GameObject> wallCubes = new Dictionary<Vector2Int, GameObject>();
         protected Dictionary<Vector2Int, GameObject> facilityPrefabs = new Dictionary<Vector2Int, GameObject>();
         private void OnEnable()
@@ -83,9 +83,13 @@ namespace Peixi
             _island.transform.name = "IslandAt" + gridPos.x + "dot" + gridPos.y;
             _island.transform.localScale = new Vector3(3, 1, 3);
 
-            var islandPresenter = _island.GetComponent<IslandPresenter>();
-            Assert.IsNotNull(islandPresenter);
-            islandPresenter.Active(gridPos, 100);
+            //var islandPresenter = _island.GetComponent<IslandPresenter>();
+            //Assert.IsNotNull(islandPresenter);
+            //islandPresenter.Active(gridPos, 100);
+
+            var islandEntity = _island.GetComponent<IslandEntity>();
+            Assert.IsNotNull(islandEntity);
+            islandEntity.Init(gridPos, 100);
 
             islandSquares.Add(gridPos, _island);
         }
