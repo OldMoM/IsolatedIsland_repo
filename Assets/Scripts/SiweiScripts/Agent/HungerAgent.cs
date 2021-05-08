@@ -9,6 +9,8 @@ namespace Peixi
     public class HungerAgent
     {
         private AgentDependency dependency;
+
+        private bool hungerSoundCd;
         public HungerAgent(AgentDependency Dependency)
         {
             dependency = Dependency;
@@ -24,19 +26,21 @@ namespace Peixi
             dependency.playerPropertySystem.OnSatietyChanged
                 .Subscribe(x =>
                 {
-                    //Debug.Log(x);
                     if (x > 0 && x < 60)
                     {
                         dependency.playerPropertySystem.SatietyLevel = PropertyLevel.Euclid;
 
-                        AudioEvents.StartAudio("OnPlayerGetHungery");
+                        
+                        if (hungerSoundCd)
+                        {
+                            AudioEvents.StartAudio("OnPlayerGetHungery");
+                        }
                     }
 
                     if (x == 0)
                     {
                         dependency.playerPropertySystem.SatietyLevel = PropertyLevel.Keter;
-
-                        AudioEvents.StartAudio("OnPlayerGetExtremeHungery");
+                        AudioEvents.StartAudio("OnPlayerGetHungery");
                     }
 
                     if (x >= 60)
@@ -49,9 +53,14 @@ namespace Peixi
                 .Where(x => x==0)
                 .Subscribe(x =>
                 {
-                    Debug.Log("sdfsdf");
                     dependency.speed = 2;
                     Debug.Log(dependency.GetHashCode());
+                });
+
+            Observable.Interval(TimeSpan.FromSeconds(10))
+                .Subscribe(x =>
+                {
+                    hungerSoundCd = !hungerSoundCd;
                 });
         }
     }
