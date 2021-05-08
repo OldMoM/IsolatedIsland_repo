@@ -16,8 +16,8 @@ namespace Peixi
         public GridSetting settings = new GridSetting(4, Vector2.zero);
 
         #region//privates
-        private IslandGridModulePresenter _islandGridModule;
-        private FacilityBuildModulePresenter _facilityModule;
+        public IslandGridModulePresenter _islandGridModule;
+        public FacilityBuildModulePresenter _facilityModule;
         private GameObjectBuiltModuleView _view;
         private PositionConvent _posTransMod = new PositionConvent();
         private Subject<Vector2Int> _onIslandSunk = new Subject<Vector2Int>();

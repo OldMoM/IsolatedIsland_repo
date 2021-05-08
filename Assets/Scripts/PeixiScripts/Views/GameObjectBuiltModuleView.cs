@@ -21,7 +21,7 @@ namespace Peixi
         public Vector3 gridOrigialPos = Vector3.zero;
         public Vector3 gridOffset = Vector3.zero;
 
-        protected Dictionary<Vector2Int, GameObject> islandSquares = new Dictionary<Vector2Int, GameObject>();
+        public Dictionary<Vector2Int, GameObject> islandSquares = new Dictionary<Vector2Int, GameObject>();
         protected Dictionary<Vector2Int, GameObject> wallCubes = new Dictionary<Vector2Int, GameObject>();
         protected Dictionary<Vector2Int, GameObject> facilityPrefabs = new Dictionary<Vector2Int, GameObject>();
         private void OnEnable()
