@@ -8,6 +8,10 @@ namespace Peixi
     {
         public const string water = "water";
         public const string bread = "Bread";
-        public const string String = "String";
+        public const string fiber = "fiber";
+        public const string plastic = "plastic";
+        public const string grilledFish = "grilledFish";
+        public const string freshFish = "freshFish";
+        public const string fruit = "fruit";
     }
 }

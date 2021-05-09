@@ -15,8 +15,9 @@ namespace Peixi
         {
             dependency = Dependency;
 
+            var thirstReduceRate = GameConfig.Singleton.InteractionConfig["playerThirstReduceInterval"];
             //每四秒口渴值减1
-            Observable.Interval(TimeSpan.FromSeconds(4))
+            Observable.Interval(TimeSpan.FromSeconds(thirstReduceRate))
                .Subscribe(x =>
                {
                    //Debug.Log("Thirst is:" + dependency.playerPropertySystem.Thirst);

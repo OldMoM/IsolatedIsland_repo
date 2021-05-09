@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -67,14 +67,14 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bb145366ce7024469a5758b08d31802c, type: 3}
-    m_FontSize: 20
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 35
     m_Alignment: 4
     m_AlignByGeometry: 0
-    m_RichText: 1
+    m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8080641908085786914
 RectTransform:
   m_ObjectHideFlags: 0
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 4851220119632078644}
   - component: {fileID: 7473069633663618092}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -294,11 +294,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bb145366ce7024469a5758b08d31802c, type: 3}
-    m_FontSize: 54
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 54
+    m_MinSize: 6
+    m_MaxSize: 67
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -342,8 +342,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -63}
-  m_SizeDelta: {x: 160, y: 40}
+  m_AnchoredPosition: {x: 0, y: -98}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7419561263978086335
 CanvasRenderer:
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.24705882, g: 0.19607843, b: 0.19607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -475,7 +475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 65}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5081811431240459505
@@ -552,8 +552,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -3}
-  m_SizeDelta: {x: 160, y: 40}
+  m_AnchoredPosition: {x: 0, y: -24}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4434120714617197099
 CanvasRenderer:
@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.24528301, g: 0.1976148, b: 0.1976148, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -846,7 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0.99433964, b: 0.99433964, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -855,7 +855,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bb145366ce7024469a5758b08d31802c, type: 3}
-    m_FontSize: 20
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -918,6 +918,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handleScope: 0600000007000000
   icon: {fileID: 5449767524120238692}
+  isActive: 0
+  target: {fileID: 0}
 --- !u!1001 &705527988994812782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -928,6 +930,10 @@ PrefabInstance:
     - target: {fileID: 1261538623651213836, guid: e937ced91babdac4d9dc717274697ed1, type: 3}
       propertyPath: m_Name
       value: PlayerPropertyHUD2.0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261538623651213836, guid: e937ced91babdac4d9dc717274697ed1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6972231432262219606, guid: e937ced91babdac4d9dc717274697ed1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1203,6 +1209,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3908288203840109712, guid: 7d7b7f8e3ff2bcb4f81eb95d4e204548, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bb145366ce7024469a5758b08d31802c, type: 3}
     - target: {fileID: 3908288204267051608, guid: 7d7b7f8e3ff2bcb4f81eb95d4e204548, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1411,6 +1421,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectTipGui
       objectReference: {fileID: 0}
+    - target: {fileID: 8420026356237378366, guid: def366b03a6c3264d8977e0b46ab377c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8420026356237378367, guid: def366b03a6c3264d8977e0b46ab377c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1512,6 +1526,14 @@ PrefabInstance:
     - target: {fileID: 1356346697508510101, guid: 29916a72dd106a6478649d8966d316de, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488674732668812569, guid: 29916a72dd106a6478649d8966d316de, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bb145366ce7024469a5758b08d31802c, type: 3}
+    - target: {fileID: 1488674732668812569, guid: 29916a72dd106a6478649d8966d316de, type: 3}
+      propertyPath: m_Text
+      value: Hold
       objectReference: {fileID: 0}
     - target: {fileID: 1529574128770632867, guid: 29916a72dd106a6478649d8966d316de, type: 3}
       propertyPath: m_IsActive
@@ -1637,6 +1659,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3160371323900062569, guid: 29916a72dd106a6478649d8966d316de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3445535440277729384, guid: 29916a72dd106a6478649d8966d316de, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1644,6 +1670,18 @@ PrefabInstance:
     - target: {fileID: 3477049779629786148, guid: 29916a72dd106a6478649d8966d316de, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800851602817371810, guid: 29916a72dd106a6478649d8966d316de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805454970814900300, guid: 29916a72dd106a6478649d8966d316de, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bb145366ce7024469a5758b08d31802c, type: 3}
+    - target: {fileID: 4805454970814900300, guid: 29916a72dd106a6478649d8966d316de, type: 3}
+      propertyPath: m_Text
+      value: Discard
       objectReference: {fileID: 0}
     - target: {fileID: 5072123743820540522, guid: 29916a72dd106a6478649d8966d316de, type: 3}
       propertyPath: m_IsActive
@@ -1668,6 +1706,14 @@ PrefabInstance:
     - target: {fileID: 7961350287080265415, guid: 29916a72dd106a6478649d8966d316de, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299268488905711587, guid: 29916a72dd106a6478649d8966d316de, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bb145366ce7024469a5758b08d31802c, type: 3}
+    - target: {fileID: 8299268488905711587, guid: 29916a72dd106a6478649d8966d316de, type: 3}
+      propertyPath: m_Text
+      value: Use
       objectReference: {fileID: 0}
     - target: {fileID: 8360332897641304771, guid: 29916a72dd106a6478649d8966d316de, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1839,6 +1885,14 @@ PrefabInstance:
     - target: {fileID: 4423547493633840943, guid: f51309b54d9b7104d80f6dcaa41de421, type: 3}
       propertyPath: m_Maskable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423547493633840943, guid: f51309b54d9b7104d80f6dcaa41de421, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bb145366ce7024469a5758b08d31802c, type: 3}
+    - target: {fileID: 4423547493633840943, guid: f51309b54d9b7104d80f6dcaa41de421, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f51309b54d9b7104d80f6dcaa41de421, type: 3}
@@ -2459,6 +2513,10 @@ PrefabInstance:
       value: -555.6
       objectReference: {fileID: 0}
     - target: {fileID: 4492907891962626444, guid: 05b1a367ad8b9f54587f1c750090187a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4643545442527586345, guid: 05b1a367ad8b9f54587f1c750090187a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

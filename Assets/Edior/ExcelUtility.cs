@@ -116,19 +116,21 @@ public class ExcelUtility
 
 		//生成Json字符串
 		string json = JsonConvert.SerializeObject (table, Newtonsoft.Json.Formatting.Indented);
-		////写入文件
-		//using (FileStream fileStream=new FileStream(JsonPath,FileMode.Create,FileAccess.Write)) {
-		//	using (TextWriter textWriter = new StreamWriter(fileStream, encoding)) {
-		//		textWriter.Write (json);
-		//	}
-		//}
-	}
+        ////写入文件
+        using (FileStream fileStream = new FileStream(JsonPath, FileMode.Create, FileAccess.Write))
+        {
+            using (TextWriter textWriter = new StreamWriter(fileStream, encoding))
+            {
+                textWriter.Write(json);
+            }
+        }
+    }
 
-	/// <summary>
-	/// 转换为lua
-	/// </summary>
-	/// <param name="luaPath">lua文件路径</param>
-	public void ConvertToLua(string luaPath, Encoding encoding)
+    /// <summary>
+    /// 转换为lua
+    /// </summary>
+    /// <param name="luaPath">lua文件路径</param>
+    public void ConvertToLua(string luaPath, Encoding encoding)
     {
         //判断Excel文件中是否存在数据表
         if (mResultSet.Tables.Count < 1)

@@ -109,8 +109,6 @@ namespace Peixi
                     collectParams.handleItemName = "None";
                     collectParams.handleItemHasCode = 0;
                 });
-
-            //islandInteractAgent = CreateIslandInteractAgent();
         }
         public void OnPlayerTouch(BaseItem item)
         {
@@ -124,7 +122,10 @@ namespace Peixi
         {
             eye.RemoveItemFromPendingQuene(item);
         }
-
+        private void BuildFacilityAgentInit()
+        {
+            
+        }
         private void Update()
         {
             facility = facilityInteractAgent.targetData;

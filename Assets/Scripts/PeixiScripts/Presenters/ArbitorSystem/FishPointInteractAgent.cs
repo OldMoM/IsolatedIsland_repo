@@ -22,6 +22,8 @@ namespace Peixi
                 Inventory.AddItem("fiber", 2);
                 Inventory.AddItem("plastic", 2);
             }
+            var fishResult = new FishingResult();
+            _onInteractEnd.OnNext(fishResult);
         }
         public void startInteract()
         {

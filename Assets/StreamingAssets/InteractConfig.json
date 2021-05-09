@@ -157,7 +157,7 @@
   },
   {
     "Key": "interact_negativeCollect_foodMaterialResourceCollectValue_default",
-    "Value": 4.0,
+    "Value": 5.0,
     "Description": "被动收集食材材值",
     "PS": null
   },
@@ -196,5 +196,143 @@
     "Value": 30.0,
     "Description": "掷骰子结果为转向的概率",
     "PS": "见钓鱼小游戏图示.vsdx"
+  },
+  {
+    "Key": "floatingPlasticGather",
+    "Value": 10.0,
+    "Description": "漂浮塑料收集量",
+    "PS": null
+  },
+  {
+    "Key": "floatingFiberGather",
+    "Value": 10.0,
+    "Description": "漂浮纤维收集量",
+    "PS": null
+  },
+  {
+    "Key": "playerHealth_default",
+    "Value": 50.0,
+    "Description": "玩家初始健康值",
+    "PS": null
+  },
+  {
+    "Key": "playerSatiety_default",
+    "Value": 60.0,
+    "Description": "玩家初始饱腹值",
+    "PS": null
+  },
+  {
+    "Key": "playerThirst_default",
+    "Value": 80.0,
+    "Description": "玩家初始口渴值",
+    "PS": null
+  },
+  {
+    "Key": "playerPleasure_default",
+    "Value": 40.0,
+    "Description": "玩家初始心情值",
+    "PS": null
+  },
+  {
+    "Key": "playerSatietyReduceInterval",
+    "Value": 6.0,
+    "Description": "每x秒玩家的饱腹值-1",
+    "PS": null
+  },
+  {
+    "Key": "playerThirstReduceInterval",
+    "Value": 4.0,
+    "Description": "每x秒玩家口渴值-1",
+    "PS": null
+  },
+  {
+    "Key": "buildPlantIsland_plasticCost",
+    "Value": 10.0,
+    "Description": "建造植物岛块塑料花费",
+    "PS": null
+  },
+  {
+    "Key": "buildPlantIsland_fiberCost",
+    "Value": 10.0,
+    "Description": "建造植物岛块纤维花费",
+    "PS": null
+  },
+  {
+    "Key": "buildMetalIsland_plasticCost",
+    "Value": 15.0,
+    "Description": "建造机械岛块 塑料花费",
+    "PS": null
+  },
+  {
+    "Key": "buildMetalIsland_fiberCost",
+    "Value": 15.0,
+    "Description": "建造机械岛块纤维花费",
+    "PS": null
+  },
+  {
+    "Key": "buildWaterPuifier_plasticCost",
+    "Value": 15.0,
+    "Description": "建造蒸馏器塑料花费",
+    "PS": null
+  },
+  {
+    "Key": "buildWaterPuifier_fiberCost",
+    "Value": 15.0,
+    "Description": "建造蒸馏器纤维花费",
+    "PS": null
+  },
+  {
+    "Key": "buildFoodPlant_plasticCost",
+    "Value": 15.0,
+    "Description": "建造食物加工器塑料花费",
+    "PS": null
+  },
+  {
+    "Key": "buildFoodPlant_fiberCost",
+    "Value": 15.0,
+    "Description": "建造食物加工器纤维花费",
+    "PS": null
+  },
+  {
+    "Key": "buildFishPoint_plasticCost",
+    "Value": 15.0,
+    "Description": "建造钓鱼台塑料花费（主动收集）",
+    "PS": null
+  },
+  {
+    "Key": "buildFishPoint_fiberCost",
+    "Value": 15.0,
+    "Description": "建造钓鱼台纤维花费（主动收集）",
+    "PS": null
+  },
+  {
+    "Key": "fishPoint_plasticCollect",
+    "Value": 2.0,
+    "Description": "钓鱼台鲜鱼获取",
+    "PS": null
+  },
+  {
+    "Key": "buildGarbageCollect_plasticCost",
+    "Value": 15.0,
+    "Description": "垃圾收集器建造塑料花费（被动收集）",
+    "PS": null
+  },
+  {
+    "Key": "buildGarbageCollect_fiberCost",
+    "Value": 15.0,
+    "Description": "垃圾收集器建造纤维花费（被动收集）",
+    "PS": null
+  },
+  {
+    "Key": "garbageCollector_plasticCollect",
+    "Value": 10.0,
+    "Description": "垃圾收集器塑料收集量",
+    "PS": null
+  },
+  {
+    "Key": "garbageCollector_fiberCollect",
+    "Value": 10.0,
+    "Description": "垃圾收集器纤维收集量",
+    "PS": null
   }
 ]

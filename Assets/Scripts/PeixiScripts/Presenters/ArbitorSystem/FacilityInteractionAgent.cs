@@ -139,7 +139,7 @@ namespace Peixi
             if (data.type == FacilityType.Plastic)
             {
                 var inventory = InterfaceArichives.Archive.IInventorySystem;
-                inventory.AddItem(ItemTags.String, 10);
+                inventory.AddItem(ItemTags.fiber, 10);
 
                 var garbage = Entity.garbages[data.instanceId];
                 Entity.garbages.Remove(data.instanceId);
@@ -276,7 +276,8 @@ namespace Peixi
         Distiller,
         Tent,
         Plastic,
-        Fiber
+        Fiber,
+        Collector
     }
     public enum InteractState
     {

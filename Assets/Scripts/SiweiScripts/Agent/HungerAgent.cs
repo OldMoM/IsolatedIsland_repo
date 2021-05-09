@@ -15,8 +15,9 @@ namespace Peixi
         {
             dependency = Dependency;
 
+            var hungerReduceRate = GameConfig.Singleton.InteractionConfig["playerSatietyReduceInterval"];
             //每6秒钟饱腹值-1
-            Observable.Interval(TimeSpan.FromSeconds(6))
+            Observable.Interval(TimeSpan.FromSeconds(hungerReduceRate))
                 .Subscribe(x =>
                 {
                     dependency.playerPropertySystem.ChangeSatiety(-1);

@@ -24,8 +24,11 @@ namespace Peixi
         {
             get
             {
-                bool hasEnoughPlastic = inventory.GetAmount("Plastic") >= 15;
-                bool hasEnoughString = inventory.GetAmount("String") >= 8;
+                var plasticCost = GameConfig.Singleton.InteractionConfig["buildPlantIsland_plasticCost"];
+                var fiberCost = GameConfig.Singleton.InteractionConfig["buildPlantIsland_fiberCost"];
+
+                bool hasEnoughPlastic = inventory.GetAmount(ItemTags.plastic) >= plasticCost;
+                bool hasEnoughString = inventory.GetAmount(ItemTags.fiber) >= fiberCost;
 
                 bool enoughMat = hasEnoughPlastic && hasEnoughString;
                 return enoughMat;
@@ -47,21 +50,26 @@ namespace Peixi
             onMouseClicked = OnMouseClicked;
             inventory = archive.IInventorySystem;
 
-
-
             OnMouseClicked
                 .Skip(1)
                 .Where(x => Enough)
                 .Where(x => !isActive)
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
                     var gridPos = buildSystem.newWorldToGridPosition(x);
-                    //消耗材料
-                    inventory.RemoveItem("Plastic", 15);
-                    inventory.RemoveItem("String", 8);
+
+                    //计算材料消耗
+                    var plasticCost_double = GameConfig.Singleton.InteractionConfig["buildPlantIsland_plasticCost"];
+                    var plasticCost_int = Convert.ToInt32(plasticCost_double);
+                    var fiberCost_double = GameConfig.Singleton.InteractionConfig["buildPlantIsland_fiberCost"];
+                    var fiberCost_int = Convert.ToInt32(fiberCost_double);
+
+                    //扣除材料
+                    inventory.RemoveItem(ItemTags.plastic, plasticCost_int);
+                    inventory.RemoveItem(ItemTags.fiber, fiberCost_int);
 
                     isActive = true;
+                    
                     timer.StartTimeCountdown(5);
                 });
 

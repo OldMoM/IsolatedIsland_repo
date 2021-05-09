@@ -41,6 +41,20 @@ namespace Peixi
                     garbage_script.Active(floatSpeed, direction);
                     garbage_prefab.transform.right = direction;
                 });
+
+            var timeSystem = InterfaceArichives.Archive.ITimeSystem;
+
+            timeSystem.onDayStart
+                .Subscribe(x =>
+                {
+                    Entity.garbageGeneratorModel.isAcitve.Value = true;
+                });
+
+            timeSystem.onDayEnd
+                .Subscribe(x =>
+                {
+                    Entity.garbageGeneratorModel.isAcitve.Value = false;
+                });
         }
         Vector3 GenerateSpawnPointRandomly()
         {

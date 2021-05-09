@@ -20,7 +20,6 @@ namespace Peixi
             onHungerChanged.Where(x => x <= 0)
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
                     EnvironmentModel.isDeathCountDown = true;
                     EnvironmentModel.deathCountDown = 0;
                 });
@@ -28,7 +27,6 @@ namespace Peixi
             onHungerChanged.Where(x => x > 0)
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
                     EnvironmentModel.isDeathCountDown = false;
                 });
 
@@ -36,9 +34,8 @@ namespace Peixi
             var deathCountDown =
             Observable.Interval(TimeSpan.FromSeconds(1))
                 .Where(x => EnvironmentModel.isDeathCountDown);
-
-            IDisposable release = null;
-            release =
+   
+            var release =
             deathCountDown
                 .Subscribe(x =>
                 {
@@ -46,10 +43,11 @@ namespace Peixi
                     if (EnvironmentModel.deathCountDown >= 5)
                     {
                         GameTriggerModel.gameTriggers["gameFailed"].OnNext(Unit.Default);
-                        Debug.Log("游戏结束");
-                        release.Dispose();
+                        ReleaseResource.RemoveResource("deathCountDown");
                     }
                 });
+
+            ReleaseResource.RegisterInterface("deathCountDown", release);
         }
     }
 }
