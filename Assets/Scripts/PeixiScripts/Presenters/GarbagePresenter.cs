@@ -20,19 +20,21 @@ namespace Peixi {
             collectable = new CollectableObjectAgent(GetComponent<SphereCollider>());
             garbageData.instanceId = gameObject.GetInstanceID();
 
+            Entity.garbages.Add(garbageData.instanceId, gameObject);
+
             collectable.OnPlayerTouch
                 .Subscribe(x =>
                 {
                     var interactionAgent = InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent;
                     interactionAgent.PlayerTouchFacility(garbageData);
-                });
+                }).AddTo(this);
 
             collectable.OnPlayerUntouch
                 .Subscribe(x =>
                 {
                     var interactionAgent = InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent;
                     interactionAgent.PlayerUntouchFacility(garbageData);
-                });
+                }).AddTo(this);
         }
         /// <summary>
         /// 激活Garbage并设置速度和方向
@@ -56,16 +58,6 @@ namespace Peixi {
         {
             ArbitorSystem.Singlton.OnItemRecycle(this);
             Destroy(gameObject);
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            //OnPlayerTouch(other);
-            
-        }
-        private void OnTriggerExit(Collider other)
-        {
-            //OnPlayerUntouch(other);
         }
     }
 }

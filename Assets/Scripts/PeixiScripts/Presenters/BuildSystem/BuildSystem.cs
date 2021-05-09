@@ -16,7 +16,9 @@ namespace Peixi
         public GridSetting settings = new GridSetting(4, Vector2.zero);
 
         #region//privates
+        //存放所有岛块的信息
         public IslandGridModulePresenter _islandGridModule;
+        //存放所有设施的信息
         public FacilityBuildModulePresenter _facilityModule;
         private GameObjectBuiltModuleView _view;
         private PositionConvent _posTransMod = new PositionConvent();

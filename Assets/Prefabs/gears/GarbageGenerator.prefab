@@ -168,10 +168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af81ef50196e47468d0c91d6f156a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive:
+    value: 1
+  garbageGenerateIntervalTime: 10
   floatSpeed: 2.5
   garbageDes: {fileID: 7081080301484672697}
   garbageModels:
-  - {fileID: 919132149155446097, guid: d5f7ec9046ced4d48a925d88bb66db36, type: 3}
+  - {fileID: 6454541943041381830, guid: e268fe5ed0a395b44976c4d3ae9d776f, type: 3}
   generateBoundPoints:
   - {fileID: 3928657589330353422}
   - {fileID: 3928657589195669713}

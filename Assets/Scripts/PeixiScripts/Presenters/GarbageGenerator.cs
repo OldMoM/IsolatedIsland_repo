@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using UnityEngine.Assertions;
 
 namespace Peixi 
 {
     public class GarbageGenerator : MonoBehaviour
     {
-        ReactiveProperty<bool> isActive = new ReactiveProperty<bool>(false);
         System.IDisposable generateGarbageMicrotime;
-        float garbageGenerateIntervalTime = 2;
+        [SerializeField] float garbageGenerateIntervalTime = 2;
         [Range(1,4)]
         public float floatSpeed = 2.5f;
 
@@ -25,7 +25,8 @@ namespace Peixi
         void Start()
         { 
             Observable
-                .Interval(System.TimeSpan.FromSeconds(5))
+                .Interval(System.TimeSpan.FromSeconds(garbageGenerateIntervalTime))
+                .Where(x=> Entity.garbageGeneratorModel.isAcitve.Value)
                 .Subscribe(x =>
                 {
                     var spawnPosition = GenerateSpawnPointRandomly();
@@ -35,10 +36,11 @@ namespace Peixi
                         spawnPosition,
                         Quaternion.Euler(direction));
                     var garbage_script = garbage_prefab.GetComponent<GarbagePresenter>();
+                    Assert.IsNotNull(garbage_script);
+                    
                     garbage_script.Active(floatSpeed, direction);
                     garbage_prefab.transform.right = direction;
                 });
-
         }
         Vector3 GenerateSpawnPointRandomly()
         {

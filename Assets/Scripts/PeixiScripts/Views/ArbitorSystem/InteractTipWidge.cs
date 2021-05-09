@@ -9,21 +9,31 @@ using UnityEngine.U2D;
 
 namespace Peixi
 {
-    public class FacilityInteractWidge : MonoBehaviour
+    public class InteractTipWidge : MonoBehaviour
     {
         Transform icon_rect;
         Image icon;
         FacilityInteractionAgent handle;
-
         public SpriteAtlas iconAtlas;
+
+        private List<FacilityType> staticTipIcon = new List<FacilityType>()
+        {
+            FacilityType.Distiller,
+            FacilityType.FishPoint,
+            FacilityType.FoodPlant,
+            FacilityType.Island,
+            FacilityType.Tent,
+            FacilityType.None
+        };
+
         // Start is called before the first frame update
         void Start()
         {
             Config()
-                .React(OnTargetChanged)
-                .React(OnStateChanged);
+                .React(OnTargetChanged);
+                //.React(OnStateChanged);
         }
-        FacilityInteractWidge Config()
+        InteractTipWidge Config()
         {
             icon_rect = transform.Find("icon");
             icon_rect.gameObject.SetActive(false);
@@ -39,7 +49,7 @@ namespace Peixi
 
             return this;
         }
-        FacilityInteractWidge React(Action action)
+        InteractTipWidge React(Action action)
         {
             action();
             return this;
@@ -48,6 +58,7 @@ namespace Peixi
         {
             handle.onTargetChanged
                 .Skip(1)
+                .Where(x=> staticTipIcon.Contains(x.type))
                 .Subscribe(x =>
                 {
                     var worldPos = x.position;
@@ -55,9 +66,12 @@ namespace Peixi
                     var offset_screen = new Vector3(0, 200, 0);
                     transform.position = screenPos + offset_screen;
 
+                    icon_rect.gameObject.SetActive(true);
+
                     switch (x.type)
                     {
                         case FacilityType.None:
+                            icon_rect.gameObject.SetActive(false);
                             break;
                         case FacilityType.Island:
                             break;
@@ -78,6 +92,7 @@ namespace Peixi
                     }
                 });
         }
+
         void OnStateChanged()
         {
             handle.onStateChanged

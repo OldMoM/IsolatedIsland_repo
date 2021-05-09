@@ -132,8 +132,36 @@ namespace Peixi
             {
                 restoreIslandProgress.StartInteract(targetData);
             }
+        }
 
-            
+        public void InteractStart(FacilityData data)
+        {
+            if (data.type == FacilityType.Plastic)
+            {
+                var inventory = InterfaceArichives.Archive.IInventorySystem;
+                inventory.AddItem(ItemTags.String, 10);
+
+                var garbage = Entity.garbages[data.instanceId];
+                Entity.garbages.Remove(data.instanceId);
+                GameObject.Destroy(garbage);
+
+                _pendingItems.Remove(data);
+
+                if (_pendingItems.Count > 0)
+                {
+                    var count = _pendingItems.Count;
+                    _targetData.Value = _pendingItems[count - 1];
+                    _state.Value = InteractState.Contact;
+                }
+                else
+                {
+                    
+                    var emptyTaget = new FacilityData();
+                    emptyTaget.type = FacilityType.None;
+                    onInteractEnd.OnNext(Unit.Default);
+                    _targetData.Value = emptyTaget;
+                }
+            }
         }
         public void InteractEnd(FacilityType type)
         {
@@ -163,6 +191,8 @@ namespace Peixi
                 {
                     _state.Value = InteractState.Interact;
                     InteractStart(targetData.type);
+
+                    InteractStart(targetData);
                 });
         }
         private void onFishingEnd()
@@ -235,6 +265,7 @@ namespace Peixi
         public int instanceId;
         public string name;
         public FacilityType type;
+        public Transform attachedTransfom;
     }
     public enum FacilityType
     {
