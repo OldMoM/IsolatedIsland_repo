@@ -26,7 +26,7 @@ namespace Peixi.Commands
             DebugLogConsole.AddCommand<Vector2Int, int>("setIslandDurabilityTo", "将[x,y]处的Island的耐久度设置为", BuildSystemCommands.SetIslandDurability);
             #endregion
 
-            DebugLogConsole.AddCommand<Vector2Int>("interact.buildIslandAt", "", InteractionCommands.BuildFacility);
+            DebugLogConsole.AddCommand<string,Vector2Int>("interact.buildIslandAt", "", InteractionCommands.BuildFacility);
         }
     }
 }

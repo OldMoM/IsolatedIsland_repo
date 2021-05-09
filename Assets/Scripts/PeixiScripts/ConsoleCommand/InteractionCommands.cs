@@ -6,7 +6,7 @@ namespace Peixi
 {
     public static class InteractionCommands
     {
-        public static void BuildFacility(Vector2Int gridPos)
+        public static void BuildFacility(string facility,Vector2Int gridPos)
         {
             var worldPos = InterfaceArichives.Archive.IBuildSystem.newGridToWorldPosition(gridPos);
 
@@ -16,7 +16,7 @@ namespace Peixi
             table.Add("onMouseClicked", onMouseClicked);
             BuildFacilityAgent.Init(table);
 
-            onMouseClicked.OnNext((PrefabTags.fishPoint, worldPos));
+            onMouseClicked.OnNext((facility, worldPos));
         }
     }
 }

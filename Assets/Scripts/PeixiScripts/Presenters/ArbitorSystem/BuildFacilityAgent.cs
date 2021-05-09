@@ -29,22 +29,42 @@ namespace Peixi
         /// <returns></returns>
         private static bool SatisfyBuildCondition(string facilityName)
         {
-            bool enoughPlastic = true;
-            bool enoughFiber = true;
+            bool enoughPlastic = false;
+            bool enoughFiber = false;
+
             if (facilityName == PrefabTags.fishPoint)
             {
                 var plasticCost = GameConfig.Singleton.InteractionConfig["buildFishPoint_plasticCost"];
-                var fiberCost = GameConfig.Singleton.InteractionConfig["buildFishPoint_plasticCost"];
+                var fiberCost = GameConfig.Singleton.InteractionConfig["buildFishPoint_fiberCost"];
+
+                enoughPlastic = plasticInInventory >= plasticCost;
+                enoughFiber = fiberInInventory >= fiberCost;
+            }
+            if (facilityName == PrefabTags.foodPlant)
+            {
+                var plasticCost = GameConfig.Singleton.InteractionConfig["buildFoodPlant_plasticCost"];
+                var fiberCost = GameConfig.Singleton.InteractionConfig["buildFoodPlant_fiberCost"];
+
+                enoughPlastic = plasticInInventory >= plasticCost;
+                enoughFiber = fiberInInventory >= fiberCost;
+            }
+            if (facilityName == PrefabTags.waterPuifier)
+            {
+                var plasticCost = GameConfig.Singleton.InteractionConfig["buildWaterPuifier_plasticCost"];
+                var fiberCost = GameConfig.Singleton.InteractionConfig["buildWaterPuifier_fiberCost"];
+
+                enoughPlastic = plasticInInventory >= plasticCost;
+                enoughFiber = fiberInInventory >= fiberCost;
+            }
+            if (facilityName == PrefabTags.garbageCollector)
+            {
+                var plasticCost = GameConfig.Singleton.InteractionConfig["buildGarbageCollect_plasticCost"];
+                var fiberCost = GameConfig.Singleton.InteractionConfig["buildGarbageCollect_fiberCost"];
 
                 enoughPlastic = plasticInInventory >= plasticCost;
                 enoughFiber = fiberInInventory >= fiberCost;
             }
 
-            if (facilityName == PrefabTags.foodPlant)
-            {
-                var plasticCost = GameConfig.Singleton.InteractionConfig["buildFoodPlant_plasticCost"];
-                var fiberCost = GameConfig.Singleton.InteractionConfig["buildFoodPlant_fiberCost"];
-            }
             return enoughFiber && enoughFiber;
         }
         /// <summary>
@@ -85,6 +105,7 @@ namespace Peixi
         }
         public static void OnMouseClicked(IObservable<(string, Vector3)> onMouseClicked)
         {
+            //判断是否有足够材料建造FishPoint
             onMouseClicked
                 .Where(x => x.Item1 == PrefabTags.fishPoint)
                 .Subscribe(x =>
@@ -96,7 +117,7 @@ namespace Peixi
                         buildSystem.BuildFacility(gridPos, x.Item1);
 
                         var plasticCost = GameConfig.Singleton.InteractionConfig["buildFishPoint_plasticCost"];
-                        var fiberCost = GameConfig.Singleton.InteractionConfig["buildFishPoint_plasticCost"];
+                        var fiberCost = GameConfig.Singleton.InteractionConfig["buildFishPoint_fiberCost"];
                         var plasticCost_int = Convert.ToInt32(plasticCost);
                         var fiberCost_int = Convert.ToInt32(plasticCost);
 
@@ -109,6 +130,84 @@ namespace Peixi
                         StartChatBubble(new string[1] { "I don't have enough Material" });
                     }
                 });
+
+            //判断材料足够建造foodPlant?
+            onMouseClicked
+                .Where(x => x.Item1 == PrefabTags.foodPlant)
+                .Subscribe(x =>
+                {
+                    var hasEnoughMat = SatisfyBuildCondition(x.Item1);
+                    if (hasEnoughMat)
+                    {
+                        var gridPos = buildSystem.newWorldToGridPosition(x.Item2);
+                        buildSystem.BuildFacility(gridPos, x.Item1);
+
+                        var plasticCost = GameConfig.Singleton.InteractionConfig["buildFoodPlant_plasticCost"];
+                        var fiberCost = GameConfig.Singleton.InteractionConfig["buildFoodPlant_fiberCost"];
+                        var plasticCost_int = Convert.ToInt32(plasticCost);
+                        var fiberCost_int = Convert.ToInt32(plasticCost);
+
+                        inventorySystem.RemoveItem(ItemTags.plastic, plasticCost_int);
+                        inventorySystem.RemoveItem(ItemTags.fiber, fiberCost_int);
+
+                    }
+                    else
+                    {
+                        StartChatBubble(new string[1] { "I don't have enough Material" });
+                    }
+                });
+
+            //判断材料足够建造waterPuifier?
+            onMouseClicked
+               .Where(x => x.Item1 == PrefabTags.foodPlant)
+               .Subscribe(x =>
+               {
+                   var hasEnoughMat = SatisfyBuildCondition(x.Item1);
+                   if (hasEnoughMat)
+                   {
+                       var gridPos = buildSystem.newWorldToGridPosition(x.Item2);
+                       buildSystem.BuildFacility(gridPos, x.Item1);
+
+                       var plasticCost = GameConfig.Singleton.InteractionConfig["buildWaterPuifier_plasticCost"];
+                       var fiberCost = GameConfig.Singleton.InteractionConfig["buildWaterPuifier_fiberCost"];
+                       var plasticCost_int = Convert.ToInt32(plasticCost);
+                       var fiberCost_int = Convert.ToInt32(plasticCost);
+
+                       inventorySystem.RemoveItem(ItemTags.plastic, plasticCost_int);
+                       inventorySystem.RemoveItem(ItemTags.fiber, fiberCost_int);
+
+                   }
+                   else
+                   {
+                       StartChatBubble(new string[1] { "I don't have enough Material" });
+                   }
+               });
+
+            //判断材料足够建造garbageCollector?
+            onMouseClicked
+               .Where(x => x.Item1 == PrefabTags.foodPlant)
+               .Subscribe(x =>
+               {
+                   var hasEnoughMat = SatisfyBuildCondition(x.Item1);
+                   if (hasEnoughMat)
+                   {
+                       var gridPos = buildSystem.newWorldToGridPosition(x.Item2);
+                       buildSystem.BuildFacility(gridPos, x.Item1);
+
+                       var plasticCost = GameConfig.Singleton.InteractionConfig["buildGarbageCollect_plasticCost"];
+                       var fiberCost = GameConfig.Singleton.InteractionConfig["buildGarbageCollect_fiberCost"];
+                       var plasticCost_int = Convert.ToInt32(plasticCost);
+                       var fiberCost_int = Convert.ToInt32(plasticCost);
+
+                       inventorySystem.RemoveItem(ItemTags.plastic, plasticCost_int);
+                       inventorySystem.RemoveItem(ItemTags.fiber, fiberCost_int);
+
+                   }
+                   else
+                   {
+                       StartChatBubble(new string[1] { "I don't have enough Material" });
+                   }
+               });
         }
     }
 }
