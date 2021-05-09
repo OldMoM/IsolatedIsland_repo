@@ -112,7 +112,7 @@ namespace Peixi
         PlayerPropertySystem Config()
         {
             property.health = new IntReactiveProperty(50);
-            property.hunger = new IntReactiveProperty(60);
+            property.hunger = new IntReactiveProperty(2);
             property.thirst = new IntReactiveProperty(80);
             property.pleasure = new IntReactiveProperty(40);
 
