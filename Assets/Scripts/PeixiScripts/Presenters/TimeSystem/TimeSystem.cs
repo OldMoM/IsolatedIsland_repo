@@ -31,7 +31,9 @@ namespace Peixi
 
         public void init()
         {
-            //Debug.Log("start first day");
+            var daytime = GameConfig.Singleton.InteractionConfig["dayTime"];
+            model.dayTime = Convert.ToInt32(daytime);
+
             _onDayStart.OnNext(1);
 
             Observable.Interval(TimeSpan.FromSeconds(1))

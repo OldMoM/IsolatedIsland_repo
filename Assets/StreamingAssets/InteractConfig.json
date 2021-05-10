@@ -334,5 +334,23 @@
     "Value": 10.0,
     "Description": "垃圾收集器纤维收集量",
     "PS": null
+  },
+  {
+    "Key": "dayTime",
+    "Value": 120.0,
+    "Description": "一天时长",
+    "PS": null
+  },
+  {
+    "Key": "garbageSpawnInterval",
+    "Value": 15.0,
+    "Description": "漂浮物产生间隔",
+    "PS": null
+  },
+  {
+    "Key": "garbageStartSpeed",
+    "Value": 2.5,
+    "Description": "漂浮物初始速度",
+    "PS": null
   }
 ]

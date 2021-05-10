@@ -28,6 +28,8 @@ namespace Peixi
             var timeSystem = InterfaceArichives.Archive.ITimeSystem;
             var onGamePaused = Entity.gameTriggers["onGamePaused"];
             var onGameResumed = Entity.gameTriggers["onGameResumed"];
+            floatSpeed = GameConfig.Singleton.InteractionConfig["garbageStartSpeed"];
+            garbageGenerateIntervalTime = GameConfig.Singleton.InteractionConfig["garbageSpawnInterval"];
 
             Observable
                 .Interval(System.TimeSpan.FromSeconds(garbageGenerateIntervalTime))
