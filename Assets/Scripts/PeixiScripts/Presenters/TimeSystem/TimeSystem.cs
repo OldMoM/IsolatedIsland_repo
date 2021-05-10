@@ -1,10 +1,10 @@
 ﻿using System;
-using UnityEngine;
 using UniRx;
+using UnityEngine;
 
 namespace Peixi
 {
-    [Obsolete]
+    //[Obsolete]
     public class TimeSystem : MonoBehaviour, ITimeSystem
     {
         [SerializeField]
@@ -22,6 +22,7 @@ namespace Peixi
         private ReplaySubject<int> _onDayStart = new ReplaySubject<int>();
         private Subject<int> _onDayEnd = new Subject<int>();
 
+        private bool isActive = true;
 
         private void Start()
         {
@@ -34,6 +35,7 @@ namespace Peixi
             _onDayStart.OnNext(1);
 
             Observable.Interval(TimeSpan.FromSeconds(1))
+                .Where(x => isActive)
                 .Where(x => model.isDay)
                 .Subscribe(x =>
                 {
@@ -46,6 +48,17 @@ namespace Peixi
                         startNight();
                     }
                 });
+
+            var onGamePaused = Entity.gameTriggers["onGamePaused"];
+            onGamePaused.Subscribe(x =>
+            {
+                isActive = false;
+            });
+            var onGameResumed = Entity.gameTriggers["onGameResumed"];
+            onGameResumed.Subscribe(x =>
+            {
+                isActive = true;
+            });
         }
 
         void startNight()

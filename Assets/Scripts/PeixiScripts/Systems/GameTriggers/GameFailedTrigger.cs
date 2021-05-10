@@ -42,7 +42,7 @@ namespace Peixi
                     EnvironmentModel.deathCountDown++;
                     if (EnvironmentModel.deathCountDown >= 5)
                     {
-                        GameTriggerModel.gameTriggers["gameFailed"].OnNext(Unit.Default);
+                        Entity.gameTriggers["gameFailed"].OnNext(Unit.Default);
                         ReleaseResource.RemoveResource("deathCountDown");
                     }
                 });

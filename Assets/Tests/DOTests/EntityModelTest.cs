@@ -26,7 +26,7 @@ namespace Tests
             IslandPresenterNew.Init(ref model);
 
             var key = new Vector2Int(1, 1);
-            Assert.AreEqual(key, EntityModel.islandModels[key].positionInGrid);
+            Assert.AreEqual(key, Entity.islandModels[key].positionInGrid);
         }
         [Test]
         public void RemoveIslandModel_OnIslandDestoryed_notFound()
@@ -40,7 +40,7 @@ namespace Tests
             //毁坏岛块，从EntityModel中剔除相关数据
             model2.durability.Value = 0;
             //查询EntityModel中的数据
-            var hasKey = EntityModel.islandModels.ContainsKey(key);
+            var hasKey = Entity.islandModels.ContainsKey(key);
 
             Assert.IsFalse(hasKey);
         }

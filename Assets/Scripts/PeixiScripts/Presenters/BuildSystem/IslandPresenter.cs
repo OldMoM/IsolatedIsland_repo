@@ -51,7 +51,6 @@ namespace Peixi
         // Start is called before the first frame update
         private void OnEnable()
         {
-            //
             onDayStart.Subscribe(x =>
             {
                 isActive = true;
@@ -106,6 +105,19 @@ namespace Peixi
                     InterfaceArichives.Archive.IArbitorSystem.facilityInteractAgent
                     .PlayerUntouchFacility(islandData);
                 });
+
+            IObservable<Unit> onGamePaused = Entity.gameTriggers["onGamePaused"] ;
+            IObservable<Unit> ononGameResumed = Entity.gameTriggers["onGameResumed"];
+
+            onGamePaused.Subscribe(x =>
+            {
+                isActive = false;
+            });
+            onGamePaused.Subscribe(x =>
+            {
+                isActive = true;
+            });
+
         }
         public void Active(Vector2Int gridPos,int durability_max = 100)
         {

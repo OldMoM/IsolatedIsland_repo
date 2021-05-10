@@ -20,7 +20,9 @@ namespace Peixi
             React(OnInteractStart)
                 .React(OnInteractEnd)
                 .React(OnPlayerStartMove)
-                .React(OnPlayerEndMove);
+                .React(OnPlayerEndMove)
+                .React(OnGamePaused)
+                .React(OnGameResumed);
         }
 
         PlayerStateController React(Action action)
@@ -32,8 +34,6 @@ namespace Peixi
         {
             onInteractStart.Subscribe(x =>
             {
-                //Debug.Log("on player interact start");
-                //Debug.Log(playerState.Value);
                 playerState.Value = PlayerState.InteractState;
             });
         }
@@ -65,6 +65,23 @@ namespace Peixi
                 {
                     playerState.Value = PlayerState.IdleState;
                 });
+        }
+
+        void OnGamePaused()
+        {
+            var onGamePaused = Entity.gameTriggers["onGamePaused"] as IObservable<Unit>;
+            onGamePaused.Subscribe(x =>
+            {
+                playerState.Value = PlayerState.InteractState;
+            });
+        }
+        void OnGameResumed()
+        {
+            var onGameResumed = Entity.gameTriggers["onGameResumed"] as IObservable<Unit>;
+            onGameResumed.Subscribe(x =>
+            {
+                playerState.Value = PlayerState.IdleState;
+            });
         }
     }
    

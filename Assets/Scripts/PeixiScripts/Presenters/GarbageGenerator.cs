@@ -20,12 +20,18 @@ namespace Peixi
         //-----Thesa vars are for Editor-----
         internal List<Vector3> randomPoints;
         internal List<Vector3> directionVecs = new List<Vector3>();
-
+        [SerializeField]
+        private bool isAcitve = true;
         // Start is called before the first frame update
         void Start()
-        { 
+        {
+            var timeSystem = InterfaceArichives.Archive.ITimeSystem;
+            var onGamePaused = Entity.gameTriggers["onGamePaused"];
+            var onGameResumed = Entity.gameTriggers["onGameResumed"];
+
             Observable
                 .Interval(System.TimeSpan.FromSeconds(garbageGenerateIntervalTime))
+                .Where(x=>isAcitve)
                 .Where(x=> Entity.garbageGeneratorModel.isAcitve.Value)
                 .Subscribe(x =>
                 {
@@ -42,19 +48,22 @@ namespace Peixi
                     garbage_prefab.transform.right = direction;
                 });
 
-            var timeSystem = InterfaceArichives.Archive.ITimeSystem;
-
             timeSystem.onDayStart
+                .Where(x => isAcitve)
                 .Subscribe(x =>
                 {
                     Entity.garbageGeneratorModel.isAcitve.Value = true;
                 });
 
             timeSystem.onDayEnd
+                .Where(x => isAcitve)
                 .Subscribe(x =>
                 {
                     Entity.garbageGeneratorModel.isAcitve.Value = false;
                 });
+
+            onGamePaused.Subscribe(x => isAcitve = false);
+            onGameResumed.Subscribe(x => isAcitve = true);
         }
         Vector3 GenerateSpawnPointRandomly()
         {

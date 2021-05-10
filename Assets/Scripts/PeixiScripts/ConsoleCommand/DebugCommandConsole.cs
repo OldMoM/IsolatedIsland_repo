@@ -27,6 +27,9 @@ namespace Peixi.Commands
             #endregion
 
             DebugLogConsole.AddCommand<string,Vector2Int>("interact.buildIslandAt", "", InteractionCommands.BuildFacility);
+
+            DebugLogConsole.AddCommand("pauseGame", "", GameCommands.PauseGame);
+            DebugLogConsole.AddCommand("resumeGame", "", GameCommands.ResumeGame);
         }
     }
 }
