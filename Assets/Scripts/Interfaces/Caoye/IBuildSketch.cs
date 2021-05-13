@@ -10,9 +10,9 @@ namespace Siwei
         /// </summary>
         IObservable<bool> OnActiveChanged﻿ { get; }
         /// <summary>   
-        /// 当鼠标悬停坐标变化时触发此事件，传递当前指 针的所指的世界坐标
+        /// 传递当前指针的所指的世界坐标
         /// </summary>
-        IObservable<Vector3> OnMouseHoverPositionChanged﻿ { get; }
+        IObservable<Vector3> OnMouseHoverPosition { get; }
         /// <summary>
         ///  当鼠标点击时触发此事件，传递当前指针点击的世界坐标
         /// </summary>

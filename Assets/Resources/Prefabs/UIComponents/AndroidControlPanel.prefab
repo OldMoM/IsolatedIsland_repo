@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 3495303756028415017}
   - component: {fileID: 3978477886244900595}
   m_Layer: 5
-  m_Name: PropBtn
+  m_Name: buildPropBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,7 +477,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922262929345592830}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -487,7 +487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265.6, y: 13}
+  m_AnchoredPosition: {x: 97.5, y: 21}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1688024826573063932
@@ -739,7 +739,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7414191140997295641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4570306959008953508, guid: 6c05c268735b42745ba88c7039f579f9, type: 3}
+        m_TargetAssemblyTypeName: Siwei.BuildSketch, GameScripts
+        m_MethodName: set_BuildObject
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: prop1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1774345769499169208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,7 +2264,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7996764519160300692}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4570306959008953508, guid: 6c05c268735b42745ba88c7039f579f9, type: 3}
+        m_TargetAssemblyTypeName: Siwei.BuildSketch, GameScripts
+        m_MethodName: set_BuildObject
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: prop4
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5581114801894971038
 GameObject:
   m_ObjectHideFlags: 0
@@ -3165,7 +3189,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6397137331171232475}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4570306959008953508, guid: 6c05c268735b42745ba88c7039f579f9, type: 3}
+        m_TargetAssemblyTypeName: Siwei.BuildSketch, GameScripts
+        m_MethodName: set_BuildObject
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: prop2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7615626491649350947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,7 +3547,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3326615137584164438}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4570306959008953508, guid: 6c05c268735b42745ba88c7039f579f9, type: 3}
+        m_TargetAssemblyTypeName: Siwei.BuildSketch, GameScripts
+        m_MethodName: set_BuildObject
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: prop3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8540865501763193952
 GameObject:
   m_ObjectHideFlags: 0
@@ -3525,7 +3573,7 @@ GameObject:
   - component: {fileID: 5116220822926866045}
   - component: {fileID: 3566010730250660511}
   m_Layer: 5
-  m_Name: IslandBtn
+  m_Name: buildIslandBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3538,7 +3586,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8540865501763193952}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3548,7 +3596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265.6, y: 87.3}
+  m_AnchoredPosition: {x: 62.6, y: 87.3}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5649517196502847637
@@ -3631,7 +3679,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5116220822926866045}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8973503618531086525
 GameObject:
   m_ObjectHideFlags: 0

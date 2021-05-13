@@ -16,15 +16,21 @@ namespace Peixi
         private GameObject openInventory_go;
         private GameObject startBuild_go;
         private GameObject checkSketch_go;
+        private GameObject buildIsland_go;
+        private GameObject buildProp_go;
+        private GameObject planeProp_go;
         private List<GameObject> childGameobjects = new List<GameObject>();
 
         private Button mainControlBtn;
         private Button openInventoryBtn;
         private Button startBuildBtn;
         private Button checkSketchBtn;
+        private Button buildIslandBtn;
+        private Button buildPropBtn;
 
         private bool active;
         private bool inventoryState;
+        private bool propPlaneState;
 
         private IBuildSketch buildSketch;
 
@@ -35,7 +41,8 @@ namespace Peixi
                 .React(onMainControlBtnPressed)
                 .React(onCheckSketchBtnPressed)
                 .React(onStartBuildBtnPressed)
-                .React(onOpenInventoryBtnPressed);
+                .React(onOpenInventoryBtnPressed)
+                .React(onbuildPropBtnPressed);
         }
         AndroidControlPanel Config()
         {
@@ -43,12 +50,18 @@ namespace Peixi
             var openInventory_trans = mainControl_trans.Find("openInventoryBtn");
             var startBuild_trans = mainControl_trans.Find("startBuildBtn");
             var checkSketch_trans = mainControl_trans.Find("checkSketchBtn");
+            var buildIsland_trans = startBuild_trans.Find("buildIslandBtn");
+            var buildProp_trans = startBuild_trans.Find("buildPropBtn");
+            var planeProp_trans = mainControl_trans.Find("propPlane");
             buildSketch = FindObjectOfType<BuildSketch>();
 
             mainControl_go = mainControl_trans.gameObject;
             openInventory_go = openInventory_trans.gameObject;
             startBuild_go = startBuild_trans.gameObject;
             checkSketch_go = checkSketch_trans.gameObject;
+            buildIsland_go = buildIsland_trans.gameObject;
+            buildProp_go = buildProp_trans.gameObject;
+            planeProp_go = planeProp_trans.gameObject;
 
             childGameobjects
                 .AddItem(openInventory_go)
@@ -64,12 +77,17 @@ namespace Peixi
             openInventoryBtn = openInventory_trans.GetComponent<Button>();
             startBuildBtn = startBuild_trans.GetComponent<Button>();
             checkSketchBtn = checkSketch_trans.GetComponent<Button>();
+            buildIslandBtn = buildIsland_trans.GetComponent<Button>();
+            buildPropBtn = buildProp_trans.GetComponent<Button>();
+
 
             Assert.IsNotNull(mainControlBtn, "mainControlBtn is null");
             Assert.IsNotNull(openInventoryBtn, "openInventoryBtn is null");
             Assert.IsNotNull(startBuildBtn, "startBuildBtn is null");
             Assert.IsNotNull(checkSketchBtn, "checkSketchBtn is null");
             Assert.IsNotNull(buildSketch, "buildSketch is null");
+            Assert.IsNotNull(buildIslandBtn, "buildIslandBtn is null");
+            Assert.IsNotNull(buildPropBtn, "buildPropBtn is null");
 
             return this;
         }
@@ -132,6 +150,9 @@ namespace Peixi
                     activeState = !activeState;
                     buildSketch.SetBuildMode = activeState;
 
+                    buildIsland_go.SetActive(activeState);
+                    buildProp_go.SetActive(activeState);
+
                     AudioEvents.StartAudio("OnNormalBtnPressed");
                 });
         }
@@ -152,6 +173,20 @@ namespace Peixi
                 .InGameUIComponentsManager
                 .InventoryGui
                 .SetActive(inventoryState);
+
+            AudioEvents.StartAudio("OnNormalBtnPressed");
+        }
+
+        public void onbuildPropBtnPressed()
+        {
+            Debug.Log("buildPropBtnPressed");
+            buildPropBtn.OnPointerClickAsObservable()
+                .Subscribe(x =>
+                {
+                    propPlaneState = !propPlaneState;
+                    planeProp_go.SetActive(propPlaneState);
+                    Debug.Log("Click buildPropBtn:" + propPlaneState);
+                });
 
             AudioEvents.StartAudio("OnNormalBtnPressed");
         }

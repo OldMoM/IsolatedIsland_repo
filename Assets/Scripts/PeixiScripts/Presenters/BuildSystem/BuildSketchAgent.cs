@@ -31,7 +31,7 @@ namespace Peixi
             chatBubble = InterfaceArichives.Archive.InGameUIComponentsManager.ChatBubble;
             this.dependency = dependency;
 
-            ibuildSketch.OnMouseHoverPositionChanged
+            ibuildSketch.OnMouseHoverPosition
                 .Where(x => _buildSketch.SetBuildMode)
                 .Subscribe(x =>
                 {
