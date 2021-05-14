@@ -13,7 +13,7 @@ namespace Peixi
     /// </summary>
     public class BuildSystem : MonoBehaviour, IBuildSystem
     {
-        public GridSetting settings = new GridSetting(4, Vector2.zero);
+        public GridSetting settings = new GridSetting(3, Vector2Int.zero);
 
         #region//privates
         //存放所有岛块的信息
@@ -47,7 +47,6 @@ namespace Peixi
         {
             Assert.IsNotNull(_islandGridModule);
             _islandGridModule.BuildIslandAt(gridPos,durability);
-            Debug.Log(gridPos);
         }
         public bool CheckThePositionHasIsland(Vector2Int gridPos)
         {
@@ -74,10 +73,6 @@ namespace Peixi
         public GridSetting Settings
         {
             get => settings;
-            set
-            {
-                settings = value;
-            }
         }
   
         public FacilityBuildModulePresenter facilityBuildMod
@@ -103,13 +98,6 @@ namespace Peixi
             return gridPos;
         };
 
-        //private IEnumerator CreateBuildSketchAgent()
-        //{
-        //    var ibuildSketch = InterfaceArichives.Archive.IBuildSketch;
-        //    yield return new WaitForSeconds(1);
-        //    sketchAgent = new BuildSketchAgent(InterfaceArichives.Archive.IBuildSketch, this);
-        //}
-
         private BuildSketchAgent CreateBuildSketchAgent()
         {
             var ibuildSketch = FindObjectOfType<BuildSketch>();
@@ -134,7 +122,7 @@ namespace Peixi
     {
         public Vector2Int WorldToGridPosition(Vector3 worldPosition, GridSetting gridSetting)
         {
-            var _size = gridSetting._cellSize;
+            var _size = 3;
             var _halfSize = _size / 2;
 
             var gridX_temp = (worldPosition.x + _halfSize) / _size;
@@ -149,7 +137,7 @@ namespace Peixi
         }
         public Vector3 GridToWorldPosition(Vector2Int gridPosition,GridSetting gridSetting)
         {
-            var size = gridSetting._cellSize;
+            var size = 3;
             var worldPos_x = gridPosition.x * size;
             var worldPos_z = gridPosition.y * size;
             return new Vector3(worldPos_x, 0, worldPos_z);

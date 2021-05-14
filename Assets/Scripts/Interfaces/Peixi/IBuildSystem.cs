@@ -79,7 +79,7 @@ namespace Peixi
         /// <summary>
         /// 网格设置参数
         /// </summary>
-        GridSetting Settings { get; set; }
+        GridSetting Settings { get;}
         FacilityBuildModulePresenter facilityBuildMod { get;}
     }
 }

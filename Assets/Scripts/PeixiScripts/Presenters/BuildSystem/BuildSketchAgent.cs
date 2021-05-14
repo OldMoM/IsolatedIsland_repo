@@ -6,7 +6,7 @@ using Siwei;
 using UniRx;
 
 namespace Peixi
-{
+{   [System.Obsolete]
     /// <summary>
     /// BuildSystem处理和BuildSketch交流的agent
     /// </summary>
