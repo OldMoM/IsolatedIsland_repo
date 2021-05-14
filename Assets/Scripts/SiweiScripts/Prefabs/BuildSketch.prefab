@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4570306958173687256
 Transform:
   m_ObjectHideFlags: 0
@@ -126,10 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4241067408d5345a13be46d4a8cec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 5
-  gridScale: 2
+  gridSize: 10
+  gridScale: 3
   gridMesh: {fileID: 4570306958173687260}
-  drawObject: {fileID: 4570306957381818520}
+  newIsland: {fileID: 0}
   drawCoord: {fileID: 4570306959148280182}
 --- !u!1 &4570306958776520099
 GameObject:
@@ -147,7 +147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4570306958776520124
 Transform:
   m_ObjectHideFlags: 0
@@ -220,9 +220,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd926b58156c7643a7fe2b20a89ff68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildIslandMode: 1
-  IslandBuildSeq: []
-  islandsPosList: []
+  buildIslandMode: 0
+  _mouseModule: {fileID: 4570306958776520125}
+  _gridMesh: {fileID: 4570306958173687261}
+  _buildSystem: {fileID: 0}
+  IslandBuildSeq:
+  - {x: 2, y: 2}
+  - {x: 3, y: 3}
+  islandsPosList:
+  - {x: 1, y: 1}
+  buildSeq: 0
 --- !u!1 &4570306959148280182
 GameObject:
   m_ObjectHideFlags: 0

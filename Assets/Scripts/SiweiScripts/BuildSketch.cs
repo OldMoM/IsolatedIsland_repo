@@ -19,16 +19,28 @@ namespace Siwei
         private string buildObject; // facility under construction
 
         #region privates
-        private MouseModules _mouseModule;
-        private GridMesh _gridMesh;
+        public MouseModules _mouseModule;
+        public GridMesh _gridMesh;
         private GameObject gridMesh_obj;
         private GameObject mouseModule_obj;
 
-        private BuildSystem _buildSystem;
+        public BuildSystem _buildSystem;
 
         #endregion
 
         #region public
+
+        public BuildSystem BuildSystem
+        {
+            get
+            {
+                if (_buildSystem is null)
+                {
+                    _buildSystem = FindObjectOfType<BuildSystem>();
+                }
+                return _buildSystem;
+            }
+        }
         public List<Vector2Int> IslandBuildSeq;
 
         //[HideInInspector] public List<Vector2Int> islandsPosList;
@@ -121,10 +133,8 @@ namespace Siwei
                     
                     if(_buildSystem is null)
                     {
-                        _buildSystem = FindObjectOfType<BuildSystem>();
+                       
                     }
-
-                    
                 }
             }
         }
@@ -199,14 +209,13 @@ namespace Siwei
         
         public List<Vector2Int> GetAllIslands()
         {
-            Debug.Log("Island count is:" + _buildSystem._islandGridModule.model.model.gridData.Keys.Count);
-            return _buildSystem._islandGridModule.model.model.gridData.Keys.ToList();
+            Debug.Log("Island count is:" + BuildSystem._islandGridModule.model.model.gridData.Keys.Count);
+            return BuildSystem._islandGridModule.model.model.gridData.Keys.ToList();
         }
 
         public bool CheckIslandExist(Vector2Int pos)
         {
             return _buildSystem._islandGridModule.CheckThePositionHasIsland(pos);
-            //return islandsPosList.Contains(pos);
         }
 
         public bool CheckFacilityExist(Vector2Int pos)
@@ -244,7 +253,11 @@ namespace Siwei
             Debug.Log("_mouseModule:" + _mouseModule == null);
             Assert.IsNotNull(_gridMesh);
             //_gridMesh.gameObject.SetActive(true);
-            
+
+            _buildSystem = FindObjectOfType<BuildSystem>();
+
+            Assert.IsNotNull(_buildSystem, "_buildSystem is empty");
+
         }
     }
 }

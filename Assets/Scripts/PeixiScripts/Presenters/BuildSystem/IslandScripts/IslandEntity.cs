@@ -14,6 +14,7 @@ namespace Peixi
             model.onDayEnd = InterfaceArichives.Archive.ITimeSystem.onDayEnd;
             model.onDayStart = InterfaceArichives.Archive.ITimeSystem.onDayStart;
             model.attachedObject = gameObject;
+            model.positionInGrid = pos;
 
             IslandPresenterNew.Init(ref model);
         }

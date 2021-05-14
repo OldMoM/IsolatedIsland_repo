@@ -47,6 +47,7 @@ namespace Peixi
         {
             Assert.IsNotNull(_islandGridModule);
             _islandGridModule.BuildIslandAt(gridPos,durability);
+            Debug.Log(gridPos);
         }
         public bool CheckThePositionHasIsland(Vector2Int gridPos)
         {
