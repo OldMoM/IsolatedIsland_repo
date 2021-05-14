@@ -15,13 +15,14 @@ namespace Siwei
 
         void Start()
         {
+            /*
             Debug.Log("sketch:" + sketch.gameObject.name);
             sketch.OnMouseClicked.
                 Subscribe(pos => {
                 Debug.Log("Clicked Mouse position:[" + pos.x + ","+pos.z+"]"); 
             });
             
-            /*
+            
             sketch.OnMouseHoverPositionChanged.Subscribe(pos =>
             {
                 Debug.Log("Mouse x:" + pos.x);

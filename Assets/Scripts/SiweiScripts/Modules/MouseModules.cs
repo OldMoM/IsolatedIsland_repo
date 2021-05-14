@@ -9,31 +9,25 @@ namespace Siwei {
     {
         private IObservable<Vector3> mousePos;
         public bool isActive;
+        
 
-        private void Start()
-        {
-            mousePos = Observable.EveryUpdate().Select(_ => Input.mousePosition);
-        }
-        public IObservable<Vector3> OnMouseHoverPositionChanged()
+        public IObservable<Vector3> OnMouseHoverPosition()
         {
             if (mousePos == null)
             {
                 mousePos = Observable.EveryUpdate().Select(_ => Input.mousePosition);
             }
-            return mousePos.Distinct()
-                           .Where(_ =>gameObject.activeSelf)
-                           .Select(_ => GetGridPosition(Input.mousePosition));
-
+            return mousePos
+                  //.Distinct()
+                    .Where(_ =>gameObject.activeSelf)
+                    .Select(_ => GetGridPosition(Input.mousePosition));
         }
 
-        public IObservable<Vector3> OnMouseClicked﻿()
+        public IObservable<Vector3> OnMouseClickedPos()
         {
-            if (mousePos == null)
-            {
-                mousePos = Observable.EveryUpdate().Select(_ => Input.mousePosition);
-            }
-            return mousePos.Where(_ => Input.GetMouseButtonDown(0) && gameObject.activeSelf)
-                           .Select(_ => GetGridPosition(Input.mousePosition));
+            return Observable.EveryUpdate()
+                             .Where(_ => gameObject.activeSelf && Input.GetMouseButtonDown(0))
+                             .Select(_ => GetGridPosition(Input.mousePosition));
         }
 
         /// <summary>
@@ -52,6 +46,7 @@ namespace Siwei {
                 worldPos = ray.GetPoint(distance);
                 return new Vector3(worldPos.x, worldPos.y, worldPos.z);
             }
+            // don't know how to set an invalid Vector3 here
             Debug.Log("Ray did not get to the target plane");
             return new Vector3(10000, 10000, 10000);
         }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-
+using UniRx;
+using System;
 
 namespace Siwei {
     [RequireComponent(typeof(MeshRenderer))]
@@ -10,21 +11,69 @@ namespace Siwei {
         private BuildSketch sketch;
 
         private Vector3 offset = Vector3.zero;
+        private Vector3 mousePosOffset = Vector3.zero;
+
         private float distance;
+        private bool buildState = false;
 
         public int gridSize;
         public float gridScale;
         public static Plane plane = new Plane(Vector3.up, 0);
         
         public GameObject gridMesh;
-        public GameObject drawObject;
+        public GameObject newIsland;
         public GameObject drawCoord;
+
+        private GameObject[] drawIslandPropsGrid;
 
         private void Start()
         {
-            
-        }
+            // Draw Island
+            sketch.OnMouseHoverPosition
+                .Where(_ => sketch.GetIslandMode())
+                .Subscribe(x =>
+                {
+                    if(sketch.buildSeq < sketch.IslandBuildSeq.Count)
+                    {
+                        DrawOnIslandMode(sketch.IslandBuildSeq[sketch.buildSeq], x);
+                    }
+                    
+                });
 
+            // Draw Prop
+            sketch.OnMouseHoverPosition
+                .Where(_ => sketch.GetPropMode())
+                .Subscribe(x =>
+                {
+                    DrawOnPropMode(sketch.islandsPosList, x);
+                });
+
+            // send build request
+            sketch.OnMouseClickedPos
+                .Where(_ => buildState)
+                .Subscribe(x =>
+                {
+                    /*
+                    Vector2 idx = GetGridIndex(x);
+                    Debug.Log("Offset: " +offset.x+ "Clicked MousePos: " + x.x + "," + x.y + "," + x.z + " Idx: " + idx.x + "," + idx.y);
+                    */
+
+
+                    string buildFacility = sketch.BuildObject; // get facility name for request
+                    if (sketch.CheckBuildRequirement(buildFacility))
+                    {
+                        sketch.buildRequest.OnNext((buildFacility, x));
+                        Debug.Log("Send build request:(" + buildFacility + " " + x.x + "," + x.y + "," + x.z + ")");
+                    }
+                    else
+                    {
+                        Debug.Log("Lack of resource. Cannot build" + buildFacility);
+                    }
+                    
+                    
+                });
+        }
+        /*
         private void Update()
         {
             Vector3 worldPos;
@@ -32,22 +81,25 @@ namespace Siwei {
             if (plane.Raycast(ray, out distance))
             {
                 worldPos = ray.GetPoint(distance);
-                DrawOnMouseClicked(worldPos);
-            }
-            /*
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("Current mouse Pos:"+"("+ worldPosition.x+","+ worldPosition.y+","+ worldPosition.z+ ")");
-            }
-            */
+                Vector2Int mouseIdx = GetGridIndex(worldPos);
 
-
+                if (Input.GetMouseButtonDown(0))
+                    Debug.Log("Current Grid index:" + "(" + mouseIdx.x + "," + mouseIdx.y + ")");
+            }
         }
-        void Awake()
+        */
+
+        private void Awake()
         {
-            sketch = FindObjectOfType<BuildSketch>();
+            if(sketch == null)
+            {
+                sketch = FindObjectOfType<BuildSketch>();
+            }
+
+            mousePosOffset -= gridScale * 0.5f * new Vector3(1f,0, 1f); 
+
             offset -= gridScale*0.5f * new Vector3(1f, 0, 1f);
-            offset -= gridSize / 2 * gridScale * new Vector3(1f, 0, 1f);
+            offset -= (gridSize / 2) * gridScale * new Vector3(1f, 0, 1f);
             //Debug.Log("Offset is [:" + offset.x + "," + offset.y + "," + offset.z + "]");
 
             MeshFilter filter = gridMesh.GetComponent<MeshFilter>();
@@ -108,47 +160,95 @@ namespace Siwei {
             _meshRenderer.material.color = Color.yellow;
             */
         }
-        public void DrawOnMouseClicked(Vector3 pos)
+        public void DrawColor(Vector2Int idx, Vector3 mousePos, GameObject drawObj, bool islandMode)
         {
-            Vector2 idx = GetGridIndex(pos);
+            if (!sketch.CheckIslandExist(idx) && !islandMode)
+            {
+                return;
+            }
 
-            MeshFilter filter = drawObject.GetComponent<MeshFilter>();
+            bool isMouseOver = GetGridIndex(mousePos) == idx ? true : false;
+            //Debug.Log("isMouseOver:" + isMouseOver);
             var mesh = new Mesh();
             var verticies = new List<Vector3>();
-            verticies.Add(new Vector3(idx.x * gridScale, 0, idx.y * gridScale) + offset);
-            verticies.Add(new Vector3(idx.x * gridScale, 0, (idx.y + 1) * gridScale) + offset);
-            verticies.Add(new Vector3((idx.x + 1) * gridScale, 0, (idx.y + 1) * gridScale) + offset);
-            verticies.Add(new Vector3((idx.x + 1) * gridScale, 0, idx.y * gridScale) + offset);
+            verticies.Add(new Vector3(idx.x * gridScale, 0, idx.y * gridScale) + mousePosOffset); //offset 
+            verticies.Add(new Vector3(idx.x * gridScale, 0, (idx.y + 1) * gridScale) + mousePosOffset);
+            verticies.Add(new Vector3((idx.x + 1) * gridScale, 0, (idx.y + 1) * gridScale) + mousePosOffset);
+            verticies.Add(new Vector3((idx.x + 1) * gridScale, 0, idx.y * gridScale) + mousePosOffset);
 
             var indicies = new List<int>
-        {
+            {
             0,1,2,
             0,2,3
-        };
+            };
+
             mesh.vertices = verticies.ToArray();
             mesh.triangles = indicies.ToArray();
+
+            MeshFilter filter = drawObj.GetComponent<MeshFilter>();
             filter.mesh = mesh;
 
-            MeshRenderer meshRenderer = drawObject.GetComponent<MeshRenderer>();
+            MeshRenderer meshRenderer = drawObj.GetComponent<MeshRenderer>();
             meshRenderer.material = new Material(Shader.Find("Sprites/Default"));
 
-            if (sketch.PermitBuildIsland)
+            if (sketch.CheckFacilityExist(idx))
             {
-                meshRenderer.material.color = Color.green;
-            }
-            else {
                 meshRenderer.material.color = Color.red;
+                return;
             }
+            meshRenderer.material.color = isMouseOver ? Color.green : Color.white;
+            buildState = isMouseOver ? true : false;
             
         }
 
-        public Vector2 GetGridIndex(Vector3 pos) { 
-            Vector2 idx = new Vector2(Mathf.Floor((pos.x - offset.x) / gridScale), Mathf.Floor((pos.z - offset.z) / gridScale));
-            /*
-            if (Input.GetMouseButtonDown(0))
-                Debug.Log("Current Grid index:" + "(" + idx.x + "," + idx.y + ")");
-            */
-            return idx;
+        /// <summary>
+        /// 建造岛屿模式，固定顺序新建岛屿
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="mouseIdx"></param>
+        public void DrawOnIslandMode(Vector2Int idx, Vector3 mousePos)
+        {
+            if (newIsland == null)
+            {
+                newIsland = new GameObject();
+                newIsland.AddComponent(typeof(MeshFilter));
+                newIsland.AddComponent(typeof(MeshRenderer));
+                newIsland.transform.SetParent(gridMesh.transform);
+            }
+
+            DrawColor(idx, mousePos, newIsland, true);
+        }
+
+        /// <summary>
+        /// 建造设施模式给每块岛屿上色
+        /// </summary>
+        /// <param name="islandPosList"></param>
+        public void DrawOnPropMode(List<Vector2Int> islandPosList, Vector3 mousePos)
+        {
+            int islandNum = islandPosList.Count;
+            if(drawIslandPropsGrid == null)
+            {
+                drawIslandPropsGrid = new GameObject[islandNum];
+                for (int i = 0; i < islandNum; i++)
+                {
+                    drawIslandPropsGrid[i].AddComponent(typeof(MeshFilter));
+                    drawIslandPropsGrid[i].AddComponent(typeof(MeshRenderer));
+                }
+            }
+
+            for (int i = 0; i < islandNum; i++)
+            {
+                DrawColor(islandPosList[i],  mousePos, drawIslandPropsGrid[i], false);
+            }
+
+        }
+
+       
+
+        public Vector2Int GetGridIndex(Vector3 pos) {
+            //Vector2 idx = new Vector2(Mathf.Floor((pos.x - offset.x) / gridScale), Mathf.Floor((pos.z - offset.z) / gridScale));
+            Vector2 idx = new Vector2(Mathf.Floor((pos.x - mousePosOffset.x) / gridScale), Mathf.Floor((pos.z - mousePosOffset.z) / gridScale));
+            return Vector2Int.RoundToInt(idx);
         }
     }
 } 
